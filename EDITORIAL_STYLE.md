@@ -14,12 +14,12 @@ Use this guide when writing or revising any chapter of *Medical Imaging: What Me
 
 When a chapter catalogs diseases or findings for an imaging examination, explain each item in prose that answers:
 
-1. What symptoms, signs, or clinical question may lead to the examination?
+1. What symptoms or signs prompt the examination? Label this paragraph **Symptoms:**.
 2. Which image features should the reader inspect, and what do they suggest?
 3. Is the examination usually primary, supplementary, or used for a specific task?
 4. Can the image establish the diagnosis, or are clinical assessment, another modality, laboratory testing, or tissue sampling needed?
 
-Keep these explanations condition-specific. If one part does not apply, say so naturally instead of repeating an empty template. In the expanded catalogue lists, place the condition name first, then put each of the three explanatory prompts on its own paragraph line for easy scanning.
+Keep these explanations condition-specific. If one part does not apply, say so naturally instead of repeating an empty template. In the expanded catalogue lists, place the condition name first, then put **Symptoms:**, **What to look for:**, and **Role and sufficiency:** on separate paragraph lines for easy scanning.
 
 ## Organization and terminology
 
