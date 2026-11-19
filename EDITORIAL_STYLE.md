@@ -19,7 +19,7 @@ When a chapter catalogs diseases or findings for an imaging examination, explain
 3. Is the examination usually primary, supplementary, or used for a specific task?
 4. Can the image establish the diagnosis, or are clinical assessment, another modality, laboratory testing, or tissue sampling needed?
 
-Keep these explanations condition-specific. If one part does not apply, say so naturally instead of repeating an empty template. In the expanded catalogue lists, place the condition name first, then put **Symptoms:**, **What to look for:**, and **Role and sufficiency:** on separate paragraph lines for easy scanning.
+Keep these explanations condition-specific. If one part does not apply, say so naturally instead of repeating an empty template. In the expanded catalogue lists, place the condition name first, then put **Symptoms:**, **Clinical Features:**, and **Role and sufficiency:** on separate paragraph lines for easy scanning.
 
 ## Organization and terminology
 
