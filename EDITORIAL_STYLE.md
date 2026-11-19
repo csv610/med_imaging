@@ -4,7 +4,7 @@ Use this guide when writing or revising any chapter of *Medical Imaging: What Me
 
 ## Voice and explanation
 
-- Write in clear, direct English. Prefer familiar words and active voice; define specialized terms the first time they appear.
+- Write in clear, direct English. Prefer familiar words and active voice. In **Symptoms:** and **Clinical Features:** paragraphs, replace specialist jargon with everyday wording where possible; if a technical term is needed, explain it briefly the first time it appears.
 - Teach the reader what an image can show and how that finding answers a clinical question. Do not rely on lists of labels without explaining their meaning.
 - Match the language to the section. Patient-facing material should explain the examination in accessible terms. Technical chapters may use specialist terminology, with enough context for a learner to follow it.
 - Keep explanations specific to the modality, disease, and clinical setting. Remove generic introductions, repeated cautions, and boilerplate conclusions.
