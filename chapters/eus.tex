@@ -1,0 +1,615 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{top=1in, bottom=1in, left=1in, right=1in}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=teal!80!black,
+    citecolor=teal!80!black,
+    urlcolor=blue!70!black,
+    pdftitle={Endoscopic Ultrasound (EUS): Physical Principles, Echoendoscope Instrumentation, Five-Layer Sonographic Histology, TNM Oncologic Staging, EUS-Guided Tissue Acquisition (FNA/FNB), and Interventional Therapeutics},
+    pdfauthor={Chaman Singh Verma}
+}
+
+% Styled boxes for clinical protocols, physics principles, and quality assurance
+\newtcolorbox{clinicalpearl}[1][]{
+    colback=teal!5!white,
+    colframe=teal!75!black,
+    fonttitle=\bfseries\sffamily,
+    title={Clinical Pearl: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\newtcolorbox{physicsbox}[1][]{
+    colback=blue!5!white,
+    colframe=blue!70!black,
+    fonttitle=\bfseries\sffamily,
+    title={Endosonographic Physics and Instrumentation: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\newtcolorbox{protocolbox}[1][]{
+    colback=purple!5!white,
+    colframe=purple!70!black,
+    fonttitle=\bfseries\sffamily,
+    title={Staging and Procedural Guideline: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\title{\textbf{\huge Endoscopic Ultrasound:}\\[0.4em]
+\Large Physical Principles, Echoendoscope Instrumentation, Five-Layer Sonographic Histology, TNM Oncologic Staging, EUS-Guided Tissue Acquisition (FNA/FNB), and Interventional Therapeutics}
+
+\author{\textbf{Chaman Singh Verma} \\
+\textit{Department of Medical Imaging and Computation} \\
+\small \textsf{Comprehensive Reference Guide for Gastroenterologists,}\\[0.2em]
+\small \textsf{Surgical Oncologists, Medical Physicists, and Interventional Endoscopists}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Endoscopic Ultrasound (EUS) represents one of the most sophisticated convergences of flexible fiberoptic endoscopy and high-frequency acoustic physics in clinical medicine. Developed to overcome the acoustic barriers of subcutaneous adipose tissue, skeletal structures, and intraluminal bowel gas that severely degrade transabdominal sonography, EUS positions high-frequency ultrasonic transducers ($5.0\text{--}20.0\text{ MHz}$) in direct anatomical proximity to the gastrointestinal mucosa, pancreatobiliary tract, and mediastinum. This proximity unlocks sub-millimeter axial resolution ($< 0.15\text{ mm}$), enabling detailed visualization of the five-layer histological architecture of the alimentary tract wall and high-resolution imaging of deep retroperitoneal structures.
+
+This comprehensive treatise delivers an exhaustive, multidisciplinary analysis of endosonographic science, oncologic staging, tissue acquisition, and interventional therapeutics. We establish the acoustic physics of high-frequency transducers, detailing near-field Fresnel optics, beam profile geometry, and mechanical radial versus electronic curved linear array echoendoscopes. We formulate the physical and histological correlations of the canonical \textbf{five-layer gastrointestinal wall}, differentiating the hyperechoic mucosal interface, hypoechoic muscularis mucosae, hyperechoic submucosa, hypoechoic muscularis propria, and hyperechoic serosa/adventitia, providing the histological basis for distinguishing mucosal (T1a) from submucosal (T1b) carcinomas for endoscopic resection.
+
+We dissect locoregional \textbf{TNM oncologic staging} across esophageal, gastric, pancreatic, and rectal neoplasms, establishing validated endosonographic criteria for malignant lymphadenopathy and mediastinal nodal stations. Pancreatobiliary endosonography is explored in depth: scanning stations (transgastric, transduodenal bulb, deep descending duodenum), diagnostic signatures of Pancreatic Ductal Adenocarcinoma (PDAC) and vascular invasion criteria, Pancreatic Neuroendocrine Tumors (PanNETs), cystic pancreatic neoplasms (IPMN, MCN, SCA), intraductal ultrasound (IDUS), and chronic pancreatitis using the Rosemont criteria. Furthermore, we categorize subepithelial lesions by their layer of origin, differentiating GISTs, leiomyomas, lipomas, ectopic pancreas, and duplication cysts alongside GIST risk stratification.
+
+The technological evolution of \textbf{EUS-guided tissue acquisition} is examined from Fine Needle Aspiration (EUS-FNA) to modern core Fine Needle Biopsy (EUS-FNB) featuring Franseen, fork-tip, and reverse-bevel crown architectures that preserve micro-tissue architecture for immunohistochemistry and next-generation sequencing. Finally, we formulate the cutting-edge frontier of \textbf{interventional EUS}, including celiac plexus neurolysis (CPN), lumen-apposing metal stent (LAMS) drainage of walled-off pancreatic necrosis (WON), EUS-guided biliary drainage (EUS-BD), EUS-guided gastrojejunostomy (EUS-GJ), Contrast-Enhanced Harmonic EUS (CH-EUS), elastography, and artificial intelligence integration.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introduction and Historical Evolution of Endosonography}
+For decades, visualization of the gastrointestinal tract was limited to superficial mucosal inspection via optical endoscopy or projection radiography using barium contrast fluoroscopy. While cross-sectional imaging modalities such as Computed Tomography (CT) and Magnetic Resonance Imaging (MRI) revolutionized body imaging, their spatial resolution remains inadequate to distinguish the microscopic individual tissue strata comprising the gastrointestinal tract wall. Furthermore, transabdominal ultrasonography of the retroperitoneum—particularly the pancreas and distal common bile duct—is frequently degraded by acoustic reflection and reverberation from overlying gas in the stomach, duodenum, and transverse colon, as well as acoustic attenuation across thick subcutaneous adipose tissue layers.
+
+\subsection{Historical Milestones in EUS Development}
+The concept of placing an ultrasound transducer directly inside the gastrointestinal lumen emerged in the late 1970s and early 1980s:
+\begin{enumerate}[leftmargin=2em]
+    \item \textbf{Early Prototypes (1980):} The first functional endoscopic ultrasound system was developed collaboratively by Olympus Optical Company and Aloka in Japan. Early prototypes incorporated a miniature mechanical rotating single-crystal piezoelectric transducer ($5.0\text{--}7.5\text{ MHz}$) mounted at the tip of a modified forward-viewing gastroscope, producing a $360^\circ$ radial acoustic plane perpendicular to the scope axis.
+    \item \textbf{Commercial Radial Echoendoscopes (Mid-1980s):} Olympus introduced the GF-UM series, which gained widespread clinical adoption for evaluating esophageal and gastric cancer infiltration, establishing the now-canonical five-layer sonographic model of the gut wall.
+    \item \textbf{Advent of Linear Echoendoscopes (1991):} Kenneth Pentax and Pentax/Hitachi engineered the curved linear array echoendoscope. By emitting an acoustic beam parallel to the longitudinal axis of the endoscope coincident with the instrumentation channel, linear EUS enabled real-time, dynamic visualization of biopsy needles emerging from the scope tip.
+    \item \textbf{Pioneering EUS-FNA (1992):} Peter Vilmann and colleagues in Denmark reported the first human EUS-guided fine-needle aspiration (EUS-FNA) of a pancreatic mass, permanently transforming EUS from an observational diagnostic imaging tool into an active interventional biopsy modality.
+    \item \textbf{Modern Interventional Era (2010s--Present):} The invention of large-bore therapeutic linear echoendoscopes ($3.7\text{--}4.0\text{ mm}$ working channels) and electrocautery-enhanced delivery systems for Lumen-Apposing Metal Stents (LAMS) ushered in therapeutic EUS, enabling internal drainage of pancreatic fluid collections, gallbladder drainage, and EUS-guided biliary/gastroenteric anastomoses.
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+\begin{tcolorbox}[colback=teal!5!white,colframe=teal!60!black,title=\textbf{Chronological Milestones in the History of Endoscopic Ultrasound},width=\linewidth]
+\small
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{1980:} First prototype mechanical radial echoendoscope developed by Olympus and Aloka.
+    \item \textbf{1982:} Canonical five-layer acoustic architecture of the gut wall published by Strohm and Classen.
+    \item \textbf{1986:} Validation of EUS for accurate locoregional TNM staging of esophageal and gastric carcinomas.
+    \item \textbf{1991:} Development of the electronic curved linear array echoendoscope with instrument channel alignment.
+    \item \textbf{1992:} Vilmann performs the world's first EUS-guided fine-needle aspiration (EUS-FNA) of a pancreatic lesion.
+    \item \textbf{1996:} Introduction of EUS-guided celiac plexus neurolysis (CPN) for pancreatic cancer pain.
+    \item \textbf{2001:} First EUS-guided biliary drainage (EUS-BD) via choledochoduodenostomy by Giovannini.
+    \item \textbf{2011:} Development of dedicated core Fine Needle Biopsy (FNB) needles with cutting-edge geometry.
+    \item \textbf{2013:} Introduction of cautery-enhanced Lumen-Apposing Metal Stents (LAMS) for transmural necrosectomy.
+    \item \textbf{2020s:} Deep learning convolutional neural networks integrated for real-time EUS neoplasia detection.
+\end{itemize}
+\end{tcolorbox}
+\caption{Key developmental milestones in the evolution of diagnostic and therapeutic EUS.}
+\label{fig:eus_milestones}
+\end{figure}
+
+\section{Acoustic Physics and Echoendoscope Instrumentation}
+The diagnostic precision of EUS is directly rooted in the physics of high-frequency acoustic propagation, spatial resolution, and transducer engineering.
+
+\subsection{Acoustic Resolution Physics at High Frequencies}
+In ultrasound physics, the overall image resolution is decomposed into three orthogonal spatial dimensions:
+\begin{enumerate}[leftmargin=2em]
+    \item \textbf{Axial Resolution ($R_{\text{ax}}$):} The ability to distinguish two separate acoustic reflectors situated along the line of the ultrasound beam. Axial resolution depends strictly on the spatial pulse length ($\text{SPL}$), which equals the number of cycles in the pulse ($n \approx 2\text{--}3$) multiplied by the acoustic wavelength ($\lambda$):
+    \begin{equation}
+        R_{\text{ax}} = \frac{\text{SPL}}{2} = \frac{n \cdot \lambda}{2} = \frac{n \cdot c}{2 f}
+    \end{equation}
+    where $c \approx 1540\text{ m/s}$ is the average velocity of sound in human soft tissue, and $f$ is the transducer frequency. 
+    \begin{itemize}
+        \item At standard transabdominal ultrasound frequencies ($3.5\text{ MHz}$), axial resolution is limited to:
+        \begin{equation}
+            R_{\text{ax}} \approx \frac{2 \times 1.54\text{ mm}/\mu\text{s}}{2 \times 3.5\text{ MHz}} \approx 0.44\text{ mm}
+        \end{equation}
+        \item In contrast, at endosonographic frequencies ($7.5\text{--}12.0\text{ MHz}$), the acoustic wavelength compresses to $\lambda = 0.13\text{--}0.20\text{ mm}$, yielding axial resolutions of:
+        \begin{equation}
+            R_{\text{ax}} \approx \frac{2 \times 1.54\text{ mm}/\mu\text{s}}{2 \times 10.0\text{ MHz}} \approx \mathbf{0.15\text{ mm}} \quad (150\,\mu\text{m})
+        \end{equation}
+        At catheter miniprobe frequencies ($20.0\text{ MHz}$), axial resolution reaches an astonishing $77\,\mu\text{m}$, allowing direct resolution of microscopic mucosal layers.
+    \end{itemize}
+    \item \textbf{Lateral Resolution ($R_{\text{lat}}$):} The ability to resolve two reflectors situated perpendicular to the beam axis within the imaging plane. Lateral resolution is governed by the ultrasound beam width ($w$), which varies as a function of depth:
+    \begin{equation}
+        R_{\text{lat}} \approx w(z)
+    \end{equation}
+    Lateral resolution is optimized at the \textbf{focal zone}, where acoustic lenses or electronic delay lines converge the wavefront into a narrow focal waist.
+    \item \textbf{Elevational Resolution (Slice Thickness):} The beam thickness perpendicular to the imaging plane. In mechanical and 1D array transducers, slice thickness is fixed by physical acoustic lenses, typically $1.5\text{--}3.0\text{ mm}$.
+\end{enumerate}
+
+\subsection{Tissue Attenuation and Frequency Selection in EUS}
+Because acoustic attenuation increases linearly with frequency ($\alpha \approx 0.5\text{--}0.7\text{ dB/cm/MHz}$), high frequencies experience rapid signal loss:
+\begin{equation}
+    \text{Attenuation (dB)} = \alpha_0 \cdot f \cdot 2d
+\end{equation}
+where $2d$ is the round-trip acoustic distance.
+\begin{itemize}
+    \item At $12.0\text{ MHz}$, imaging depth is limited to $3\text{--}4\text{ cm}$, which is ideal for gut wall micro-architecture and adjacent lymph nodes.
+    \item At $5.0\text{--}7.5\text{ MHz}$, imaging depth extends to $8\text{--}12\text{ cm}$, which is necessary to visualize the entire pancreatic parenchyma, mesenteric vasculature (celiac axis, SMA, portal vein), and contralateral retroperitoneal structures.
+\end{itemize}
+
+\subsection{Echoendoscope Architectures: Radial vs. Linear}
+Modern endosonography utilizes two fundamentally distinct echoendoscope designs:
+
+\begin{figure}[htbp]
+\centering
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!60!black,title=\textbf{Architectural Taxonomy: Radial vs. Linear Echoendoscopes},width=\linewidth]
+\small
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Radial Echoendoscope (Diagnostic Workhorse):}
+    \begin{itemize}
+        \item \textit{Acoustic Geometry:} Provides a full $360^\circ$ circumferential planar image oriented perpendicular to the long axis of the endoscope tip.
+        \item \textit{Transducer Technology:} Electronic curved radial arrays comprising 128 to 256 piezoelectric elements fired sequentially with electronic beam steering.
+        \item \textit{Optics:} Forward-oblique or side-viewing optical lens.
+        \item \textit{Primary Indication:} Comprehensive anatomical surveys, circumferential gut wall evaluation, locoregional cancer staging, and orientation within the mediastinum and retroperitoneum. The radial orientation directly mimics axial CT/MRI slices.
+    \end{itemize}
+    \item \textbf{Curvilinear (Linear) Echoendoscope (Interventional Standard):}
+    \begin{itemize}
+        \item \textit{Acoustic Geometry:} Produces a $120^\circ\text{--}180^\circ$ sector image aligned parallel to the long axis of the endoscope.
+        \item \textit{Transducer Technology:} Electronic phased or curved linear array arranged along the distal tip.
+        \item \textit{Instrument Channel Alignment:} The working instrumentation channel ($2.8\text{--}4.0\text{ mm}$ inner diameter) exits at the base of the transducer directly within the scanning plane.
+        \item \textit{Albarran Deflecting Elevator:} A mechanical lever controlled by a thumb wheel at the scope control head, allowing the endoscopist to dynamically deflect biopsy needles and stents through angles of $0^\circ\text{ to }70^\circ$.
+        \item \textit{Primary Indication:} Real-time dynamic EUS-guided needle biopsy (FNA/FNB), fiducial placement, celiac plexus block, and transluminal stent deployment.
+    \end{itemize}
+    \item \textbf{High-Frequency Ultrasound Catheter Probes (Miniprobes):}
+    \begin{itemize}
+        \item \textit{Dimensions and Frequencies:} Small flexible catheters ($1.4\text{--}2.6\text{ mm}$ outer diameter) housing $12.0, 20.0, \text{or } 30.0\text{ MHz}$ rotating transducers.
+        \item \textit{Application:} Inserted through standard diagnostic endoscope channels ($2.8\text{ mm}$); used for superficial mucosal micro-staging (Barrett's esophagus, early gastric cancer) and Intraductal Ultrasonography (IDUS) of the bile and pancreatic ducts during ERCP.
+    \end{itemize}
+\end{enumerate}
+\end{tcolorbox}
+\caption{Mechanics and configurations of endosonographic transducers.}
+\label{fig:transducer_types}
+\end{figure}
+
+\subsection{Acoustic Coupling Mechanisms}
+Because even microscopic layers of air completely reflect ultrasound waves ($R \approx 99.9\%$), two acoustic coupling modalities are used:
+\begin{enumerate}
+    \item \textbf{Inflatable Latex/Silicone Balloon:} A disposable balloon encasing the transducer is inflated with de-aerated, degassed sterile water to establish acoustic contact with the luminal wall without compressing tissue layers.
+    \item \textbf{Luminal Water Infusion:} In the gastric fundus, antrum, or duodenum, $200\text{--}500\text{ mL}$ of degassed water is infused directly into the lumen, creating an acoustic "water bath" that eliminates balloon compression artifacts and maps flat mucosal lesions with high fidelity.
+\end{enumerate}
+
+\section{Normal Sonographic Histology: The Five-Layer Wall}
+When imaged at $7.5\text{--}12.0\text{ MHz}$, the normal wall of the esophagus, stomach, duodenum, and rectum displays a universal \textbf{five-layer alternating hyperechoic/hypoechoic acoustic pattern} averaging $2.5\text{--}4.0\text{ mm}$ in total thickness. Strohm and Classen first established the physical and anatomical histological correlations of these layers:
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{2.5pt}
+\caption{Histological and Acoustic Correlation of the Five-Layer Gastrointestinal Wall.}
+\label{tab:five_layers}
+\begin{tabular}{p{1.0cm} p{2.5cm} p{2.0cm} p{4.5cm} p{4.5cm}}
+\toprule
+\textbf{Layer} & \textbf{Echogenicity} & \textbf{Thickness} & \textbf{Anatomical / Histological Equivalent} & \textbf{Clinical / Staging Significance} \\
+\midrule
+\textbf{1} & Hyperechoic (White) & $0.2\text{--}0.3\text{ mm}$ & Superficial mucosal interface (acoustic impedance boundary between water and mucosa) & Acoustic interface artifact; intact in superficial mucosal disease. \\
+\addlinespace
+\textbf{2} & Hypoechoic (Dark) & $0.3\text{--}0.5\text{ mm}$ & Deep mucosa: Lamina propria and Muscularis mucosae & Primary site of intramucosal carcinomas (T1a); target for endoscopic mucosal resection (EMR). \\
+\addlinespace
+\textbf{3} & Hyperechoic (White) & $0.8\text{--}1.2\text{ mm}$ & Submucosa: Dense connective tissue, submucosal vascular and nerve plexuses & Breach of this layer defines submucosal invasion (T1b); high risk of lymph node metastasis. \\
+\addlinespace
+\textbf{4} & Hypoechoic (Dark) & $0.8\text{--}1.5\text{ mm}$ & Muscularis propria: Inner circular and outer longitudinal smooth muscle layers & Disruption defines T2 cancer invasion; origin layer of GISTs and true leiomyomas. \\
+\addlinespace
+\textbf{5} & Hyperechoic (White) & $0.2\text{--}0.5\text{ mm}$ & Serosa (peritoneum) or Adventitia (esophagus/rectum) and perivisceral fat boundary & Disruption indicates transmural T3 tumor extension into surrounding adipose tissue. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{physicsbox}[Acoustic Mechanism of Wall Echogenicity]
+The alternating acoustic layers arise from differences in physical collagen content and acoustic impedance boundaries:
+\begin{itemize}[leftmargin=1.5em]
+    \item \textbf{Layers 2 and 4 (Hypoechoic):} Composed of cellular smooth muscle bundles (muscularis mucosae and muscularis propria) with low connective tissue density. Sound propagates with uniform impedance, yielding low backscatter and dark hypoechoic appearances.
+    \item \textbf{Layers 3 and 5 (Hyperechoic):} Rich in dense collagen fibers, elastin, lymphatics, and adipose tissue interfaces. The multitude of microscopic acoustic boundaries generates intense acoustic scattering, appearing as bright hyperechoic bands.
+\end{itemize}
+\end{physicsbox}
+
+\section{TNM Oncologic Staging of Gastrointestinal Neoplasms}
+Accurate locoregional staging using the Tumor-Node-Metastasis (TNM) classification dictates whether a patient undergoes upfront endoscopic resection, primary surgical resection, or neoadjuvant chemoradiotherapy.
+
+\subsection{Esophageal Carcinoma Staging}
+Esophageal cancer staging represents one of the most validated applications of EUS:
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{T1a (Intramucosal Carcinoma):} Tumor is strictly confined to Layer 2 (muscularis mucosae) with a completely intact, uninterrupted hyperechoic Layer 3 (submucosa). These lesions carry a low risk of nodal metastasis ($< 3\%$) and are eligible for curative \textbf{Endoscopic Submucosal Dissection (ESD)}.
+    \item \textbf{T1b (Submucosal Invasion):} Tumor breaches or thickens the hyperechoic Layer 3 without extending into Layer 4. The risk of lymph node metastasis rises to $15\text{--}30\%$, typically requiring esophagectomy or chemoradiation.
+    \item \textbf{T2 (Muscularis Propria Invasion):} Tumor invades and thickens the hypoechoic Layer 4, but the outer hyperechoic border of Layer 5 remains crisp and smooth.
+    \item \textbf{T3 (Adventitial Extension):} Tumor breaks through Layer 5 with irregular, finger-like, hypoechoic projections extending into periesophageal mediastinal adipose tissue.
+    \item \textbf{T4 (Adjacent Organ Invasion):} Tumor extends directly into neighboring anatomical structures:
+    \begin{itemize}
+        \item \textit{T4a (Resectable):} Invasion of pleura, pericardium, or diaphragm.
+        \item \textit{T4b (Unresectable):} Invasion of the aorta (loss of the hyperechoic aortic wall stripe over $> 90^\circ$ of circumference), tracheobronchial tree (tumor bulging into the tracheal lumen or indenting the posterior membranous wall of the left main bronchus), or vertebral bodies.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Endosonographic Lymph Node Criteria for Malignancy}
+Accurate determination of nodal status ($N$-stage) is paramount, as nodal involvement indicates the need for neoadjuvant therapy. Four classical endosonographic features characterize malignant lymph nodes:
+
+\begin{protocolbox}[The Catalano Criteria for Malignant Lymph Nodes]
+Malignant metastatic lymphadenopathy exhibits four sonographic hallmarks:
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Size:} Maximum short-axis diameter $\ge 10\text{ mm}$ ($1.0\text{ cm}$).
+    \item \textbf{Shape:} Round morphology (long-axis to short-axis ratio $< 1.5$; spherical rather than oval/reniform).
+    \item \textbf{Border:} Sharply demarcated, crisp, well-circumscribed outer margins (in contrast to inflammatory nodes, which exhibit fuzzy, indistinct borders).
+    \item \textbf{Echogenicity:} Homogeneous hypoechoic internal architecture resembling the primary tumor.
+\end{enumerate}
+\textbf{Diagnostic Accuracy:}
+\begin{itemize}
+    \item When all 4 criteria are present simultaneously: Positive Predictive Value ($\text{PPV}$) is $\mathbf{85\text{--}100\%}$.
+    \item When fewer than 2 criteria are present: Negative Predictive Value ($\text{NPV}$) is $> 85\%$.
+    \item When criteria are ambiguous, \textbf{EUS-guided FNA/FNB is mandatory} to confirm cytopathological involvement.
+\end{itemize}
+\end{protocolbox}
+
+\subsection{Gastric Carcinoma and Gastric MALT Lymphoma}
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Gastric Adenocarcinoma:} Accurately stages depth of wall penetration and identifies perigastric (N1) versus celiac/hepatic artery (N2/N3) nodal basins. EUS is also sensitive for detecting small-volume malignant ascites ($< 50\text{ mL}$) in the peritoneal cavity, which confirms M1 metastatic disease and prevents non-therapeutic laparotomy.
+    \item \textbf{Gastric MALT Lymphoma:} Mucosa-Associated Lymphoid Tissue (MALT) lymphoma manifests as marked diffuse, smooth hypoechoic thickening restricted to Layers 1, 2, and 3. EUS can determine whether the lymphoma is confined to the mucosa/submucosa (which responds to \textit{Helicobacter pylori} antibiotic eradication in $> 80\%$ of cases) or has invaded the muscularis propria (which requires systemic chemotherapy or radiation).
+\end{itemize}
+
+\subsection{Rectal Carcinoma Staging}
+In rectal cancer, rigid radial EUS or flexible echoendoscopes evaluate whether tumors are early (uT1) or advanced (uT3/T4):
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Circumferential Resection Margin (CRM):} EUS measures the precise physical distance between the outermost hypoechoic tumor edge and the hyperechoic mesorectal fascia. A distance $\le 1.0\text{ mm}$ indicates a threatened CRM, mandating neoadjuvant long-course chemoradiotherapy.
+    \item \textbf{Sphincter Complex Infiltration:} For ultra-low rectal neoplasms, EUS delineates the internal anal sphincter (hypoechoic muscularis continuation) and external anal sphincter (hyperechoic skeletal muscle) to determine whether an intersphincteric resection or abdominoperineal resection (permanent colostomy) is required.
+\end{itemize}
+
+\subsection{Mediastinal Staging and Endobronchial Ultrasound (EBUS)}
+The esophagus serves as an acoustic conduit to the posterior and middle mediastinum. In non-small cell lung cancer (NSCLC) and mediastinal lymphadenopathy of unknown origin (sarcoidosis, tuberculosis, lymphoma), transesophageal EUS and Endobronchial Ultrasound (EBUS) provide complete minimally invasive nodal staging:
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{EUS-Accessible Mediastinal Stations:} Subcarinal (Station 7), aortopulmonary window (Station 5), lower paratracheal (Station 4L), paraesophageal (Station 8), and pulmonary ligament (Station 9). EUS also uniquely samples the \textbf{left adrenal gland} to assess for occult M1 metastatic disease.
+    \item \textbf{Combined EBUS-EUS Staging ("EUS-B"):} Utilizing a single EBUS bronchoscope introduced into both the airways and esophagus allows comprehensive sampling of both anterior paratracheal (Stations 2R/2L, 4R) and posterior subcarinal/paraesophageal stations, achieving an overall mediastinal staging sensitivity $> 95\%$ and replacing invasive surgical mediastinoscopy.
+\end{itemize}
+
+\section{Pancreaticobiliary Endosonography}
+Because of the pancreas's deep retroperitoneal location, EUS is considered the gold standard imaging modality for parenchymal and ductal evaluation, with a sensitivity exceeding $95\%$ for detecting solid pancreatic neoplasms $< 2.0\text{ cm}$ that are occult on multidetector CT.
+
+\subsection{Anatomical Scanning Stations for the Pancreas}
+Systematic pancreatic examination requires positioning the echoendoscope in three distinct anatomical stations:
+
+\begin{figure}[htbp]
+\centering
+\begin{tcolorbox}[colback=teal!5!white,colframe=teal!60!black,title=\textbf{The Three Anatomical EUS Stations for Pancreas Evaluation},width=\linewidth]
+\small
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Transgastric Station (Gastric Body and Fundus):}
+    \begin{itemize}
+        \item \textit{Anatomy Visualized:} The entire pancreatic body and tail extending to the splenic hilum.
+        \item \textit{Key Landmarks:} Splenic vein running along the posterior pancreatic border; splenic artery along the superior border; left kidney, left adrenal gland ("seagull" or inverted-Y shape), celiac trunk bifurcating into the common hepatic and splenic arteries, and the abdominal aorta.
+    \end{itemize}
+    \item \textbf{Transduodenal Bulb Station (Superior Duodenal Angle - Station 1):}
+    \begin{itemize}
+        \item \textit{Anatomy Visualized:} Pancreatic neck and superior portion of the pancreatic head.
+        \item \textit{Key Landmarks:} Gastroduodenal artery (GDA); confluence of the splenic vein and superior mesenteric vein (SMV) forming the main portal vein; common bile duct (CBD).
+    \end{itemize}
+    \item \textbf{Descending Duodenum Station (Ampullary Region - Station 2):}
+    \begin{itemize}
+        \item \textit{Anatomy Visualized:} The lower pancreatic head, uncinate process, and the ampulla of Vater.
+        \item \textit{Key Landmarks:} Superior mesenteric artery (SMA) and SMV seen in cross-section or longitudinal alignment; inferior vena cava (IVC) and aorta posterior; distal common bile duct and main pancreatic duct (Wirsung) converging into the papilla ("stack sign").
+    \end{itemize}
+\end{enumerate}
+\end{tcolorbox}
+\caption{Systematic anatomical scanning stations for complete pancreatic exploration.}
+\label{fig:pancreas_stations}
+\end{figure}
+
+\subsection{Pancreatic Ductal Adenocarcinoma (PDAC)}
+Pancreatic adenocarcinoma accounts for $> 85\%$ of all pancreatic malignancies.
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Sonographic Architecture:} PDAC typically presents as an ill-defined, irregular, hypoechoic solid mass with heterogeneous echotexture and posterior acoustic attenuation. Due to marked desmoplasia, elastography demonstrates substantial stiffness.
+    \item \textbf{Ductal Signs:} The "Double Duct Sign" occurs when a mass in the pancreatic head compresses both the common bile duct and the main pancreatic duct simultaneously, leading to upstream dilatation of both systems.
+    \item \textbf{Vascular Invasion Staging:} Differentiating resectable, borderline resectable, and locally advanced unresectable disease hinges on vascular contact:
+    \begin{itemize}
+        \item Loss of the hyperechoic vascular interface between the tumor and vessel wall.
+        \item Presence of tumor thrombus protruding into the vessel lumen.
+        \item Circumferential tumor encasement $> 180^\circ$ of major arterial trunks (celiac axis, SMA, common hepatic artery) or unreconstructible venous occlusion of the portal vein/SMV defines unresectable disease.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Pancreatic Neuroendocrine Tumors (PanNETs)}
+In contrast to the irregular, fibrous nature of adenocarcinoma, neuroendocrine tumors (insulinomas, gastrinomas, non-functional PanNETs) arise from neuroendocrine islet cells:
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Appearance:} Sharply circumscribed, round or oval, uniformly homogeneous, markedly hypoechoic masses.
+    \item \textbf{Doppler Features:} Exquisitely hypervascular, demonstrating avid peripheral and internal blood flow on color and power Doppler, as well as rapid hyper-enhancement on contrast-enhanced harmonic EUS.
+\end{itemize}
+
+\subsection{Cystic Pancreatic Neoplasms}
+Pancreatic cysts are increasingly identified as incidental findings. EUS plays a vital role in differentiating benign lesions from premalignant or malignant cysts:
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\caption{Differential Diagnostic Features of Major Cystic Pancreatic Neoplasms on EUS.}
+\label{tab:cystic_pancreas}
+\begin{tabular}{p{2.8cm} p{3.2cm} p{2.2cm} p{2.8cm} p{3.2cm}}
+\toprule
+\textbf{Cyst Typology} & \textbf{Sonographic Appearance} & \textbf{Fluid CEA Level} & \textbf{Fluid Amylase} & \textbf{Malignant Potential} \\
+\midrule
+\textbf{Branch-Duct IPMN} & Pleomorphic multilocular cyst communicating directly with pancreatic duct & Elevated ($> 192\text{ ng/mL}$) & Markedly elevated ($> 1000\text{ U/L}$) & Premalignant; surveillance if no mural nodules. \\
+\addlinespace
+\textbf{Main-Duct IPMN} & Diffusely dilated main pancreatic duct ($> 5\text{--}10\text{ mm}$); mucin extruding from papilla & Elevated ($> 192\text{ ng/mL}$) & Markedly elevated & High malignancy risk ($40\text{--}70\%$); resection recommended. \\
+\addlinespace
+\textbf{Mucinous Cystic Neoplasm (MCN)} & Macrocystic thick-walled unilocular cyst; peripheral eggshell calcification; female exclusive & Elevated ($> 192\text{ ng/mL}$) & Variable & Premalignant; requires surgical resection. \\
+\addlinespace
+\textbf{Pancreatic Pseudocyst} & Anechoic unilocular fluid collection with thick capsule; history of pancreatitis & Low ($< 5\text{ ng/mL}$) & Extremely high ($> 5000\text{ U/L}$) & Completely benign; inflammatory. \\
+\addlinespace
+\textbf{Serous Cystadenoma (SCA)} & Microcystic "honeycomb" or sponge pattern; central stellate calcified scar & Low ($< 5\text{ ng/mL}$) & Low ($< 250\text{ U/L}$) & Essentially zero ($< 0.1\%$); benign. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Intraductal Ultrasonography (IDUS)}
+Intraductal ultrasound involves passing a $2.0\text{--}3.1\text{ mm}$ wire-guided high-frequency miniprobe ($15\text{--}30\text{ MHz}$) directly into the common bile duct or pancreatic duct during ERCP:
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Indeterminate Biliary Strictures:} Distinguishes cholangiocarcinoma (disruption of normal three-layer bile duct wall, hypoechoic asymmetric mass with irregular outer borders, eccentric wall thickening $> 1.5\text{ mm}$) from benign strictures or IgG4-related sclerosing cholangitis (symmetric, smooth, circular wall thickening with preserved outer layer).
+    \item \textbf{Choledocholithiasis:} Detects tiny occult bile duct calculi ($< 2\text{ mm}$) and sludge missed by fluoroscopic cholangiography.
+\end{itemize}
+
+\subsection{Chronic Pancreatitis and the Rosemont Criteria}
+EUS is the most sensitive imaging tool for diagnosing early, mild, or non-calcific chronic pancreatitis before irreversible ductal damage is visible on CT. The \textbf{Rosemont Classification} categorizes parenchymal and ductal criteria into major and minor features:
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Parenchymal Criteria:}
+    \begin{enumerate}
+        \item Hyperechoic foci with acoustic shadowing (intraparenchymal calcifications / stones).
+        \item Lobularity with honeycombing (lobules $\ge 5\text{ mm}$ with contiguous borders).
+        \item Hyperechoic non-shadowing foci and stranding.
+        \item Cysts / pseudocysts.
+    \end{enumerate}
+    \item \textbf{Ductal Criteria:}
+    \begin{enumerate}
+        \item Main pancreatic duct calculi (hyperechoic intraductal stones with acoustic shadows).
+        \item Main duct irregularity / tortuosity.
+        \item Dilated side branches ($\ge 3$ branches measuring $> 1.0\text{ mm}$).
+        \item Hyperechoic duct margins.
+    \end{enumerate}
+\end{itemize}
+
+\section{Subepithelial Lesions and GIST Risk Stratification}
+Subepithelial lesions appear on routine optical endoscopy as smooth, mucosal-covered bulges protruding into the lumen. Biopsy forceps typically slip off ("pillow sign") or yield normal mucosa. EUS is the definitive imaging modality for diagnosing subepithelial lesions by identifying their specific \textbf{layer of origin} and acoustic characteristics:
+
+\begin{figure}[htbp]
+\centering
+\begin{tcolorbox}[colback=purple!5!white,colframe=purple!60!black,title=\textbf{Algorithmic Differentiation of Subepithelial Lesions by Wall Layer},width=\linewidth]
+\small
+\begin{enumerate}[leftmargin=1.5em]
+    \item \textbf{Layer 2 Origin (Deep Mucosa / Muscularis Mucosae):}
+    \begin{itemize}
+        \item \textit{Leiomyoma of muscularis mucosae:} Small ($< 1\text{ cm}$), homogeneous hypoechoic, completely benign.
+        \item \textit{Granular cell tumor:} Slightly heterogeneous, hypoechoic, usually in the esophagus.
+    \end{itemize}
+    \item \textbf{Layer 3 Origin (Submucosa):}
+    \begin{itemize}
+        \item \textbf{Lipoma:} Intensely \textbf{hyperechoic}, homogeneous, soft, and compressible with light probe pressure; entirely benign ($100\%$ diagnostic accuracy on EUS).
+        \item \textbf{Gastrointestinal Neuroendocrine Tumor (Carcinoid):} Round, homogeneous, \textbf{hypoechoic} nodule; avid vascularity on Doppler; risk of metastatic spread based on size.
+        \item \textbf{Ectopic (Heterotopic) Pancreas:} Heterogeneous, mixed echogenicity, typically in the gastric antrum; central duct-like anechoic cleft; benign.
+        \item \textbf{Duplication Cyst:} Perfectly \textbf{anechoic}, round, well-demarcated with acoustic enhancement and a double-layered muscular wall ("gut signature").
+    \end{itemize}
+    \item \textbf{Layer 4 Origin (Muscularis Propria):}
+    \begin{itemize}
+        \item \textbf{Gastrointestinal Stromal Tumor (GIST):} Hypoechoic, origin strictly from Layer 4 (or rarely Layer 2). \textit{Malignancy Risk Factors:} Size $> 2.0\text{ cm}$, irregular lobulated borders, presence of hyperechoic foci, internal cystic spaces, and mucosal ulceration. Immunohistochemistry shows \textbf{KIT (CD117)} and \textbf{DOG-1} positivity.
+        \item \textbf{True Leiomyoma:} Homogeneous, hypoechoic, origin from Layer 4 in the esophagus or colon; immunohistochemistry shows smooth muscle actin ($\text{SMA}$) and desmin positivity, with CD117 negativity.
+    \end{itemize}
+    \item \textbf{Extrinsic Compression (Normal 5-Layer Wall Preserved):}
+    The five-layer wall is completely intact and smoothly bowed inward by adjacent normal structures (splenic vessels, spleen, gallbladder, retroperitoneal cysts, or adenopathy).
+\end{enumerate}
+\end{tcolorbox}
+\caption{Diagnostic classification of gastrointestinal subepithelial lesions based on layer of origin.}
+\label{fig:subepithelial_algorithm}
+\end{figure}
+
+\subsection{GIST Malignancy Risk Stratification}
+Gastrointestinal stromal tumors (GISTs) represent the most clinically critical subepithelial tumors. Originating from the interstitial cells of Cajal in the muscularis propria (Layer 4), all GISTs harbor malignant potential. Risk stratification follows the validated Miettinen and Lasota (AFIP) criteria:
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\caption{Risk Stratification of Primary GISTs by Size, Mitotic Index, and Anatomical Site.}
+\label{tab:gist_risk}
+\begin{tabular}{p{2.6cm} p{2.8cm} p{2.6cm} p{3.2cm} p{3.2cm}}
+\toprule
+\textbf{Tumor Size} & \textbf{Mitotic Rate} & \textbf{Gastric Origin} & \textbf{Duodenal Origin} & \textbf{Jejunal / Ileal Origin} \\
+\midrule
+$\le 2.0\text{ cm}$ & $\le 5\text{ per } 50\text{ HPF}$ & None ($0\%$) & None ($0\%$) & None ($0\%$) \\
+\addlinespace
+$\le 2.0\text{ cm}$ & $> 5\text{ per } 50\text{ HPF}$ & None ($0\%$) & High ($50\%$) & High ($50\%$) \\
+\addlinespace
+$> 2\text{--}5\text{ cm}$ & $\le 5\text{ per } 50\text{ HPF}$ & Very Low ($1.9\%$) & Low ($8.3\%$) & Low ($4.3\%$) \\
+\addlinespace
+$> 2\text{--}5\text{ cm}$ & $> 5\text{ per } 50\text{ HPF}$ & Moderate ($16\%$) & High ($73\%$) & High ($73\%$) \\
+\addlinespace
+$> 5.0\text{ cm}$ & $> 5\text{ per } 50\text{ HPF}$ & High ($86\%$) & High ($86\%$) & High ($86\%$) \\
+\addlinespace
+$> 5\text{--}10\text{ cm}$ & $\le 5\text{ per } 50\text{ HPF}$ & Low ($3.6\%$) & Moderate ($34\%$) & Moderate ($24\%$) \\
+\addlinespace
+$> 10.0\text{ cm}$ & $\le 5\text{ per } 50\text{ HPF}$ & Moderate ($12\%$) & High ($54\%$) & High ($52\%$) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{EUS-Guided Tissue Acquisition: FNA vs. FNB}
+EUS-guided tissue acquisition has evolved from simple cytological aspiration into sophisticated histology-yielding core needle biopsy.
+
+\subsection{Fine Needle Aspiration (EUS-FNA) vs. Fine Needle Biopsy (EUS-FNB)}
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{EUS-FNA (Standard Needles):} Conventional lancet-cut beveled hollow needles (available in 19-gauge, 22-gauge, and 25-gauge calibers). FNA aspirates isolated cells and small clusters, providing cytology. While diagnostic for high-grade malignancies, FNA fails to preserve tissue architecture and yields inadequate material for immunohistochemical subtyping (e.g., GIST vs. leiomyoma vs. schwannoma) or next-generation genomic sequencing.
+    \item \textbf{EUS-FNB (Core Biopsy Needles):} Modern core biopsy needles incorporate specialized geometry at the needle tip designed to shear and capture intact histological cores:
+    \begin{itemize}
+        \item \textbf{Franseen Crown-Tip Needle (e.g., Acquire):} Features three symmetric cutting prongs arranged symmetrically around the circumference. As the needle advances, the prongs core and preserve full-thickness intact tissue micro-architecture with minimal fragmentation.
+        \item \textbf{Fork-Tip Needle (e.g., SharkCore):} Features two sharp opposing asymmetric cutting points that scoop and capture tissue cores.
+        \item \textbf{Reverse-Bevel Needle (e.g., ProCore):} Features a lateral side-port with a reverse bevel that collects core tissue into the lumen during withdrawal.
+    \end{itemize}
+\end{itemize}
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\caption{Systematic Comparison of Modern EUS-FNA and EUS-FNB Needle Architectures.}
+\label{tab:needle_comparison}
+\begin{tabular}{p{2.3cm} p{2.8cm} p{3.0cm} p{3.0cm} p{3.4cm}}
+\toprule
+\textbf{Needle Design} & \textbf{Tip Geometry} & \textbf{Primary Mechanism} & \textbf{Tissue Yield} & \textbf{Optimal Indication} \\
+\midrule
+\textbf{Fork-Tip FNB} & Asymmetric 2-prong fork (SharkCore) & Opposing scissor shearing & Intact core histology & Pancreatic parenchyma, chronic pancreatitis mass. \\
+\addlinespace
+\textbf{Franseen FNB} & 3-prong crown tip (Acquire) & Circumferential tissue cutting & Intact core histology & Stromal tumors (GIST), lymphoma, NGS profiling. \\
+\addlinespace
+\textbf{Reverse-Bevel} & Lateral fenestration (ProCore) & Reverse scraping during withdrawal & Micro-core / mixed histology & Subepithelial lesions, lymph node core sampling. \\
+\addlinespace
+\textbf{Standard FNA} & Lancet / Menghini bevel ($19\text{--}25\text{G}$) & Negative suction aspiration & Cytology / cell clusters & High-grade adenocarcinoma; cystic fluid aspiration. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Technical Sampling Maneuvers}
+To maximize core tissue yield while minimizing blood dilution, several technical maneuvers have been developed:
+\begin{enumerate}
+    \item \textbf{The Slow-Pull Capillary Technique:} The stylet is slowly and continuously withdrawn by the assistant over 10--15 seconds while the endoscopist performs 10--15 fanning passes within the lesion. The subtle negative capillary pressure draws cohesive tissue into the lumen while avoiding blood vessel rupture and hemorrhagic contamination.
+    \item \textbf{Wet Suction Technique:} The needle lumen is pre-flushed with $5\text{ mL}$ of sterile saline or heparinized saline before suction is applied, using the incompressible fluid column to amplify negative pressure at the needle tip.
+    \item \textbf{Fanning Technique:} Rather than passing the needle repeatedly along a single track, the elevator and up/down dials are adjusted to re-orient the needle trajectory across multiple distinct geographic zones of the mass, significantly increasing diagnostic yield from a single puncture.
+    \item \textbf{Rapid On-Site Evaluation (ROSE):} A cytopathologist present in the endoscopy suite immediately stains aspirates with Diff-Quik, confirming specimen adequacy. With modern Franseen FNB needles, diagnostic accuracy reaches $> 95\%$ within 2--3 passes, rendering ROSE optional in many centers.
+\end{enumerate}
+
+\begin{clinicalpearl}[Safety and Complications of EUS-FNA/FNB]
+EUS-guided tissue acquisition carries an exceptionally low overall complication rate ($1\text{--}2\%$):
+\begin{itemize}
+    \item \textbf{Acute Pancreatitis ($1.0\text{--}1.5\%$):} Primarily occurs when sampling small pancreatic neuroendocrine tumors through normal parenchymal tissue.
+    \item \textbf{Infection ($< 0.5\%$):} Extremely rare in solid tumors; higher ($2\text{--}5\%$) when aspirating cystic pancreatic lesions without prophylactic antibiotics. Prophylactic fluoroquinolones or cephalosporins are mandatory for cyst aspiration.
+    \item \textbf{Needle Tract Seeding ($< 0.003\%$):} Significantly lower than percutaneous CT-guided biopsy ($1\text{--}3\%$). Because the transduodenal EUS tract for pancreatic head lesions is entirely excised during a subsequent pancreaticoduodenectomy (Whipple procedure), EUS-FNB is the undisputed biopsy standard in suspected resectable pancreatic cancer.
+\end{itemize}
+\end{clinicalpearl}
+
+\section{Interventional and Therapeutic EUS}
+With the introduction of large-channel therapeutic linear echoendoscopes and specialized stents, EUS has emerged as a premier minimally invasive therapeutic platform.
+
+\subsection{Celiac Plexus Neurolysis (CPN) and Block (CPB)}
+Intractable abdominal back pain in unresectable pancreatic cancer is mediated by visceral sensory afferents passing through the celiac plexus situated anterolateral to the abdominal aorta at the level of the celiac trunk:
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Technique:} Under real-time linear EUS guidance from the gastric body, a 19G or 22G needle is advanced immediately adjacent to the celiac artery takeoff. Following negative aspiration for blood, local anesthetic (bupivacaine $0.5\%$) is injected, followed by permanent neurolytic agent:
+    \begin{equation}
+        \mathbf{10\text{--}20\text{ mL of 98\% Dehydrated Absolute Ethanol}}
+    \end{equation}
+    Ethanol induces coagulative necrosis and permanent neurolysis of celiac ganglia.
+    \item \textbf{Efficacy and Adverse Effects:} Provides substantial pain relief in $70\text{--}80\%$ of pancreatic cancer patients. Transient orthostatic hypotension and diarrhea occur in $20\text{--}40\%$ due to sympathetic denervation with unopposed parasympathetic tone.
+\end{itemize}
+
+\subsection{Lumen-Apposing Metal Stents (LAMS) and Necrosectomy}
+Transmural drainage of pancreatic fluid collections—specifically \textbf{Pancreatic Pseudocysts} and \textbf{Walled-Off Necrosis (WON)}—has replaced open surgical drainage:
+\begin{enumerate}[leftmargin=2em]
+    \item \textbf{LAMS Architecture (e.g., Hot AXIOS):} A dumbbell-shaped, fully covered nitinol braided stent with wide double-flanged anchoring collars that mechanically appose the gastric or duodenal wall to the retroperitoneal cavity, preventing leakage of infected fluid into the peritoneum.
+    \item \textbf{Electrocautery-Enhanced Delivery:} The delivery catheter features a cautery tip powered by a high-frequency electrosurgical generator, allowing puncture, tract dilation, and bilateral flange deployment in a single continuous step under direct EUS guidance without wire exchanges or fluoroscopy.
+    \item \textbf{Direct Endoscopic Necrosectomy (DEN):} In patients with extensive necrotic debris (WON), a standard gastroscope is traversed directly through the wide lumen ($15\text{--}20\text{ mm}$) of the LAMS into the retroperitoneum. Necrotic fat is debrided under direct optical visualization using snares, baskets, and hydrogen peroxide lavage.
+\end{enumerate}
+
+\subsection{EUS-Guided Biliary Drainage (EUS-BD)}
+When retrograde biliary cannulation fails during Endoscopic Retrograde Cholangiopancreatography (ERCP)—due to duodenal obstruction, periampullary diverticula, or surgically altered anatomy (Roux-en-Y)—EUS-BD provides a definitive internal bypass:
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{EUS-Guided Choledochoduodenostomy (EUS-CDS):} From the duodenal bulb, the dilated common bile duct is punctured, and a LAMS or covered self-expanding metal stent (SEMS) is deployed between the CBD and duodenum.
+    \item \textbf{EUS-Guided Hepaticogastrostomy (EUS-HGS):} From the gastric body, an intrahepatic left duct (segment 2 or 3) is punctured, a guidewire advanced through the liver, and a partially covered SEMS deployed spanning the liver parenchyma and stomach wall.
+\end{itemize}
+
+\subsection{EUS-Guided Gastrojejunostomy (EUS-GJ)}
+In patients with malignant gastric outlet obstruction (duodenal or pancreatic cancer encasing the duodenum), surgical gastrojejunostomy carries substantial morbidity. EUS-GJ utilizes balloon-assisted water distension of the proximal jejunum, followed by direct transmural deployment of a $20\text{ mm}$ LAMS between the stomach and jejunum, providing immediate oral dietary resumption within 24 hours.
+
+\subsection{EUS-Guided Fiducial Placement and Intratumoral Therapy}
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Fiducial Marker Placement:} Under linear EUS guidance, radiopaque gold or platinum fiducials ($0.8\text{--}1.2\text{ mm}$) are loaded into a 19G or 22G needle and deployed into locally advanced pancreatic tumors to provide stereotactic image guidance for CyberKnife and Stereotactic Body Radiation Therapy (SBRT).
+    \item \textbf{Intratumoral Injections and Ablation:} EUS enables direct injection of oncolytic viruses, immunotherapy vectors, and radiofrequency ablation (EUS-RFA) probes into neuroendocrine tumors and pancreatic cyst walls.
+\end{itemize}
+
+\subsection{EUS-Guided Celiac Neurolysis Techniques: Central vs. Bilateral vs. Ganglia}
+Depending on anatomical visibility, three neurolytic approaches are employed:
+\begin{enumerate}[leftmargin=2em]
+    \item \textbf{Central (Transaortic) Injection:} The needle punctures immediately anterior to the aortic takeoff of the celiac trunk. A single $20\text{ mL}$ aliquot of $98\%$ ethanol is injected, allowing neurolytic fluid to diffuse across the pre-aortic retroperitoneal space.
+    \item \textbf{Bilateral (Flank) Injection:} The echoendoscope is torqued to identify the lateral aspects of the celiac axis. Two separate injections ($10\text{ mL}$ each) are delivered into the right and left lateral borders of the celiac trunk, providing more uniform symmetric neural blockade.
+    \item \textbf{Direct Celiac Ganglia Neurolysis (EUS-CGN):} Direct visualization of discrete hypoechoic, oval or almond-shaped celiac ganglia ($2\text{--}5\text{ mm}$) embedded within pre-aortic adipose tissue. The needle is inserted directly inside individual ganglia, injecting $1\text{--}2\text{ mL}$ of ethanol per ganglion. EUS-CGN yields significantly superior pain relief ($85\text{--}90\%$) compared to diffuse pre-aortic infiltration.
+\end{enumerate}
+
+\subsection{Perianal and Pelvic EUS in Crohn's Disease}
+Transrectal and perianal EUS (using high-frequency radial or flexible linear probes) provides high-resolution anatomical mapping of perianal Crohn's fistulas:
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Parks Classification:} Classifies fistulous tracts relative to the internal anal sphincter (IAS) and external anal sphincter (EAS) into \textbf{intersphincteric}, \textbf{transsphincteric}, \textbf{suprasphincteric}, and \textbf{extrasphincteric} pathways.
+    \item \textbf{Hydrogen Peroxide ($H_2O_2$) Contrast Enhancement:} Infusion of $1\text{--}2\text{ mL}$ of dilute $3\%$ hydrogen peroxide through the external cutaneous fistula opening generates microbubbles that produce bright hyperechoic luminal contrast, delineating complex branched tracts and occult horseshoe abscesses.
+\end{itemize}
+
+\section{Advanced Diagnostic Adjuncts in EUS}
+\subsection{Contrast-Enhanced Harmonic EUS (CH-EUS)}
+Conventional color Doppler fails to visualize microvascular capillary perfusion due to acoustic clutter and blooming artifacts. CH-EUS utilizes intravenous ultrasound contrast agents consisting of sulfur hexafluoride microbubbles encapsulated by lipid shells (e.g., SonoVue):
+\begin{itemize}[leftmargin=2em]
+    \item When exposed to low-acoustic-power ultrasound (low Mechanical Index, $\text{MI} \approx 0.1\text{--}0.2$), microbubbles oscillate non-linearly, generating acoustic harmonics without bubble destruction.
+    \item \textbf{Clinical Discrimination:}
+    \begin{itemize}
+        \item \textbf{Pancreatic Adenocarcinoma:} Displays marked \textbf{hypo-enhancement} during all phases due to hypovascularity and dense desmoplasia (sensitivity and specificity $> 90\%$).
+        \item \textbf{Pancreatic Neuroendocrine Tumors:} Exhibit rapid \textbf{hyper-enhancement} in the early arterial phase.
+        \item \textbf{Mass-Forming Chronic Pancreatitis:} Displays \textbf{iso-enhancement} identical to surrounding normal parenchyma.
+    \end{itemize}
+\end{itemize}
+
+\subsection{EUS Elastography}
+Elastography quantifies tissue stiffness based on the principle that malignant tumors (such as PDAC) contain dense extracellular collagen and fibrous stroma that render them substantially stiffer than normal parenchyma:
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Strain Elastography:} Measures relative tissue strain induced by vascular pulsations or breathing, displayed as a color-coded elastogram (blue = stiff; green = intermediate; red = soft). The \textbf{Strain Ratio} ($\text{Strain}_{\text{normal}} / \text{Strain}_{\text{lesion}}$) quantitatively differentiates malignant ($> 10\text{--}15$) from benign lesions.
+    \item \textbf{Shear Wave Elastography (SWE):} Uses acoustic radiation force impulses (ARFI) to generate transverse shear waves, measuring absolute shear wave propagation velocity:
+    \begin{equation}
+        c_s = \sqrt{\frac{E}{3\rho}}
+    \end{equation}
+    where $E$ is Young's elastic modulus, providing an absolute quantitative measurement in kilopascals ($\text{kPa}$).
+\end{itemize}
+
+\subsection{Artificial Intelligence in Endoscopic Ultrasound}
+Convolutional Neural Networks (CNNs) and deep Vision Transformers are actively transforming EUS:
+\begin{enumerate}
+    \item \textbf{Automated Pancreatic Mass Detection:} Real-time bounding box segmentation alerting endoscopists to subtle hypoechoic parenchymal lesions.
+    \item \textbf{Computer-Aided Diagnosis (CADx):} Deep learning classification models differentiating adenocarcinoma from mass-forming autoimmune pancreatitis and neuroendocrine tumors with accuracies $> 92\%$.
+    \item \textbf{Automated Station Navigation:} Computer vision models identifying anatomical landmarks (celiac axis, portal confluence, papilla) to assist novice operators during diagnostic training.
+\end{enumerate}
+
+\section{Summary and Conclusions}
+Endoscopic Ultrasound stands as the undisputed clinical gold standard for the high-resolution structural and pathological evaluation of the alimentary tract, pancreatobiliary system, and mediastinum:
+
+\begin{itemize}[leftmargin=2em]
+    \item \textbf{Acoustic Foundations:} Operating at high frequencies ($5.0\text{--}20.0\text{ MHz}$), EUS delivers sub-millimeter axial resolution ($< 0.15\text{ mm}$) by eliminating acoustic attenuation from abdominal wall adipose tissue and gas.
+    \item \textbf{Five-Layer Gut Wall:} Accurately identifies the superficial mucosal interface, deep mucosa (muscularis mucosae), submucosa, muscularis propria, and serosa/adventitia, providing the anatomical criterion to distinguish mucosal (T1a) from submucosal (T1b) malignancies.
+    \item \textbf{TNM Staging:} Accurately delineates T-stage invasion depth and evaluates malignant lymph node features (Catalano criteria: $> 10\text{ mm}$, round, sharp borders, hypoechoic).
+    \item \textbf{Pancreatobiliary Imaging:} EUS detects occult pancreatic tumors $< 2\text{ cm}$, stages vascular invasion (celiac, SMA, portal vein), differentiates cystic neoplasms (IPMN, MCN, SCA), and grades chronic pancreatitis using the Rosemont criteria.
+    \item \textbf{Subepithelial Lesions:} Systematically identifies the layer of origin to differentiate GISTs (Layer 4), leiomyomas, lipomas (Layer 3), and neuroendocrine tumors alongside GIST risk stratification.
+    \item \textbf{Tissue Acquisition (FNA/FNB):} Transition from cytological aspiration to core biopsy with Franseen crown-tip needles yields intact tissue architecture for immunohistochemistry and genomic sequencing with minimal complication risks ($< 1.5\%$).
+    \item \textbf{Interventional EUS:} Celiac plexus neurolysis, LAMS drainage of walled-off necrosis, and EUS-guided biliary/gastroenteric anastomoses have established EUS as a premier therapeutic discipline.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,144 @@
+\chapter{AI Safety and Regulation}
+
+\section*{Patient focus}
+If an AI tool helps your doctor interpret a scan, you might wonder: Is it safe? Has it been tested? Who is responsible if it makes a mistake? These are important questions. AI tools used in medicine go through rigorous testing and regulatory review before they reach your hospital. ``FDA cleared'' means the tool has been evaluated for safety and effectiveness for a specific purpose. However, AI is not perfect---it can sometimes make errors, just like any tool. That is why your doctor always reviews the final result. AI is there to assist, not to replace, your doctor's judgement.
+
+\section*{Imaging focus}
+AI safety in imaging encompasses regulatory pathways (510(k), De Novo, PMA), bias and fairness, transparency, liability, human oversight, and post-market surveillance. Understanding how AI tools are regulated and where they can fail is essential for responsible clinical deployment.
+\label{ch:ch89_ai_safety}
+
+\section{The Regulatory Landscape}
+In the United States, the FDA regulates AI/ML-based software as a medical device (SaMD). Three primary pathways exist:
+
+\begin{table}[h]
+\centering
+\caption{FDA regulatory pathways for AI/ML medical devices}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Pathway} & \textbf{Requirements} & \textbf{Example} \\
+\hline
+510(k) & Substantial equivalence to a predicate device & AI triage for head CT \\
+\hline
+De Novo & Novel device with low-to-moderate risk, no predicate & Autonomous diabetic retinopathy screening \\
+\hline
+PMA & High-risk device requiring clinical trial evidence & AI-guided cardiac imaging \\
+\hline
+\end{tabular}
+\end{table}
+
+A 510(k) clearance means the manufacturer demonstrated that their AI tool performs at least as well as an already-cleared device for the same intended use. It does not mean the tool is ``best in class'' or universally applicable.
+
+\section{What ``FDA Cleared'' Does and Does Not Mean}
+\begin{itemize}
+    \item \textbf{Does mean}---the device was tested for a specific intended use, on representative data, with defined performance benchmarks
+    \item \textbf{Does not mean}---the device works equally well on all patient populations, all scanner types, or all clinical settings
+    \item \textbf{Does not mean}---the device is approved for uses beyond its labelled indications
+\end{itemize}
+
+\begin{pearlbox}[Intended use matters]
+An AI tool cleared for detecting intracranial haemorrhage on head CT is not automatically cleared for detecting stroke, tumour, or fracture---even if the same images are used. Off-label use of AI tools is a regulatory and patient safety concern.
+\end{pearlbox}
+
+\section{Bias and Fairness}
+AI models learn patterns from training data. If that data is not representative, the model may perform differently across demographic groups:
+
+\begin{itemize}
+    \item \textbf{Demographic bias}---underperformance on underrepresented groups (e.g., skin colour in dermatology AI, age groups in paediatric imaging)
+    \item \textbf{Selection bias}---training data from a single tertiary centre may not reflect community hospital presentations
+    \item \textbf{Label bias}---if ground-truth labels are influenced by biased clinical practices, the model inherits those biases
+    \item \textbf{Measurement bias}---differences in protocol, scanner, or acquisition across sites
+\end{itemize}
+
+Fairness auditing requires evaluating model performance across sex, age, ethnicity, body habitus, and disease severity subgroups before deployment.
+
+\section{Transparency and Explainability}
+Clinicians and patients need to understand how an AI tool reaches its conclusions:
+
+\begin{table}[h]
+\centering
+\caption{Levels of AI transparency}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Level} & \textbf{Description} \\
+\hline
+Full interpretability & Human-understandable model internals \\
+\hline
+Model documentation & Architecture, training data, intended use, known limitations \\
+\hline
+Output explanation & Highlighted regions, attention maps, confidence scores \\
+\hline
+Reasoning trace & Step-by-step logic connecting input to output \\
+\hline
+\end{tabular}
+\end{table}
+
+Most current medical AI provides output explanation (e.g., heatmaps showing regions of interest) rather than full interpretability. Clinicians should interpret these with caution---attention maps show where the model looked, not why it concluded what it did.
+
+\section{Liability and Accountability}
+When an AI tool contributes to a clinical decision, liability questions arise:
+\begin{enumerate}
+    \item \textbf{Manufacturer}---responsible for device safety and performance within labelled indications
+    \item \textbf{Institution}---responsible for appropriate deployment, validation, and monitoring
+    \item \textbf{Clinician}---responsible for the final clinical decision, regardless of AI output
+\end{enumerate}
+
+The reporting clinician always bears ultimate responsibility. ``The AI missed it'' is not a defence if the clinician failed to exercise independent judgement.
+
+\begin{pearlbox}[The human-in-the-loop principle]
+No AI tool should make autonomous clinical decisions in imaging. Every AI output must be reviewed by a qualified clinician who retains responsibility for the final interpretation and patient management.
+\end{pearlbox}
+
+\section{Human Oversight Requirements}
+Safe AI deployment in radiology requires:
+\begin{itemize}
+    \item Display of original images alongside AI outputs
+    \item Ability to override or dismiss AI recommendations
+    \item Clear documentation of AI involvement in the report
+    \item Training for radiologists on AI capabilities and limitations
+    \item Defined pathways for reporting AI errors and near-misses
+\end{itemize}
+
+\section{Post-Market Surveillance}
+Regulatory clearance is not the end of evaluation. Post-market activities include:
+\begin{itemize}
+    \item \textbf{Performance monitoring}---tracking sensitivity, specificity, and error rates over time
+    \item \textbf{Drift detection}---identifying when model performance degrades due to changing patient populations or scanner upgrades
+    \item \textbf{Adverse event reporting}---mandatory reporting of device-related patient harm
+    \item \textbf{Algorithm updates}---FDA requires submission for changes that alter intended use or performance
+\end{itemize}
+
+\section{When AI Can Harm}
+AI can cause patient harm through:
+\begin{enumerate}
+    \item \textbf{False negatives}---missing a critical finding (e.g., pneumothorax, fracture) leading to delayed treatment
+    \item \textbf{False positives}---triggering unnecessary workups, biopsies, or patient anxiety
+    \item \textbf{Automation bias}---clinician over-reliance on AI, leading to inattention to the images
+    \item \textbf{Data leakage}---patient information exposed through model inversion or membership inference attacks
+    \item \textbf{Workflow disruption}---alert fatigue from excessive low-specificity notifications
+\end{enumerate}
+
+\section{Global Regulatory Comparison}
+\begin{table}[h]
+\centering
+\caption{Regulatory frameworks for medical AI}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Region} & \textbf{Regulatory body / framework} \\
+\hline
+China & NMPA registration \\
+\hline
+European Union & CE marking under MDR 2017/745 \\
+\hline
+India & CDSCO approval \\
+\hline
+United Kingdom & UKCA marking (MHRA) \\
+\hline
+United States & FDA (510(k), De Novo, PMA) \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Summary}
+AI safety is a lifecycle property---it begins with data governance, continues through validation and deployment, and requires ongoing surveillance. Regulatory clearance provides a baseline assurance but does not guarantee universal performance. Clinicians must understand intended use, recognise bias, maintain independent judgement, and report failures. Patient safety depends on the combination of well-regulated AI tools and well-trained, vigilant clinicians.
+
+\clearpage

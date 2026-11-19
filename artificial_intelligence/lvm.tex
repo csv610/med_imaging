@@ -1,0 +1,123 @@
+\chapter{Large Vision Models}
+
+\section*{Patient focus}
+When a radiologist looks at a scan, they use years of training to recognise patterns---the shape of a tumour, the texture of inflamed tissue, the darkness of air where it should not be. Large vision models are AI systems that learn to ``see'' in a similar way. They are trained on millions of images, learning to extract features and compare them. Some can also understand written text alongside images, linking what they see with what doctors write in reports. These models may help your radiologist work faster and catch things that might otherwise be missed, but they are still tools---not decision-makers.
+
+\section*{Imaging focus}
+Large vision models (LVMs) encompass vision transformers, multimodal vision--language models, and CLIP-based architectures. Unlike traditional CNNs, transformers process images as sequences of patches and use self-attention to capture global relationships. Understanding the architecture, attention mechanisms, and failure modes of LVMs is essential for evaluating their role in diagnostic imaging.
+\label{ch:ch88_lvm}
+
+\section{From CNNs to Vision Transformers}
+Convolutional neural networks (CNNs) have dominated medical image analysis for over a decade. They excel at detecting local patterns---edges, textures, and small structures---through sliding convolution filters. However, CNNs have a limited receptive field: each layer only ``sees'' a small region, and capturing long-range dependencies requires stacking many layers.
+
+\textbf{Vision transformers (ViT)} take a different approach. They divide an image into a grid of fixed-size patches (e.g., $16\times16$ pixels), flatten each patch into a vector, and process the entire sequence simultaneously using self-attention. This allows the model to relate distant regions of an image from the very first layer.
+
+\begin{table}[h]
+\centering
+\caption{CNN vs Vision Transformer comparison}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Property} & \textbf{CNN} & \textbf{Vision Transformer} \\
+\hline
+Data requirement & Moderate & Large \\
+\hline
+Inductive bias & Local convolution & Minimal (learns from data) \\
+\hline
+Interpretability & Filter visualisation & Attention maps \\
+\hline
+Receptive field & Grows with depth & Global from layer 1 \\
+\hline
+Small dataset performance & Strong & Weaker without pre-training \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{How Self-Attention Works}
+Self-attention computes a relationship score between every pair of patches. For each patch, the model learns three vectors:
+\begin{itemize}
+    \item \textbf{Query} (Q)---what information this patch is seeking
+    \item \textbf{Key} (K)---what information this patch offers
+    \item \textbf{Value} (V)---the content to pass on if this patch is attended to
+\end{itemize}
+
+The attention score between patch $i$ and patch $j$ is:
+\[
+\text{Attention}(Q_i, K_j) = \frac{Q_i \cdot K_j}{\sqrt{d_k}}
+\]
+where $d_k$ is the key dimension. Softmax normalisation produces a weighted sum of all values, giving each patch a representation informed by the entire image.
+
+This mechanism allows the model to, for example, relate a pulmonary nodule to the surrounding lung parenchyma and the contralateral hilum simultaneously---something a shallow CNN cannot do without many layers.
+
+\section{CLIP for Medical Imaging}
+CLIP (Contrastive Language--Image Pre-training) is a multimodal model that learns to align images and text in a shared embedding space. During pre-training, CLIP is shown pairs of images and their corresponding text descriptions. It learns to maximise similarity for matched pairs and minimise it for unmatched pairs.
+
+In medical imaging, CLIP-based models can:
+\begin{itemize}
+    \item Retrieve similar cases from large archives based on image appearance
+    \item Classify images using text prompts (e.g., ``chest X-ray with pneumonia'' vs ``normal chest X-ray'')
+    \item Enable zero-shot classification---label images without any task-specific training
+    \item Bridge modalities by linking imaging features to report text
+\end{itemize}
+
+\begin{pearlbox}[Zero-shot classification]
+A CLIP model can distinguish normal from abnormal chest X-rays by comparing image embeddings to text embeddings of ``normal chest X-ray'' and ``chest X-ray showing pneumonia''---without ever being explicitly trained on labelled X-rays. This is powerful for rapid prototyping but requires careful validation.
+\end{pearlbox}
+
+\section{Multimodal Models: Text + Image}
+Multimodal large vision models combine visual encoders with language models. They can:
+\begin{enumerate}
+    \item Accept an image and a question (e.g., ``Is there a pleural effusion?'')
+    \item Process both through their respective encoders
+    \item Generate a structured answer grounded in the image
+\end{enumerate}
+
+These models hold promise for interactive radiology assistants that can answer clinician queries, generate structured reports, or triage studies by urgency. However, they are prone to hallucination---generating confident but incorrect findings---which is particularly dangerous in medicine.
+
+\section{Processing Medical Images}
+LVMs process medical images through several stages:
+\begin{table}[h]
+\centering
+\caption{LVM image processing pipeline}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Stage} & \textbf{Description} \\
+\hline
+Patch embedding & Image divided into patches, linearly projected to tokens \\
+\hline
+Positional encoding & Spatial information added to patch tokens \\
+\hline
+Preprocessing & Windowing, normalisation, resampling, augmentation \\
+\hline
+Task head & Classification, segmentation, or text generation \\
+\hline
+Transformer layers & Self-attention and feed-forward networks \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Current Applications}
+\begin{itemize}
+    \item \textbf{Chest X-ray triage}---LVMs can prioritise studies with critical findings (pneumothorax, large effusion) for immediate review
+    \item \textbf{Mammography}---transformer-based models for lesion detection and BI-RADS assessment
+    \item \textbf{Brain MRI}---white matter lesion segmentation and multiple sclerosis monitoring
+    \item \textbf{Pathology}---whole-slide image analysis for cancer grading
+    \item \textbf{Ophthalmology}---retinal disease classification from fundus photographs
+\end{itemize}
+
+\section{Limitations and Failure Modes}
+\begin{enumerate}
+    \item \textbf{Data hunger}---transformers require large training datasets; small institutional datasets may be insufficient
+    \item \textbf{Computational cost}---self-attention scales quadratically with sequence length
+    \item \textbf{Hallucination}---multimodal models may describe findings not present in the image
+    \item \textbf{Automation bias}---clinicians may over-rely on confident-sounding AI outputs
+    \item \textbf{Patch boundaries}---fixed patch sizes may split small structures at arbitrary boundaries
+\end{enumerate}
+
+\begin{pearlbox}[Attention maps are not explanations]
+Visualising attention weights can show where a model ``looks,'' but attention does not always correspond to clinical reasoning. High attention to a region does not prove the model is using it correctly. Treat attention maps as supplementary, not explanatory.
+\end{pearlbox}
+
+\section{Summary}
+Large vision models represent the next evolution beyond CNNs in medical image analysis. Their ability to capture global context, process multimodal data, and perform few-shot learning makes them promising tools. However, they demand large datasets, significant compute, rigorous validation, and---above all---clinical oversight. The radiologist interprets; the model assists.
+
+\clearpage

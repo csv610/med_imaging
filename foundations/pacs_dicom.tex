@@ -1,0 +1,288 @@
+\chapter{PACS, DICOM, and Radiology Information Systems}
+
+\section*{Patient focus}
+This chapter explains the examination or clinical problem in accessible language. Patients should use it to prepare questions and understand the purpose, experience, benefits, and limitations of imaging; local instructions and the official report take priority.
+
+
+\label{ch:ch09_pacs_dicom}
+
+Every medical image you view is stored, transmitted, and displayed using a sophisticated digital infrastructure. PACS (Picture Archiving and Communication System) and DICOM (Digital Imaging and Communications in Medicine) are the backbone of modern radiology. Understanding these systems is essential for any clinician who works with images.
+
+---
+
+\section*{1. Why Are Images Digital? --- A Patient's Perspective}
+In the past, X-ray images were printed on large sheets of film that had to be stored in physical folders and viewed on light boxes. This system had serious limitations:
+\begin{itemize}
+    \item Films could be lost, damaged, or misfiled.
+    \item Only one person could view them at a time.
+    \item Sending images to another hospital for a second opinion required physical courier transport.
+    \item Comparing with old images meant pulling physical folders from storage.
+\end{itemize}
+
+Today, all medical images are born digital. They are stored electronically on secure servers, can be viewed simultaneously by multiple doctors at different locations, and can be compared instantly with previous studies. This means:
+\begin{itemize}
+    \item Your images are available within minutes of the scan being completed.
+    \item If you change hospitals, your images can be transferred electronically.
+    \item Your doctor can review your images on a screen in the clinic, in the operating theatre, or on a secure tablet.
+    \item Images are backed up and cannot be ``lost'' in the way that physical films could be.
+\end{itemize}
+
+---
+
+\section*{2. DICOM --- The Language of Medical Images}
+
+\subsection*{What Is DICOM?}
+DICOM (Digital Imaging and Communications in Medicine) is the international standard that defines how medical images are formatted, stored, transmitted, and displayed. Every scanner manufacturer (Siemens, GE, Philips, Canon, etc.) must produce DICOM-compliant images so that images from any scanner can be viewed on any DICOM-compliant viewer.
+
+Think of DICOM as the ``language'' that all medical imaging devices speak. Without it, a Siemens CT scan could not be opened on a GE workstation.
+
+\subsection*{What Is in a DICOM File?}
+A DICOM file contains two components:
+\begin{enumerate}
+    \item \textbf{Pixel data}: The actual image (the greyscale or colour information that you see on screen).
+    \item \textbf{Metadata (header)}: A rich set of tags describing the image, including:
+    \begin{itemize}
+        \item Patient name, date of birth, hospital ID.
+        \item Study date and time.
+        \item Modality (CT, MRI, US, etc.).
+        \item Body part examined.
+        \item Acquisition parameters (slice thickness, kVp, mT, TR, TE).
+        \item Institution and referring physician.
+        \item Unique identifiers (Study UID, Series UID, SOP Instance UID).
+    \end{itemize}
+\end{enumerate}
+
+\subsection*{DICOM Information Model}
+DICOM organises data in a hierarchy:
+
+\begin{table}[h]
+\centering
+\caption{DICOM information model hierarchy}
+\begin{tabular}{|l|l|p{6cm}|}
+\hline
+\textbf{Level} & \textbf{Term} & \textbf{Description} \\
+\hline
+1 & Patient & The individual being imaged (one patient can have many studies). \\
+\hline
+2 & Study & A single examination (e.g., ``CT chest with contrast on 15 March 2026''). One study can contain many series. \\
+\hline
+3 & Series & A group of images acquired with the same technique (e.g., ``axial 3mm chest CT'' is one series; ``coronal reformats'' is another). \\
+\hline
+4 & Image (SOP Instance) & A single image within a series. \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{pearlbox}[Always check the patient and study identifiers]
+Before interpreting any image, verify the patient name, date of birth, and study date on the DICOM header. Mislabelled or mismatched studies are a leading cause of misdiagnosis. When in doubt, go back to the source.
+\end{pearlbox}
+
+\subsection*{Key DICOM Tags for Clinical Practice}
+
+\begin{table}[h]
+\centering
+\caption{Essential DICOM tags for clinicians}
+\begin{tabular}{|l|l|p{5cm}|}
+\hline
+\textbf{Tag} & \textbf{Keyword} & \textbf{Clinical relevance} \\
+\hline
+(0008,0020) & Study Date & When the examination was performed. \\
+\hline
+(0008,0050) & Accession Number & Unique study identifier linking to RIS. \\
+\hline
+(0008,0060) & Modality & CT, MR, US, XR, NM, etc. \\
+\hline
+(0008,0090) & Referring Physician & Who ordered the study. \\
+\hline
+(0010,0010) & Patient Name & Patient identification. \\
+\hline
+(0010,0020) & Patient ID & Hospital identifier. \\
+\hline
+(0010,0030) & Patient Birth Date & Age verification. \\
+\hline
+(0018,0015) & Body Part Examined & Ensures correct protocol and hanging protocol selection. \\
+\hline
+(0020,000E) & Study Instance UID & Globally unique study identifier. \\
+\hline
+(0020,0011) & Series Number & Identifies individual series within a study. \\
+\hline
+(0020,0013) & Instance Number & Identifies individual images within a series. \\
+\hline
+\end{tabular}
+\end{table}
+
+---
+
+\section*{3. PACS --- The Infrastructure}
+
+\subsection*{What PACS Does}
+A PACS is the integrated system that:
+\begin{enumerate}
+    \item \textbf{Acquires} images from modalities (CT, MRI, X-ray, ultrasound, etc.) via the DICOM network.
+    \item \textbf{Stores} images on long-term, redundant, backed-up storage.
+    \item \textbf{Distributes} images to workstations, mobile devices, and remote viewers.
+    \item \textbf{Displays} images with appropriate hanging protocols and window/level settings.
+\end{enumerate}
+
+\subsection*{PACS Architecture}
+
+\begin{table}[h]
+\centering
+\caption{PACS components and functions}
+\begin{tabular}{|l|p{8cm}|}
+\hline
+\textbf{Component} & \textbf{Function} \\
+\hline
+Archive / storage & Short-term (fast access, weeks) and long-term (slower, years) storage. Modern systems use tiered storage (SSD for recent, tape/cloud for archive). \\
+\hline
+Clinical viewer & Web-based or integrated viewer for referring clinicians (e.g., in electronic health records). \\
+\hline
+DICOM gateway / broker & Manages image routing, queuing, and protocol standardisation. \\
+\hline
+Enterprise viewer & Allows image viewing across the hospital network from any approved device. \\
+\hline
+Integration engine & Connects PACS to RIS, HIS, and EHR for order entry, worklist, and report distribution. \\
+\hline
+Modality (CT, MRI, etc.) & Produces DICOM images and sends them to PACS. \\
+\hline
+Workstation & Diagnostic-quality display for radiologists (typically dual monitors, calibrated, high resolution). \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection*{Cloud PACS}
+Many institutions are migrating to cloud-based PACS, where images are stored on secure cloud servers rather than on-premises hardware. Benefits include:
+\begin{itemize}
+    \item Scalable storage (no need to predict 10-year growth).
+    \item Remote access from any location with internet connectivity.
+    \item Reduced capital expenditure on on-site servers.
+    \item Easier sharing with external sites for second opinions.
+\end{itemize}
+Challenges include bandwidth requirements, data sovereignty, latency, and compliance with local data protection regulations.
+
+---
+
+\section*{4. RIS and HIS Integration}
+
+\subsection*{Radiology Information System (RIS)}
+The RIS manages the administrative and workflow aspects of radiology:
+\begin{itemize}
+    \item \textbf{Order management}: Receives and tracks imaging referrals.
+    \item \textbf{Scheduling}: Assigns appointment slots and generates patient schedules.
+    \item \textbf{Worklist management}: Sends technologist and reading worklists to modalities and PACS.
+    \item \textbf{Patient tracking}: Records when patients arrive, are imaged, and are discharged.
+    \item \textbf{Reporting}: Stores and distributes radiology reports.
+    \item \textbf{Billing}: Captures CPT/HRG codes for reimbursement.
+\end{itemize}
+
+\subsection*{Hospital Information System (HIS)}
+The HIS is the broader hospital IT infrastructure that includes patient registration, electronic health records (EHR), laboratory results, pharmacy, and billing. PACS and RIS must integrate with the HIS to:
+\begin{itemize}
+    \item Verify patient identity and demographics.
+    \item Access relevant clinical data (eGFR, medication lists, prior reports).
+    \item Distribute reports into the electronic medical record.
+    \item Enable clinical decision support for imaging appropriateness.
+\end{itemize}
+
+\begin{pearlbox}[Worklist errors cause wrong-patient studies]
+If the RIS worklist is not reconciled with the patient in front of you, you may image the wrong patient or attach images to the wrong record. Always verify the patient name, date of birth, and hospital number on the worklist against the patient and their wristband before beginning any examination.
+\end{pearlbox}
+
+---
+
+\section*{5. Hanging Protocols}
+
+\subsection*{What Are Hanging Protocols?}
+Hanging protocols are the rules that determine how images are automatically arranged on a diagnostic workstation. When a radiologist opens a CT study, they do not want to manually drag images into position---the PACS should automatically display:
+\begin{itemize}
+    \item Axial images on the left monitor, coronal/sagittal reformats on the right.
+    \item Brain window for head CT, lung window for chest CT, soft-tissue window for abdomen CT.
+    \item MRI sequences in a standard order (T1, T2, FLAIR, DWI).
+    \item Prior comparison studies alongside current studies.
+\end{itemize}
+
+Customised hanging protocols improve reading efficiency and reduce errors. Most PACS allow radiologists to create and save their own hanging protocol preferences.
+
+\subsection*{Window and Level (Windowing)}
+DICOM images contain more grey levels than the human eye can perceive at once. Windowing maps a range of Hounsfield Units (CT) or signal intensities (MRI) to the available grey scale:
+\begin{itemize}
+    \item \textbf{Lung window}: Width ~1500 HU, Level ~-600 HU (visualises lung parenchyma and airways).
+    \item \textbf{Soft-tissue window}: Width ~350 HU, Level ~40 HU (visualises organs, muscles, and fat).
+    \item \textbf{Bone window}: Width ~2000 HU, Level ~300 HU (visualises cortical and trabecular bone).
+    \item \textbf{Brain window}: Width ~80 HU, Level ~30 HU (visualises grey-white differentiation and haemorrhage).
+    \item \textbf{Mediastinal window}: Width ~400 HU, Level ~50 HU (visualises mediastinal structures).
+\end{itemize}
+
+---
+
+\section*{6. Prior Comparison}
+
+One of the most powerful features of PACS is the ability to instantly retrieve and display prior studies alongside current images. Prior comparison:
+\begin{itemize}
+    \item Determines whether a lesion is new, stable, or resolving.
+    \item Avoids false-positive reports of findings that are long-standing and benign.
+    \item Enables measurement of growth rates (critical for lung nodule follow-up, tumour response assessment).
+    \item Provides context (e.g., post-surgical changes vs new recurrence).
+\end{itemize}
+
+\begin{warnbox}[Always compare with priors]
+A ``new'' 5 mm lung nodule on today's CT may have been present on a chest X-ray from 2 years ago. Without comparison, you may subject a patient to unnecessary invasive investigation. Always check for prior imaging before reporting a finding as new.
+\end{warnbox}
+
+---
+
+\section*{7. Image Sharing and Second Opinions}
+
+DICOM and PACS have made image sharing straightforward:
+\begin{itemize}
+    \item \textbf{DICOM CD/DVD}: Images burned to physical media with a DICOM viewer. Still used but increasingly replaced by electronic transfer.
+    \item \textbf{DICOMweb / IHE XDS-I}: Standards-based electronic image sharing between institutions. Images are pushed to a shared repository and pulled by the receiving site.
+    \item \textbf{Cloud-based image sharing}: Commercial platforms (e.g., Ambra Health, Nuance PowerShare) enable secure web-based image sharing without specialised software.
+    \item \textbf{Vendor-neutral archives (VNA)}: Store images in a format accessible regardless of the originating PACS or vendor.
+\end{itemize}
+
+When sharing images for a second opinion, always include:
+\begin{itemize}
+    \item The relevant DICOM series (not every series from every study).
+    \item The radiology report.
+    \item The clinical question and brief history.
+    \item Prior comparison images if available.
+\end{itemize}
+
+\begin{pearlbox}[DICOM de-identification]
+Before sharing images for research, education, or external second opinions, DICOM metadata must be reviewed and de-identified. Patient name, date of birth, hospital ID, and referring physician details should be removed unless clinically necessary. Automated de-identification tools exist but must be validated---some tags (e.g., in private creator fields) may not be caught by standard tools.
+\end{pearlbox}
+
+---
+
+\section*{8. Security, Governance, and Data Protection}
+
+\begin{table}[h]
+\centering
+\caption{PACS security requirements}
+\begin{tabular}{|l|p{8cm}|}
+\hline
+\textbf{Requirement} & \textbf{Implementation} \\
+\hline
+Audit logging & Every image view, export, and modification is logged with user, time, and IP address. \\
+\hline
+Authentication & Users must log in with unique credentials before accessing PACS. \\
+\hline
+Backup and disaster recovery & Regular backups with tested restoration procedures. Off-site or cloud backup. \\
+\hline
+Data retention & Images retained for legally mandated periods (varies by jurisdiction; typically 7--10 years for adults, longer for paediatrics). \\
+\hline
+De-identification & Required before research or external sharing. \\
+\hline
+Downtime procedures & Paper-based or offline viewer workflows when PACS is unavailable. \\
+\hline
+Encryption & Images are encrypted in transit (TLS) and at rest (AES-256). \\
+\hline
+Least privilege & Access is role-based (radiologist, technologist, referring clinician, student). \\
+\hline
+\end{tabular}
+\end{table}
+
+Interoperability does not remove the need for compliance with data protection legislation (e.g., GDPR, HIPAA), retention policies, cybersecurity controls, and local governance frameworks.
+
+\clearpage

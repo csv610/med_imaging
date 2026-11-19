@@ -1,0 +1,640 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{top=1in, bottom=1in, left=1in, right=1in}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=teal!80!black,
+    citecolor=teal!80!black,
+    urlcolor=blue!70!black,
+    pdftitle={Mammography and Digital Breast Tomosynthesis (DBT): X-Ray Physics, Compression Mechanics, Screening Paradigms, and the BI-RADS Interpretation Framework},
+    pdfauthor={Chaman Singh Verma}
+}
+
+% Styled boxes for clinical pearls, radiation physics, and dosimetry/safety
+\newtcolorbox{clinicalpearl}[1][]{
+    colback=teal!5!white,
+    colframe=teal!75!black,
+    fonttitle=\bfseries\sffamily,
+    title={Clinical Pearl: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\newtcolorbox{radiationphysics}[1][]{
+    colback=blue!5!white,
+    colframe=blue!70!black,
+    fonttitle=\bfseries\sffamily,
+    title={Mammographic Physics \& Beam Geometry: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\newtcolorbox{dosimetrysafety}[1][]{
+    colback=red!5!white,
+    colframe=red!70!black,
+    fonttitle=\bfseries\sffamily,
+    title={Dosimetry \& Quality Standards: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\title{\textbf{\huge Mammography and Digital Breast Tomosynthesis:}\\[0.3em]
+\Large X-Ray Physics, Compression Mechanics, Screening Paradigms,\\
+and the BI-RADS Interpretation Framework}
+
+\author{\textbf{Chaman Singh Verma}\\[0.2em]
+\small Department of Medical Imaging and Computation\\
+\small \texttt{Reference Guide for Clinicians, Radiologists, Technologists, and Researchers}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Mammography is the definitive, population-validated imaging modality for the early detection and characterization of breast carcinoma, reducing breast cancer mortality by $20\text{--}40\%$ in screened populations. By optimizing X-ray spectra for soft-tissue differential attenuation, mammography resolves microscopic calcium deposits ($50\text{--}100\,\mu\text{m}$) and subtle soft-tissue masses embedded within fibroglandular parenchyma. This comprehensive treatise provides an exhaustive analysis of mammographic imaging, tracing its technical evolution from analog film-screen systems to Full-Field Digital Mammography (FFDM) and three-dimensional Digital Breast Tomosynthesis (DBT). We evaluate low-energy X-ray physics ($24\text{--}35\,\text{kVp}$), target-filter pairings (molybdenum, rhodium, tungsten), the anode heel effect, compression biomechanics, and direct-conversion amorphous selenium (a-Se) flat-panel detectors. Furthermore, this article presents an exhaustive radiological interpretation framework grounded in the American College of Radiology (ACR) Breast Imaging Reporting and Data System (BI-RADS), detailing breast density categorization, mass margin descriptors, calcification morphology, and architectural distortion. The clinical implications of DBT in resolving tissue summation, contrast-enhanced mammography (CEM), radiation dosimetry metrics (Mean Glandular Dose), MQSA quality control, and artificial intelligence-assisted triage are systematically synthesized.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introduction and Foundational Soft-Tissue X-Ray Physics}
+
+Radiographic interrogation of the breast presents a formidable physical challenge in diagnostic radiology. Unlike chest or skeletal radiography—where pronounced subject contrast exists between air, bone, and soft tissue—the female breast consists entirely of soft tissues with nearly identical physical densities and effective atomic numbers ($Z_{\text{eff}}$). Mammography overcomes this intrinsic physical limitation through specialized X-ray tube engineering, low-energy photon spectra, mechanical tissue compression, and ultra-high-resolution flat-panel digital detectors.
+
+\subsection{Historical Milestones in Breast Imaging}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{1913 (The Inception of Breast Radiography):} German surgeon Albert Salomon performed radiographic examinations on 3,000 gross mastectomy specimens, correlating black-and-white shadow patterns with microscopic pathology and documenting microcalcifications associated with breast carcinoma.
+    \item \textbf{1951 (Raul Leborgne and Compression):} Uruguayan radiologist Raul Leborgne recognized that normal fibroglandular tissue overlaps and obscures carcinomas, introducing mechanical breast compression to flatten tissue and differentiating benign macrocalcifications from suspicious microcalcifications.
+    \item \textbf{1960 (Robert Egan's Reproducible Technique):} Robert Egan at the MD Anderson Cancer Center developed a standardized, low-voltage, high-milliampere-second industrial film technique, establishing the clinical efficacy of screening asymptomatic women.
+    \item \textbf{1966 (The First Dedicated Mammography System):} Charles Gros and the Compagnie Générale de Radiologie (CGR) engineered the ``Senographe,'' the first commercial X-ray system engineered exclusively for breast imaging, featuring a specialized molybdenum target and a $0.03\,\text{mm}$ molybdenum filter.
+    \item \textbf{2000 (Full-Field Digital Mammography - FFDM):} The US Food and Drug Administration (FDA) approved the first commercial digital mammography unit (GE Senographe 2000D), replacing analog film-screen emulsions with digital flat-panel detectors, separating image acquisition, processing, and display.
+    \item \textbf{2011 (Digital Breast Tomosynthesis - DBT):} The introduction of quasi-three-dimensional tomosynthesis revolutionized breast imaging by acquiring multiple low-dose angular projections, reconstructing $1\,\text{mm}$ tomographic slices that mitigate anatomical tissue superimposition.
+\end{itemize}
+
+\subsection{Physics of Soft-Tissue Radiography: Photoelectric Dominance}
+
+The interaction of diagnostic X-rays with matter is governed primarily by two competing physical processes: the \textbf{Photoelectric Effect} and \textbf{Compton Scattering}.
+
+\subsubsection{Elemental Composition and Contrast Deficits}
+The female breast is composed of varying proportions of adipose tissue, fibroglandular parenchyma (ducts, lobules, and specialized fibrous stroma), and pathological lesions (infiltrating carcinomas, fibroadenomas, cysts, and microcalcifications).
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Tissue / Structure} & \textbf{Effective Atomic Number ($Z_{\text{eff}}$)} & \textbf{Mass Density ($\text{g/cm}^3$)} & \textbf{Primary Attenuation Mechanism} \\
+\midrule
+\textbf{Adipose Tissue (Fat)} & $6.3\text{--}6.5$ & $0.92\text{--}0.93$ & Low attenuation; natural contrast \\
+\textbf{Fibroglandular Tissue} & $7.4\text{--}7.5$ & $1.04\text{--}1.05$ & Intermediate attenuation \\
+\textbf{Invasive Carcinoma} & $7.5\text{--}7.6$ & $1.06\text{--}1.08$ & Attenuation nearly identical to fibroglandular \\
+\textbf{Microcalcifications ($\text{Ca}_{10}(\text{PO}_4)_6(\text{OH})_2$)} & $14.0\text{--}14.5$ & $3.0\text{--}3.15$ & Extreme photoelectric absorption \\
+\bottomrule
+\end{tabular}
+\caption{Physical properties and effective atomic numbers of breast tissues and pathology.}
+\label{tab:breast_physics}
+\end{figure}
+
+The physical density difference between benign fibroglandular stroma and invasive ductal carcinoma is less than $3\%$, and their effective atomic numbers differ by less than $1.5\%$. In a conventional skeletal X-ray beam operating at $80\text{--}120\,\text{kVp}$, the linear attenuation coefficients ($\mu$) of normal glandular tissue and malignant tumors are virtually identical ($\mu_{\text{gland}} \approx \mu_{\text{tumor}}$), rendering tumors completely invisible on radiographs.
+
+\subsubsection{The Photoelectric Effect Mathematical Formulation}
+The linear attenuation coefficient due to the photoelectric interaction ($\tau$) is strongly dependent on the atomic number of the absorber ($Z$) and the incident X-ray photon energy ($E$):
+\begin{equation}
+    \tau \propto \rho \cdot \frac{Z^3}{E^3}
+\end{equation}
+where $\rho$ is mass density. In contrast, Compton scattering ($\sigma$) depends primarily on electron density and exhibits minimal energy dependence in the diagnostic range:
+\begin{equation}
+    \sigma \propto \rho \cdot \frac{1}{E}
+\end{equation}
+
+\begin{radiationphysics}[The Energy Optimization Window]
+To maximize subject contrast ($C_s$) between fibroglandular tissue and carcinoma:
+\begin{equation}
+    C_s = \frac{\mu_{\text{tumor}} - \mu_{\text{gland}}}{\mu_{\text{gland}}}
+\end{equation}
+the imaging system must operate in the narrow photon energy window where photoelectric absorption dominates over Compton scatter. 
+\begin{itemize}[leftmargin=*]
+    \item If photon energy is too high ($> 25\text{--}30\,\text{keV}$), Compton scattering predominates, creating forward-scattered background noise and destroying tissue contrast.
+    \item If photon energy is too low ($< 15\,\text{keV}$), all photons are absorbed within the superficial breast tissue, delivering excessive radiation dose without penetrating to the detector.
+    \item \textbf{The Optimal Energy Band:} A quasi-monochromatic spectrum confined to \textbf{$17\text{ to }24\,\text{keV}$} maximizes contrast-to-noise ratio (CNR) per unit absorbed glandular dose.
+\end{itemize}
+\end{radiationphysics}
+
+\subsection{X-Ray Tube Target and Filter Combinations}
+
+Achieving a photon energy spectrum concentrated within $17\text{--}24\,\text{keV}$ requires specialized anode target metals and matching filtration materials that exploit the $K$-edge absorption phenomenon.
+
+\subsubsection{Molybdenum (Mo) Target and Filter}
+Molybdenum ($Z = 42$) has $K$-shell binding energy of $20.0\,\text{keV}$. When bombarded by energetic electrons ($26\text{--}30\,\text{kVp}$), molybdenum generates characteristic X-rays:
+\begin{itemize}[leftmargin=*]
+    \item $K_{\alpha}$ characteristic line: $17.5\,\text{keV}$
+    \item $K_{\beta}$ characteristic line: $19.6\,\text{keV}$
+\end{itemize}
+A matching $0.03\,\text{mm}$ ($30\,\mu\text{m}$) pure molybdenum filter is placed in the beam. The $K$-absorption edge of molybdenum occurs at precisely $20.0\,\text{keV}$:
+\begin{enumerate}
+    \item Photons with energies immediately above $20.0\,\text{keV}$ are heavily absorbed by photoelectric interaction with the filter's $K$-shell electrons, suppressing the high-energy bremsstrahlung continuum.
+    \item Low-energy bremsstrahlung photons ($< 15\,\text{keV}$) are filtered out by photoelectric absorption.
+    \item The characteristic $17.5\,\text{keV}$ and $19.6\,\text{keV}$ photons pass through the filter with minimal attenuation.
+\end{enumerate}
+This yields a sharply peaked spectrum ideal for imaging thin to average-thickness ($< 4\text{--}5\,\text{cm}$), predominantly fatty breasts.
+
+\subsubsection{Rhodium (Rh) Target and Filter}
+Rhodium ($Z = 45$) possesses a higher $K$-edge at $23.2\,\text{keV}$, producing characteristic emission lines at:
+\begin{itemize}[leftmargin=*]
+    \item $K_{\alpha}$: $20.2\,\text{keV}$
+    \item $K_{\beta}$: $22.7\,\text{keV}$
+\end{itemize}
+When paired with a $0.025\,\text{mm}$ ($25\,\mu\text{m}$) rhodium filter, the transmitted spectrum has an average energy approximately $2\text{--}3\,\text{keV}$ higher than Mo/Mo, providing superior beam penetration for dense, fibrous, or thick ($> 5\text{--}6\,\text{cm}$) breasts while maintaining acceptable exposure times.
+
+\subsubsection{Tungsten (W) Targets in Digital Mammography and DBT}
+In modern digital mammography and tomosynthesis systems, tungsten ($Z = 74$) targets are paired with rhodium (Rh), silver (Ag), or aluminum (Al) filters. Because digital detectors possess a wide linear dynamic range and post-processing software can adjust contrast, tungsten targets provide high bremsstrahlung output efficiency at $28\text{--}35\,\text{kVp}$, substantially reducing tube heating and exposure durations during rapid tomosynthesis sweeps.
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lccp{6.5cm}}
+\toprule
+\textbf{Target / Filter} & \textbf{kVp Range} & \textbf{Mean Energy} & \textbf{Optimal Clinical Indication} \\
+\midrule
+\textbf{Mo / Mo ($30\,\mu\text{m}$)} & $24\text{--}28$ & $17.5\,\text{keV}$ & Thin to average compressed breasts ($< 4.5\,\text{cm}$); fatty parenchyma. \\
+\addlinespace
+\textbf{Mo / Rh ($25\,\mu\text{m}$)} & $28\text{--}32$ & $19.0\,\text{keV}$ & Intermediate compressed breast thickness ($4.5\text{--}6.0\,\text{cm}$); mixed density. \\
+\addlinespace
+\textbf{Rh / Rh ($25\,\mu\text{m}$)} & $29\text{--}34$ & $21.0\,\text{keV}$ & Dense fibroglandular parenchyma; thick breasts ($> 6.0\,\text{cm}$). \\
+\addlinespace
+\textbf{W / Rh or W / Ag} & $28\text{--}35$ & $20.0\text{--}23.0\,\text{keV}$ & Modern FFDM and DBT; optimizes dose efficiency across diverse breast densities. \\
+\bottomrule
+\end{tabular}
+\caption{Operational characteristics and clinical deployment of mammographic target/filter combinations.}
+\label{tab:target_filter}
+\end{figure}
+
+\subsection{The Anode Heel Effect and Geometric Orientation}
+
+The anode heel effect refers to the spatial variation in X-ray beam intensity along the anode-cathode axis resulting from self-absorption within the angled target face. Photons generated deeper within the target material must travel through a greater thickness of tungsten or molybdenum to exit toward the anode side, causing beam attenuation.
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Clinical Engineering Solution:} The X-ray tube is oriented so that the \textbf{cathode is situated toward the patient's chest wall}, and the \textbf{anode is situated toward the anterior nipple}.
+    \item \textbf{Anatomical Concordance:} The thickest and densest portion of the breast lies adjacent to the chest wall, requiring the higher X-ray intensity emitted from the cathode side. The thinner anterior breast near the nipple receives the lower-intensity anode side of the beam, producing uniform film/detector exposure across the entire anatomy.
+\end{itemize}
+
+\subsection{Focal Spot Geometry and Geometric Magnification}
+
+Mammography systems require high spatial resolution to resolve microscopic calcifications ($50\text{--}100\,\mu\text{m}$) that may represent the sole sign of early ductal carcinoma in situ (DCIS).
+
+The geometric unsharpness (penumbral blur, $U_g$) is governed by:
+\begin{equation}
+    U_g = f \cdot \frac{\text{OID}}{\text{SOD}} = f \cdot (M - 1)
+\end{equation}
+where $f$ is the effective focal spot size, $\text{OID}$ is object-to-image distance, $\text{SOD}$ is source-to-object distance, and $M = \text{SID} / \text{SOD}$ is the geometric magnification factor.
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Standard Contact Views ($M = 1.0$):} The breast rests directly upon the detector grid plate ($\text{OID} \approx 0$). A \textbf{large focal spot} ($0.3\,\text{mm}$) is used to allow high tube current ($100\text{--}150\,\text{mA}$) and short exposure times, preventing patient motion unsharpness.
+    \item \textbf{Magnification Views ($M = 1.5\times\text{ to }2.0\times$):} The breast is elevated above the detector on a dedicated magnification stand ($\text{OID} = 15\text{--}25\,\text{cm}$). To maintain focal spot unsharpness below the threshold of human visual perception ($< 0.1\,\text{mm}$), the system switches to a \textbf{micro-focus spot} ($0.10\text{ to }0.15\,\text{mm}$). Because thermal loading constraints limit micro-focus tube currents to $20\text{--}30\,\text{mA}$, exposure times increase ($1\text{--}3\,\text{seconds}$), requiring rigid breast immobilization.
+\end{enumerate}
+
+\section{Breast Compression, Geometry, and Anti-Scatter Mechanics}
+
+Rigid, standardized mechanical breast compression is fundamental to mammographic image quality and patient dose minimization.
+
+\subsection{Biomechanics and Diagnostic Benefits of Breast Compression}
+
+Mechanical compression is applied using a motorized, radiolucent Lexan paddle parallel to the detector bucky surface, typically delivering a standardized force of $111\text{ to }200\,\text{Newtons}$ ($25\text{ to }45\,\text{pounds-force}$).
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lp{11.5cm}}
+\toprule
+\textbf{Physical / Clinical Benefit} & \textbf{Underlying Radiographic Mechanism} \\
+\midrule
+\textbf{Elimination of Geometric Blur} & Compresses peripheral structures closer to the detector plane, reducing object-to-image distance ($\text{OID}$) and sharpening microcalcification edges. \\
+\addlinespace
+\textbf{Immobilization and Motion Mitigation} & Prevents patient respiration and involuntary motion during long exposure intervals, eliminating motion unsharpness. \\
+\addlinespace
+\textbf{Reduction of Tissue Superposition} & Spreads apart overlapping parenchymal lobules, revealing obscured underlying masses and differentiating pseudomasses from true architectural distortion. \\
+\addlinespace
+\textbf{Scatter-to-Primary Ratio Suppression} & Thinner tissue reduces the volume of Compton scattering, markedly decreasing non-image-forming background glare and boosting primary contrast. \\
+\addlinespace
+\textbf{Substantial Radiation Dose Reduction} & Reducing compressed breast thickness from $6\,\text{cm}$ to $4\,\text{cm}$ decreases the total mass of tissue attenuating the beam, allowing a $50\%$ reduction in mAs. \\
+\addlinespace
+\textbf{Uniform Optical Exposure} & Equalizes breast thickness from the retromammary space to the anterior subareolar region, preventing overexposure of the anterior margin and underexposure of the chest wall. \\
+\bottomrule
+\end{tabular}
+\caption{Mechanisms of image quality enhancement resulting from mechanical breast compression.}
+\label{tab:compression_benefits}
+\end{figure}
+
+\subsection{Anti-Scatter Grids and the Air-Gap Technique}
+
+\subsubsection{Moving Anti-Scatter Grids}
+In standard contact views, Compton scatter accounts for $40\text{--}70\%$ of the total radiation reaching the detector if unmitigated. Mammography units employ specialized moving anti-scatter grids:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Grid Architecture:} Linear or High-Transmission Cellular (HTC) grids with carbon-fiber interspaces and ultra-thin lead septa. Grid ratios are low ($4:1$ to $5:1$) to avoid excessive patient dose penalties (Bucky factor $\approx 2.0\text{--}2.5$).
+    \item The grid oscillates continuously during X-ray exposure, blurring out lead septum shadow lines.
+\end{itemize}
+
+\subsubsection{The Magnification Air-Gap Technique}
+In geometric magnification views ($1.5\times\text{ to }2.0\times$), the anti-scatter grid is \textbf{mechanically removed from the beam path}:
+\begin{itemize}[leftmargin=*]
+    \item The substantial air gap ($15\text{--}25\,\text{cm}$) between the elevated breast stand and the detector enables large-angle scattered photons to diverge and miss the detector entirely.
+    \item This natural air-gap scatter rejection matches the performance of a physical grid without imposing an additional Bucky factor dose penalty on the patient.
+\end{itemize}
+
+\section{Digital Mammography and Digital Breast Tomosynthesis (DBT)}
+
+\subsection{Digital Flat-Panel Detector Architectures}
+
+Digital mammography platforms utilize two primary detector technologies:
+
+\subsubsection{Direct-Conversion Detectors (Amorphous Selenium, a-Se)}
+Direct-conversion flat-panel detectors convert incident X-ray photons directly into electronic charge without an intermediate light-conversion stage.
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Detector Physics:} An electric field ($10\,\text{V/}\mu\text{m}$) is applied across a $200\text{--}250\,\mu\text{m}$ layer of amorphous selenium (a-Se). Incident X-ray photons undergo photoelectric absorption, generating electron-hole pairs.
+    \item The electrostatic field draws the charge carriers along vertical field lines directly to underlying Thin-Film Transistor (TFT) storage capacitors.
+    \item \textbf{Resolution Advantage:} Because no optical light dispersion occurs, direct-conversion a-Se detectors achieve ultra-fine pixel pitches ($50\text{ to }85\,\mu\text{m}$), translating to Nyquist spatial frequencies of $7\text{ to }10\,\text{line-pairs/mm}$ ($\text{lp/mm}$), optimal for microcalcification edge resolution.
+\end{itemize}
+
+\subsubsection{Indirect-Conversion Detectors (Cesium Iodide, CsI:Tl)}
+Indirect-conversion flat-panel detectors utilize a columnar-structured thallium-doped cesium iodide (CsI:Tl) scintillator:
+\begin{itemize}[leftmargin=*]
+    \item X-ray photons are absorbed by CsI crystals, emitting green optical photons ($540\,\text{nm}$). The columnar crystalline needles act as optical light guides, channeling light toward an amorphous silicon (a-Si) photodiode array.
+    \item While highly dose-efficient (high Detective Quantum Efficiency - DQE at low exposure), slight lateral light scattering limits pixel pitch to $85\text{--}100\,\mu\text{m}$ ($5\text{--}6\,\text{lp/mm}$).
+\end{itemize}
+
+\subsection{Digital Breast Tomosynthesis (DBT / 3D Mammography)}
+
+The primary limitation of standard 2D digital mammography is \textbf{anatomical tissue summation}—where normal overlapping fibroglandular densities can either obscure a true underlying malignancy (false-negative) or simulate a non-existent tumor mass (false-positive / unnecessary recall).
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{4.2cm}p{10.5cm}}
+\toprule
+\textbf{Tomosynthesis Parameter} & \textbf{Operational Mechanism and Clinical Value} \\
+\midrule
+\textbf{Angular Sweep Arc} & The X-ray tube rotates continuously or in step-and-shoot mode over a limited angular arc ($15^\circ\text{ to }50^\circ$) across the stationary compressed breast. \\
+\addlinespace
+\textbf{In-Plane vs. Out-of-Plane} & Provides high in-plane spatial resolution ($50\text{--}100\,\mu\text{m}$); limited angular sampling creates out-of-plane artifacts that are minimized using iterative regularization algorithms. \\
+\addlinespace
+\textbf{Low-Dose Projection Train} & Acquires $11\text{ to }25$ discrete ultra-low-dose projection images at $1^\circ\text{--}3^\circ$ intervals. The total cumulative radiation dose of the entire train is comparable to or slightly higher than a single 2D mammogram. \\
+\addlinespace
+\textbf{Synthetic 2D Views (C-View)} & Mathematical summation of tomosynthesis slices generates a synthesized 2D image, eliminating the need for a separate physical 2D exposure and reducing total radiation dose by $40\text{--}50\%$. \\
+\addlinespace
+\textbf{Volumetric Reconstruction} & Filtered Back-Projection (FBP) or Iterative Reconstruction (IR) algorithms reconstruct a three-dimensional dataset composed of multiple parallel $1.0\,\text{mm}$ thick slices. \\
+\bottomrule
+\end{tabular}
+\caption{System parameters and physical reconstruction characteristics of Digital Breast Tomosynthesis.}
+\label{tab:dbt_physics}
+\end{figure}
+
+\begin{clinicalpearl}[Clinical Evidence for Tomosynthesis]
+Major prospective screening trials (OSLO, STORM, Malmö Breast Tomosynthesis Screening Trial) demonstrate that adding DBT to screening:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Increases invasive breast cancer detection by $30\text{--}40\%$}, selectively unmasking small, node-negative, invasive ductal and lobular carcinomas.
+    \item \textbf{Reduces patient recall rates by $15\text{--}30\%$}, resolving overlapping parenchymal pseudomasses and avoiding unnecessary diagnostic workups.
+\end{itemize}
+\end{clinicalpearl}
+
+\subsection{Contrast-Enhanced Mammography (CEM)}
+
+Contrast-Enhanced Mammography combines conventional mammography with the physiological assessment of tumor neoangiogenesis via intravenous iodinated contrast.
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Dual-Energy Subtraction Physics:} Following an intravenous bolus of low-osmolar iodinated contrast ($1.5\,\text{mL/kg}$ at $3\,\text{mL/s}$), dual-energy exposures are obtained:
+    \begin{enumerate}
+        \item \textit{Low-Energy Exposure ($26\text{--}32\,\text{kVp}$):} Emitted spectrum lies completely below the iodine $K$-edge ($33.2\,\text{keV}$). The resulting image is identical to a standard 2D digital mammogram, displaying structural parenchymal details and microcalcifications.
+        \item \textit{High-Energy Exposure ($45\text{--}49\,\text{kVp}$):} Emitted spectrum operates above the iodine $K$-edge ($33.2\,\text{keV}$). Copper filtration suppresses photons below $40\,\text{keV}$, maximizing photoelectric absorption by intravascular iodine atoms.
+    \end{enumerate}
+    \item \textbf{Recombination Display:} Weighted logarithmic subtraction of the low-energy image from the high-energy image subtracts background fibroglandular stroma, highlighting regions of iodinated contrast enhancement. CEM approaches the diagnostic sensitivity of breast MRI ($> 95\%$) at a fraction of the cost, making it an alternative for claustrophobic patients or those with MRI contraindications.
+\end{itemize}
+
+\section{Standard Projections and Positioning Biomechanics}
+
+A complete bilateral screening mammographic examination consists of four standard views: bilateral Craniocaudal (CC) and Mediolateral Oblique (MLO) projections.
+
+\subsection{The Craniocaudal (CC) Projection}
+
+The CC view evaluates the medial and central breast parenchyma:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Positioning Biomechanics:} The technologist elevates the inframammary fold (IMF) to its anatomical limit, places the detector plate at the elevated IMF level, and applies compression from superior to inferior while pulling medial and central tissue onto the detector.
+    \item \textbf{Posterior Nipple Line (PNL) Quality Criterion:} A line drawn perpendicular from the nipple skin to the anterior border of the pectoralis major muscle (or edge of image) measures the PNL. On a technically adequate CC view, the PNL length must measure within \textbf{$1.0\,\text{cm}$} of the PNL measured on the corresponding MLO view.
+\end{itemize}
+
+\subsection{The Mediolateral Oblique (MLO) Projection}
+
+The MLO projection is the single most critical mammographic view, as it captures the maximum volume of breast tissue, including the upper outer quadrant, the axillary tail of Spence, and the deep pre-pectoral spaces.
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Angulation Calibration:} The X-ray tube and detector bucky are angled parallel to the patient's pectoralis major muscle plane (typically $40^\circ\text{ to }50^\circ$ for average patients; $30^\circ\text{--}40^\circ$ for tall, asthenic patients; $50^\circ\text{--}60^\circ$ for short, stocky patients).
+    \item \textbf{Positioning Execution:} The corner of the detector plate is positioned in the axilla anterior to the latissimus dorsi. Breast tissue is mobilized up and out, applying compression while the technologist supports the breast to avoid drooping.
+    \item \textbf{Technical Adequacy Criteria:}
+    \begin{enumerate}
+        \item The pectoralis major muscle must project convexly or straight down to the level of the nipple line or lower.
+        \item The inframammary fold (IMF) must be open, well-visualized, and free of skin overlap.
+        \item The nipple must project in profile, avoiding retroareolar tissue masking.
+    \end{enumerate}
+\end{itemize}
+
+\subsection{Diagnostic Problem-Solving Views}
+
+When screening mammography detects an abnormality, dedicated diagnostic views are performed to establish diagnosis:
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{3.5cm}p{5.5cm}p{5.5cm}}
+\toprule
+\textbf{Diagnostic Projection} & \textbf{Technical Implementation} & \textbf{Clinical Diagnostic Objective} \\
+\midrule
+\textbf{Cleavage (Valley) View} & Both breasts positioned simultaneously on detector; covers deep medial tissue. & Visualizes lesions located in the extreme posteromedial cleavage space. \\
+\addlinespace
+\textbf{Eklund Push-Back Views} & Implant is displaced posteriorly against chest wall; breast tissue pulled forward. & Circumvents radiopaque silicone/saline implant masking, restoring tissue visibility in augmented breasts. \\
+\addlinespace
+\textbf{Magnification ($1.5\text{--}2.0\times$)} & Elevated breast stand, micro-focal spot ($0.1\,\text{mm}$), no anti-scatter grid. & Resolves fine microcalcification shapes (linear, pleomorphic) and subtle mass margin spiculation. \\
+\addlinespace
+\textbf{Rolled Views (CC-R / CC-L)} & Breast tissue is rolled superiorly or inferiorly relative to the detector plate prior to CC compression. & Disperses parenchymal densities in opposite directions; determines which layer contains an ambiguous opacity. \\
+\addlinespace
+\textbf{Spot Compression} & Small, localized compression paddle ($5\text{--}10\,\text{cm}$ diameter) applied directly over lesion. & Disperses overlying parenchymal summation; confirms true persisting mass vs. superimposed tissue. \\
+\addlinespace
+\textbf{Spot Magnification} & Combines small spot compression paddle with geometric magnification stand. & The definitive diagnostic modality for microcalcification cluster analysis. \\
+\addlinespace
+\textbf{True Lateral ($90^\circ$ ML / LM)} & X-ray beam oriented strictly horizontal ($90^\circ$ orthogonal to CC view). & Triangulates true 3D lesion depth; demonstrates \textbf{``milk of calcium''} layering in benign fibrocystic microcysts. \\
+\bottomrule
+\end{tabular}
+\caption{Dedicated diagnostic mammographic projections and problem-solving mechanisms.}
+\label{tab:diagnostic_views}
+\end{figure}
+
+\section{The ACR BI-RADS Interpretation Framework}
+
+Standardized reporting of mammographic examinations is governed globally by the American College of Radiology (ACR) \textbf{Breast Imaging Reporting and Data System (BI-RADS)} (5th Edition), establishing uniform lexicons, structured reporting, and management recommendations.
+
+\subsection{Breast Composition and Density Staging}
+
+Breast tissue density describes the relative proportion of radiopaque fibroglandular parenchyma compared to radiolucent adipose tissue. Dense breast tissue decreases the sensitivity of 2D mammography by masking non-calcified cancers.
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{clp{6.0cm}p{4.5cm}}
+\toprule
+\textbf{Category} & \textbf{ACR Density Descriptor} & \textbf{Radiographic Characteristics} & \textbf{Clinical Impact on Sensitivity} \\
+\midrule
+\textbf{A} & Almost entirely fatty & $< 25\%$ fibroglandular; highly radiolucent throughout. & Maximum sensitivity ($> 95\%$); tumors readily visible. \\
+\addlinespace
+\textbf{B} & Scattered fibroglandular & $25\text{--}50\%$ fibroglandular; scattered areas of glandular opacity. & High sensitivity; small masses easily differentiated. \\
+\addlinespace
+\textbf{C} & Heterogeneously dense & $51\text{--}75\%$ fibroglandular; may obscure small masses. & Moderately reduced sensitivity; supplemental screening indicated. \\
+\addlinespace
+\textbf{D} & Extremely dense & $> 75\%$ fibroglandular; diffuse sheet-like radiopacity. & Severely reduced sensitivity ($< 50\%$); high cancer masking risk. \\
+\bottomrule
+\end{tabular}
+\caption{American College of Radiology (ACR) BI-RADS breast density classifications.}
+\label{tab:birads_density}
+\end{figure}
+
+\subsection{Morphological Analysis of Masses}
+
+A mass is defined as a space-occupying lesion seen in two different projections. Lesions visible in only a single view are classified as asymmetries until evaluated in orthogonal planes.
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Shape Descriptor:}
+    \begin{itemize}
+        \item \textit{Round or Oval:} Characteristic of benign fibroadenomas, cysts, or intramammary lymph nodes.
+        \item \textit{Irregular:} High positive predictive value for invasive ductal carcinoma.
+    \end{itemize}
+    \item \textbf{Margin Descriptor (The Primary Indicator of Malignancy):}
+    \begin{itemize}
+        \item \textit{Circumscribed:} Abrupt, sharp boundary between lesion and surrounding tissue ($\ge 75\%$ delineated); characteristic of benign fibroadenomas or simple cysts.
+        \item \textit{Obscured:} Margin hidden by adjacent normal overlapping fibroglandular stroma.
+        \item \textit{Microlobulated:} Small, undulating, scallop-like margins.
+        \item \textit{Indistinct:} Ill-defined, blurred boundary suggesting microscopic stromal invasion.
+        \item \textit{Spiculated:} Radiating thin lines or spikes extending from the mass epicenter. \textbf{Spiculated margins carry an $> 85\text{--}90\%$ probability of invasive malignancy} due to tumor infiltration and reactive desmoplastic host response.
+    \end{itemize}
+    \item \textbf{Density Descriptor:} High density (attenuates more than surrounding fibroglandular tissue, correlating with malignancy), equal density, low density, or fat-containing (lipoma, oil cyst, hamartoma, galactocele—pathognomonic for benign disease).
+\end{enumerate}
+
+\subsection{Analysis of Microcalcifications: Morphology and Distribution}
+
+Microcalcifications are calcium hydroxyapatite or calcium oxalate crystals deposited within necrotic cellular debris, secretions, or hyalinized stroma.
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{3.5cm}p{5.5cm}p{5.5cm}}
+\toprule
+\textbf{Calcification Category} & \textbf{Morphological Subtype} & \textbf{Pathological Basis \& Significance} \\
+\midrule
+& Vascular calcifications & Continuous, parallel, tubular \textbf{``tram-track''} calcifications along arterial walls (Mönckeberg sclerosis). \\
+\addlinespace
+& Popcorn-like / Coarse & Dense, lobulated calcifications ($> 2\text{--}3\,\text{mm}$) representing hyalinized, involuting fibroadenomas. \\
+\addlinespace
+& Large rod-like & Smooth, solid, cylindrical branching calcifications ($> 1\,\text{mm}$) radiating toward the nipple (duct ectasia, plasma cell mastitis). \\
+\addlinespace
+& Milk of calcium & Semilunar, crescentic layering in horizontal lateral views; smudgy round in CC view (cystic fibrocystic microcysts). \\
+\addlinespace
+& Coarse heterogeneous & Irregular, distinct, variable calcifications ($0.5\text{--}1.0\,\text{mm}$); intermediate suspicion ($15\text{--}20\%$). \\
+\midrule
+& Fine pleomorphic & Discrete calcifications with varying sizes, geometric angles, and shapes ($< 0.5\,\text{mm}$, ``crushed glass''; $30\text{--}40\%$ malignancy risk). \\
+\addlinespace
+& \textbf{Fine linear / branching} & Thin, irregular, linear, discontinuous calcifications ($< 0.5\,\text{mm}$) filling ductal lumina. \textbf{High positive predictive value ($> 70\text{--}80\%$) for high-grade comedo DCIS}. \\
+\addlinespace
+\textbf{Suspicious Morphology} & Amorphous & Hazy, indistinct, tiny sand-like calcifications lacking distinct shapes ($20\%$ malignancy risk). \\
+\addlinespace
+\textbf{Typically Benign} & Skin / Dermal calcifications & Polygonal, lucent-centered calcifications within sebaceous glands of the skin dermis. \\
+\bottomrule
+\end{tabular}
+\caption{Classification of mammographic microcalcifications by morphological criteria.}
+\label{tab:calcifications}
+\end{figure}
+
+\subsubsection{Distributional Hierarchy of Microcalcifications}
+Distribution often carries greater diagnostic significance than individual particle morphology:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Diffuse / Scattered:} Widely distributed throughout the entire breast; virtually always benign.
+    \item \textbf{Regional:} Spanning a large volume ($> 2\,\text{cm}$) of tissue not conforming to a single ductal system.
+    \item \textbf{Grouped (Clustered):} Defined as $\ge 5$ calcifications occupying a compact tissue volume $< 1\text{--}2\,\text{cm}^3$.
+    \item \textbf{Linear:} Arranged in a straight line, suggesting deposition within a single lactiferous duct.
+    \item \textbf{Segmental:} Conforming to a triangular, branching ductal arborization pointing toward the nipple. \textbf{Segmental distribution of fine pleomorphic or branching calcifications represents the most ominous calcification pattern in mammography}, indicating multifocal DCIS.
+\end{itemize}
+
+\subsection{Architectural Distortion and Asymmetries}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Architectural Distortion:} Disruption of normal anatomical tissue architecture characterized by radiating spiculated lines, focal tethering, or retraction of the parenchymal border without a central visible mass. Primary causes include invasive lobular carcinoma (ILC), radial scar (complex sclerosing lesion), or postoperative surgical scar.
+    \item \textbf{Asymmetries:}
+    \begin{enumerate}
+        \item \textit{Asymmetry:} Parenchymal density visible in only one projection (typically tissue summation).
+        \item \textit{Focal Asymmetry:} Confined opacity seen in two orthogonal projections ($< 1$ quadrant) lacking true mass margins.
+        \item \textit{Global Asymmetry:} Extensive parenchymal asymmetry spanning at least one quadrant ($> 25\%$ of the breast).
+        \item \textit{Developing Asymmetry:} A new, larger, or more conspicuous focal asymmetry compared to prior examinations; carries an $> 15\%$ probability of malignancy and mandates diagnostic biopsy.
+    \end{enumerate}
+\end{itemize}
+
+\subsection{ACR BI-RADS Assessment Categories}
+
+The final mammographic assessment assigns a numerical category that dictates clinical management:
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{clcp{5.5cm}}
+\toprule
+\textbf{Category} & \textbf{Clinical Assessment} & \textbf{Likelihood of Cancer} & \textbf{Mandated Clinical Management} \\
+\midrule
+\textbf{BI-RADS 0} & Incomplete assessment & Incomplete & Recall patient for additional diagnostic mammographic views and/or targeted ultrasound. \\
+\addlinespace
+\textbf{BI-RADS 1} & Negative & $0\%$ & Routine age-appropriate screening. \\
+\addlinespace
+\textbf{BI-RADS 2} & Benign finding & $0\%$ (Benign) & Routine age-appropriate screening (e.g., stable fibroadenoma, simple cyst, vascular calcification). \\
+\addlinespace
+\textbf{BI-RADS 3} & Probably benign & $> 0\%$ but $\le 2\%$ & Short-interval imaging follow-up at 6, 12, and 24 months to confirm stability. \\
+\addlinespace
+\textbf{BI-RADS 4} & Suspicious abnormality & $> 2\%$ to $< 95\%$ & Tissue biopsy indicated.\newline 4A: Low suspicion ($> 2\%$ to $10\%$)\newline 4B: Moderate suspicion ($> 10\%$ to $50\%$)\newline 4C: High suspicion ($> 50\%$ to $< 95\%$) \\
+\addlinespace
+\textbf{BI-RADS 5} & Highly suggestive of malignancy & $\ge 95\%$ & Core needle biopsy with immediate oncological surgical referral. \\
+\addlinespace
+\textbf{BI-RADS 6} & Known biopsy-proven malignancy & $100\%$ & Definitive surgical excision, neoadjuvant chemotherapy, or radiation therapy. \\
+\bottomrule
+\end{tabular}
+\caption{American College of Radiology (ACR) BI-RADS assessment categories and clinical pathways.}
+\label{tab:birads_categories}
+\end{figure}
+
+\section{Radiation Dosimetry and Quality Control Standards}
+
+Because mammography is deployed as a screening tool in millions of healthy, asymptomatic women, radiation dosimetry and equipment calibration are regulated by federal and international standards.
+
+\subsection{Mean Glandular Dose (MGD) Formulation}
+
+The radiosensitive target tissue in the breast is the glandular epithelium (terminal ductal lobular units). Adipose tissue is relatively radioresistant. The primary dosimetric parameter is the \textbf{Mean Glandular Dose ($D_g$)}, defined as:
+\begin{equation}
+    D_g = K \cdot g \cdot c \cdot s
+\end{equation}
+where:
+\begin{itemize}[leftmargin=*]
+    \item $K$ is the entrance skin air kerma (ESAK) measured free-in-air without backscatter.
+    \item $g$ is the normalized glandular dose conversion factor, which depends on beam Half-Value Layer (HVL) and breast thickness for a reference breast with $50\%$ glandularity.
+    \item $c$ is the correction factor for breasts with glandularity differing from $50\%$.
+    \item $s$ is the spectral correction factor accounting for target-filter combination (Mo/Mo, Mo/Rh, W/Rh, W/Ag).
+\end{itemize}
+
+\subsection{Regulatory Limits: The Mammography Quality Standards Act (MQSA)}
+
+In the United States, the Mammography Quality Standards Act (MQSA) enforces national accreditation and technical standards:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Dose Constraint:} The Mean Glandular Dose ($D_g$) must not exceed \textbf{$3.0\,\text{mGy}$ ($0.3\,\text{rad}$)} per single view of a standardized $4.2\,\text{cm}$ thick compressed phantom ($50\%$ glandular, $50\%$ adipose).
+    \item \textbf{Clinical Practice Dose:} In modern digital systems (FFDM), the typical MGD per view ranges between \textbf{$1.2\text{ to }1.8\,\text{mGy}$}. For a standard four-view screening study (bilateral CC and MLO), the total cumulative glandular dose is approximately $4\text{--}6\,\text{mGy}$, equivalent to approximately 7 weeks of natural background radiation exposure.
+    \item \textbf{Quality Control Mandates:} Daily processor and detector flat-field checks, weekly phantom image scoring (requiring visualization of at least 4 fibers, 3 speck groups, and 3 masses on the standard ACR accreditation phantom), and semi-annual compression force verification.
+\end{itemize}
+
+\section{Artifacts, System Pitfalls, and Image Quality Optimization}
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{3.2cm}p{5.5cm}p{5.5cm}}
+\toprule
+\textbf{Artifact} & \textbf{Morphological Manifestation \& Cause} & \textbf{Correction \& Quality Strategy} \\
+\midrule
+\textbf{Detector Dead Pixels} & Sharp, linear white or dark streaks at fixed detector coordinates across consecutive patients. & Re-calibrate detector flat-field map; replace damaged detector module. \\
+\addlinespace
+\textbf{Deodorant / Powder Artifact} & Multiple tiny, high-density punctate densities simulating malignant microcalcifications in axilla or upper breast. & Pre-examination hygiene protocol: patients must avoid antiperspirants, talcum powders, and lotions on examination day. \\
+\addlinespace
+\textbf{Grid Cutoff / Lines} & Uniform horizontal or vertical lines across the image caused by grid motor failure or misalignment. & Calibrate moving grid oscillation drive; verify focal spot-to-grid alignment. \\
+\addlinespace
+\textbf{Motion Unsharpness} & Double contours of vessel margins; blurred microcalcifications. Caused by patient breathing or inadequate compression. & Re-instruct patient on breath-holding; ensure compression force $\ge 111\,\text{N}$; reduce exposure time. \\
+\addlinespace
+\textbf{Skin Fold / Wrinkle} & Dense curving bands of tissue overlapping the peripheral breast or inframammary fold. & Technologist must smooth out breast skin flat against paddle during incremental compression. \\
+\bottomrule
+\end{tabular}
+\caption{Common mammographic technical artifacts, etiologies, and corrective protocols.}
+\label{tab:artifacts}
+\end{figure}
+
+\section{Comparative Multi-Modality Matrix}
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{2.6cm}p{2.8cm}p{2.9cm}p{2.8cm}p{2.9cm}}
+\toprule
+\textbf{Parameter} & \textbf{2D Digital Mammography (FFDM)} & \textbf{3D Digital Tomosynthesis (DBT)} & \textbf{Automated Breast Ultrasound (ABUS)} & \textbf{Dynamic Contrast MRI} \\
+\midrule
+\textbf{Ionizing Radiation} & $1.2\text{--}1.8\,\text{mGy}$ per view & $1.5\text{--}2.2\,\text{mGy}$ per sweep & Zero ionizing radiation & Zero ionizing radiation \\
+\addlinespace
+\textbf{Physical Basis} & Low-energy projection X-ray ($24\text{--}32\,\text{kVp}$) & Multi-angle low-dose projection X-ray tomograms & High-frequency acoustic reflection ($10\text{--}15\,\text{MHz}$) & Proton RF relaxation with Gadolinium kinetics \\
+\addlinespace
+\textbf{Sensitivity (Dense)} & Reduced ($< 50\text{--}60\%$) & Moderate to High ($70\text{--}80\%$) & Moderate to High ($75\text{--}85\%$) & Highest ($> 90\text{--}95\%$) \\
+\addlinespace
+\textbf{Spatial Resolution} & Ultra-high ($50\text{--}85\,\mu\text{m}$); outstanding calcifications & High in-plane ($50\text{--}100\,\mu\text{m}$); $1\,\text{mm}$ slice thickness & Moderate ($0.3\text{--}0.5\,\text{mm}$); poor microcalcification resolution & Moderate ($0.8\text{--}1.0\,\text{mm}$ isotropic); poor for calcifications \\
+\addlinespace
+\textbf{Tissue Overlap} & High anatomical summation; masking in dense breasts & Minimal summation; resolves $1\,\text{mm}$ anatomical layers & No summation; volumetric coronal plane reformatting & No summation; multiplanar volumetric 3D reconstruction \\
+\addlinespace
+\textbf{Primary Role} & Baseline screening; microcalcification detection & Standard of care screening; invasive cancer detection & Supplemental screening in dense breasts (ACR C/D) & High-risk screening ($BRCA1/2$); staging; occult primary \\
+\bottomrule
+\end{tabular}
+\caption{Comprehensive comparative performance matrix of breast imaging modalities.}
+\label{tab:modality_comparison}
+\end{table}
+
+\section{Screening Guidelines, Artificial Intelligence, and Future Horizons}
+
+\subsection{Population Screening Guidelines Consensus}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{American College of Radiology (ACR) and Society of Breast Imaging (SBI):} Annual screening beginning at age 40 for average-risk women, continuing as long as the woman is in good health with a life expectancy $\ge 10$ years. High-risk women (lifetime risk $\ge 20\%$, $BRCA$ mutation carriers) begin annual screening mammography and supplemental contrast-enhanced breast MRI at age 30.
+    \item \textbf{United States Preventive Services Task Force (USPSTF, 2024 Update):} Biennial screening mammography for average-risk women aged 40 to 74 years.
+\end{itemize}
+
+\subsection{Artificial Intelligence and Deep Learning in Mammography}
+
+The application of deep convolutional neural networks (CNNs) has transformed mammographic interpretation from basic computer-aided detection (CAD) into robust diagnostic support:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Normal Triage:} AI algorithms evaluate screening studies, identifying definitively normal examinations to streamline radiologist workflow.
+    \item \textbf{Automated Breast Density Classification:} Machine learning algorithms provide objective, reproducible volumetric breast density measurements, eliminating inter-radiologist subjectivity in assigning ACR density categories A through D.
+    \item \textbf{Microcalcification and Mass Detection:} Advanced deep learning models achieve areas under the receiver operating characteristic curve (AUC $> 0.90\text{--}0.95$), matching or exceeding subspecialized breast imaging radiologists in detecting subtle invasive lobular carcinomas and early DCIS.
+\end{enumerate}
+
+\begin{thebibliography}{99}
+\bibitem{salomon1913} Salomon, A. (1913). Beiträge zur Pathologie und Klinik der Mammakarzinome. \textit{Archiv für Klinische Chirurgie}, 101, 573--668.
+\bibitem{leborgne1951} Leborgne, R. (1951). Diagnosis of tumors of the breast by simple roentgenography: calcifications in carcinomas. \textit{American Journal of Roentgenology}, 65(1), 1--11.
+\bibitem{egan1960} Egan, R. L. (1960). Experience with mammography in a tumor institution: evaluation of 1,000 studies. \textit{Radiology}, 75(6), 894--900.
+\bibitem{birads2013} D'Orsi, C. J., Sickles, E. A., Mendelson, E. B., \& Morris, E. A. (2013). \textit{ACR BI-RADS Atlas: Breast Imaging Reporting and Data System} (5th ed.). American College of Radiology.
+\bibitem{skaane2013} Skaane, P., Bandos, A. I., Gullien, R., Eben, E. B., Ekseth, U., Haakenaasen, U., ... \& Hofvind, S. (2013). Comparison of digital mammography alone and digital mammography plus tomosynthesis in a population-based screening program. \textit{Radiology}, 267(1), 47--56.
+\bibitem{ciatto2013} Ciatto, S., Houssami, N., Bernardi, D., Caumo, F., Pellegrini, M., Brunelli, S., ... \& Macaskill, P. (2013). Integration of 3D digital mammography with tomosynthesis for population breast-cancer screening (STORM): a prospective comparison study. \textit{The Lancet Oncology}, 14(7), 583--589.
+\bibitem{friedewald2014} Friedewald, S. M., Rafferty, E. A., Rose, S. L., Durand, M. A., Sexton, C. E., Inciardi, M. F., ... \& Conant, E. F. (2014). Breast cancer screening using tomosynthesis in combination with digital mammography. \textit{JAMA}, 311(24), 2499--2507.
+\bibitem{dance2000} Dance, D. R., Skinner, C. L., Young, K. C., Beckett, J. R., \& Tryggevang, C. J. (2000). Additional factors for the estimation of mean glandular dose using the UK mammography dosimetry protocol. \textit{Physics in Medicine \& Biology}, 45(11), 3225--3240.
+\bibitem{bushberg2020} Bushberg, J. T., Seibert, J. A., Leidholdt, E. M., \& Boone, J. M. (2020). \textit{The Essential Physics of Medical Imaging} (4th ed.). Wolters Kluwer.
+\bibitem{rodriguez2019} Rodriguez-Ruiz, A., Lång, K., Gubern-Merida, A., Broeders, M., Hendriks, J., Zanardo, M., ... \& Sechopoulos, I. (2019). Stand-alone artificial intelligence for breast cancer detection in mammography: Comparison with 101 radiologists. \textit{Journal of the National Cancer Institute}, 111(9), 916--922.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,529 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{top=1in, bottom=1in, left=1in, right=1in}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=teal!80!black,
+    citecolor=teal!80!black,
+    urlcolor=blue!70!black,
+    pdftitle={Positron Emission Tomography (PET): Nuclear Physics, Radiotracer Biochemistry, Clinical Indications, and Radiological Image Interpretation Framework},
+    pdfauthor={Chaman Singh Verma}
+}
+
+% Styled boxes for clinical pearls, radiation safety warnings, and physics concepts
+\newtcolorbox{clinicalpearl}[1][]{
+    colback=teal!5!white,
+    colframe=teal!75!black,
+    fonttitle=\bfseries\sffamily,
+    title={Clinical Pearl: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\newtcolorbox{radiationsafety}[1][]{
+    colback=red!5!white,
+    colframe=red!70!black,
+    fonttitle=\bfseries\sffamily,
+    title={Radiopharmaceutical \& Radiation Safety: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\newtcolorbox{physicsoverview}[1][]{
+    colback=blue!5!white,
+    colframe=blue!70!black,
+    fonttitle=\bfseries\sffamily,
+    title={Positron Physics \& Coincidence Concept: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\title{\textbf{\huge Positron Emission Tomography (PET):}\\[0.3em]
+\Large Nuclear Physics, Radiotracer Biochemistry,\\
+Clinical Indications, and Image Interpretation Framework}
+
+\author{\textbf{Chaman Singh Verma}\\[0.2em]
+\small Department of Medical Imaging and Computation\\
+\small \texttt{Reference Guide for Clinicians, Radiologists, and Students}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Positron Emission Tomography (PET) is the premier molecular and functional diagnostic imaging modality in contemporary oncology, cardiology, and neurology. Unlike anatomical modalities (radiography, CT, ultrasound, and MRI) that depict macroscopic structural morphology, PET visualizes and quantifies sub-nanomolar physiological and biochemical processes in vivo. By administering positron-emitting biomolecules—most prominently 2-deoxy-2-[$^{18}\text{F}$]fluoro-D-glucose ($^{18}\text{F}$-FDG)—and recording the coincident antiparallel $511\text{ keV}$ annihilation gamma photons produced when positrons encounter tissue electrons, PET creates quantitative, three-dimensional metabolic maps of human disease. This comprehensive article provides an exhaustive exploration of PET and hybrid PET/CT imaging. We formulate the underlying physics of beta-plus ($\beta^+$) radioactive decay, positron range, electron-positron annihilation, non-collinearity, electronic collimation, lines of response (LOR), and scintillation detection using silicon photomultipliers (SiPMs). We examine the physical advantages of Time-of-Flight (TOF) reconstruction and CT-based attenuation correction. We detail the molecular biochemistry of radiotracers, exploring the Warburg effect, somatostatin receptor targeting ($^{68}\text{Ga}$-DOTATATE), prostate-specific membrane antigen binding ($^{68}\text{Ga}$/$^{18}\text{F}$-PSMA), amyloid plaque imaging, and theranostic applications. We systematically classify clinical indications across staging, restaging, and therapy assessment. Finally, we establish an analytical reading framework detailing standardized uptake values ($\text{SUV}_{\max}$, $\text{SUV}_{\text{mean}}$), physiological biodistribution, structured response criteria (Deauville and PERCIST 1.1), diagnostic false positives/negatives, and radiation dosimetry.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% =========================================================================
+\section{Introduction and Historical Perspective}
+% =========================================================================
+
+Positron Emission Tomography represents the realization of antimatter physics in clinical medical diagnostics. The theoretical existence of the positron (the antimatter counterpart of the electron, possessing identical rest mass but a positive electrical charge) was predicted mathematically in 1928 by British theoretical physicist \textbf{Paul Dirac} through his relativistic wave equation of quantum mechanics. In 1932, American physicist \textbf{Carl Anderson} experimentally discovered the positron in cloud-chamber cosmic ray photographs, an achievement honored with the 1936 Nobel Prize in Physics.
+
+The concept of utilizing positron-emitting radionuclides for clinical localization originated in the early 1950s:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{William Sweet and Gordon Brownell} (1953) at Massachusetts General Hospital developed the first operational clinical coincidence detector device, utilizing opposing sodium iodide (NaI) detectors to localize brain tumors by recording annihilation coincidence pairs.
+    \item \textbf{David Kuhl and Roy Edwards} (1960s) pioneered emission computed tomography algorithms that laid the foundation for transaxial nuclear reconstruction.
+    \item \textbf{Michel Ter-Pogossian, Michael Phelps, and Edward Hoffman} (1974--1975) at Washington University in St. Louis built the first closed-ring transaxial PET scanner (PETT I through PETT III), establishing the geometric detector-ring architecture used in modern scanners.
+    \item \textbf{Al Wolf, Joanna Fowler, and Tatsuo Ido} (1976) at Brookhaven National Laboratory synthesized 2-deoxy-2-[$^{18}\text{F}$]fluoro-D-glucose ($^{18}\text{F}$-FDG), demonstrating that positron-labeled glucose analogues could map cerebral and myocardial glucose metabolism.
+    \item \textbf{David Townsend and Ronald Nutt} (late 1990s) developed the first combined **PET/CT scanner**, co-registering metabolic PET emissions with anatomical CT in a single gantry, named the 2000 Invention of the Year by \textit{TIME Magazine}.
+\end{itemize}
+
+Modern clinical PET is performed almost exclusively on hybrid **PET/CT** systems, and increasingly on hybrid **PET/MRI** platforms. Contemporary advances include digital solid-state silicon photomultipliers (SiPMs), Time-of-Flight (TOF) picosecond timing, and Total-Body PET scanners with 2-meter axial coverage, expanding molecular sensitivity down to picomolar concentrations.
+
+% =========================================================================
+\section{How PET Works: Nuclear Physics and Coincidence Detection}
+% =========================================================================
+
+\subsection{Positron ($\beta^+$) Radioactive Nuclear Decay}
+PET imaging relies on unstable, proton-rich radioisotopes. Within an unstable nucleus with an excess of positive charge, a nuclear proton undergoes transmutation into a neutron, an anti-electron (\textbf{positron}, denoted $\beta^+$ or $e^+$), and an electron neutrino ($\nu_e$):
+\begin{equation}
+    p \to n + \beta^+ + \nu_e + Q
+\end{equation}
+where $Q$ is the decay transition energy. The parent radionuclide decays to an isobaric daughter element with atomic number $Z-1$:
+\begin{equation}
+    ^{A}_{Z}X \to ^{A}_{Z-1}Y + \beta^+ + \nu_e + Q
+\end{equation}
+
+For positron decay to be physically possible, the decay energy $Q$ must exceed the threshold equivalent to the rest mass of two electrons:
+\begin{equation}
+    Q \ge 2 \, m_e c^2 = 2 \times 511\text{ keV} = 1.022\text{ MeV}
+\end{equation}
+The excess kinetic energy $Q - 1.022\text{ MeV}$ is shared between the ejected positron and the neutrino, giving the emitted positron a continuous energy spectrum characterized by a maximum kinetic energy ($E_{\max}$).
+
+\begin{table}[htbp]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{2.8cm}p{2.2cm}p{2cm}p{2.2cm}p{5.5cm}}
+\toprule
+\textbf{Radionuclide} & \textbf{Half-Life ($T_{1/2}$)} & \textbf{$E_{\max}$ (MeV)} & \textbf{Mean Range} & \textbf{Production Mechanism and Clinical Uses} \\
+\midrule
+\textbf{Carbon-11 ($^{11}\text{C}$)} & $20.4\text{ min}$ & $0.960\text{ MeV}$ & $1.1\text{ mm}$ & On-site cyclotron ($^{14}\text{N}(p,\alpha)^{11}\text{C}$); $^{11}\text{C}$-choline, $^{11}\text{C}$-methionine, PiB. \\
+\textbf{Fluorine-18 ($^{18}\text{F}$)} & $\mathbf{109.8\text{ min}}$ & $0.634\text{ MeV}$ & $\mathbf{0.6\text{ mm}}$ & Cyclotron ($^{18}\text{O}(p,n)^{18}\text{F}$); $^{18}\text{F}$-FDG oncology, $^{18}\text{F}$-PSMA, amyloid. \\
+\textbf{Gallium-68 ($^{68}\text{Ga}$)} & $67.7\text{ min}$ & $1.899\text{ MeV}$ & $2.4\text{ mm}$ & $^{68}\text{Ge}/^{68}\text{Ga}$ bench-top generator; $^{68}\text{Ga}$-DOTATATE (NETs), $^{68}\text{Ga}$-PSMA. \\
+\textbf{Nitrogen-13 ($^{13}\text{N}$)} & $9.97\text{ min}$ & $1.198\text{ MeV}$ & $1.5\text{ mm}$ & On-site cyclotron ($^{16}\text{O}(p,\alpha)^{13}\text{N}$); $^{13}\text{N}$-ammonia myocardial perfusion. \\
+\textbf{Oxygen-15 ($^{15}\text{O}$)} & $2.04\text{ min}$ & $1.732\text{ MeV}$ & $2.5\text{ mm}$ & On-site cyclotron ($^{14}\text{N}(d,n)^{15}\text{O}$); $^{15}\text{O}$-water cerebral/cardiac blood flow. \\
+\textbf{Rubidium-82 ($^{82}\text{Rb}$)} & $75\text{ seconds}$ & $3.381\text{ MeV}$ & $5.9\text{ mm}$ & $^{82}\text{Sr}/^{82}\text{Rb}$ generator; pharmacologic stress myocardial perfusion. \\
+\bottomrule
+\end{tabular}
+\caption{Physical properties of common positron-emitting radionuclides in clinical PET.}
+\label{tab:radionuclides}
+\end{table}
+
+\subsection{Positron Range, Electron Annihilation, and Acollinearity}
+Once ejected from the nucleus with initial kinetic energy, the positron cannot immediately annihilate. It must first slow down via hundreds of electrostatic Coulomb collisions with atomic electrons in surrounding tissue over a distance known as the \textbf{Positron Range} ($R_p$):
+\begin{itemize}
+    \item Radionuclides with low $E_{\max}$ (such as $^{18}\text{F}$, $E_{\max} = 0.63\text{ MeV}$) possess short mean ranges ($\approx 0.6\text{ mm}$), causing minimal spatial displacement.
+    \item Radionuclides with high $E_{\max}$ (such as $^{82}\text{Rb}$, $E_{\max} = 3.38\text{ MeV}$) travel several millimeters before annihilating, resulting in slight intrinsic blurring and lower spatial resolution.
+\end{itemize}
+
+Once thermalized to near-zero kinetic energy, the positron encounters an ambient electron ($e^-$). The two leptons briefly form a hydrogen-like bound state known as \textbf{Positronium}, which collapses within picoseconds:
+\begin{equation}
+    e^+ + e^- \to 2\gamma
+\end{equation}
+According to Einstein's mass-energy equivalence ($E = mc^2$), the rest masses of the electron ($511\text{ keV}$) and positron ($511\text{ keV}$) are converted into two high-energy electromagnetic gamma photons, each possessing precisely:
+\begin{equation}
+    E_\gamma = m_e c^2 = 511\text{ keV}
+\end{equation}
+
+To conserve linear momentum, the two $511\text{ keV}$ photons are emitted in almost exactly opposite directions ($180^\circ$).
+
+\begin{physicsoverview}[Acollinearity and the Fundamental Limit of PET Resolution]
+At the moment of annihilation, the positronium system is not completely at rest; it possesses residual thermal kinetic momentum ($p \ne 0$). To conserve total momentum, the two emitted $511\text{ keV}$ gamma photons deviate slightly from true $180^\circ$ collinearity, emitting at:
+\begin{equation}
+    \theta = 180^\circ \pm 0.25^\circ
+\end{equation}
+Across a clinical detector ring diameter $D$ (typically $80\text{--}90\text{ cm}$), this slight angular deviation ($\approx 0.5^\circ$ spread) introduces an unavoidable spatial positioning error ($\Delta x_{\text{acol}}$) at the center of the gantry:
+\begin{equation}
+    \Delta x_{\text{acol}} \approx 0.0022 \times D \approx 1.8\text{--}2.0\text{ mm}
+\end{equation}
+Along with positron range and detector crystal width, acollinearity imposes an intrinsic physical lower bound on the spatial resolution of whole-body clinical PET scanners of approximately $3.0\text{--}4.0\text{ mm}$.
+\end{physicsoverview}
+
+\subsection{Electronic Collimation and the Line of Response (LOR)}
+Unlike Single-Photon Emission Computed Tomography (SPECT) and gamma cameras, which use heavy lead collimators that discard over $99.9\%$ of emitted photons, PET utilizes \textbf{Electronic Collimation}.
+
+The patient is surrounded by a ring of scintillation detectors. When an annihilation occurs, the two $511\text{ keV}$ photons travel outward in opposite directions at the speed of light. Electronic coincidence timing circuits monitor all detector pairs simultaneously:
+\begin{itemize}
+    \item If two opposing detectors register a $511\text{ keV}$ photon within a tiny **Coincidence Timing Window** ($\Delta t$, typically $3\text{ to }5\text{ nanoseconds}$ in conventional PET, and down to $<400\text{ picoseconds}$ in modern digital Time-of-Flight systems), the system records a \textbf{Coincidence Event}.
+    \item The annihilation event is localized somewhere along the chord connecting the two detector crystals, termed the \textbf{Line of Response (LOR)}.
+\end{itemize}
+
+\subsubsection{Classification of Coincidence Events}
+The PET coincidence circuitry registers three categories of coincidence events (see Figure~\ref{fig:coincidence_types}):
+\begin{enumerate}
+    \item \textbf{True Coincidences}: Both $511\text{ keV}$ photons originate from the same annihilation event and exit the patient without undergoing scattering or attenuation. The LOR accurately reflects the point of origin.
+    \item \textbf{Scattered Coincidences}: One or both photons undergo Compton scattering in patient tissues prior to detection. The direction of the photon changes, deflecting the calculated LOR away from the actual annihilation site. Scattered coincidences add a diffuse background haze that reduces image contrast unless corrected.
+    \item \textbf{Random (Accidental) Coincidences}: Two independent nuclear annihilations occur almost simultaneously in different parts of the patient. One photon from each event is absorbed or misses the detectors, while the remaining two unrelated photons strike opposing detectors within the coincidence timing window $\Delta t$. The recorded LOR is false. The random coincidence rate ($R_{\text{random}}$) scales with the square of administered activity ($A^2$):
+    \begin{equation}
+        R_{\text{random}} = 2 \, \Delta t \cdot S_1 \cdot S_2
+    \end{equation}
+    where $S_1$ and $S_2$ are single-detector count rates.
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!70!black,arc=1mm,title=\sffamily Physical Coincidence Categories in PET]
+\small
+\begin{itemize}
+    \item \textbf{True}: 1 annihilation $\to$ 2 unscattered $511\text{ keV}$ photons $\to$ accurate LOR.
+    \item \textbf{Scattered}: 1 annihilation $\to$ 1 or 2 scattered photons $\to$ misplaced LOR.
+    \item \textbf{Random}: 2 separate annihilations $\to$ 2 unrelated photons $\to$ false LOR.
+\end{itemize}
+\end{tcolorbox}
+\caption{Types of coincidence events recorded by PET detector arrays.}
+\label{fig:coincidence_types}
+\end{figure}
+
+\subsection{Scintillation Detectors and Digital Silicon Photomultipliers (SiPMs)}
+PET detectors require high stopping power for energetic $511\text{ keV}$ gamma photons, fast scintillation decay times, and high light yield.
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Scintillator Crystals}: Modern PET scanners utilize dense, high-$Z$ inorganic scintillators, primarily **Lutetium Oxyorthosilicate (LSO:Ce)** or **Lutetium-Yttrium Oxyorthosilicate (LYSO:Ce)** ($Z_{\text{eff}} \approx 66$, density $7.1\text{ g/cm}^3$, decay time $\approx 40\text{ ns}$), which have superseded older Bismuth Germanate (BGO) crystals.
+    \item \textbf{Photodetectors}: 
+    \begin{itemize}
+        \item \textbf{Analog PET}: Blocks of scintillator crystals coupled to four vacuum Photomultiplier Tubes (PMTs) using Anger arithmetic to estimate the coordinates of light flashes.
+        \item \textbf{Digital PET}: Couples scintillator crystals directly to solid-state **Silicon Photomultipliers (SiPMs)** in a 1:1 ratio. SiPMs provide sub-nanosecond timing resolution, high energy resolution ($<10\%$), eliminate analog noise, and are impervious to magnetic fields (enabling integrated hybrid PET/MRI systems).
+    \end{itemize}
+\end{itemize}
+
+\subsection{Time-of-Flight (TOF) Reconstruction}
+Conventional PET knows only that an annihilation occurred somewhere along the LOR, requiring back-projection across the entire length of the chord.
+
+**Time-of-Flight (TOF) PET** measures the tiny arrival time difference ($\Delta t = t_2 - t_1$) between the two annihilation photons with picosecond precision ($\tau_{\text{TOF}} \approx 200\text{--}400\text{ ps}$). Because photons travel at the speed of light ($c$), the position ($x$) along the LOR relative to the midpoint is:
+\begin{equation}
+    \Delta x = \frac{c \cdot \Delta t}{2}
+\end{equation}
+A timing resolution of $\Delta t = 400\text{ ps}$ constrains the annihilation origin to a line segment of:
+\begin{equation}
+    \Delta x = \frac{3 \times 10^8\text{ m/s} \times 400 \times 10^{-12}\text{ s}}{2} = 6\text{ cm}
+\end{equation}
+While $6\text{ cm}$ is larger than image voxel size, restricting the projection to this segment reduces noise propagation during iterative reconstruction, boosting image Signal-to-Noise Ratio (SNR) by:
+\begin{equation}
+    \text{SNR}_{\text{gain}} \approx \sqrt{\frac{D}{\Delta x}}
+\end{equation}
+where $D$ is patient diameter (typically $30\text{--}40\text{ cm}$). This SNR gain is especially valuable in large, obese patients.
+
+\subsection{Image Corrections and Reconstruction}
+Before clinical images are reconstructed, raw sinograms undergo several physical corrections:
+\begin{enumerate}
+    \item \textbf{Attenuation Correction (AC)}: Unlike X-ray CT (where attenuation creates image contrast), in PET attenuation is an artifact. Because both $511\text{ keV}$ photons must exit the body without interaction to register a coincidence, the probability of detecting an annihilation along an LOR is:
+    \begin{equation}
+        P_{\text{survival}} = \exp\left(-\int_{\text{path}} \mu_{511}(s) \, ds\right)
+    \end{equation}
+    Notably, total attenuation along an LOR depends only on the total patient thickness along that path, regardless of where the source lies along the chord. Without attenuation correction, deep structures (such as the liver or mediastinum) appear falsely cold, while superficial tissues appear falsely hot. In modern PET/CT, the CT image is converted to a $511\text{ keV}$ linear attenuation coefficient map ($\mu$-map) using bilinear scaling, providing exact, noiseless attenuation correction.
+    \item \textbf{Scatter and Randoms Correction}: Randoms are estimated using delayed coincidence timing windows or singles counting; scatter is modeled using single-scatter simulation (SSS).
+    \item \textbf{Reconstruction Algorithms}: Clinical reconstruction utilizes **3D Ordered Subset Expectation Maximization (3D-OSEM)** combined with Point Spread Function (PSF / resolution recovery) modeling and time-of-flight information.
+\end{enumerate}
+
+% =========================================================================
+\section{What PET Detects: Biochemical Signatures and Radiotracers}
+% =========================================================================
+
+PET is a molecular imaging tool that detects picomolar to nanomolar concentrations ($10^{-11}\text{ to }10^{-9}\text{ mol/L}$) of targeted radiolabeled biomarkers.
+
+\subsection{The Warburg Effect and $^{18}\text{F}$-FDG Metabolic Trapping}
+Over $85\%$ of clinical PET examinations utilize **$^{18}\text{F}$-FDG** (2-deoxy-2-[$^{18}\text{F}$]fluoro-D-glucose), a glucose analogue in which the hydroxyl group at the C-2 position is replaced with a radioactive fluorine-18 atom.
+
+$^{18}\text{F}$-FDG targets the \textbf{Warburg Effect}: in 1924, Nobel laureate Otto Warburg discovered that cancer cells reprogram their energy metabolism to rely on high rates of glycolysis followed by lactic acid fermentation, even in the presence of abundant oxygen (\textbf{Aerobic Glycolysis}). To satisfy their high energy and anabolic demands, malignant cells upregulate cell-surface glucose transporters (predominantly **GLUT-1 and GLUT-3**) and overexpress **hexokinase II**.
+
+\subsubsection{The Molecular Mechanism of Metabolic Trapping}
+\begin{enumerate}
+    \item $^{18}\text{F}$-FDG is injected intravenously, circulates in plasma, and is transported into cells via GLUT-1 and GLUT-3 transporters in competition with blood glucose.
+    \item Once inside the cytoplasm, hexokinase phosphorylates $^{18}\text{F}$-FDG into **$^{18}\text{F}$-FDG-6-phosphate**.
+    \item Normal glucose-6-phosphate proceeds down the glycolytic pathway via phosphohexose isomerase. However, because $^{18}\text{F}$-FDG lacks the essential 2'-hydroxyl ($-\text{OH}$) group, it cannot be recognized or processed by phosphohexose isomerase.
+    \item Because $^{18}\text{F}$-FDG-6-phosphate is polar and negatively charged, it cannot cross the hydrophobic lipid bilayer to exit the cell.
+    \item Because malignant cells generally express low levels of glucose-6-phosphatase (the enzyme that dephosphorylates glucose-6-phosphate back into free glucose), $^{18}\text{F}$-FDG-6-phosphate remains trapped inside the tumor cell (\textbf{Metabolic Trapping}).
+\end{enumerate}
+The accumulated radioactive signal is directly proportional to the cell's rate of glucose consumption.
+
+\subsection{Targeted Radiopharmaceuticals Beyond Glucose}
+While $^{18}\text{F}$-FDG is the oncologic workhorse, several non-FDG radiotracers target distinct receptor and metabolic pathways (see Table~\ref{tab:radiotracers}).
+
+\begin{table}[htbp]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{3.5cm}p{3.2cm}p{3cm}p{5.5cm}}
+\toprule
+\textbf{Radiopharmaceutical} & \textbf{Biological Target} & \textbf{Clinical Domain} & \textbf{Primary Indications} \\
+\midrule
+\textbf{$^{13}\text{N}$-Ammonia}\newline \textbf{$^{82}\text{Rb}$-Chloride} & Myocardial Perfusion / $\text{Na}^+/\text{K}^+$-ATPase & Cardiology & Quantitative myocardial blood flow (in $\text{mL/min/g}$), coronary artery disease ischemia and reserve. \\
+\textbf{$^{18}\text{F}$-DOPA} & Aromatic L-amino acid decarboxylase (AADC) & Movement Disorders \& Oncology & Parkinson's disease dopaminergic degeneration; medullary thyroid cancer, congenital hyperinsulinism. \\
+\textbf{$^{18}\text{F}$-FDG} & GLUT-1 / Hexokinase (Glucose metabolism) & General Oncology, Infection, Cardiology & Staging/restaging of lymphoma, lung, colorectal, head/neck cancers; cardiac viability; fever of unknown origin. \\
+\textbf{$^{18}\text{F}$-Florbetapir}\newline \textbf{$^{18}\text{F}$-Florbetaben} & Fibrillar $\beta$-Amyloid Neuritic Plaques & Neurodegenerative Neurology & Early evaluation of cognitive impairment; differential diagnosis of Alzheimer's disease vs. FTD. \\
+\textbf{$^{18}\text{F}$-Flortaucipir} & Hyperphosphorylated Tau Neurofibrillary Tangles & Neurology & Staging tau pathology density and topographical distribution in Alzheimer's disease. \\
+\textbf{$^{68}\text{Ga}$-DOTATATE}\newline \textbf{$^{64}\text{Cu}$-DOTATATE} & Somatostatin Receptors (SSTR-2) & Neuroendocrine Tumors (NETs) & Carcinoid tumors, pheochromocytoma, paraganglioma, medullary thyroid cancer; selection for PRRT ($^{177}\text{Lu}$-DOTATATE). \\
+\textbf{$^{68}\text{Ga}$-PSMA-11}\newline \textbf{$^{18}\text{F}$-DCFPyL} & Prostate-Specific Membrane Antigen (PSMA) & Prostate Cancer & Initial high-risk staging, biochemical recurrence (PSA relapse $>0.2\text{ ng/mL}$), selection for $^{177}\text{Lu}$-PSMA therapy. \\
+\bottomrule
+\end{tabular}
+\caption{Major clinical radiotracers in PET molecular imaging.}
+\label{tab:radiotracers}
+\end{table}
+
+\subsection{The Concept of Theranostics in Molecular Imaging}
+PET plays a central role in **Theranostics** (combining **Thera**peutic and Diag**nostic** medicine). By attaching an identical molecular targeting vector to two different isotopes, clinicians first image the tumor using a positron-emitting diagnostic isotope (e.g., $^{68}\text{Ga}$), and if avid uptake confirms receptor expression, administer the therapeutic partner labeled with a beta-minus ($\beta^-$) or alpha ($\alpha$) emitting therapeutic isotope:
+\begin{itemize}
+    \item \textbf{Neuroendocrine Tumors}: Imaging with $^{68}\text{Ga}$-DOTATATE $\to$ Targeted radiotherapy with \textbf{$^{177}\text{Lu}$-DOTATATE} (Lutathera, delivers targeted beta radiation destroying SSTR-2 expressing tumor cells).
+    \item \textbf{Metastatic Prostate Cancer}: Imaging with $^{68}\text{Ga}$-PSMA-11 $\to$ Targeted treatment with \textbf{$^{177}\text{Lu}$-PSMA-617} (Pluvicto), prolonging survival in castration-resistant prostate cancer.
+\end{itemize}
+
+% =========================================================================
+\section{Why Doctors Order PET: Clinical Indications Across Specialties}
+% =========================================================================
+
+PET is ordered whenever sensitive, whole-body functional assessment is needed to alter clinical management. Table~\ref{tab:clinical_indications} catalogs primary clinical indications.
+
+\begin{longtable}{p{3.2cm}p{6cm}p{6cm}}
+\toprule
+\textbf{Clinical Discipline} & \textbf{Primary Indications} & \textbf{Diagnostic Value and Impact} \\
+\midrule
+\endfirsthead
+\toprule
+$\bullet$ Differentiates viable residual tumor from non-viable sterile necrotic scar/fibrosis. \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\textbf{Oncology: Staging \& Restaging} & 
+$\bullet$ Solitary Pulmonary Nodule ($>8\text{ mm}$)\newline
+$\bullet$ Non-Small Cell Lung Cancer (NSCLC)\newline
+$\bullet$ Hodgkin and Non-Hodgkin Lymphoma\newline
+$\bullet$ Colorectal carcinoma recurrence\newline
+$\bullet$ Melanoma, Esophageal, Head \& Neck\newline
+$\bullet$ Cervical, Ovarian, and Breast Cancers & 
+$\bullet$ Upstages or downstages clinical disease stage in $30\%\text{--}40\%$ of cancer patients, preventing futile surgeries.\newline
+$\bullet$ Highly sensitive for active inflammatory granulomas in cardiac sarcoidosis before heart block or sudden death occurs. \\
+\midrule
+\textbf{Oncology: Therapy Monitoring} & 
+$\bullet$ Interim chemotherapy response (Lugano)\newline
+$\bullet$ Neoadjuvant chemotherapy monitoring\newline
+$\bullet$ Immunotherapy response evaluation\newline
+$\bullet$ Radiation therapy target volume delineation & 
+$\bullet$ Metabolic response precedes anatomical tumor shrinkage by weeks to months, allowing early switch from ineffective chemotherapy.\newline
+$\bullet$ Interictal FDG demonstrates focal temporal or frontal cortical hypometabolism, pinpointing seizure foci for surgical resection. \\
+\midrule
+\textbf{Cardiology} & 
+$\bullet$ Myocardial viability before CABG\newline
+$\bullet$ Cardiac Sarcoidosis diagnosis/monitoring\newline
+$\bullet$ Prosthetic valve and cardiac device infection\newline
+$\bullet$ Quantitative absolute myocardial blood flow & 
+$\bullet$ Gold standard for identifying hibernating myocardium (perfusion/metabolism mismatch) that will regain contractile function.\newline
+$\bullet$ Visualizes inflammation across the entire aorta and branch vessels in large-vessel vasculitis. \\
+\midrule
+\textbf{Infection \& Inflammation} & 
+$\bullet$ Fever of Unknown Origin (FUO)\newline
+$\bullet$ Large-Vessel Vasculitis (Giant Cell, Takayasu)\newline
+$\bullet$ Chronic osteomyelitis and diabetic foot ulcers\newline
+$\bullet$ Vascular graft infections & 
+$\bullet$ Neutrophils, monocytes, and activated macrophages overexpress GLUT-1 transporters, producing intense FDG signal at occult infection sites.\newline
+$\bullet$ Whole-body survey (vertex of skull to mid-thigh) identifies distant osseous and visceral metastases occult on CT. \\
+\midrule
+\textbf{Neurology \& Psychiatry} & 
+$\bullet$ Dementia: Alzheimer's vs. Frontotemporal\newline
+$\bullet$ Amyloid and Tau targeted plaque burden\newline
+$\bullet$ Medically refractory focal epilepsy\newline
+$\bullet$ Parkinsonian syndromes vs. atypical tremors & 
+$\bullet$ Distinct hypometabolic patterns differentiate neurodegenerative diseases years before clinical diagnostic criteria are met.\newline
+\textbf{Clinical Discipline} & \textbf{Primary Indications} & \textbf{Diagnostic Value and Impact} \\
+\bottomrule
+\caption{Comprehensive breakdown of clinical PET/CT indications.}
+\label{tab:clinical_indications}
+\end{longtable}
+
+% =========================================================================
+\section{What Radiologists and Doctors Look for in PET Images}
+% =========================================================================
+
+Interpreting a PET examination requires synthesizing quantitative uptake metrics, physiological biodistribution patterns, CT co-registration, and clinical context.
+
+\subsection{Quantifying Radiotracer Uptake: The Standardized Uptake Value (SUV)}
+To convert raw radioactive count rates into reproducible biological values, PET utilizes the \textbf{Standardized Uptake Value (SUV)}, a normalized measure of tissue tracer uptake relative to total injected dose and patient body distribution:
+\begin{equation}
+    \text{SUV} = \frac{C_{\text{tissue}} \, (\text{kBq/mL})}{\text{Injected Activity (MBq)} / \text{Body Weight (kg)}}
+\end{equation}
+where $C_{\text{tissue}}$ is the measured radioactivity concentration in a volume of tissue (assuming $1\text{ mL tissue} \approx 1\text{ g}$). If the radiopharmaceutical distributed completely uniformly throughout the body, all tissues would demonstrate an $\text{SUV} = 1.0$.
+
+\subsubsection{Key SUV Metrics}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{$\text{SUV}_{\max}$}: The highest single-voxel SUV within a defined Region of Interest (ROI). It is the most widely reported metric in clinical practice because it is immune to partial-volume border-drawing variations. However, it is sensitive to statistical noise spikes.
+    \item \textbf{$\text{SUV}_{\text{mean}}$}: The average SUV across all voxels within a volumetric volume of interest (VOI). It better reflects aggregate tumor biology, but depends heavily on edge-contouring thresholds.
+    \item \textbf{$\text{SUV}_{\text{peak}}$}: The average SUV within a small fixed-size spherical volume ($1\text{ cm}^3$) centered around the highest uptake region, balancing noise resistance and reproducibility.
+    \item \textbf{SUL (SUV normalized to Lean Body Mass)}: Adipose tissue takes up minimal $^{18}\text{F}$-FDG. In obese patients, calculating SUV based on total body weight falsely overestimates metabolic uptake in non-fat organs. Normalizing to Lean Body Mass (SUL, utilized in PERCIST 1.1) eliminates this bias.
+\end{itemize}
+
+\subsection{Normal Physiological Biodistribution of $^{18}\text{F}$-FDG}
+Radiologists must understand normal tracer biodistribution to avoid mistaking physiological uptake for malignancy:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Brain Cortex}: Demonstrates intense, avidity ($\text{SUV} \approx 8\text{--}15$) because glucose is the primary metabolic fuel for neurons.
+    \item \textbf{Myocardium}: Highly variable uptake. In non-fasting states with insulin present, myocardium consumes glucose avidly ($\text{SUV} > 10$). Following a strict fast ($>6\text{ hours}$), myocardium switches to free fatty acid oxidation, suppressing physiological uptake.
+    \item \textbf{Renal Excretion Pathway}: $^{18}\text{F}$-FDG is cleared through glomerular filtration and is not reabsorbed by renal tubules. The renal collecting system, ureters, and urinary bladder demonstrate intense activity, which can obscure adjacent pelvic pathology.
+    \item \textbf{Liver and Spleen}: Normal liver displays homogeneous intermediate uptake ($\text{SUV}_{\text{mean}} \approx 2.0\text{--}3.0$) and serves as the clinical internal reference standard for tumor comparison. Spleen uptake is slightly lower than liver.
+    \item \textbf{Gastrointestinal Tract}: Variable, often patchy uptake throughout the stomach, small bowel, and colon due to smooth muscle peristalsis and active mucosal lymphoid tissue.
+    \item \textbf{Brown Adipose Tissue (BAT)}: Symmetrical, intense hypermetabolism within supraclavicular, axillary, and paraspinal fat depots triggered by cold-induced non-shivering thermogenesis mediated by uncoupling protein 1 (UCP-1).
+\end{itemize}
+
+\subsection{Patient Preparation Protocols}
+Strict patient preparation is essential to prevent false-positive and false-negative scans:
+\begin{enumerate}
+    \item \textbf{Fasting ($4\text{ to }6\text{ hours}$)}: Lowers circulating serum insulin and glucose levels.
+    \item \textbf{Serum Glucose Verification}: Fasting blood glucose must be confirmed prior to tracer injection (typically $\le 150\text{--}200\text{ mg/dL}$, or $<11\text{ mmol/L}$). Hyperglycemia causes competitive inhibition at GLUT-1 receptors, blunting tumor FDG uptake, while elevated insulin drives FDG into skeletal muscle and fat.
+    \item \textbf{Physical Rest}: The patient must remain seated or recumbent in a quiet, warm room without talking or chewing during the 60-minute uptake phase, avoiding muscle and brown-fat activation.
+    \item \textbf{Cardiac Suppression Protocol (for Sarcoidosis / Myocarditis)}: High-fat, very-low-carbohydrate meals for 24 hours followed by a prolonged 12-hour fast (and optional IV heparin bolus) to eliminate physiological myocardial glucose consumption, making inflammatory granulomas stand out.
+\end{enumerate}
+
+\subsection{Standardized Treatment Response Criteria}
+To evaluate therapeutic response in oncology, nuclear medicine relies on standardized scoring frameworks:
+
+\subsubsection{1. The Deauville 5-Point Scale (Lymphoma)}
+Evaluates interim and post-therapy metabolic response in Hodgkin and aggressive non-Hodgkin lymphoma relative to internal reference tissues:
+\begin{itemize}
+    \item \textbf{Score 1}: No uptake above background.
+    \item \textbf{Score 2}: Uptake $\le$ Mediastinal Blood Pool.
+    \item \textbf{Score 3}: Uptake $>$ Mediastinal Blood Pool, but $\le$ Normal Liver.
+    \item \textbf{Score 4}: Uptake moderately higher than Normal Liver.
+    \item \textbf{Score 5}: Uptake markedly higher than Liver ($\ge 2\times$) and/or new lesions.
+\end{itemize}
+\emph{Clinical interpretation:} Scores 1, 2, and 3 represent a \textbf{Complete Metabolic Response (CMR)}, while Scores 4 and 5 represent residual active or progressive disease.
+
+\subsubsection{2. PERCIST 1.1 (Solid Tumors)}
+The **PET Response Criteria in Solid Tumors (PERCIST)** evaluates changes in $\text{SUL}_{\text{peak}}$ across serial scans:
+\begin{itemize}
+    \item \textbf{Complete Metabolic Response (CMR)}: Complete resolution of all metabolic tumor uptake ($\text{SUL} < \text{liver}$).
+    \item \textbf{Partial Metabolic Response (PMR)}: A $\ge 30\%$ decrease in $\text{SUL}_{\text{peak}}$ and at least $0.8\text{ unit}$ drop.
+    \item \textbf{Progressive Metabolic Disease (PMD)}: A $\ge 30\%$ increase in $\text{SUL}_{\text{peak}}$, or development of new metabolic lesions.
+    \item \textbf{Stable Metabolic Disease (SMD)}: Less than $30\%$ increase or decrease in $\text{SUL}_{\text{peak}}$.
+\end{itemize}
+
+\subsection{Diagnostic Pitfalls: False Positives and False Negatives}
+\begin{clinicalpearl}[Recognizing Diagnostic PET Pitfalls]
+\textbf{False-Positive FDG Uptake (Metabolically Active Non-Malignancies):}
+$\bullet$ Active infections (abscesses, active pulmonary tuberculosis, fungal histoplasmosis).
+$\bullet$ Acute inflammatory processes (radiation pneumonitis, sarcoidosis, healing surgical incisions).
+$\bullet$ Iatrogenic causes: recent G-CSF bone marrow stimulation (diffuse skeletal uptake), brown fat activation.
+
+\textbf{False-Negative FDG Uptake (Malignancies with Low Glycolytic Avidity):}
+$\bullet$ Well-differentiated neuroendocrine tumors (carcinoids; require $^{68}\text{Ga}$-DOTATATE).
+$\bullet$ Low-grade adenocarcinoma in situ (formerly BAC) and lepidic adenocarcinoma of the lung.
+$\bullet$ Mucinous adenocarcinomas (hypocellular with abundant extracellular mucin).
+$\bullet$ Clear cell renal cell carcinoma and low-grade prostate adenocarcinoma (require PSMA PET).
+$\bullet$ Sub-centimeter lesions ($<5\text{--}6\text{ mm}$) obscured by partial volume averaging.
+\end{clinicalpearl}
+
+% =========================================================================
+\section{Radiation Dosimetry and Patient Safety Protocols}
+% =========================================================================
+
+PET/CT involves radiation exposure from two distinct sources: the injected radiopharmaceutical (internal emission source) and the CT examination (external transmission source).
+
+\subsection{Dosimetric Parameters in PET/CT}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Radiopharmaceutical Effective Dose}: For $^{18}\text{F}$-FDG, the standardized adult effective dose coefficient is approximately $0.019\text{ mSv/MBq}$. A standard diagnostic injection of $370\text{ MBq}$ ($10\text{ mCi}$) delivers an effective dose of:
+    \begin{equation}
+        E_{\text{FDG}} \approx 370\text{ MBq} \times 0.019\text{ mSv/MBq} \approx 7.0\text{ mSv}
+    \end{equation}
+    \item \textbf{Critical Target Organ}: The organ receiving the highest absorbed radiation dose from $^{18}\text{F}$-FDG is the \textbf{urinary bladder wall} ($\approx 0.13\text{ mGy/MBq}$, or $\approx 45\text{--}50\text{ mGy}$ per study). This dose is mitigated by hydrating the patient before the scan and instructing frequent bladder voiding immediately post-acquisition.
+    \item \textbf{CT Component Dose}: Varies based on clinical protocol:
+    \begin{itemize}
+        \item Low-dose CT for attenuation correction and anatomical localization: $\approx 2\text{--}4\text{ mSv}$.
+        \item Full diagnostic contrast-enhanced CT: $\approx 8\text{--}14\text{ mSv}$.
+    \end{itemize}
+    \item \textbf{Total PET/CT Examination Dose}: Typically ranges between \textbf{$10\text{ and }18\text{ mSv}$}.
+\end{itemize}
+
+\subsection{Radiation Safety Considerations for Staff and Contacts}
+Because $^{18}\text{F}$ has a physical half-life of $109.8\text{ minutes}$ ($\approx 1.83\text{ hours}$):
+\begin{itemize}
+    \item After 10 half-lives ($\approx 18\text{ hours}$), over $99.9\%$ of injected radioactivity has physically decayed away.
+    \item Patients are advised to maintain distance from pregnant women and infants for 12 to 24 hours following the injection.
+    \item Pregnancy is a relative contraindication; PET/CT is avoided unless the oncologic benefit to the mother outweighs the small radiation risk to the fetus ($\approx 5\text{--}10\text{ mGy}$).
+    \item Breastfeeding mothers should express and discard breast milk for 4 to 12 hours after $^{18}\text{F}$-FDG administration.
+\end{itemize}
+
+% =========================================================================
+\section{Comparative Synthesis: PET vs. CT vs. MRI vs. Ultrasound}
+% =========================================================================
+
+Selecting the appropriate diagnostic imaging modality requires balancing molecular sensitivity, anatomical spatial resolution, radiation dose, and scan times. Table~\ref{tab:modality_comparison} provides a comprehensive comparison across all five major clinical imaging modalities.
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{2.2cm}p{3.1cm}p{3.1cm}p{3.1cm}p{3.1cm}}
+\toprule
+\textbf{Parameter} & \textbf{Positron Emission (PET)} & \textbf{Computed Tomography} & \textbf{Magnetic Resonance (MRI)} & \textbf{Ultrasound (US)} \\
+\midrule
+\textbf{Ionizing Radiation} & Present ($10\text{--}18\text{ mSv}$ for combined PET/CT). & Present ($2\text{--}15\text{ mSv}$ per exam). & \textbf{Zero} (completely non-ionizing). & \textbf{Zero} (completely non-ionizing). \\
+\textbf{Primary Role} & \textbf{Molecular / Metabolic} biochemistry and physiology. & \textbf{Structural morphology} and vascular anatomy. & High-contrast soft-tissue and micro-architecture. & Bedside dynamic anatomical and Doppler flow. \\
+\textbf{Molecular Sensitivity} & \textbf{Unmatched} ($10^{-11}\text{--}10^{-9}\text{ mol/L}$, picomolar). & Low ($>10^{-3}\text{ mol/L}$, millimolar). & Intermediate ($10^{-5}\text{--}10^{-3}\text{ mol/L}$). & None (except microbubble CEUS). \\
+\textbf{Physical Basis} & Coincident $511\text{ keV}$ annihilation $\gamma$-photons from $\beta^+$ decay. & Differential attenuation of ionizing X-ray photons. & Radiofrequency excitation of $^1\text{H}$ protons in $B_0$. & High-frequency mechanical acoustic waves ($2\text{--}18\text{ MHz}$). \\
+\textbf{Scan Acquisition} & $15\text{--}25\text{ min}$ (plus $60\text{ min}$ uptake wait). & \textbf{Seconds} (full torso in a single breath-hold). & $20\text{--}60\text{ minutes}$ across multiple sequences. & $10\text{--}30\text{ minutes}$ real-time dynamic examination. \\
+\textbf{Spatial Resolution} & Moderate/Low ($3.0\text{--}4.0\text{ mm}$). & \textbf{High} ($0.3\text{--}0.5\text{ mm}$ isotropic voxels). & Moderate ($0.5\text{--}1.0\text{ mm}$). & Variable ($0.1\text{--}0.5\text{ mm}$ superficial axial). \\
+\textbf{Emergency Role} & Rare in acute trauma. & \textbf{Primary workhorse} (trauma, stroke, acute abdomen). & Hyperacute stroke, cord compression, ligament tears. & Bedside POCUS (trauma FAST, DVT, cardiac arrest). \\
+\bottomrule
+\end{tabular}
+\caption{Cross-modality comparison between PET, CT, MRI, and Ultrasound.}
+\label{tab:modality_comparison}
+\end{table}
+
+% =========================================================================
+\section{Conclusion and Future Frontiers}
+% =========================================================================
+
+PET is advancing from static regional snapshots into dynamic, whole-body total-organ molecular profiling:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Total-Body PET Systems (e.g., uEXPLORER)}: Features axial detector coverage of up to $200\text{ cm}$ (encompassing the entire patient from head to toe within a single detector bore). It boosts photon collection sensitivity by a factor of 40, enabling whole-body diagnostic scans in 30 seconds, or imaging at 40-fold lower radiation doses ($<0.5\text{ mSv}$), permitting safe longitudinal pediatric and cellular tracking studies.
+    \item \textbf{Sub-100 Picosecond Time-of-Flight}: Next-generation semiconductor materials (perovskite and bismuth halide scintillators coupled to digital SiPMs) aiming for $<100\text{ ps}$ TOF timing resolution, which will enable direct voxel localization without back-projection.
+    \item \textbf{Immuno-PET}: Coupling long-lived positron emitters (such as Zirconium-89, $^{89}\text{Zr}$, $T_{1/2} = 78.4\text{ hours}$) to monoclonal antibodies (e.g., anti-PD-1, anti-HER2) to visualize targeted drug delivery and monitor immunotherapy response in vivo.
+    \item \textbf{Artificial Intelligence for Ultra-Low-Dose PET}: Deep convolutional networks reconstructing diagnostic-quality PET images from acquisitions performed with only $5\%\text{--}10\%$ of standard tracer dose.
+\end{itemize}
+
+% =========================================================================
+\section*{References}
+\addcontentsline{toc}{section}{References}
+% =========================================================================
+
+\begin{enumerate}[label={[\arabic*]},leftmargin=*]
+    \item Bushberg, J. T., Seibert, J. A., Leidholdt, E. M., \& Boone, J. M. (2020). \textit{The Essential Physics of Medical Imaging} (4th ed.). Wolters Kluwer.
+    \item Phelps, M. E. (2006). \textit{PET: Physics, Instrumentation, and Scanners}. Springer.
+    \item Townsend, D. W. (2008). Dual-modality imaging: combining anatomy and function. \textit{Journal of Nuclear Medicine}, 49(1), 1--4.
+    \item Boellaard, R., Delgado-Bolton, R., Oyen, W. J., et al. (2015). FDG PET/CT: EANM procedure guidelines for tumour imaging: version 2.0. \textit{European Journal of Nuclear Medicine and Molecular Imaging}, 42(2), 328--354.
+    \item Wahl, R. L., Jacene, H., Kasamon, Y., \& Lodge, M. A. (2009). From RECIST to PERCIST: Evolving Considerations for PET response criteria in solid tumors. \textit{Journal of Nuclear Medicine}, 50(Suppl 1), 122S--150S.
+    \item Cheson, B. D., Fisher, R. I., Barrington, S. F., et al. (2014). Recommendations for initial evaluation, staging, and response assessment of Hodgkin and non-Hodgkin lymphoma: the Lugano classification. \textit{Journal of Clinical Oncology}, 32(27), 3059--3068.
+    \item Warburg, O. (1956). On the origin of cancer cells. \textit{Science}, 123(3191), 309--314.
+    \item Cherry, S. R., Jones, T., Karp, J. S., et al. (2018). Total-body PET: maximizing sensitivity for clinical research and patient care. \textit{Journal of Nuclear Medicine}, 59(1), 3--12.
+    \item Hofman, M. S., Emmett, L., Sandhu, S., et al. (2021). [$^{177}\text{Lu}$]Lu-PSMA-617 versus cabazitaxel in patients with metastatic castration-resistant prostate cancer (TheraP): a randomised, open-label, phase 2 trial. \textit{The Lancet}, 397(10276), 797--804.
+    \item International Commission on Radiological Protection (ICRP). (2008). Radiation Dose to Patients from Radiopharmaceuticals. ICRP Publication 106. \textit{Annals of the ICRP}, 38(1-2).
+\end{enumerate}
+
+\end{document}

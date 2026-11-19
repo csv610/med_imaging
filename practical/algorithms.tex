@@ -1,0 +1,346 @@
+\chapter{Diagnostic Imaging Algorithms}
+
+\section*{Patient focus}
+When you arrive at hospital with a symptom like chest pain or a suspected stroke, your doctor follows a structured plan to decide which tests to order and in what order. These plans are called diagnostic algorithms. They are designed to answer the right question as quickly and safely as possible, avoiding unnecessary tests while ensuring nothing critical is missed. The algorithms in this chapter show the reasoning behind common imaging decisions in emergency and outpatient settings.
+
+\section*{Imaging focus}
+Diagnostic imaging algorithms are evidence-based decision pathways that guide modality selection, sequencing, and escalation. They integrate clinical probability, pre-test risk, patient factors (renal function, pregnancy, contraindications), and resource availability. These algorithms are educational summaries---always follow your institution's local protocols and current society guidelines.
+\label{ch:ch99_algorithms}
+
+\section{Principles of Algorithm Design}
+A safe imaging algorithm must account for:
+\begin{enumerate}
+    \item \textbf{Clinical question}---what specific diagnosis are we ruling in or out?
+    \item \textbf{Urgency}---is this a time-critical emergency (stroke, PE, aortic dissection)?
+    \item \textbf{Pre-test probability}---clinical scoring systems (Wells, PERC, HEART) guide initial pathway
+    \item \textbf{Contraindications}---renal function, allergy, pregnancy, implants
+    \item \textbf{Prior studies}---can comparison with previous imaging answer the question?
+    \item \textbf{Expected action}---will the result change management?
+\end{enumerate}
+
+\clearpage
+
+% ========================================================================
+\section{Algorithm 1: Acute Chest Pain}
+% ========================================================================
+
+The emergency assessment of acute chest pain requires rapid risk stratification to differentiate life-threatening causes (PE, aortic dissection, ACS) from benign causes.
+
+\subsection{Step 1: Initial Assessment}
+\begin{itemize}
+    \item ECG within 10 minutes
+    \item Troponin at presentation and at 3 hours (high-sensitivity assay)
+    \item Vital signs, oxygen saturation, clinical examination
+\end{itemize}
+
+\subsection{Step 2: Risk Stratification}
+
+\textbf{For pulmonary embolism:}
+\begin{itemize}
+    \item Estimate clinical probability with a validated pathway. PERC is for patients already judged to have a very low clinical probability; if every PERC criterion is negative, no further PE testing is needed.
+    \item For low or intermediate probability, use a validated D-dimer pathway, including an age-adjusted threshold or YEARS when appropriate. A negative result below the pathway-specific threshold can avoid imaging.
+    \item For high clinical probability, proceed to diagnostic imaging; a D-dimer result should not be used alone to rule out PE.
+    \item Choose CTPA or an appropriate alternative, such as V/Q imaging, based on the clinical question, pregnancy, contrast considerations, prior imaging, and local protocol.
+\end{itemize}
+
+\textbf{For acute coronary syndrome:}
+\begin{itemize}
+    \item Use an institutionally validated high-sensitivity troponin pathway with ECG and clinical assessment; HEART score alone does not determine disposition.
+    \item Further assessment may include coronary CT, functional testing, or invasive angiography according to risk and clinical findings.
+\end{itemize}
+
+\textbf{For aortic dissection:}
+\begin{itemize}
+    \item If clinical suspicion (tearing pain, BP differential, widened mediastinum)---CTA aorta immediately
+    \item Do not delay for laboratory results
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\caption{Chest pain imaging pathway summary}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Suspected diagnosis} & \textbf{First-line imaging} & \textbf{Escalation} \\
+\hline
+Acute coronary syndrome & Serial troponins, ECG & CT coronary angiography or invasive angiography \\
+\hline
+Aortic dissection & CTA aorta (non-gated OK) & TEE if patient unstable \\
+\hline
+Pericarditis & ECG, troponin & Echo for effusion \\
+\hline
+Pneumothorax & CXR (erect) & CT if occult suspected \\
+\hline
+Pulmonary embolism & CTA pulmonary arteries & V/Q scan if CTA inconclusive \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{pearlbox}[Critical principle]
+Prioritize time-critical diagnoses while evaluating the full differential in parallel. The appropriate tests depend on presentation and pretest probability; a single imaging pathway cannot rule out every dangerous cause of chest pain.
+\end{pearlbox}
+
+\clearpage
+
+% ========================================================================
+\section{Algorithm 2: Suspected Stroke}
+% ========================================================================
+
+Time is brain. The stroke imaging pathway is designed to differentiate ischaemic from haemorrhagic stroke and identify patients suitable for thrombolysis or thrombectomy.
+
+\subsection{Step 1: Non-Contrast CT (NCCT)---Immediate}
+\begin{itemize}
+    \item Perform within 20 minutes of arrival
+    \item Identify intracranial haemorrhage and assess for extensive established ischemic injury; a normal CT does not exclude early ischemic stroke.
+    \item Early ischaemic signs: loss of grey--white differentiation, sulcal effacement, hyperdense vessel sign
+    \item If NCCT shows haemorrhage---stop, manage as haemorrhagic stroke
+\end{itemize}
+
+\subsection{Step 2: Reperfusion Eligibility and Vascular Imaging}
+\begin{itemize}
+    \item Determine IV thrombolysis eligibility from the clinical assessment, time window, NCCT, and relevant contraindications. In the usual window, do not delay eligible treatment for CTA, perfusion imaging, or MRI.
+    \item Obtain CTA or MRA promptly when large-vessel occlusion is suspected and thrombectomy is being considered; imaging should support transfer and treatment without avoidable delay.
+    \item Selected patients may be considered for thrombectomy up to 24 hours from last known well using current clinical and imaging selection criteria. Advanced perfusion imaging is not mandatory in every pathway.
+\end{itemize}
+
+\subsection{Step 3: CT Perfusion (CTP)---If Extended Window or Thrombectomy Consideration}
+\begin{itemize}
+    \item Maps cerebral blood flow (CBF), cerebral blood volume (CBV), and time to maximum (T$_{\text{max}}$)
+    \item Automated perfusion maps estimate regions of reduced flow and delayed arrival; values depend on software, acquisition, and validated selection criteria.
+    \item Common trial-derived thresholds include relative CBF $<30\%$ for estimated core and T$_{\max}>6$ seconds for delayed perfusion, but these are not direct measurements of irreversibility or guaranteed tissue salvage.
+    \item Interpret perfusion alongside NCCT/MRI, CTA/MRA, time from last known well, clinical deficit, and the applicable thrombectomy criteria.
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\caption{Stroke imaging pathway}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Time from onset} & \textbf{Imaging} & \textbf{Decision} \\
+\hline
+$4.5$--24 hours & NCCT plus CTA/MRA; advanced imaging as required by selection pathway & Decisions follow current IV thrombolysis and thrombectomy eligibility criteria \\
+\hline
+$<4.5$ hours & Immediate NCCT; CTA when LVO assessment is indicated & IV thrombolysis for eligible patients; do not delay for additional imaging \\
+\hline
+$>24$ hours & Imaging selected to answer the clinical question & Individualized specialist assessment; this table is not a treatment eligibility rule \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{pearlbox}[NCCT first]
+Obtain brain imaging urgently. Excluding haemorrhage is necessary but not sufficient for thrombolysis: a qualified stroke team must assess the deficit, timing, contraindications, and applicable treatment criteria. Avoid delaying eligible IV thrombolysis for additional multimodal imaging.
+\end{pearlbox}
+
+\clearpage
+
+% ========================================================================
+\section{Algorithm 3: Incidental Lung Nodule}
+% ========================================================================
+
+Pulmonary nodule management depends on nodule type, size, growth, morphology, and patient risk. Fleischner recommendations apply to incidentally detected nodules in adults, not to lung cancer screening examinations; use Lung-RADS for screening. The Fleischner guidance generally excludes patients younger than 35 years, immunocompromised patients, and patients with known cancer.
+
+\subsection{Step 1: Characterise the Nodule}
+\begin{itemize}
+    \item \textbf{Solid}---uniform soft tissue density
+    \item \textbf{Subsolid}---part-solid or ground-glass opacity (higher malignancy risk for size)
+    \item \textbf{Calcification}---benign pattern (central, lamellated, popcorn) if $>4$ mm
+\end{itemize}
+
+\subsection{Step 2: Apply the Appropriate Guideline}
+For a single incidental solid nodule, the simplified Fleischner Society 2017 pathway is:
+
+\begin{table}[h]
+\centering
+\caption{Fleischner Society 2017 recommendations (single solid nodule)}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Mean nodule diameter} & \textbf{Lower risk} & \textbf{Higher risk} \\
+\hline
+6--8 mm & CT at 6--12 months; consider CT at 18--24 months & CT at 6--12 months and CT at 18--24 months \\
+\hline
+$\geq8$ mm & Consider CT at about 3 months, PET/CT, or tissue sampling & Consider CT at about 3 months, PET/CT, or tissue sampling \\
+\hline
+$<6$ mm & No routine follow-up & Optional CT at 12 months \\
+\hline
+\end{tabular}
+\end{table}
+
+Risk assessment includes smoking history and other patient factors as well as nodule features. The precise choice among surveillance, PET/CT, and biopsy is individualized; prior malignancy may place the patient outside the intended Fleischner population.
+
+\subsection{Step 3: For Part-Solid and Ground-Glass Nodules}
+\begin{itemize}
+    \item Single part-solid nodule $<6$ mm---generally no routine follow-up.
+    \item Persistent part-solid nodule $\geq6$ mm---CT at 3--6 months; if the solid component remains $<6$ mm, annual CT for 5 years is generally recommended. Larger or growing solid components need individualized evaluation.
+    \item Single pure ground-glass nodule $<6$ mm---generally no routine follow-up.
+    \item Persistent pure ground-glass nodule $\geq6$ mm---CT at 6--12 months, then every 2 years until 5 years.
+\end{itemize}
+
+\begin{pearlbox}[Size matters]
+Do not infer benignity or malignancy from size alone. For guideline-based measurement, use thin-section CT and the specified method (commonly the mean of long- and short-axis diameters or validated volumetry); compare with prior studies using comparable technique. A nodule above a size threshold prompts risk-based evaluation, not automatic biopsy.
+\end{pearlbox}
+
+\clearpage
+
+% ========================================================================
+\section{Algorithm 4: Suspected Appendicitis}
+% ========================================================================
+
+The imaging pathway for suspected appendicitis depends on age, sex, and clinical probability.
+
+\subsection{Step 1: Clinical Assessment}
+\begin{itemize}
+    \item Alvarado score or Appendicitis Inflammatory Response (AIR) score
+    \item Low probability ($<20\%$)---observe, repeat examination, consider alternative diagnoses
+    \item Moderate probability---imaging is generally appropriate, selected by age, pregnancy, and local pathway.
+    \item High probability ($>70\%$)---surgical consultation, consider direct operative management or imaging confirmation
+\end{itemize}
+
+\subsection{Step 2: Imaging Selection}
+
+\begin{table}[h]
+\centering
+\caption{Imaging pathway for suspected appendicitis}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Patient group} & \textbf{First-line imaging} \\
+\hline
+Adults (high probability) & Consider surgical consultation without imaging \\
+\hline
+Adults (moderate probability) & CT abdomen/pelvis with IV contrast \\
+\hline
+Children and young adults & Ultrasound abdomen (non-compressible appendix $>6$ mm) \\
+\hline
+Elderly / equivocal & CT abdomen/pelvis with IV and oral contrast \\
+\hline
+Pregnant women & Ultrasound, then MRI if inconclusive (no radiation) \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Step 3: Interpretation}
+\begin{itemize}
+    \item \textbf{Positive CT}---interpret appendiceal enlargement together with wall and periappendiceal inflammatory findings; diameter alone is not diagnostic. Surgical management is based on the full clinical assessment.
+    \item \textbf{Equivocal CT}---appendix 6--8 mm without secondary signs $\rightarrow$ repeat CT in 12--24 hours or clinical follow-up
+    \item \textbf{Negative CT}---normal appendix, no secondary signs $\rightarrow$ consider alternative diagnoses
+\end{itemize}
+
+\begin{pearlbox}[Never forget]
+A confidently visualized normal appendix with no secondary inflammatory signs makes appendicitis less likely. If the appendix is not seen, the examination is equivocal, or clinical suspicion remains high, further assessment or follow-up may be needed.
+\end{pearlbox}
+
+\clearpage
+
+% ========================================================================
+\section{Algorithm 5: Thyroid Nodule}
+% ========================================================================
+
+Thyroid nodules are extremely common. The imaging pathway uses ultrasound risk stratification to determine which nodules require fine-needle aspiration (FNA).
+
+\subsection{Step 1: Ultrasound and TI-RADS Classification}
+The ACR TI-RADS system scores five ultrasound features:
+\begin{enumerate}
+    \item \textbf{Composition}---solid, mostly solid, cystic, spongiform
+    \item \textbf{Echogenicity}---hyperechoic, isoechoic, hypoechoic, very hypoechoic
+    \item \textbf{Shape}---wider-than-tall or taller-than-wide
+    \item \textbf{Margin}---smooth, ill-defined, lobulated, extrathyroidal extension
+    \item \textbf{Echogenic foci}---none, macrocalcifications, rim calcifications, microcalcifications
+\end{enumerate}
+
+\begin{table}[h]
+\centering
+\caption{ACR TI-RADS and FNA recommendations}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{TI-RADS} & \textbf{Risk} & \textbf{FNA threshold} \\
+\hline
+TR1 & Benign & No FNA \\
+\hline
+TR2 & Not suspicious & No FNA \\
+\hline
+TR3 & Mildly suspicious & $\geq 2.5$ cm \\
+\hline
+TR4 & Moderately suspicious & $\geq 1.5$ cm \\
+\hline
+TR5 & Highly suspicious & $\geq 1.0$ cm \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Step 2: FNA and Cytology}
+\begin{itemize}
+    \item Ultrasound-guided FNA for nodules meeting size thresholds
+    \item Result reported using Bethesda system (I--VI)
+    \item Bethesda VI (malignant)---total thyroidectomy
+    \item Bethesda V (suspicious for malignancy)---lobectomy or repeat FNA
+    \item Bethesda III--IV---molecular testing or diagnostic lobectomy
+    \item Bethesda I---repeat FNA or observation
+    \item Bethesda II (benign)---surveillance ultrasound at 12--24 months
+\end{itemize}
+
+\begin{pearlbox}[Taller-than-wide]
+A thyroid nodule that is taller than it is wide (anteroposterior dimension $>$ transverse dimension) on axial ultrasound is highly suspicious for malignancy, regardless of size. This single feature changes the TI-RADS score significantly.
+\end{pearlbox}
+
+\clearpage
+
+% ========================================================================
+\section{Algorithm 6: Suspected DVT}
+% ========================================================================
+
+Deep vein thrombosis (DVT) is a potentially life-threatening condition due to the risk of pulmonary embolism. The imaging pathway combines clinical probability scoring with targeted imaging.
+
+\subsection{Step 1: Clinical Probability (Wells Score for DVT)}
+\begin{itemize}
+    \item Active cancer (+1), paralysed limb (+1), bedridden >3 days or surgery within 12 weeks (+1)
+    \item Entire leg swollen (+1), calf swelling >3 cm (+1), pitting oedema (+1)
+    \item Collateral superficial veins (+1), DVT history (+1)
+    \item Alternative diagnosis at least as likely as DVT ($-2$)
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\caption{Wells score and DVT pathway}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Wells score} & \textbf{Next step} \\
+\hline
+1--2 (moderate probability) & D-dimer; if negative, DVT excluded \\
+\hline
+$\leq 0$ (low probability) & D-dimer; if negative, DVT excluded \\
+\hline
+$\geq 3$ (high probability) & Compression ultrasound directly \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Step 2: Compression Ultrasound}
+\begin{itemize}
+    \item Veins that fully compress at the examined sites make proximal DVT less likely; a negative limited or proximal-only study does not exclude isolated distal or pelvic DVT in every patient.
+    \item Non-compressible vein with echogenic intraluminal thrombus---DVT diagnosed
+    \item If iliac or IVC thrombosis suspected (atypical symptoms, bilateral swelling)---CT venography or MR venography
+\end{itemize}
+
+\subsection{Step 3: If Ultrasound Negative but Clinical Suspicion Remains}
+\begin{itemize}
+    \item Repeat ultrasound in 5--7 days (propagating calf thrombus may become visible)
+    \item Consider D-dimer to further risk stratify
+    \item If still equivocal---CT or MR venography
+\end{itemize}
+
+\begin{pearlbox}[Calf DVT matters]
+Isolated calf DVT (below the popliteal vein) carries a lower PE risk than proximal DVT, but it can propagate proximally. Current guidelines recommend anticoagulation for calf DVT with high-risk features (extensive thrombus, malignancy, previous DVT) and surveillance ultrasound for low-risk cases.
+\end{pearlbox}
+
+\clearpage
+
+\section{Summary}
+Diagnostic imaging algorithms translate clinical evidence into structured decision pathways. They support, but do not replace, clinical judgment. Always use the current version of a pathway and consider patient factors, local resources, and the limits of the examination.
+
+\section*{Selected Guidance}
+\begin{itemize}
+    \item American Heart Association/American Stroke Association. \href{https://www.ahajournals.org/doi/10.1161/STR.0000000000000513}{2026 Guideline for the Early Management of Patients With Acute Ischemic Stroke}.
+    \item American Heart Association/American College of Cardiology and collaborating societies. \href{https://www.ahajournals.org/doi/pdf/10.1161/CIR.0000000000001415}{2026 Guideline for Evaluation and Management of Acute Pulmonary Embolism in Adults}.
+    \item American College of Radiology. \href{https://www.acr.org/-/media/ACR/Files/RADS/Lung-RADS/Lung-RADS-2022.pdf}{Lung-RADS v2022} and \href{https://pubs.rsna.org/doi/10.1148/radiol.2017161659}{Fleischner Society recommendations for incidental pulmonary nodules}.
+    \item American Society of Hematology. \href{https://pmc.ncbi.nlm.nih.gov/articles/PMC6258916/}{Guidelines for diagnosis of venous thromboembolism}.
+\end{itemize}
+
+\clearpage

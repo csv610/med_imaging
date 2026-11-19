@@ -1,0 +1,669 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{top=1in, bottom=1in, left=1in, right=1in}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=teal!80!black,
+    citecolor=teal!80!black,
+    urlcolor=blue!70!black,
+    pdftitle={Angiography and Interventional Radiology: Physical Principles, Digital Subtraction Algorithms, Catheter Mechanics, Hemodynamic Quantifications, and Endovascular Therapeutics},
+    pdfauthor={Chaman Singh Verma}
+}
+
+% Styled boxes for clinical pearls, physics formulations, and procedural safety
+\newtcolorbox{clinicalpearl}[1][]{
+    colback=teal!5!white,
+    colframe=teal!75!black,
+    fonttitle=\bfseries\sffamily,
+    title={Clinical Pearl: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\newtcolorbox{physicsbox}[1][]{
+    colback=blue!5!white,
+    colframe=blue!70!black,
+    fonttitle=\bfseries\sffamily,
+    title={Interventional Radiation Physics: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\newtcolorbox{safetybox}[1][]{
+    colback=red!5!white,
+    colframe=red!70!black,
+    fonttitle=\bfseries\sffamily,
+    title={Procedural Safety \& Complication Mitigation: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\title{\textbf{\huge Angiography and Interventional Radiology:}\\[0.4em]
+\Large Physical Principles, Digital Subtraction Algorithms, Catheter Mechanics, Hemodynamic Quantifications, and Endovascular Therapeutics}
+
+\author{\textbf{Chaman Singh Verma} \\
+\textit{Department of Medical Imaging and Computation} \\
+\small \textsf{Comprehensive Reference Guide for Interventional Radiologists,}\\[0.2em]
+\small \textsf{Endovascular Specialists, and Medical Physicists}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Angiography and Interventional Radiology (IR) occupy a unique and transformative nexus between diagnostic radiology and minimally invasive therapeutics. Utilizing high-resolution fluoroscopic projection imaging and high-speed digital processing, Digital Subtraction Angiography (DSA) isolates moving intravascular contrast media by computationally eliminating overlying bony and soft-tissue anatomical structures. This comprehensive treatise provides an exhaustive exploration of modern catheter-based endovascular interventions and vascular physics. We rigorously formulate the physical and mathematical foundations of DSA, deriving the Beer-Lambert logarithmic transformation that enables linear attenuation subtraction and contrast sensitivity optimization. The mechanical physics of percutaneous vascular access via the Seldinger technique, catheter fluid dynamics (Poiseuille flow, French sizing), guidewire torque transmission, and automatic power injection parameters are systematically analyzed. We explore invasive hemodynamic pressure manometry, detailing the physiological derivations of Fractional Flow Reserve (FFR), Instantaneous Wave-Free Ratio (iFR), and translesional pressure gradients. We examine the full spectrum of interventional therapeutics: transcatheter embolotherapy (particulate, liquid polymer, metallic coils, and $^{90}\text{Y}$ radioembolization), endovascular revascularization (balloon angioplasty, bare-metal/drug-eluting stents), mechanical/aspiration thrombectomy for acute stroke and pulmonary embolism, endovascular aneurysm repair (EVAR/TEVAR) with endoleak categorization, and transjugular intrahepatic portosystemic shunts (TIPS). Furthermore, we detail rotational cone-beam CT (CBCT) volume reconstruction (FDK algorithm), misregistration artifact mitigation, high-dose deterministic radiation management, multi-modality comparative metrics, and the emerging frontier of endovascular robotics and artificial intelligence roadmapping.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introduction and Historical Evolution of Vascular Imaging}
+
+Angiography is the radiographic visualization of internal blood vessels following the administration of a radiopaque contrast agent. Unlike non-invasive vascular modalities that provide static anatomical cross-sections, catheter angiography delivers real-time, dynamic, high-magnification luminal maps with millisecond temporal resolution and sub-millimeter spatial fidelity, enabling immediate therapeutic intervention within the same procedural session.
+
+\subsection{Historical Milestones in Catheter Angiography}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{1927 (Egas Moniz and Cerebral Angiography):} Portuguese neurologist António Egas Moniz pioneered direct percutaneous carotid artery puncture and injected sodium iodide to visualize the cerebral circulation on static radiographic glass plates, earning the 1949 Nobel Prize in Physiology or Medicine.
+    \item \textbf{1953 (Sven-Ivar Seldinger and Percutaneous Access):} Swedish radiologist Sven-Ivar Seldinger revolutionized interventional medicine by introducing the guidewire-exchange technique. By replacing large-bore trocars with a three-step method (needle puncture, guidewire advancement, catheter introduction), the Seldinger technique transformed vascular catheterization from a traumatic open surgical exposure into a safe, percutaneous outpatient procedure.
+    \item \textbf{1964 (Charles Dotter and Transluminal Angioplasty):} Charles Dotter dilating a stenotic superficial femoral artery using coaxial teflon catheters marked the birth of modern Interventional Radiology, establishing the paradigm that image-guided catheterization could cure vascular pathology without open surgery.
+    \item \textbf{Late 1970s (Mistretta and Digital Subtraction Angiography):} Charles Mistretta and colleagues at the University of Wisconsin developed real-time Digital Subtraction Angiography (DSA). By digitizing video signals from X-ray image intensifiers and performing real-time digital matrix subtraction, DSA eliminated overlying osseous and soft-tissue background structures, amplifying iodine contrast resolution by an order of magnitude.
+    \item \textbf{2000s--Present (Flat-Panel Detectors, Cone-Beam CT, and Robotics):} The introduction of large-area amorphous silicon dynamic flat-panel detectors (FPD), motorized C-arm rotational cone-beam CT (CBCT), and robotic catheter navigators has expanded interventional suites into comprehensive endovascular operating theaters.
+\end{itemize}
+
+\newpage
+\section{Physical and Mathematical Foundations of Digital Subtraction Angiography}
+
+In conventional radiographic angiography, small blood vessels ($< 1\text{--}2\,\text{mm}$) opacified by iodine contrast media are obscured by high-attenuation overlying skeletal structures (spine, ribs, skull base) and soft tissue. Digital Subtraction Angiography solves this fundamental problem through temporal image subtraction.
+
+\subsection{Acoustic and Photonic Attenuation in Tissue: The Beer-Lambert Law}
+
+Monoenergetic X-ray transmission through a heterogeneous biological medium follows the Beer-Lambert attenuation law:
+\begin{equation}
+    I = I_0 \exp\left( -\int_0^L \mu(x,y,z) \, dz \right)
+\end{equation}
+where $I_0$ is the unattenuated incident X-ray beam intensity, $I$ is the transmitted intensity reaching the detector, $\mu(x,y,z)$ is the linear attenuation coefficient of the anatomical tissues along the ray path, and $L$ is the total tissue thickness.
+
+In an interventional projection, the anatomical ray path can be partitioned into three distinct components:
+\begin{enumerate}[leftmargin=*]
+    \item Non-vascular anatomical background tissue (bone, muscle, fat, air): thickness $x_b$, linear attenuation $\mu_b$.
+    \item Native blood vessel filled with blood: thickness $t_v$, linear attenuation $\mu_{\text{blood}}$.
+    \item Contrast-enhanced blood vessel filled with an iodinated blood mixture: thickness $t_v$, linear attenuation $\mu_{\text{iodine}}$.
+\end{enumerate}
+
+\subsection{Linear Subtraction versus Logarithmic Transformation}
+
+Consider two sequential digital radiographic frames acquired in identical geometric alignment:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{The Pre-Contrast Mask Image ($I_{\text{mask}}$):} Acquired immediately prior to contrast injection:
+    \begin{equation}
+        I_{\text{mask}}(x,y) = I_0 \exp\left( -\mu_b x_b - \mu_{\text{blood}} t_v \right)
+    \end{equation}
+    \item \textbf{The Contrast-Enhanced Live Image ($I_{\text{contrast}}$):} Acquired during the peak intra-arterial bolus transit:
+    \begin{equation}
+        I_{\text{contrast}}(x,y) = I_0 \exp\left( -\mu_b x_b - \mu_{\text{iodine}} t_v \right)
+    \end{equation}
+\end{itemize}
+
+\subsubsection{Failure of Simple Linear Subtraction}
+If a simple linear subtraction were performed:
+\begin{equation}
+    S_{\text{linear}} = I_{\text{mask}} - I_{\text{contrast}} = I_0 e^{-\mu_b x_b} \left( e^{-\mu_{\text{blood}} t_v} - e^{-\mu_{\text{iodine}} t_v} \right)
+\end{equation}
+The subtraction signal $S_{\text{linear}}$ remains strongly modulated by the background term $e^{-\mu_b x_b}$. Consequently, an identical vessel containing the same concentration of iodine would appear bright when projected over radiolucent lung tissue (small $\mu_b x_b$), but completely invisible when projected behind a dense lumbar vertebra or pelvic bone (large $\mu_b x_b$).
+
+\subsubsection{Derivation of the Logarithmic Subtraction Algorithm}
+To completely eliminate background tissue dependence, modern DSA processors route the digitized detector output through a high-speed real-time \textbf{logarithmic lookup table (LUT)} prior to subtraction:
+\begin{equation}
+    J_{\text{mask}}(x,y) = \ln\left[ I_{\text{mask}}(x,y) \right] = \ln(I_0) - \mu_b x_b - \mu_{\text{blood}} t_v
+\end{equation}
+\begin{equation}
+    J_{\text{contrast}}(x,y) = \ln\left[ I_{\text{contrast}}(x,y) \right] = \ln(I_0) - \mu_b x_b - \mu_{\text{iodine}} t_v
+\end{equation}
+Subtracting the logarithmic contrast image from the logarithmic mask image yields the \textbf{DSA Subtraction Signal}:
+\begin{equation}
+    S_{\text{DSA}}(x,y) = J_{\text{mask}}(x,y) - J_{\text{contrast}}(x,y)
+\end{equation}
+Substituting Equations (5) and (6):
+\begin{equation}
+    S_{\text{DSA}}(x,y) = \left[ \ln(I_0) - \mu_b x_b - \mu_{\text{blood}} t_v \right] - \left[ \ln(I_0) - \mu_b x_b - \mu_{\text{iodine}} t_v \right]
+\end{equation}
+Notice that the incident beam intensity $\ln(I_0)$ and the background anatomical term $\mu_b x_b$ cancel identically:
+\begin{equation}
+    S_{\text{DSA}}(x,y) = \left( \mu_{\text{iodine}} - \mu_{\text{blood}} \right) \cdot t_v
+\end{equation}
+
+\begin{physicsbox}[Properties of the Logarithmic Subtraction Signal]
+Equation (9) establishes the fundamental operating principles of DSA:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Complete Background Invariance:} The displayed signal intensity is strictly independent of patient thickness, overlying bone density, or soft-tissue variation.
+    \item \textbf{Direct Proportionality to Vessel Caliber and Iodine Concentration:} Because $\mu_{\text{iodine}} = (\mu/\rho)_{\text{iodine}} \cdot C_{\text{iodine}}$, the subtraction signal is directly proportional to the projected thickness of the vessel lumen ($t_v$) and the local iodine mass concentration ($C_{\text{iodine}}$):
+    \begin{equation}
+        S_{\text{DSA}} \propto C_{\text{iodine}} \cdot t_v
+    \end{equation}
+    \item \textbf{Contrast Dynamic Range Enhancement:} Because all high-amplitude background structural noise is removed, the remaining vascular signal can be electronically amplified by a factor of 8 to 32 using display window and level controls without saturating the display monitor.
+\end{enumerate}
+\end{physicsbox}
+
+\newpage
+\section{Interventional Suite Instrumentation and C-Arm Geometry}
+
+Catheter angiography is performed in specialized Interventional Radiology (IR) and Cardiac Catheterization suites equipped with ceiling-suspended or floor-mounted \textbf{isocentric C-arm gantries}.
+
+\subsection{X-Ray Tube and High-Capacity Generator Specifications}
+
+Interventional procedures require prolonged fluoroscopic roadmapping alternating with high-dose digital acquisition runs (cine runs):
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Liquid-Cooled Rotating Anodes:} Interventional X-ray tubes utilize high-heat-capacity metal-ceramic envelopes with liquid-metal hydrodynamic bearings and circulating oil-to-water heat exchangers capable of continuous heat dissipation exceeding \textbf{$3.0\text{ to }5.0\,\text{MHU}$ (Mega Heat Units)}.
+    \item \textbf{Micro-Focal Spots:} Tubes feature dual or triple focal spots: a fine focal spot ($0.3\,\text{mm}$) for high-magnification intracranial neurovascular runs, and a broad focal spot ($0.6\text{--}1.0\,\text{mm}$) for high-output abdominal and peripheral interventions.
+    \item \textbf{Spectral Beam Filtration:} Automated copper filters ($0.1, 0.2, 0.3,\text{ or }0.9\,\text{mm Cu}$) combined with $1.0\,\text{mm Al}$ are inserted into the beam path. This suppresses low-energy photons ($< 30\,\text{keV}$) that would be absorbed in patient skin without reaching the detector, shifting the mean energy of the beam toward the optimal k-edge absorption range of iodine.
+\end{itemize}
+
+\subsection{Dynamic Flat-Panel Detectors (FPD)}
+
+Modern angiography suites utilize solid-state \textbf{indirect flat-panel detectors}:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Scintillator Layer:} Columnar thallium-doped cesium iodide crystals ($\text{CsI:Tl}$, $500\text{--}600\,\mu\text{m}$ thick) channel light directly forward onto an amorphous silicon ($\text{a-Si}$) photodiode array, maximizing light collection while suppressing lateral scatter.
+    \item \textbf{Pixel Pitch and Dynamic Range:} Pixel sizes range from $150\,\mu\text{m}$ to $200\,\mu\text{m}$ over an active detector area of $30 \times 40\,\text{cm}$ or $40 \times 40\,\text{cm}$. The analog-to-digital converter (ADC) digitizes image data with \textbf{16-bit depth} ($65{,}536$ discrete grayscale levels), delivering the extreme dynamic range necessary to resolve faint iodine opacification immediately adjacent to dense bone.
+    \item \textbf{Zero Geometric Distortion:} Unlike legacy vacuum image intensifiers that suffered from S-distortion, pincushion distortion, and vignetting, solid-state FPDs are mathematically flat, providing uniform spatial resolution across the entire field of view and allowing quantitative endovascular calibration.
+\end{itemize}
+
+\subsection{Biplane Angiography Systems}
+
+In neurointervention and pediatric cardiology, \textbf{biplane angiography} utilizes two complete orthogonal C-arms (one floor-mounted frontal C-arm and one ceiling-suspended lateral C-arm) operating simultaneously:
+\begin{equation}
+    \text{Frontal Plane (AP / Oblique)} \quad \perp \quad \text{Lateral Plane}
+\end{equation}
+A single bolus injection of contrast opacifies the cerebral or coronary vasculature in two orthogonal planes simultaneously, reducing total procedure time, halving patient contrast volume, and enabling spatial navigation during aneurysm coiling, arteriovenous malformation (AVM) embolization, and acute stroke thrombectomy.
+
+\newpage
+\section{The Seldinger Technique, Vascular Access, and Catheter Mechanics}
+
+The cornerstone of modern endovascular intervention is safe, percutaneous access to the circulatory system via the Seldinger technique.
+
+\subsection{The Five Steps of the Seldinger Technique}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Needle Puncture:} A hollow $18\text{-gauge}$ arterial puncture needle (or a $21\text{-gauge}$ echogenic micropuncture needle) is introduced through the skin at a $45^\circ$ angle toward the pulsatile artery under real-time ultrasound or fluoroscopic guidance. Entry into the arterial lumen is signaled by vigorous, pulsatile, bright-red blood return.
+    \item \textbf{Guidewire Introduction:} A soft, flexible J-tip guidewire ($0.035''$ or $0.018''$) is advanced smoothly through the needle lumen into the arterial system. The wire must advance with zero mechanical resistance under fluoroscopy.
+    \item \textbf{Needle Removal:} While securing the guidewire firmly at the skin entry site to maintain intra-arterial access, the puncture needle is withdrawn completely.
+    \item \textbf{Vascular Sheath Introduction:} A radiopaque vascular access sheath pre-mounted on a tapered dilator is threaded over the indwelling guidewire and advanced through the arterial puncture into the vessel lumen.
+    \item \textbf{Dilator Removal and Hemostatic Valve Access:} The internal dilator and guidewire are removed, leaving the vascular sheath in place. The sheath's integrated hemostatic valve prevents blood loss while permitting smooth exchange of diagnostic catheters and therapeutic devices.
+\end{enumerate}
+
+\subsection{Vascular Access Sites: Femoral versus Radial Interventions}
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{3.8cm}p{5.5cm}p{5.5cm}}
+\toprule
+\textbf{Anatomical Access Site} & \textbf{Technical Implementation \& Hallmarks} & \textbf{Advantages \& Clinical Pitfalls} \\
+\midrule
+\textbf{Brachial / Axillary Artery} & Puncture of the brachial artery at the antecubital fossa or axillary artery over the humeral head. & Alternative upper-extremity access when radial and femoral routes are occluded.\newline \textit{Pitfalls:} High risk of compartment syndrome, median nerve compression injury, and thrombosis. \\
+\addlinespace
+\textbf{Common Femoral Artery (CFA)} & Puncture over the medial third of the femoral head, below the inguinal ligament and above the CFA bifurcation into SFA and profunda femoris. & Accommodates large-bore sheaths ($6\text{--}24\,\text{Fr}$) for EVAR, TAVR, and complex visceral interventions.\newline \textit{Pitfalls:} High puncture ($>$ inguinal ligament) risks fatal retroperitoneal hematoma; low puncture ($<$ bifurcation) risks pseudoaneurysm and AV fistula. \\
+\addlinespace
+\textbf{Transradial Artery Access (TRA)} & Puncture of the radial artery $1\text{--}2\,\text{cm}$ proximal to the radial styloid process. Prior assessment via Barbeau or Allen test to confirm palmar arch collateral patency. & Gold standard for coronary and neuro-endovascular interventions. Eliminates retroperitoneal bleeding; allows immediate patient ambulation.\newline \textit{Pitfalls:} Spasm (mitigated with intra-arterial verapamil/nitroglycerin), radial artery occlusion, limited to $\le 6\text{--}7\,\text{Fr}$ devices. \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of primary percutaneous vascular access routes in interventional radiology.}
+\label{tab:vascular_access}
+\end{figure}
+
+\subsection{Catheter Sizing, Physics, and Flow Dynamics}
+
+\subsubsection{The French Sizing System}
+Catheter outer diameter is universally quantified using the \textbf{French gauge (Fr)} scale, established by Charri\`{e}re:
+\begin{equation}
+    1\,\text{French (Fr)} = \frac{1}{3}\,\text{mm} \approx 0.333\,\text{mm} \implies \text{Outer Diameter (mm)} = \frac{\text{French Size}}{3}
+\end{equation}
+A $6\,\text{Fr}$ catheter has an outer diameter of exactly $2.0\,\text{mm}$. Guidewires, in contrast, are calibrated in thousandths of an inch (e.g., $0.014''$, $0.018''$, $0.035''$, $0.038''$).
+
+\subsubsection{Poiseuille's Law of Catheter Fluid Flow}
+Contrast injection through a long endovascular catheter is governed by the Hagen-Poiseuille law for laminar viscous flow:
+\begin{equation}
+    Q = \frac{\Delta P \cdot \pi \cdot r^4}{8 \cdot \eta \cdot L}
+\end{equation}
+where $Q$ is the volumetric flow rate ($\text{mL/s}$), $\Delta P$ is the driving injection pressure delivered by the power injector, $r$ is the inner radius of the catheter lumen, $\eta$ is the dynamic viscosity of the contrast medium, and $L$ is the physical catheter length.
+
+\begin{physicsbox}[Clinical Consequences of the Fourth-Power Radius Law]
+Equation (13) demonstrates that volumetric flow rate is proportional to the \textbf{fourth power of catheter inner radius} ($r^4$):
+\begin{itemize}[leftmargin=*]
+    \item Doubling catheter inner radius increases flow rate by a factor of $2^4 = \mathbf{16}$.
+    \item A slight reduction in inner lumen caliber (e.g., placing an internal coaxial microcatheter) catastrophically restricts contrast delivery rate.
+    \item To achieve rapid high-volume bolus injection (e.g., $20\text{--}30\,\text{mL/s}$ for abdominal aortography), operators must choose large-bore, thin-walled catheters ($5\text{--}6\,\text{Fr}$) with multi-sidehole pigtail configurations.
+\end{itemize}
+\end{physicsbox}
+
+\subsection{Standard Diagnostic Catheter Shapes and Indications}
+
+\begin{figure}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\toprule
+\textbf{Catheter Name} & \textbf{Distal Tip Geometry} & \textbf{Primary Clinical Vascular Indications} \\
+\midrule
+\textbf{Pigtail Catheter} & Tightly curled circular loop with 6 to 12 lateral sideholes. & High-pressure, high-volume flush angiography of the aortic root, ascending/descending aorta, pulmonary trunk, and inferior vena cava. Sideholes disperse jet momentum, preventing vessel wall jet dissection. \\
+\addlinespace
+\textbf{Cobra (C1, C2, C3)} & Gentle secondary curve with an anteriorly angled primary tip. & Selective cannulation of anteriorly branching visceral vessels: celiac axis, superior mesenteric artery (SMA), and renal arteries. \\
+\addlinespace
+\textbf{Simmons (SIM 1, 2, 3)} & Complex recurved shepherds-crook configuration. & Reverse-curve engagement of acutely angled vessels: inferior mesenteric artery (IMA), contralateral internal iliac artery, and tortuous aortic arch head vessels. Formed in the ascending aorta or aortic bifurcation. \\
+\addlinespace
+\textbf{Headhunter / H1} & Smooth, slightly angled distal segment. & Selective catheterization of carotid and vertebral arteries in arch anatomy. \\
+\addlinespace
+\textbf{Judkins Left / Right (JL / JR)} & Preformed anatomical curve matching the aortic root. & Selective coronary angiography of left and right coronary ostia. \\
+\addlinespace
+\textbf{Berenstein / Vertebral} & Straight shaft with a soft, gentle $45^\circ$ tip bend. & Selective neurovascular and peripheral navigation; provides high torque control. \\
+\bottomrule
+\end{tabular}
+\caption{Morphology and clinical applications of primary diagnostic angiography catheters.}
+\label{tab:catheter_shapes}
+\end{figure}
+
+\newpage
+\section{Contrast Media Dynamics and Automatic Power Injectors}
+
+Intravascular contrast media provide the physical differential attenuation necessary to visualize vascular lumens against surrounding soft tissue.
+
+\subsection{Physical Properties of Iodinated Contrast Agents}
+
+Iodine ($Z = 53$) provides high photoelectric absorption of diagnostic X-rays due to its \textbf{k-shell binding energy ($E_K = 33.2\,\text{keV}$)}. When the X-ray tube operates between $65\,\text{kVp}$ and $80\,\text{kVp}$, the mean photon energy ($35\text{--}45\,\text{keV}$) closely matches the iodine k-edge, maximizing the photoelectric cross-section.
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{3.8cm}p{2.8cm}p{2.6cm}p{5.2cm}}
+\toprule
+\textbf{Contrast Class} & \textbf{Chemical Structure} & \textbf{Osmolality ($\text{mOsm/kg}$)} & \textbf{Representative Agents \& Clinical Impact} \\
+\midrule
+\textbf{High-Osmolar (HOCM)} & Ionic monomer ($3:2$ ratio) & $1500\text{--}2000$ & Diatrizoate (Renografin). High incidence of vasodilation, intense burning sensation, and nephrotoxicity. Largely obsolete in modern vascular practice. \\
+\addlinespace
+\textbf{Iso-Osmolar (IOCM)} & Non-ionic dimer ($6:1$ ratio) & $\approx 290$ & Iodixanol (Visipaque). Perfectly isotonic to human blood plasma. Lowest incidence of contrast-induced acute kidney injury in high-risk patients. \\
+\addlinespace
+\textbf{Low-Osmolar (LOCM)} & Non-ionic monomer ($3:1$ ratio) & $600\text{--}800$ & Iohexol (Omnipaque), Iopamidol (Isovue). Two to three times plasma osmolality ($290\,\text{mOsm/kg}$). Standard workhorse agent; excellent safety profile. \\
+\bottomrule
+\end{tabular}
+\caption{Classification and physicochemical properties of iodinated contrast media.}
+\label{tab:contrast_classes}
+\end{figure}
+
+\subsubsection{Temperature, Viscosity, and Pre-Warming}
+Contrast viscosity increases nonlinearly with iodine concentration. At room temperature ($20^\circ\text{C}$), high-concentration agents ($350\text{--}370\,\text{mg I/mL}$) exhibit high viscosity ($10\text{--}15\,\text{mPa}\cdot\text{s}$), restricting flow rates through microcatheters. Modern IR suites utilize thermostatically controlled warming cabinets to heat contrast media to \textbf{human body temperature ($37^\circ\text{C}$)}, cutting dynamic viscosity nearly in half ($5\text{--}8\,\text{mPa}\cdot\text{s}$) and drastically lowering injection pressure requirements.
+
+\subsection{Carbon Dioxide (\texorpdfstring{$\text{CO}_2$}{CO2}) Digital Subtraction Angiography}
+
+In patients with severe chronic renal failure (eGFR $< 30\,\text{mL/min/1.73m}^2$) or life-threatening anaphylactic reactions to iodinated media, medical-grade \textbf{Carbon Dioxide ($\text{CO}_2$)} gas functions as an effective \textbf{negative contrast agent}:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Physical Mechanism:} $\text{CO}_2$ is $400$ times less dense than surrounding blood and soft tissue. When injected into an artery, the gas displaces blood, producing a transient zone of near-zero attenuation ($\mu_{\text{CO}_2} \approx 0$). Inverting the logarithmic subtraction display ($S_{\text{DSA}} = J_{\text{contrast}} - J_{\text{mask}}$) renders $\text{CO}_2$-filled vessels identical in appearance to conventional positive iodinated angiograms.
+    \item \textbf{Viscosity Advantage:} The viscosity of $\text{CO}_2$ gas is $1/50$ that of liquid iodinated contrast. It flows readily through $3\text{--}4\,\text{Fr}$ catheters and microcatheters, filling collateral vessels and identifying occult bleeding sites inaccessible to liquid media.
+    \item \textbf{Rapid Dissolution:} $\text{CO}_2$ is $20$ times more soluble in blood than oxygen, dissolving rapidly into plasma bicarbonate and exhaled via the pulmonary circulation.
+\end{itemize}
+
+\begin{safetybox}[Absolute Contraindication to \texorpdfstring{$\text{CO}_2$}{CO2} Angiography]
+Because gas bubbles can become trapped in the cerebral microcirculation causing vapor lock and ischemic cerebral infarction, \textbf{$\text{CO}_2$ angiography is absolutely contraindicated in the thoracic aorta, coronary arteries, and cerebral circulation above the diaphragm}. Furthermore, nitrous oxide ($\text{N}_2\text{O}$) general anesthesia must be discontinued during $\text{CO}_2$ injections because $\text{N}_2\text{O}$ diffuses rapidly into $\text{CO}_2$ bubbles, causing massive bubble expansion and fatal vascular air lock.
+\end{safetybox}
+
+\subsection{Automatic Power Injector Mechanics}
+
+High-pressure automatic power injectors deliver precise, reproducible contrast boluses into large vascular conduits. The operator programs four primary parameters:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Flow Rate ($Q$, $\text{mL/s}$):} The volume delivered per unit time (e.g., $20\,\text{mL/s}$ for abdominal aorta; $4\,\text{mL/s}$ for selective renal artery).
+    \item \textbf{Total Volume ($V$, $\text{mL}$):} Total volume injected during the run (e.g., $30\,\text{mL}$ for aorta; $8\,\text{mL}$ for renal).
+    \item \textbf{Linear Rise Time (s):} The duration over which flow rate accelerates from zero to target $Q$ ($0.1\text{--}0.5\,\text{s}$). A non-zero rise time prevents catheter ``whip'' and mechanical recoil that can dissect the vessel wall.
+    \item \textbf{Pressure Limit (psi):} The maximum allowable syringe barrel pressure ($300\text{ to }1200\,\text{psi}$). If catheter luminal resistance generates pressure exceeding this threshold, the injector automatically throttles flow to prevent catheter rupture.
+\end{enumerate}
+
+\newpage
+\section{Invasive Hemodynamic Pressure Manometry}
+
+Beyond visual morphological luminal stenosis, catheter angiography provides real-time invasive hemodynamic manometry to quantify the physiological significance of vascular lesions.
+
+\subsection{Fluid-Filled Pressure Transducer Physics}
+
+Intravascular pressure is transmitted from the catheter tip through a continuous column of heparinized saline to an external piezoresistive strain-gauge transducer:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Piezoresistive Bridge:} Hydraulic pressure exerts force against a silicon diaphragm, altering the electrical resistance of integrated piezoresistors wired in a Wheatstone bridge configuration. The resulting voltage output is linearly proportional to intravascular pressure.
+    \item \textbf{Zero Leveling:} The transducer must be positioned and zeroed to the \textbf{phlebostatic axis} (intersection of the fourth intercostal space and the mid-axillary line, corresponding to the right atrium). Positioning the transducer $13.6\,\text{cm}$ above this axis artificially underestimates pressure by $10\,\text{mmHg}$; positioning it below artificially overestimates pressure.
+\end{itemize}
+
+\subsection{Coronary Physiology: Fractional Flow Reserve (FFR) and iFR}
+
+Visual coronary angiography frequently misclassifies intermediate ($40\text{--}70\%$) coronary artery stenoses. Physiological pressure wire assessment provides objective functional guidance.
+
+\subsubsection{Derivation of Fractional Flow Reserve (FFR)}
+Fractional Flow Reserve is defined as the ratio of maximum achievable myocardial blood flow in the presence of a coronary stenosis ($Q_{\text{stenosis}}^{\text{max}}$) to the theoretical maximum flow in the same vessel in the absence of a stenosis ($Q_{\text{normal}}^{\text{max}}$).
+
+Under conditions of maximal pharmacological microvascular vasodilation (\textbf{hyperemia}, induced via intravenous adenosine $140\,\mu\text{g/kg/min}$), microvascular resistance ($R$) is minimized and constant. Applying Ohm's law of hemodynamics ($\Delta P = Q \cdot R$):
+\begin{equation}
+    FFR = \frac{Q_{\text{stenosis}}^{\text{max}}}{Q_{\text{normal}}^{\text{max}}} = \frac{(P_d - P_v) / R_{\text{min}}}{(P_a - P_v) / R_{\text{min}}}
+\end{equation}
+where $P_d$ is the mean distal coronary pressure measured by a $0.014''$ optical sensor wire distal to the lesion, $P_a$ is the mean aortic pressure measured simultaneously through the guiding catheter, and $P_v$ is central venous pressure. Because $P_v \approx 0\text{--}5\,\text{mmHg} \ll P_d, P_a$:
+\begin{equation}
+    FFR \approx \frac{P_d}{P_a}
+\end{equation}
+\begin{itemize}[leftmargin=*]
+    \item Normal coronary vessel: $FFR = 1.00$.
+    \item \textbf{Ischemic Threshold:} An $\mathbf{FFR \le 0.80}$ signifies hemodynamically significant, ischemia-inducing stenosis mandating revascularization (percutaneous coronary intervention, PCI).
+    \item Lesions with $FFR > 0.80$ can be safely deferred without adverse cardiac events.
+\end{itemize}
+
+\subsubsection{Instantaneous Wave-Free Ratio (iFR)}
+Unlike FFR, which requires pharmacological adenosine infusion, the \textbf{Instantaneous Wave-Free Ratio (iFR)} measures the translesional pressure ratio ($P_d / P_a$) specifically during the \textbf{wave-free period (WFP)} of diastole (from $25\%$ after end-systole to $5\,\text{ms}$ before end-diastole). During this discrete diastolic window, intracardiac wave generation ceases and microvascular resistance is naturally minimal and stable:
+\begin{equation}
+    \text{iFR} = \left. \frac{P_d}{P_a} \right|_{\text{Wave-Free Diastolic Window}}
+\end{equation}
+An $\mathbf{iFR \le 0.89}$ has been clinically proven non-inferior to FFR, eliminating the cost, bradycardia, and bronchospasm risks of adenosine.
+
+\subsection{Peripheral Translesional Pressure Gradients}
+
+In peripheral arterial disease (aortoiliac, renal, and superficial femoral arteries):
+\begin{equation}
+    \Delta P_{\text{systolic}} = P_{\text{proximal, peak}} - P_{\text{distal, peak}}
+\end{equation}
+A resting peak systolic gradient $\ge 10\text{--}15\,\text{mmHg}$, or a gradient $\ge 20\,\text{mmHg}$ following pharmacological vasodilatation (intra-arterial tolazoline, nitroglycerin, or papaverine), confirms hemodynamic significance and justifies endovascular stenting.
+
+\newpage
+\section{Interventional Oncology and Embolotherapy}
+
+Transcatheter embolotherapy is the intentional endovascular occlusion of a blood vessel using mechanical, particulate, or liquid agents to treat hypervascular tumors, control catastrophic hemorrhage, or eliminate vascular malformations.
+
+\subsection{Classification of Embolic Agents}
+
+\begin{figure}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\toprule
+\textbf{Embolic Agent} & \textbf{Physical Mechanism} & \textbf{Primary Clinical Indications} \\
+\midrule
+\textbf{Mechanical Coils} & Platinum or stainless steel coils with synthetic dacron fibers. Induce primary thrombus formation on contact with blood. Available in pushable or detachable (microvascular) forms. & Proximal main-trunk occlusion: splenic artery aneurysms, pulmonary AV malformations (PAVM), bleeding pseudoaneurysms, and intracranial cerebral aneurysms. \\
+\addlinespace
+\textbf{Vascular Plugs} & Self-expanding nitinol wire mesh cylindrical plugs (Amplatzer Vascular Plug). Single-device high-flow vessel occlusion. & High-flow large-vessel occlusion: splenic artery steal syndrome, gastroduodenal artery prior to SIRT, internal iliac occlusion prior to EVAR. \\
+\addlinespace
+\textbf{Gelatin Sponge (Gelfoam)} & Water-insoluble porcine skin gelatin sheet cut into pledgets or slurry. Induces mechanical matrix for platelet aggregation. \textbf{Temporary (resorbs in $2\text{--}6\,\text{weeks}$)}. & Temporary control of traumatic pelvic bleeding, epistaxis, or bronchial hemorrhage where eventual vessel recanalization is desirable. \\
+\addlinespace
+\textbf{PVA / Microspheres} & Calibrated biocompatible spherical particles (Beads: $100\text{ to }900\,\mu\text{m}$). Mechanical distal microvascular occlusion at precapillary arteriolar level. & Uterine Artery Embolization (UAE/UFE) for symptomatic fibroids; preoperative devascularization of meningiomas and bone metastases. \\
+\addlinespace
+\textbf{Liquid Polymers (Onyx / EVOH)} & Ethylene vinyl alcohol (EVOH) dissolved in DMSO with micronized tantalum powder. Precipitates upon contact with water/blood into a spongy, cohesive cast. & Brain arteriovenous malformations (AVM), dural arteriovenous fistulas (dAVF), and Type II endoleaks. Non-adhesive, permitting slow controlled injection. \\
+\addlinespace
+\textbf{Liquid Cyanoacrylate ($\text{NBCA}$ Glue)} & N-butyl cyanoacrylate monomer mixed with radiopaque Lipiodol. Polymerizes instantaneously upon contact with ionic blood anions ($\text{OH}^-$). & High-flow arteriovenous fistulas, severe gastric variceal bleeding, and acute intractable arterial hemorrhage. Requires rapid microcatheter flushing and removal. \\
+\bottomrule
+\end{tabular}
+\caption{Classification, physical mechanisms, and clinical indications of transcatheter embolic agents.}
+\label{tab:embolic_agents}
+\end{figure}
+
+\subsection{Transarterial Chemoembolization (TACE) for Hepatocellular Carcinoma}
+
+Transarterial Chemoembolization is the standard-of-care palliative treatment for intermediate-stage (BCLC Stage B) unresectable Hepatocellular Carcinoma (HCC).
+
+\subsubsection{The Dual Hepatic Perfusion Rationale}
+The liver possesses a unique dual blood supply:
+\begin{itemize}[leftmargin=*]
+    \item Normal hepatic parenchyma receives $\approx 75\%$ of its blood flow from the \textbf{portal vein} and only $\approx 25\%$ from the \textbf{hepatic artery}.
+    \item Primary liver tumors (HCC) and hypervascular metastases derive \textbf{$95\text{--}100\%$ of their perfusion from the hepatic artery} via tumor neo-angiogenesis.
+\end{itemize}
+Selectively delivering cytotoxic chemotherapy and embolic occlusion into the hepatic arterial branches feeding the tumor induces profound tumor ischemia and high local drug concentrations while sparing the portal vein-perfused non-tumorous liver.
+
+\subsubsection{Conventional TACE versus Drug-Eluting Bead TACE (DEB-TACE)}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{cTACE:} Chemotherapy (doxorubicin or cisplatin) is emulsified in \textbf{Ethiodized Oil (Lipiodol)}. Lipiodol acts as a transient microvascular carrier that is selectively retained in tumor neovasculature for weeks, followed by embolization with Gelfoam particles.
+    \item \textbf{DEB-TACE:} Sulfonate-modified hydrogel microspheres ($70\text{--}150\,\mu\text{m}$ or $100\text{--}300\,\mu\text{m}$) pre-loaded with doxorubicin via ion-exchange mechanisms slowly elute the drug over $7\text{ to }14\,\text{days}$, significantly reducing systemic drug exposure and cardiotoxicity.
+\end{itemize}
+
+\subsection{Selective Internal Radiation Therapy (SIRT) / Radioembolization}
+
+SIRT delivers localized high-dose brachytherapy to unresectable liver tumors using \textbf{Yttrium-90 ($^{90}\text{Y}$)} microspheres:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Nuclear Physics of $^{90}\text{Y}$:} A pure beta emitter ($\beta^-$) with a half-life of $T_{1/2} = 64.1\,\text{hours}$. Emits high-energy beta particles ($E_{\text{max}} = 2.28\,\text{MeV}$, mean $0.94\,\text{MeV}$) with an average tissue penetration of only $2.5\,\text{mm}$ (maximum $11\,\text{mm}$).
+    \item \textbf{Dosimetry:} Millions of tiny resin ($35\,\mu\text{m}$) or glass ($25\,\mu\text{m}$) microspheres lodge in terminal tumor arterioles, delivering tumoricidal radiation doses ($> 120\text{--}200\,\text{Gy}$) while sparing surrounding normal liver parenchyma ($< 40\,\text{Gy}$).
+    \item \textbf{Pre-Treatment Simulation ($^{99m}\text{Tc}$-MAA):} Interventional radiologists must perform a mapping angiogram, coil embolize extrahepatic vessels (gastroduodenal, right gastric), and inject Technetium-99m macroaggregated albumin ($^{99m}\text{Tc}$-MAA). A planar or SPECT/CT scan calculates the \textbf{Lung Shunt Fraction (LSF)}:
+    \begin{equation}
+        \text{LSF} = \frac{\text{Total Counts in Lungs}}{\text{Total Counts in Lungs} + \text{Total Counts in Liver}} \times 100\%
+    \end{equation}
+    An $\text{LSF} > 20\%$ risks fatal radiation pneumonitis, necessitating dose reduction or absolute cancellation of therapy.
+\end{itemize}
+
+\newpage
+\section{Endovascular Revascularization and Thrombectomy}
+
+\subsection{Percutaneous Transluminal Angioplasty (PTA)}
+
+Angioplasty restores luminal caliber across atherosclerotic strictures using balloon catheters:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Mechanism of Dilation:} Inelastic balloon expansion exerts radial mechanical stress that fractures brittle intimal atheromatous plaques, stretches the media and adventitia, and causes controlled local dissection.
+    \item \textbf{Balloon Compliance:}
+    \begin{itemize}
+        \item \textbf{Non-Compliant (NC) Balloons:} Manufactured from polyethylene terephthalate (PET); maintain a fixed diameter even at ultra-high pressures ($18\text{--}30\,\text{atm}$). Ideal for resistant, heavily calcified lesions.
+        \item \textbf{Semi-Compliant Balloons:} Manufactured from nylon; grow slightly ($5\text{--}10\%$) with increasing pressure ($8\text{--}14\,\text{atm}$); used for routine pre-dilation.
+        \item \textbf{Cutting / Scoring Balloons:} Feature longitudinal micro-atherotome blades or spiral wires mounted on the balloon surface that score calcified plaque, reducing dissection rates at lower inflation pressures.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Endovascular Stenting}
+
+Stents provide internal scaffolding to prevent acute elastic recoil and seal flow-limiting post-angioplasty dissections.
+
+\subsubsection{Balloon-Expandable versus Self-Expanding Stents}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Balloon-Expandable Stents (Cobalt-Chromium / Platinum-Chromium):} Mounted on a deflated balloon and expanded plastically. Offer high radial resistive strength and sub-millimeter landing precision; ideal for ostial lesions (renal, iliac, coronary). However, they permanently deform if crushed by external compression.
+    \item \textbf{Self-Expanding Stents (Nitinol -- Nickel Titanium Shape Memory Alloy):} Constrained inside a delivery sheath. Upon retraction of the sheath at human body temperature ($37^\circ\text{C}$), the thermal shape memory effect causes the stent to expand elastically to its pre-formed diameter. Capable of withstanding external crush and deformation, making nitinol stents mandatory in the superficial femoral artery (SFA) across the knee joint and in the carotid artery.
+\end{itemize}
+
+\subsection{Mechanical and Aspiration Thrombectomy}
+
+In acute vascular occlusions (acute ischemic stroke, massive pulmonary embolism, and acute limb ischemia), thrombus burden must be removed rapidly without extensive systemic fibrinolytic hemorrhage.
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{3.8cm}p{5.5cm}p{5.5cm}}
+\toprule
+\textbf{Clinical Indication} & \textbf{Device Technology \& Mechanism} & \textbf{Reperfusion Score / Therapeutic Target} \\
+\midrule
+\textbf{Acute Deep Vein Thrombosis (DVT)} & \textbf{Catheter-Directed Thrombolysis (CDT) and Mechanical Thrombectomy (ClotTriever):} Infusion of rt-PA ($0.5\text{--}1.0\,\text{mg/hr}$) via multi-sidehole catheter combined with mechanical coring. & Prevents post-thrombotic syndrome (PTS), preserves venous valve architecture, and restores iliofemoral venous patency. \\
+\addlinespace
+\textbf{Acute Ischemic Stroke (EVT)} & \textbf{Stent-Retrievers (Solitaire, Trevo) and Direct Aspiration (Penumbra):} Deployed across cerebral large vessel occlusion (M1 MCA, ICA terminus). Clot embeds into nitinol struts; stent and aspiration catheter withdrawn under continuous negative pressure. & \textbf{TICI Score (Thrombolysis in Cerebral Infarction):} Target $\text{mTICI} \ge 2\text{b/3}$ (complete microvascular reperfusion) within the $0\text{--}24\,\text{hour}$ therapeutic window. \\
+\addlinespace
+\textbf{Massive Pulmonary Embolism (PE)} & \textbf{Large-Bore Aspiration (Inari FlowTriever, Penumbra Lightning):} $20\text{--}24\,\text{Fr}$ catheters introduced via common femoral vein into main pulmonary artery. High-volume vacuum suction extracts massive central emboli without systemic tPA. & Immediate reduction of Right Ventricle-to-Left Ventricle (RV/LV) diameter ratio ($< 0.9$) and normalization of pulmonary arterial pressure. \\
+\bottomrule
+\end{tabular}
+\caption{Endovascular mechanical and aspiration thrombectomy platforms across vascular domains.}
+\label{tab:thrombectomy}
+\end{figure}
+
+\newpage
+\section{Advanced Aortic and Portal Interventions}
+
+\subsection{Endovascular Aneurysm Repair (EVAR and TEVAR)}
+
+Endovascular repair has superseded open surgical bypass for abdominal aortic aneurysms (AAA) and thoracic aortic aneurysms/dissections (TEVAR).
+
+\subsubsection{Anatomical Suitability Criteria for Infrarenal EVAR}
+Successful EVAR requires strict anatomical anchoring zones:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Proximal Infrarenal Neck Length:} $\ge 10\text{--}15\,\text{mm}$ of normal, non-aneurysmal aorta between the lowest renal artery and the aneurysm sac.
+    \item \textbf{Neck Diameter and Angulation:} Diameter $18\text{--}32\,\text{mm}$; infrarenal angulation $\le 60^\circ$.
+    \item \textbf{Iliac Access Run-off:} Common iliac sealing zone $\ge 15\,\text{mm}$ with caliber $\ge 7\text{--}8\,\text{mm}$ to accommodate the $14\text{--}18\,\text{Fr}$ delivery systems.
+\end{enumerate}
+
+\subsubsection{Endoleak Classification and Management}
+An endoleak is defined as persistent blood flow within the aneurysm sac outside the lumen of the deployed stent-graft.
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{2.4cm}p{4.2cm}p{4.0cm}p{4.0cm}}
+\toprule
+\textbf{Endoleak Type} & \textbf{Underlying Pathological Mechanism} & \textbf{Risk of Sac Rupture} & \textbf{Clinical Management Strategy} \\
+\midrule
+\textbf{Type I} & \textbf{Attachment Site Leak:} Incomplete seal at proximal neck (Type Ia) or distal iliac limb (Type Ib). & \textbf{Extremely High (Immediate Surgical / IR Emergency).} Systemic pressure enters sac directly. & Urgent endovascular re-intervention: balloon palmaz stent extension, aortic cuff, or embolization. \\
+\addlinespace
+\textbf{Type II} & \textbf{Branch Retrograde Collateral Flow:} Back-bleeding from lumbar arteries or inferior mesenteric artery (IMA). & \textbf{Low to Moderate.} Most benign; $\approx 50\%$ spontaneously thrombose. & Watchful waiting with CTA/ultrasound. Intervention indicated if aneurysm sac grows $\ge 5\,\text{mm}$ (transarterial or translumbar embolization). \\
+\addlinespace
+\textbf{Type III} & \textbf{Structural Graft Failure:} Disconnection of modular graft limbs (Type IIIa) or fabric tear (Type IIIb). & \textbf{Extremely High (Emergency).} Full systemic arterial pressure transmission. & Immediate endovascular repair: placement of a bridging stent-graft or relining. \\
+\addlinespace
+\textbf{Type IV} & \textbf{Graft Porosity:} Microscopic leakage through fabric pores during initial heparinization. & \textbf{Zero.} Self-limiting. & Resolves spontaneously within $24\text{--}48\,\text{hours}$ once anticoagulation reverses. \\
+\addlinespace
+\textbf{Type V} & \textbf{Endotension:} Aneurysm sac expansion without visible contrast extravasation on imaging. & \textbf{Moderate.} Transmitted pressure through thrombus. & Re-evaluation for occult Type I/III leak; surgical conversion if progressive. \\
+\bottomrule
+\end{tabular}
+\caption{Classification, rupture risks, and clinical management of post-EVAR endoleaks.}
+\label{tab:endoleaks}
+\end{figure}
+
+\subsection{Transjugular Intrahepatic Portosystemic Shunt (TIPS)}
+
+TIPS creates an artificial low-resistance conduit through the liver parenchyma connecting the portal vein to the systemic venous circulation (hepatic vein $\to$ IVC), decompressing portal hypertension:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Clinical Indications:} Refractory cirrhotic ascites and secondary prophylaxis of recurrent variceal hemorrhage refractory to endoscopic band ligation.
+    \item \textbf{Procedural Steps:}
+    \begin{enumerate}
+        \item Right internal jugular vein access; long curved sheath advanced into the right hepatic vein.
+        \item Under fluoroscopy and ultrasound guidance, a long 16G Colapinto needle punctures anteriorly and inferiorly through the liver parenchyma into the intrahepatic branch of the portal vein.
+        \item Portal venography and direct manometry confirm portal venous entry.
+        \item Parenchymal tract dilation followed by deployment of a dedicated expanded polytetrafluoroethylene (ePTFE) covered stent-graft (\textbf{Viatorr}).
+    \end{enumerate}
+    \item \textbf{Hemodynamic Endpoint:} Reduction of Portosystemic Pressure Gradient (PSG):
+    \begin{equation}
+        PSG = \text{Portal Vein Pressure} - \text{Right Atrial Pressure}
+    \end{equation}
+    Target $PSG < 12\,\text{mmHg}$ (or a $\ge 50\%$ reduction from baseline) permanently eliminates variceal rebleeding risk while minimizing the development of hepatic encephalopathy.
+\end{itemize}
+
+\newpage
+\section{Rotational Angiography and Cone-Beam Computed Tomography (CBCT)}
+
+Modern C-arm systems execute motorized rotational trajectories around the patient, acquiring 200 to 400 projection radiographs across a $200^\circ$ arc in 3 to 10 seconds.
+
+\subsection{Feldkamp-Davis-Kress (FDK) Reconstruction Algorithm}
+
+Unlike conventional multidetector CT (MDCT) that utilizes narrow 1D fan-beam arrays, C-arm CBCT utilizes a 2D flat-panel detector illuminated by a divergent 3D cone-beam X-ray source. 3D volumetric images are reconstructed using the \textbf{Feldkamp-Davis-Kress (FDK)} algorithm:
+\begin{equation}
+    f(x,y,z) = \frac{1}{2} \int_0^{2\pi} \frac{D^2}{(D - s)^2} \left[ p_\beta(u,v) * h(u) \right] d\beta
+\end{equation}
+where $D$ is the source-to-isocenter distance, $s$ is the distance along the projection ray, $p_\beta(u,v)$ is the 2D planar projection at rotation angle $\beta$, and $h(u)$ is the 1D ramp-filter kernel.
+
+\subsection{Clinical Advantages of Interventional CBCT}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Cross-Sectional Soft Tissue Visualization in the IR Suite:} Eliminates the need to transport unstable patients to diagnostic CT scanners. Instantly identifies acute post-biopsy hemorrhage, intracranial hemorrhage following thrombectomy, and subcapsular hepatic hematoma.
+    \item \textbf{Virtual Navigation and Needle Trajectory Overlay:} Software projects planned needle entry and target paths directly onto live 2D fluoroscopy in real time, guiding percutaneous tumor ablations (radiofrequency, microwave, cryoablation) and complex bone biopsies.
+\end{itemize}
+
+\newpage
+\section{Artifacts, Pitfalls, and Complications in Angiography}
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{3.8cm}p{5.5cm}p{5.5cm}}
+\toprule
+\textbf{Artifact / Complication} & \textbf{Physical / Pathological Cause} & \textbf{Mitigation \& Remediation Strategy} \\
+\midrule
+\textbf{Arterial Dissection} & Catheter tip or stiff guidewire mechanically strips the intimal layer off the internal elastic lamina. & Immediately stop injection (high-pressure contrast will extend false lumen). Pass wire across true lumen and deploy a self-expanding or balloon-expandable stent to tack down flap. \\
+\addlinespace
+\textbf{Beam Hardening \& Streak} & Extreme attenuation of X-rays by high-density metallic embolic coils, surgical clips, or dense bone. & Utilize flat-panel iterative reconstruction algorithms; adjust window/level to high width; reposition C-arm to avoid metal overlap. \\
+\addlinespace
+\textbf{Femoral Pseudoaneurysm} & Incomplete hemostasis at arterial puncture site; pulsatile blood escapes into periarterial fibrous tissue. & Real-time ultrasound-guided thrombin injection ($500\text{--}1000\,\text{IU}$): induces instantaneous, complete thrombosis within seconds while sparing native femoral artery. \\
+\addlinespace
+\textbf{Motion Misregistration} & Patient respiratory excursion, bowel peristalsis, or swallowing between mask and contrast frames. & \textbf{Pixel Shifting:} Digital post-processing shifts the mask image sub-pixel by sub-pixel ($x, y$) to realign bone margins. Dual-energy DSA eliminates motion by acquiring mask and contrast at different kVps simultaneously. \\
+\addlinespace
+\textbf{Retroperitoneal Hemorrhage} & Arterial puncture located above the inguinal ligament enters the non-compressible retroperitoneal space. & Rapid intravascular resuscitation, immediate contralateral balloon tamponade of common iliac/femoral artery, followed by covered stent deployment or embolization. \\
+\addlinespace
+\textbf{Vessel Foreshortening} & Angling the imaging beam obliquely across a curved vessel compresses its true length ($L_{\text{proj}} = L \cos\theta$). & Rotate C-arm into orthogonal projection where the vessel lies perpendicular to the beam axis (e.g., LAO cranial for LAD bifurcation; steep contralateral oblique for iliac bifurcation). \\
+\bottomrule
+\end{tabular}
+\caption{Common physical artifacts and clinical complications in interventional angiography.}
+\label{tab:artifacts_complications}
+\end{figure}
+
+\newpage
+\section{Radiation Protection and ALARA in Interventional Suites}
+
+Due to prolonged fluoroscopic times, magnification, and repetitive acquisition runs, interventional radiology delivers some of the highest occupational and patient radiation doses in medical imaging.
+
+\subsection{Dosimetric Parameters}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Cumulative Air Kerma (CAK):} Total energy deposited in air at the Interventional Reference Point ($15\,\text{cm}$ from isocenter toward tube). CAK $> 5.0\,\text{Gy}$ triggers mandatory clinical skin monitoring; CAK $> 10.0\,\text{Gy}$ is a Joint Commission Sentinel Event.
+    \item \textbf{Kerma-Area Product (KAP):} Total radiation energy imparted to the patient ($\text{Gy}\cdot\text{cm}^2$), reflecting stochastic cancer induction risk.
+\end{itemize}
+
+\subsection{Staff Radiation Protection Protocols}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{C-Arm Orientation:} The X-ray tube must always be \textbf{under the table}, directing backscatter downward toward operator lead aprons rather than upward into eyes and thyroid.
+    \item \textbf{Structural Shielding:} Ceiling-suspended lead-acrylic screens ($0.5\,\text{mm Pb}$) and table-side lead drapes ($0.5\,\text{mm Pb}$) must be positioned continuously between patient entry portal and operator.
+    \item \textbf{Pulse Rate Optimization:} Throttling acquisition runs from $30\,\text{fps}$ down to \textbf{$7.5\,\text{fps}$ or $4\,\text{fps}$ reduces patient and operator dose by $75\%$}.
+\end{enumerate}
+
+\newpage
+\section{Comparative Multi-Modality Vascular Matrix}
+
+\begin{figure}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{2.7cm}p{2.9cm}p{2.9cm}p{3.1cm}p{2.8cm}}
+\toprule
+\textbf{Feature} & \textbf{Catheter DSA} & \textbf{CT Angiography (CTA)} & \textbf{MR Angiography (MRA)} & \textbf{Duplex Ultrasound} \\
+\midrule
+\textbf{Invasiveness} & Invasive (arterial puncture required) & Non-invasive (IV line) & Non-invasive (IV line or unenhanced) & Non-invasive (topical probe) \\
+\addlinespace
+\textbf{Nephrotoxicity} & Iodinated / $\text{CO}_2$ alternative & Iodinated contrast risk & Gadolinium (NSF risk in ESRD) & \textbf{Zero risk} \\
+\addlinespace
+\textbf{Physical Basis} & X-ray transmission with digital subtraction & Multi-detector X-ray volumetric attenuation & Nuclear magnetic resonance (TOF / CE-MRA) & Acoustic Doppler frequency shift \\
+\addlinespace
+\textbf{Radiation Dose} & Variable ($5\text{--}50\,\text{mSv}$) & Moderate ($3\text{--}12\,\text{mSv}$) & \textbf{Zero ($0\,\text{mSv}$)} & \textbf{Zero ($0\,\text{mSv}$)} \\
+\addlinespace
+\textbf{Therapeutic Role} & \textbf{Immediate endovascular therapy} & Purely diagnostic & Purely diagnostic & Diagnostic; intraoperative guidance \\
+\addlinespace
+\textbf{Spatial Res.} & \textbf{Gold Standard ($0.15\text{--}0.2\,\text{mm}$)} & High ($0.4\text{--}0.6\,\text{mm}$) & Moderate ($0.8\text{--}1.2\,\text{mm}$) & Moderate ($0.5\text{--}1.0\,\text{mm}$) \\
+\addlinespace
+\textbf{Temporal Res.} & \textbf{Millisecond ($1\text{--}30\,\text{fps}$)} & Single volumetric snapshot & Moderate ($1\text{--}5\,\text{s}$ time-resolved) & Real-time dynamic ($> 50\,\text{fps}$) \\
+\bottomrule
+\end{tabular}
+\caption{Comprehensive comparative matrix of vascular imaging modalities.}
+\label{tab:vascular_comparison}
+\end{figure}
+
+\section{Robotics, Artificial Intelligence, and Future Frontiers}
+
+\subsection{Robotic Endovascular Catheterization}
+
+Endovascular robotic systems (such as CorPath GRX and Magellan) isolate the operator inside a lead-shielded control cockpit, manipulating motorized drive rollers via joysticks to steer microcatheters and guidewires with sub-millimeter precision. This eliminates occupational orthopedic spinal strain and scatter radiation exposure while enabling remote tele-interventions (e.g., performing acute stroke thrombectomy across rural regional hospitals).
+
+\subsection{AI-Powered Centerline Tracking and 3D Roadmapping}
+
+Deep learning neural network architectures analyze pre-procedural CTA/MRA volumes, automatically segment complex vascular trees, identify tortuous vessels, compute centerline vectors, and superimpose a dynamic, motion-compensated 3D virtual roadmap directly over live fluoroscopy, minimizing contrast use and speeding catheterization.
+
+\section{Summary and Conclusions}
+
+Angiography and Interventional Radiology represent the pinnacle of image-guided medicine. By combining the mathematical physics of digital subtraction, advanced flat-panel instrumentation, catheter fluid mechanics, and sophisticated therapeutic devices, endovascular specialists can diagnose and treat complex vascular, oncologic, and structural pathologies with minimal patient trauma and accelerated clinical recovery.
+
+\end{document}

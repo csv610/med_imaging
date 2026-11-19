@@ -1,0 +1,110 @@
+\chapter{Foundation Models in Radiology}
+
+\section*{Patient focus}
+You may have heard about ``AI'' that can read X-rays or write reports. Some of the newest AI systems are called foundation models---large programs trained on enormous collections of images and text, learning general patterns before being applied to a specific medical task. Think of them as a student who has studied broadly and can then be quickly trained for a specialty. Foundation models may speed up reporting, help match images with clinical histories, or flag abnormalities, but they are still being tested and are not yet replacements for your radiologist.
+
+\section*{Imaging focus}
+Foundation models are large-scale pre-trained models that learn transferable representations from broad data distributions and are subsequently adapted to specific downstream tasks. In radiology, they offer potential for report generation, image--text retrieval, few-shot classification, and multimodal reasoning. Understanding their training paradigms, capabilities, and limitations is critical for responsible clinical translation.
+\label{ch:ch87_foundation_models}
+
+\section{What Is a Foundation Model?}
+A foundation model is a neural network trained on a very large and diverse dataset---often millions of images and/or text documents---in a self-supervised or weakly supervised manner. The key idea is that by learning general features from vast data, the model can be efficiently adapted (fine-tuned) to many specific tasks with relatively little task-specific labelled data.
+
+\begin{table}[h]
+\centering
+\caption{Foundation models vs task-specific models}
+\begin{tabular}{|p{5cm}|p{5cm}|}
+\hline
+\textbf{Feature} & \textbf{Foundation model} \\
+\hline
+Adaptation & Fine-tuned or prompted for specific tasks \\
+\hline
+Data efficiency & Can learn from few labelled examples \\
+\hline
+Scope & Multiple tasks from one model \\
+\hline
+Supervision & Self-supervised (no manual labels needed initially) \\
+\hline
+Training data & Millions of diverse examples \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{How Pre-Training Works}
+Foundation models learn through self-supervised objectives that do not require human annotation:
+
+\begin{itemize}
+    \item \textbf{Masked image modelling}---portions of an image are hidden, and the model learns to reconstruct them. This forces the network to understand anatomy, texture, and spatial relationships.
+    \item \textbf{Contrastive learning}---the model learns to pull representations of related image--text pairs closer together while pushing unrelated pairs apart (e.g., matching a chest X-ray to its report).
+    \item \textbf{Next-token prediction} (for text components)---predicting the next word in a radiology report teaches the model structured medical language.
+\end{itemize}
+
+After pre-training, the model's weights encode general visual and linguistic features. A small amount of task-specific labelled data is then used to fine-tune the model for a clinical application.
+
+\section{Transfer Learning in Practice}
+Transfer learning is the process of taking a pre-trained foundation model and adapting it to a new, specific task. The lower layers of the network, which capture general features (edges, textures, anatomy), are typically kept frozen, while the upper layers are retrained on the target task.
+
+\begin{pearlbox}[Data efficiency]
+A foundation model fine-tuned with 500 labelled chest X-rays can match the performance of a model trained from scratch on 10{,}000 images. This dramatically lowers the barrier to developing new AI tools for rare conditions.
+\end{pearlbox}
+
+\section{Potential Applications in Radiology}
+\begin{enumerate}
+    \item \textbf{Report generation}---foundation models can draft preliminary structured reports from images and clinical context, reducing radiologist keystroke burden.
+    \item \textbf{Image--text retrieval}---find past studies with similar appearances or matching reports to aid diagnosis.
+    \item \textbf{Few-shot classification}---classify rare findings (e.g., rare interstitial lung disease patterns) from as few as 10--20 labelled examples.
+    \item \textbf{Multimodal reasoning}---combine imaging, laboratory values, and clinical notes to suggest differential diagnoses.
+    \item \textbf{Quality assurance}---detect modality mismatches, protocol errors, or corrupted images before radiologist review.
+\end{enumerate}
+
+\section{Limitations and Risks}
+\begin{itemize}
+    \item \textbf{Hallucination}---the model may generate plausible-sounding but incorrect findings or measurements.
+    \item \textbf{Data bias}---training data from single institutions or demographics may not generalise.
+    \item \textbf{Prompt sensitivity}---small changes in input phrasing can alter outputs significantly.
+    \item \textbf{Opacity}---it is often difficult to explain why a model produced a particular output.
+    \item \textbf{Data governance}---clinical images used for pre-training must comply with privacy regulations and institutional policies.
+    \item \textbf{Regulatory status}---most foundation models lack FDA clearance for specific clinical uses.
+\end{itemize}
+
+\section{Current Research Directions}
+Active areas of investigation include:
+\begin{itemize}
+    \item Domain-specific pre-training on curated radiology corpora (e.g., CheXagent, RadFM)
+    \item Instruction-tuned radiology assistants that follow structured prompts
+    \item Federated pre-training across institutions without sharing raw data
+    \item Benchmarking on clinically meaningful tasks rather than general accuracy metrics
+\end{itemize}
+
+\begin{pearlbox}[General capability $\neq$ clinical validity]
+A foundation model that can describe a chest X-ray in fluent prose is not automatically safe for clinical use. Clinical validity must be demonstrated through prospective validation, external testing, and regulatory review---not by the impressiveness of its language.
+\end{pearlbox}
+
+\section{Governance Requirements}
+Deploying foundation models in clinical settings requires:
+\begin{table}[h]
+\centering
+\caption{Governance checklist for foundation models}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Requirement} & \textbf{Details} \\
+\hline
+Access control & Role-based authentication, audit logging \\
+\hline
+Data privacy & No identifiable data sent to unapproved services \\
+\hline
+Drift monitoring & Track performance over time and across populations \\
+\hline
+Human review & All outputs reviewed before clinical action \\
+\hline
+Incident response & Process for reporting and investigating failures \\
+\hline
+Versioning & Track model version, training data, fine-tuning data \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Summary}
+Foundation models represent a paradigm shift from task-specific AI to general-purpose medical intelligence. Their ability to learn from vast data with minimal annotation makes them powerful tools for radiology. However, fluent output is not a substitute for diagnostic accuracy, and every clinical deployment must be validated, governed, and supervised by a qualified radiologist.
+
+\clearpage

@@ -1,0 +1,99 @@
+\chapter{Imaging Artifacts}
+
+\section*{Patient focus}
+This chapter explains the examination or clinical problem in accessible language. Patients should use it to prepare questions and understand the purpose, experience, benefits, and limitations of imaging; local instructions and the official report take priority.
+
+
+\label{ch:ch32_artifacts}
+
+\section{Common Sources}
+Artifacts arise from motion, metal, beam hardening, partial volume, truncation, aliasing, susceptibility, flow, reverberation, attenuation correction, misregistration, and reconstruction or display errors.
+
+\subsection{Why Artifacts Occur}
+Imaging artifacts are features that do not accurately represent the anatomy or physiology being examined. They can arise from the physics of image acquisition, patient motion, limitations in sampling or reconstruction, and image processing or display. Understanding their causes helps you recognise artifacts, reduce them when possible, and avoid mistaking them for disease.
+
+\section{CT Artifacts}
+
+\begin{table}[h]
+\centering
+\caption{Common CT artifacts: causes, appearance, and management.}
+\label{tab:ct_artifacts}
+\begin{tabular}{p{3cm} p{3.5cm} p{3.5cm} p{4cm}}
+\toprule
+\textbf{Artifact} & \textbf{Cause} & \textbf{Appearance} & \textbf{Management} \\
+\midrule
+Beam hardening & Preferential absorption of lower-energy photons along paths through dense structures & Dark bands or streaks, often between dense structures such as the petrous bones & Use an appropriate higher-kVp or spectral protocol and validated beam-hardening correction; increasing mAs may help when photon starvation also contributes \\
+Metal streak & Metal-related beam hardening, photon starvation, scatter and edge effects & Bright and dark streaks radiating from the metal object & Consider scanner-specific metal-artifact reduction, higher kVp or spectral techniques; protocol adjustments depend on the scanner and clinical task \\
+Motion & Patient movement during acquisition & Blurring, step-like misalignment or duplicated edges & Use coaching, immobilization or a shorter acquisition where appropriate; repeat only when needed and clinically justified \\
+Partial volume & A voxel contains more than one tissue or structure & Averaged attenuation that obscures small structures or blurs boundaries & Use thinner acquired or reconstructed slices when appropriate; this may increase image noise \\
+Truncation & Part of the patient lies outside the reconstruction field of view & Shading, streaks or distortion near the image periphery & Center the patient and select an adequate field of view; use extended-field reconstruction when available \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{pearlbox}[Clinical Pearl: Metal is everywhere]
+Dental fillings, sternotomy wires, surgical clips, and hip prostheses all cause streak artifacts. When interpreting post-surgical imaging, always check whether a region of interest is degraded by adjacent metal before calling a finding.
+\end{pearlbox}
+
+\section{MRI Artifacts}
+
+\begin{table}[h]
+\centering
+\caption{Common MRI artifacts: causes, appearance, and management.}
+\label{tab:mri_artifacts}
+\begin{tabular}{p{3cm} p{3.5cm} p{3.5cm} p{4cm}}
+\toprule
+\textbf{Artifact} & \textbf{Cause} & \textbf{Appearance} & \textbf{Management} \\
+\midrule
+Chemical shift & Frequency difference between fat and water protons & Bright or dark band at fat--water interfaces (in-plane or slice-select direction) & Increase receiver bandwidth, use fat--water separation techniques \\
+Motion (ghosting) & Periodic motion (cardiac, respiratory, flowing blood) & Signal replicated in the phase-encoding direction & Use cardiac gating, respiratory triggering, navigator echoes, or motion-robust sequences \\
+Susceptibility & Local magnetic field inhomogeneity at tissue interfaces or near metal & Signal void, geometric distortion; exaggerated on gradient-echo and susceptibility-weighted sequences & Use spin-echo sequences, increase bandwidth, apply metal artefact reduction sequences (MARS) \\
+Truncation (Gibbs ringing) & Finite sampling of k-space at a sharp boundary & Parallel bright and dark lines near high-contrast interfaces (e.g.\ CSF--brain interface) & Acquire higher spatial resolution when appropriate or use k-space filtering/apodisation, recognizing that filtering can blur detail; zero-filling only interpolates the image \\
+Wrap-around (aliasing) & Anatomy outside the field of view is undersampled and folds into the image & Duplicate structures overlaid on the image of interest & Increase the field of view, use phase oversampling/no-phase-wrap, change the phase-encoding direction, or apply saturation bands as appropriate \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{pearlbox}[Clinical Pearl: Phase-encoding direction]
+Motion ghosts commonly appear along the phase-encoding direction, although appearance depends on the sequence and source of motion. If you see suspicious linear signal along the anterior--posterior axis on an axial brain image, consider whether it could be a respiratory ghost before calling it a lesion.
+\end{pearlbox}
+
+\section{Ultrasound Artifacts}
+
+\begin{table}[h]
+\centering
+\caption{Common ultrasound artifacts.}
+\label{tab:us_artifacts}
+\begin{tabular}{p{3cm} p{4cm} p{7cm}}
+\toprule
+\textbf{Artifact} & \textbf{Cause} & \textbf{Appearance and Significance} \\
+\midrule
+Mirror image & Sound reflected from a strong curved reflector creates a duplicate image & A ``second'' lesion on the opposite side of the reflector; classically liver lesion mirrored across the diaphragm \\
+Posterior acoustic enhancement & Reduced attenuation through a fluid-containing or otherwise low-attenuation structure & Increased brightness deep to the structure; supports fluid content but is not by itself definitive for a cyst \\
+Posterior acoustic shadowing & Strong reflection or attenuation by structures such as stones, calcification, gas or bone & Reduced echoes deep to the structure; may support a stone or calcification when the location and other findings are compatible, but is not specific \\
+Refraction & Sound beam bent at interfaces of different propagation speeds & Displacement of structures; can simulate duplication of vessels or organs \\
+Reverberation & Sound bouncing repeatedly between two strong reflectors & Equally spaced horizontal lines deep to the reflector; can simulate bowel gas or foreign bodies \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Recognition}
+An artifact often follows a predictable geometry, crosses tissue boundaries, or changes between sequences, planes, reconstructions, or repeat acquisitions. Compare raw or alternative images when available and correlate with anatomy and clinical findings.
+
+\subsection{Checklist for Artifact Recognition}
+\begin{enumerate}
+    \item Does the finding follow a known artifact pattern (streak, ghost, reverberation)?
+    \item Does it change on different sequences, phases, or planes?
+    \item Is it anatomically plausible, or does it cross tissue boundaries unnaturally?
+    \item Is there a technical explanation (metal, motion, field-of-view limitation)?
+    \item Does it correspond to a clinical finding on examination?
+\end{enumerate}
+
+\section{Management}
+Report limitations that could affect diagnosis. Repeat or supplement imaging only when it is likely to change management and after considering dose, contrast, and patient burden. Never interpret an artifact as disease without checking its behavior and technical explanation.
+
+\begin{pearlbox}[Impression:]
+Artifacts are inherent to every imaging modality. Recognising the characteristic appearance and cause of each artifact prevents misdiagnosis. When in doubt, check whether the finding changes across sequences, planes, or repeat acquisitions before attributing clinical significance.
+\end{pearlbox}
+
+\clearpage

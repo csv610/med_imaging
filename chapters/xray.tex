@@ -1,0 +1,515 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{top=1in, bottom=1in, left=1in, right=1in}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!70!black,
+    citecolor=blue!70!black,
+    urlcolor=teal!70!black,
+    pdftitle={Projection Radiography (X-ray Imaging): Physical Principles, Detector Technology, Clinical Indications, and Radiological Image Interpretation Framework},
+    pdfauthor={Chaman Singh Verma}
+}
+
+% Styled boxes for clinical pearls, radiation safety warnings, and physics concepts
+\newtcolorbox{clinicalpearl}[1][]{
+    colback=teal!5!white,
+    colframe=teal!75!black,
+    fonttitle=\bfseries\sffamily,
+    title={Clinical Pearl: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\newtcolorbox{radiationsafety}[1][]{
+    colback=red!5!white,
+    colframe=red!70!black,
+    fonttitle=\bfseries\sffamily,
+    title={Radiation Safety \& Protection: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\newtcolorbox{physicsoverview}[1][]{
+    colback=blue!5!white,
+    colframe=blue!70!black,
+    fonttitle=\bfseries\sffamily,
+    title={Radiographic Physics Concept: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\title{\textbf{\huge Projection Radiography (X-ray Imaging):}\\[0.3em]
+\Large Physical Principles, Detector Instrumentation,\\
+Clinical Indications, and Image Interpretation Framework}
+
+\author{\textbf{Chaman Singh Verma}\\[0.2em]
+\small Department of Medical Imaging and Computation\\
+\small \texttt{Reference Guide for Clinicians, Radiologists, and Students}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Projection Radiography (Plain X-ray imaging) represents the foundational modality of diagnostic medical imaging and remains the most frequently performed radiological examination worldwide. By recording the differential transmission of a divergent beam of ionizing electromagnetic X-ray photons through human tissues onto a planar detector, radiography generates high-resolution, two-dimensional shadowgraphic representations of internal anatomy. This comprehensive article provides an exhaustive exploration of projection radiography. We formulate the underlying physics of thermionic X-ray generation, Bremsstrahlung and characteristic emission spectra, the Beer-Lambert attenuation law, and competitive interactions across photoelectric absorption and Compton scatter. We trace the technological evolution from Röntgen's photographic plates and screen-film cassettes to modern Computed Radiography (CR, photostimulable phosphor plates) and Digital Radiography (DR, direct amorphous selenium and indirect cesium iodide flat-panel detectors). We analyze the biophysical basis of the five fundamental radiographic densities (air, fat, soft tissue/fluid, bone/calcium, and metal). We systematically outline primary clinical indications across pulmonary medicine, emergency trauma orthopedics, gastroenterology, and pediatrics. Finally, we establish an analytical reading framework detailing image quality criteria, technical projection geometry (PA vs. AP), pathognomonic radiological signs (including Felson's Silhouette Sign, Air Bronchograms, the Meniscus Sign, and Rigler's Sign), radiation dosimetry (DAP and Effective Dose), and protection protocols.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% =========================================================================
+\section{Introduction and Historical Perspective}
+% =========================================================================
+
+On the evening of \textbf{November 8, 1895}, German physicist \textbf{Wilhelm Conrad Röntgen} at the University of Würzburg made the serendipitous discovery that launched the era of diagnostic medical imaging. While experimenting with cathode rays inside an evacuated Crookes gas-discharge tube shielded by black cardboard, Röntgen observed that a nearby paper screen coated with barium platinocyanide fluoresced in total darkness.
+
+Röntgen recognized that an unknown, highly penetrating form of invisible radiation—which he designated \textbf{``X-rays''} (using the mathematical symbol for the unknown)—was emanating from the tube walls. Within weeks, on December 22, 1895, Röntgen captured the world's first medical radiograph: the hand of his wife, Anna Bertha Ludwig, revealing the bones of her fingers and her wedding ring. Röntgen was awarded the inaugural \textbf{Nobel Prize in Physics in 1901} for this discovery.
+
+Within months of Röntgen's announcement, physicians worldwide adopted X-rays to localize battlefield bullets, evaluate skeletal fractures, and identify radio-opaque foreign bodies.
+
+\subsection{Evolution of Radiographic Receptors and Detectors}
+The recording medium used to capture radiographic images has evolved through four technological eras:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Photographic Glass Plates and Early Nitrocellulose Film (1895--1910s)}: Early radiographs required long exposure times (several minutes to half an hour) on glass photographic plates coated with silver halide emulsion, resulting in massive radiation doses to patients and operators.
+    \item \textbf{Screen-Film Systems (1920s--1990s)}: The introduction of polyester film coated on both sides with silver halide crystals sandwiched tightly between two \textbf{intensifying screens} (incorporating luminescent phosphors, initially calcium tungstate $\text{CaWO}_4$, and later rare-earth oxysulfides like gadolinium oxysulfide $\text{Gd}_2\text{O}_2\text{S}:\text{Tb}$). Intensifying screens absorb incoming X-ray photons and convert each absorbed photon into hundreds of visible light photons through photoluminescence, exposing the film emulsion. This reduced patient radiation exposure by more than $95\%$, establishing the standard for clinical radiography for seven decades.
+    \item \textbf{Computed Radiography (CR, Photostimulable Phosphor Systems, 1980s--Present)}: CR replaced conventional film with reusable cassettes containing a **Photostimulable Phosphor (PSP)** plate composed of europium-doped barium fluorohalide crystals ($\text{BaFBr/I}:\text{Eu}^{2+}$). When exposed to X-rays, electrons are elevated to higher energy bands and trapped in metastable crystal defects (F-centers), storing a \textbf{latent radiographic image}. The cassette is inserted into an optical reader, where a finely focused red helium-neon or solid-state laser beam ($633\text{ nm}$) scans the plate, stimulating the trapped electrons to return to ground state and releasing emitted blue-violet light ($390\text{--}400\text{ nm}$) via **Photostimulated Luminescence (PSL)**. A photomultiplier tube (PMT) detects the emitted light, digitizes the signal into pixel values, and the plate is erased under intense white light for reuse.
+    \item \textbf{Digital Radiography (DR, Flat-Panel Detectors, Late 1990s--Present)}: DR eliminates cassette handling, digitizing X-ray photons in real time within a flat-panel detector (FPD) that displays the image on a review workstation within 2 to 5 seconds. DR architectures are divided into two physical classes:
+    \begin{itemize}
+        \item \textbf{Indirect Conversion DR}: Employs a structured scintillator layer (needle-like columnar crystals of thallium-doped cesium iodide, $\text{CsI}:\text{Tl}$) that converts incoming X-ray photons into visible green light. The light is detected by an underlying two-dimensional matrix of hydrogenated amorphous silicon ($\text{a-Si}$) photodiodes. Each photodiode corresponds to a pixel and stores an electrical charge read out row-by-row via Thin-Film Transistors (TFT). Columnar CsI crystals act as optical light pipes, minimizing lateral light diffusion and preserving spatial resolution.
+        \item \textbf{Direct Conversion DR}: Dispenses with scintillators entirely. Employs a photoconductor layer composed of **amorphous selenium (a-Se)** sandwiched between a high-voltage top electrode ($5\text{--}10\text{ kV}$) and an underlying TFT charge-storage matrix. Absorbed X-ray photons liberate electron-hole pairs directly within the selenium. Under the strong electrostatic field, charge carriers travel along vertical electric field lines with zero lateral scattering, directly depositing charges onto pixel storage capacitors. Direct DR achieves high Detective Quantum Efficiency (DQE) and exceptional spatial resolution ($>10\text{--}20\text{ line pairs/mm}$), making it the gold standard for digital mammography and high-resolution extremity imaging.
+    \end{itemize}
+\end{enumerate}
+
+% =========================================================================
+\section{How X-ray Imaging Works: Physical Principles and Image Formation}
+% =========================================================================
+
+\subsection{X-ray Tube Physics and Emission Spectra}
+Diagnostic X-rays are generated in an evacuated glass or metal-envelope envelope housing two primary components: a negative cathode and a positive anode.
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Thermionic Emission at the Cathode}: A low-voltage heating current passes through a coiled tungsten filament ($Z=74$, melting point $3422^\circ\text{C}$). Thermal energy boils off electrons into an electron cloud (thermionic emission), focused toward the anode by a negatively charged molybdenum focusing cup.
+    \item \textbf{Electrostatic Acceleration}: A high potential difference—the **tube voltage (kVp)**, typically $40\text{ to }150\text{ kilovolts peak}$—accelerates electrons across the vacuum gap toward the anode. The total quantity of accelerated electrons is the **tube current-time product (mAs)**:
+    \begin{equation}
+        \text{mAs} = \text{Tube Current (mA)} \times \text{Exposure Time (seconds)}
+    \end{equation}
+    The kVp determines beam quality (penetrating power / maximum photon energy), while mAs dictates beam quantity (total photon fluence).
+    \item \textbf{Target Impact at the Rotating Anode}: Accelerated electrons strike a beveled focal track made of tungsten alloyed with $5\%\text{--}10\%$ rhenium (to prevent thermal cracking) mounted on a molybdenum-graphite disk that rotates at 3,000 to 10,000\,RPM to distribute heat. Over $99\%$ of kinetic electron energy converts to thermal heat; less than $1\%$ is converted into X-ray photons via two physical mechanisms:
+    \begin{itemize}
+        \item \textbf{Bremsstrahlung (Braking Radiation)}: Energetic electrons enter the Coulomb field of tungsten nuclei, decelerate, and deflect. The loss of kinetic energy is radiated away as continuous-spectrum X-ray photons ranging from zero up to the maximum tube kVp. Bremsstrahlung constitutes $>80\%\text{--}90\%$ of the diagnostic beam.
+        \item \textbf{Characteristic Radiation}: An incident electron collides with an inner K-shell orbital electron of tungsten (binding energy $E_K \approx 69.5\text{ keV}$), ejecting it. An outer-shell electron transitions into the vacancy, emitting a monoenergetic X-ray photon equal to the orbital binding energy difference. For tungsten, the primary characteristic emission peaks occur at $K_\alpha = 59.3\text{ keV}$ and $K_\beta = 67.2\text{ keV}$ (only produced when tube voltage exceeds $69.5\text{ kVp}$).
+    \end{itemize}
+\end{enumerate}
+
+\begin{physicsoverview}[The Line-Focus Principle and Anode Heel Effect]
+To withstand thermal loads, the actual physical electron focal spot must be large. However, to produce sharp radiographic images, the apparent effective focal spot viewed from the patient must be small. The \textbf{Line-Focus Principle} achieves this by angling the target anode bevel ($\theta = 7^\circ\text{ to }15^\circ$):
+\begin{equation}
+    \text{Effective Focal Spot Size} = \text{Actual Focal Spot Size} \times \sin\theta
+\end{equation}
+Because X-rays produced within the target anode must traverse some thickness of the anode itself to escape, photons emerging toward the anode edge of the field suffer greater self-absorption than those emerging toward the cathode edge. This results in the \textbf{Anode Heel Effect}: the X-ray beam is significantly more intense on the cathode side than on the anode side. Radiographers exploit this by positioning thicker patient anatomy (e.g., thoracic spine, abdomen) toward the cathode side of the tube.
+\end{physicsoverview}
+
+\subsection{Interaction of X-ray Photons with Biological Matter}
+As an X-ray beam traverses the human body, its intensity decreases via attenuation according to the \textbf{Beer-Lambert Law}:
+\begin{equation}
+    I(x) = I_0 \, e^{-\mu x}
+\end{equation}
+where $I_0$ is incident intensity, $x$ is tissue thickness, and $\mu$ is the total linear attenuation coefficient.
+
+In diagnostic projection radiography (photon energies $20\text{--}150\text{ keV}$), two quantum interaction mechanisms govern image formation:
+\begin{enumerate}
+    \item \textbf{Photoelectric Absorption}: The incident photon is completely absorbed by an inner-shell electron, which is ejected as a photoelectron. The probability of photoelectric absorption ($\tau$) is proportional to:
+    \begin{equation}
+        \tau \propto \frac{\rho \cdot Z_{\text{eff}}^3}{E^3}
+    \end{equation}
+    The cubic dependence on effective atomic number ($Z_{\text{eff}}^3$) makes the photoelectric effect the primary source of diagnostic subject contrast, enabling clear differentiation between bone ($Z_{\text{eff}} \approx 13.8$), soft tissue ($Z_{\text{eff}} \approx 7.4$), and iodinated/barium contrast media ($Z = 53$ and $56$).
+    \item \textbf{Compton Scattering}: The incident photon collides with an outer-shell electron, ejecting it while the photon deflects at an angle with reduced energy. Compton scatter probability ($\sigma_c$) depends on physical electron density ($\rho_e$) and is largely independent of atomic number. In soft tissues, Compton scatter dominates at energies above $30\text{ keV}$. Compton-scattered photons exit the patient at random angles, striking the detector and adding a uniform gray background fog that reduces image contrast and degrades signal-to-noise ratio (SNR).
+\end{enumerate}
+
+\subsection{Managing Compton Scatter: Anti-Scatter Grids and Collimation}
+To prevent Compton-scattered photons from reaching the detector:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Anti-Scatter Grids (Potter-Bucky Diaphragm)}: Positioned between the patient and the detector. Invented by Gustav Bucky (1913) and improved by Hollis Potter (1920), a grid consists of alternating thin lead strips and radiolucent interspace material (aluminum or carbon fiber). Primary unscattered photons traveling in straight lines pass between the lead strips, while oblique scattered photons strike the lead strips and are absorbed. Grids are characterized by their \textbf{Grid Ratio} ($r = h/D$, where $h$ is lead strip height and $D$ is distance between strips). Higher grid ratios (e.g., 10:1 or 12:1 used in adult chest/abdominal imaging) remove scatter more effectively, but absorb some primary photons, requiring a commensurate increase in patient dose (quantified by the \textbf{Bucky Factor}, typically $2\text{--}4\times$).
+    \item \textbf{Beam Collimation}: Adjustable lead shutters restrict the primary beam to the precise anatomical region of interest. Strict collimation reduces the irradiated tissue volume, directly decreasing total Compton scatter generation and reducing overall patient radiation exposure.
+\end{itemize}
+
+\subsection{Geometric Factors in Image Sharpness and Magnification}
+Because X-rays originate from a focal spot of finite physical dimensions and diverge as a cone beam, three geometric parameters govern radiographic image formation:
+\begin{enumerate}
+    \item \textbf{Source-to-Image Distance (SID)}: Distance from the X-ray tube focal spot to the detector.
+    \item \textbf{Source-to-Object Distance (SOD)}: Distance from the focal spot to the patient anatomy.
+    \item \textbf{Object-to-Image Distance (OID)}: Distance from the patient anatomy to the detector.
+\end{enumerate}
+
+\subsubsection{Geometric Magnification ($M$)}
+Radiographic projections always produce some degree of geometric magnification:
+\begin{equation}
+    M = \frac{\text{SID}}{\text{SOD}} = \frac{\text{SID}}{\text{SID} - \text{OID}}
+\end{equation}
+To minimize magnification and project anatomical structures at nearly their true physical dimensions, the anatomy of interest should be placed as close to the detector as possible (minimizing OID), while maximizing SID.
+\begin{itemize}
+    \item \textbf{Standard Chest Radiography}: Performed at a long $\text{SID} = 180\text{ cm}$ (72 inches) in the Posteroanterior (PA) orientation (with the anterior chest pressed directly against the detector). This places the anteriorly positioned heart close to the detector ($\text{OID} \approx 0$), minimizing cardiac magnification ($M \approx 1.05$) to allow accurate evaluation of the cardiothoracic ratio.
+    \item \textbf{Skeletal and Abdominal Radiography}: Typically performed at $\text{SID} = 100\text{ cm}$ (40 inches).
+\end{itemize}
+
+\subsubsection{Geometric Penumbra (Focal Spot Blurring / Unsharpness)}
+Because the focal spot is an area rather than a dimensionless point, each edge of an anatomical object projects a blurred penumbra ($U_g$, geometric unsharpness):
+\begin{equation}
+    U_g = f \cdot \frac{\text{OID}}{\text{SOD}} = f \cdot \frac{\text{OID}}{\text{SID} - \text{OID}}
+\end{equation}
+where $f$ is effective focal spot size. Sharpness is maximized by using a small focal spot ($0.5\text{--}0.6\text{ mm}$), maintaining minimal OID, and utilizing a large SID.
+
+% =========================================================================
+\section{What X-rays Detect: The Five Primary Radiographic Densities}
+% =========================================================================
+
+Unlike cross-sectional modalities (CT and MRI), which isolate thin planar anatomical slices, a projection radiograph sums all attenuating structures along the X-ray beam path into a single two-dimensional shadowgram.
+
+Interpretation rests on recognizing the \textbf{Five Fundamental Radiographic Densities}, which are determined by physical density and effective atomic number. Table~\ref{tab:radiographic_densities} establishes this spectrum, arranged from lowest attenuation (most radiolucent / blackest) to highest attenuation (most radiopaque / whitest).
+
+\begin{table}[htbp]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{3.2cm}p{3cm}p{3.5cm}p{5.5cm}}
+\toprule
+\textbf{Radiographic Density} & \textbf{Visual Shade} & \textbf{Effective Atomic Number ($Z_{\text{eff}}$)} & \textbf{Representative Anatomical Structures and Pathology} \\
+\midrule
+\textbf{1. Air / Gas} & \textbf{Pitch Black} (Radiolucent) & $Z_{\text{eff}} \approx 7.6$ ($\rho \approx 0.001\text{ g/cm}^3$) & Normal aerated lungs, trachea, stomach air bubble, bowel gas, pneumothorax, pneumoperitoneum. \\
+\textbf{2. Fat} & \textbf{Dark Gray} & $Z_{\text{eff}} \approx 6.3$ ($\rho \approx 0.92\text{ g/cm}^3$) & Subcutaneous tissue, fascial planes, properitoneal flank fat stripe, epicardial fat pads. \\
+\textbf{3. Soft Tissue / Water} & \textbf{Mid-Gray} & $Z_{\text{eff}} \approx 7.4$ ($\rho \approx 1.0\text{ g/cm}^3$) & Heart, blood vessels, liver, spleen, kidneys, full urinary bladder, muscles, pleural effusion, pneumonia consolidation. \\
+\textbf{4. Bone / Mineral} & \textbf{Light Gray / White} & $Z_{\text{eff}} \approx 13.8$ ($\rho \approx 1.8\text{--}1.9\text{ g/cm}^3$) & Cortical bone, trabecular skeleton, calcified cartilage, nephrolithiasis, calcified granulomas. \\
+\textbf{5. Metal} & \textbf{Bright Solid White} (Radiopaque) & $Z \ge 22$ ($\rho \ge 4.5\text{ g/cm}^3$) & Orthopedic hardware, surgical clips, dental amalgam, swallowed foreign coins, barium sulfate, iodinated contrast. \\
+\bottomrule
+\end{tabular}
+\caption{The Five Primary Radiographic Densities in projection imaging.}
+\label{tab:radiographic_densities}
+\end{table}
+
+\begin{clinicalpearl}[The Soft Tissue vs. Water Equality Principle]
+On a plain radiograph, \textbf{all fluids and non-fatty soft tissues share identical radiographic density}. Blood, transudate, pus, urine, bile, myocardium, liver, and fibrous tumors appear as the exact same shade of mid-gray. A radiologist cannot distinguish a lobar pneumonia (pus filling alveoli) from a pulmonary infarct (blood in alveoli) or pulmonary edema (serous fluid in alveoli) by attenuation alone; differentiation relies on anatomical distribution, clinical context, and ancillary signs.
+\end{clinicalpearl}
+
+% =========================================================================
+\section{Why Doctors Order X-rays: Clinical Indications Across Body Systems}
+% =========================================================================
+
+Projection radiography remains the universal first-line diagnostic investigation across pulmonary, musculoskeletal, and emergency medicine. Table~\ref{tab:clinical_indications} outlines primary indications.
+
+\begin{longtable}{p{3.2cm}p{6cm}p{6cm}}
+\toprule
+\textbf{Anatomical Region} & \textbf{Primary Clinical Indications} & \textbf{Key Advantages Over Advanced Modalities} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Anatomical Region} & \textbf{Primary Clinical Indications} & \textbf{Key Advantages Over Advanced Modalities} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\textbf{Thorax / Chest (CXR)} & 
+$\bullet$ Dyspnea, persistent cough, fever, hemoptysis\newline
+$\bullet$ Suspected pneumonia or alveolar consolidation\newline
+$\bullet$ Congestive heart failure (cardiomegaly, edema)\newline
+$\bullet$ Pneumothorax and pleural effusion\newline
+$\bullet$ Primary lung mass or metastatic surveillance\newline
+$\bullet$ Verification of endotracheal tubes, central venous lines, nasogastric tubes, and pacemakers & 
+$\bullet$ Extremely low radiation dose ($\approx 0.02\text{--}0.1\text{ mSv}$).\newline
+$\bullet$ Rapid acquisition at bedside (portable AP) in critically ill ICU patients.\newline
+$\bullet$ Confirms radio-opaque medical lines, stents, feeding tubes, and retained surgical sponges. \\
+\midrule
+\textbf{Musculoskeletal (MSK) Trauma} & 
+$\bullet$ Acute blunt or twisting limb trauma\newline
+$\bullet$ Suspected osseous fractures and cortical breach\newline
+$\bullet$ Joint dislocation, subluxation, and reduction\newline
+$\bullet$ Foreign body detection (glass, radiopaque metal)\newline
+$\bullet$ Postoperative hardware healing and alignment & 
+$\bullet$ Superior spatial resolution ($>5\text{--}10\text{ lp/mm}$) resolves hair-line cortical fracture lines.\newline
+$\bullet$ Dynamic flexion-extension functional stress views evaluate cervical/lumbar ligamentous instability. \\
+\midrule
+\textbf{Joint Disease \& Arthritis} & 
+$\bullet$ Chronic joint pain, morning stiffness, deformity\newline
+$\bullet$ Osteoarthritis (joint space narrowing, osteophytes)\newline
+$\bullet$ Rheumatoid arthritis (marginal erosions, osteopenia)\newline
+$\bullet$ Gout (punched-out erosions with overhanging edges) & 
+$\bullet$ High sensitivity for gross cardiopulmonary decompensation and line/tube malposition. \\
+\midrule
+\textbf{Acute Abdomen (AXR / KUB)} & 
+$\bullet$ Suspected hollow viscus perforation (pneumoperitoneum on erect CXR)\newline
+$\bullet$ Mechanical small bowel vs. large bowel obstruction\newline
+$\bullet$ Cecal or sigmoid volvulus\newline
+$\bullet$ Radiopaque nephrolithiasis and ureterolithiasis\newline
+$\bullet$ Assessment of swallowed radiopaque foreign bodies & 
+$\bullet$ Rapidly differentiates paralytic ileus from dynamic mechanical obstruction.\newline
+$\bullet$ Low cost and immediate availability in urgent care and emergency departments. \\
+\midrule
+\textbf{Spine and Pelvis} & 
+$\bullet$ Cervical, thoracic, or lumbar spine trauma\newline
+$\bullet$ Osteoporotic vertebral compression fractures\newline
+$\bullet$ Spondylolisthesis and spondylolysis (pars defect)\newline
+$\bullet$ Ankylosing spondylitis (sacroiliitis, bamboo spine) & 
+$\bullet$ Minimal scan time eliminates the need for sedation or general anesthesia required for pediatric MRI. \\
+\midrule
+\textbf{Pediatrics} & 
+$\bullet$ Salter-Harris physeal growth plate fractures\newline
+$\bullet$ Stridor: Croup (steeple sign) vs. Epiglottitis\newline
+$\bullet$ Radiopaque/radiolucent foreign body aspiration\newline
+$\bullet$ Necrotizing enterocolitis (pneumatosis intestinalis) & 
+$\bullet$ Minimal radiation dose for radiosensitive pediatric tissues.\newline
+$\bullet$ Weight-bearing views (knees, feet, pelvis) demonstrate true physiological functional joint space loss occult on supine CT or MRI. \\
+\bottomrule
+\caption{Comprehensive breakdown of clinical indications for projection radiography.}
+\label{tab:clinical_indications}
+\end{longtable}
+
+% =========================================================================
+\section{What Radiologists and Doctors Look for in X-ray Images}
+% =========================================================================
+
+Interpreting a projection radiograph requires a systematic, disciplined reading algorithm. The physician must mentally reconstruct three-dimensional anatomy from two-dimensional overlapping shadow projections.
+
+\subsection{Standard Diagnostic Terminology}
+Radiographic findings are characterized strictly by **radiodensity**:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Radiolucent} (Dark / Black): Allows high X-ray transmission with minimal attenuation (air, normal lung parenchyma, subcutaneous fat).
+    \item \textbf{Radiopaque} (Bright / White): Highly attenuates X-rays, preventing them from reaching the detector (cortical bone, calcification, barium, metallic hardware).
+    \item \textbf{Opacity / Infiltration / Consolidation}: Pathological replacement of normal radiolucent air spaces by higher-density soft tissue, fluid, pus, blood, or cells.
+\end{itemize}
+
+\subsection{Systematic Quality Assessment: PIR (Projection, Inspiration, Rotation)}
+Before interpreting pathology on a chest radiograph, radiologists assess technical adequacy:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Projection (PA vs. AP)}:
+    \begin{itemize}
+        \item \textbf{Posteroanterior (PA)}: The patient stands with the anterior chest against the detector cassette; X-rays enter posteriorly. The heart is near the detector, minimizing magnification. Scapulae are rotated laterally out of the lung fields.
+        \item \textbf{Anteroposterior (AP)}: Typically performed on bed-bound patients using portable bedside equipment. The detector is placed behind the patient's back. The anteriorly positioned heart is farther from the detector, resulting in significant geometric enlargement (mimicking cardiomegaly). The clavicles project higher over the lung apices, and the scapulae overlap the peripheral lung fields.
+    \end{itemize}
+    \item \textbf{Inspiration}: Adequate inspiratory effort is confirmed when at least \textbf{9 to 10 posterior ribs} (or 6 anterior ribs) are clearly visible above the dome of the right hemidiaphragm. Poor inspiratory effort causes basilar lung crowding and vessels to cluster, falsely mimicking congestive heart failure or bilateral basal pneumonia.
+    \item \textbf{Rotation}: Evaluated by assessing the relationship between the medial ends of both clavicles and the central thoracic vertebral spinous processes. If the spinous processes are equidistant between the medial clavicular heads, the patient is not rotated. Rotation distorts heart contours and artificially alters lung radiodensities.
+    \item \textbf{Penetration (Exposure)}: On a properly penetrated PA chest film, the thoracic spine and intervertebral disk spaces should be faintly visible through the cardiac shadow, and branching retrocardiac vessels should be discernable. Underpenetrated (pale/white) films exaggerate lung markings; overpenetrated (dark/black) films obscure subtle lung nodules and fine interstitial markings.
+\end{enumerate}
+
+\subsection{The Systematic Review Algorithm: The ABCDEF Method}
+A structured checklist ensures no subtle pathology is missed:
+\begin{itemize}
+    \item \textbf{A -- Airway}: Trachea midline vs. deviated (pushed away by tension pneumothorax or large pleural effusion; pulled toward lobar collapse); carina caliber; mainstem bronchi.
+    \item \textbf{B -- Breathing / Lungs}: Inspect both lungs from apices to bases, comparing right and left zones symmetry. Evaluate for focal consolidation, reticular/interstitial markings, nodules, pneumothorax (visceral pleural line), and hyperinflation.
+    \item \textbf{C -- Circulation / Cardiac}: Heart position and transverse size. Evaluate the \textbf{Cardiothoracic Ratio (CTR)}: on an erect PA film, normal $\text{CTR} \le 0.50$ ($50\%$). Assess aortic knuckle contour and pulmonary artery caliber.
+    \item \textbf{D -- Diaphragm}: Check hemidiaphragmatic contours (right dome normally sits $1\text{--}2\text{ cm}$ higher than left due to liver). Sharply defined costophrenic angles. Inspect for free subdiaphragmatic air (pneumoperitoneum).
+    \item \textbf{E -- Everything Else (Soft Tissues and Skeleton)}: Examine ribs for subtle fractures, clavicles, humeri, and spine for lytic or blastic lesions. Inspect subcutaneous soft tissues for surgical emphysema (striated gas streaks).
+    \item \textbf{F -- Foreign Bodies, Lines, and Tubes}: Confirm endotracheal tube tip sits $3\text{--}5\text{ cm}$ above the carina; central venous line tip terminates at the cavoatrial junction; nasogastric tube passes below the diaphragm into the stomach bubble.
+\end{itemize}
+
+\subsection{Pathognomonic Radiological Signs Radiologists Scrutinize}
+
+\subsubsection{1. The Silhouette Sign (Benjamin Felson)}
+The **Silhouette Sign** occurs when two structures of identical radiographic density (e.g., heart and fluid, diaphragm and liver) are in direct anatomical contact, causing the anatomical border between them to be obliterated. Conversely, if a lung lesion overlaps an anatomical border on a projection film but does not touch it anatomically (i.e., lies in a different depth plane), the border remains sharply visible.
+\begin{itemize}
+    \item Loss of the right heart border $\to$ Localizes consolidation to the \textbf{Right Middle Lobe (RML)}.
+    \item Loss of the right hemidiaphragm $\to$ Localizes consolidation to the \textbf{Right Lower Lobe (RLL)}.
+    \item Loss of the left heart border $\to$ Localizes consolidation to the \textbf{Lingula} of the left upper lobe.
+    \item Loss of the left hemidiaphragm or descending aorta border $\to$ Localizes disease to the \textbf{Left Lower Lobe (LLL)}.
+\end{itemize}
+
+\subsubsection{2. The Air Bronchogram Sign}
+Normally, intrapulmonary bronchi are invisible on plain radiographs because the radiolucent air inside their lumina is surrounded by radiolucent air in surrounding alveolar spaces. When alveolar air is replaced by fluid, pus, blood, or cellular exudate (alveolar consolidation), the fluid-dense consolidated lung surrounds the branching air-filled bronchi. The patent, dark branching airways stand out against the white background.
+\begin{clinicalpearl}[Pathognomonic Value of Air Bronchograms]
+An \textbf{Air Bronchogram} confirms that pathology originates within the \textbf{lung parenchyma (alveolar space)}, ruling out pleural effusion or anterior mediastinal masses (which do not contain branching bronchial structures). Causes include lobar pneumonia, pulmonary edema, alveolar hemorrhage, and adenocarcinoma in situ.
+\end{clinicalpearl}
+
+\subsubsection{3. Signs of Pneumothorax and Pleural Fluid}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Pneumothorax}: Characterized on an erect inspiratory PA film by visualization of the thin, white \textbf{visceral pleural line}. Distal to this line, the peripheral hemithorax is completely devoid of bronchovascular lung markings (\textbf{peripheral radiolucency}).
+    \item \textbf{Tension Pneumothorax}: A clinical and radiological emergency where intrapleural pressure exceeds atmospheric pressure. Manifests as complete ipsilateral lung collapse, depression of the ipsilateral hemidiaphragm, and \textbf{contralateral shift of the mediastinum and trachea} away from the affected side, compromising venous return to the heart.
+    \item \textbf{Pleural Effusion and the Meniscus Sign}: Free fluid in the pleural space gravitates to dependent recesses. On an erect PA chest film, $150\text{--}200\text{ mL}$ of fluid blunts the normally sharp posterior and lateral costophrenic angles. Larger collections rise laterally along the chest wall, creating a classic concave-upward \textbf{Meniscus Sign}.
+\end{itemize}
+
+\subsubsection{4. Pulmonary Edema and Congestive Heart Failure Progression}
+Radiographic changes progress through three distinct hemodynamic stages based on Pulmonary Capillary Wedge Pressure (PCWP):
+\begin{enumerate}
+    \item \textbf{Stage 1: Vascular Redistribution / Cephalization (PCWP 13--18 mmHg)}: Upper lobe pulmonary veins dilate to equal or exceed the diameter of lower lobe veins (normally, lower lobe vessels are wider due to hydrostatic gravity).
+    \item \textbf{Stage 2: Interstitial Edema (PCWP 18--25 mmHg)}: Fluid leaks into pulmonary interstitium, producing:
+    \begin{itemize}
+        \item \textbf{Kerley B Lines}: Short ($1\text{--}2\text{ cm}$), thin horizontal lines perpendicular to the lateral pleural surface at the lung bases, representing fluid-engorged interlobular septa.
+        \item \textbf{Peribronchial Cuffing}: Thickening of bronchial wall rings viewed in cross-section (``doughnut'' appearance).
+        \item \textbf{Hazy Hilar Margins}: Fluid blurring pulmonary vascular borders.
+    \end{itemize}
+    \item \textbf{Stage 3: Alveolar Edema (PCWP $>25$ mmHg)}: Severe hydrostatic pressure forces fluid into alveolar spaces, producing bilateral, confluent perihilar consolidations sparing the lung cortices—the classic \textbf{``Batwing'' or ``Butterfly'' Pattern}.
+\end{enumerate}
+
+\subsubsection{5. Signs of Abdominal Perforation and Bowel Obstruction}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Pneumoperitoneum (Free Intraperitoneal Air)}:
+    \begin{itemize}
+        \item On an erect chest or erect abdominal film, as little as $1\text{--}2\text{ mL}$ of free gas accumulates under the right hemidiaphragm, appearing as a thin, crescentic radiolucency between the liver dome and diaphragm.
+        \item \textbf{Rigler's Sign (Double Wall Sign)}: On a supine abdominal film, intraluminal gas normally outlines only the inner mucosal surface of the bowel wall. When free air enters the peritoneal cavity, it outlines both the inner mucosal and outer serosal borders, making the bowel wall visible as a sharp, distinct thin white stripe.
+    \end{itemize}
+    \item \textbf{Small Bowel Obstruction (SBO)}: Characterized by central dilated bowel loops ($>3\text{ cm}$ diameter) demonstrating thin transverse lines that span the entire loop width (**Valvulae Conniventes** / plicae circulares). On erect films, multiple air-fluid levels arrange in a stepwise ``string-of-pearls'' or ``ladder'' pattern.
+    \item \textbf{Large Bowel Obstruction (LBO)}: Peripheral dilated colonic loops ($>6\text{ cm}$, cecum $>9\text{ cm}$) showing thick haustra that do not traverse the full width of the bowel.
+    \item \textbf{Sigmoid Volvulus}: Massive distension of an inverted U-shaped closed loop arising from the pelvis and pointing toward the right upper quadrant—the **Coffee Bean Sign**—with loss of haustra.
+\end{itemize}
+
+\subsubsection{6. Musculoskeletal Fractures and Periosteal Reactions}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{The Orthopedic Rule of Two}: To avoid missing subtle fractures:
+    \begin{enumerate}
+        \item Two Views: Always obtain at least two orthogonal projections ($90^\circ$ apart, e.g., AP and Lateral). A fracture non-displaced in one projection is visible only on the second.
+        \item Two Joints: Include the joint above and joint below the injured bone (e.g., tibia fractures require knee and ankle views to exclude Monteggia/Galeazzi equivalent injuries).
+        \item Two Occasions: Repeat films at 10 to 14 days for radiographically occult fractures (scaphoid fractures, femoral neck stress fractures), when osteoclastic bone resorption widens the fracture line.
+        \item Two Limbs: Obtain comparative views of the opposite uninjured extremity in pediatric patients to distinguish normal growth plate physes from fracture lines.
+    \end{enumerate}
+    \item \textbf{The Elbow Fat Pad Sign (Sail Sign)}: On a true lateral elbow radiograph, the anterior fat pad normally rests flat within the coronoid fossa, while the posterior fat pad is hidden inside the olecranon fossa. Intra-articular hemorrhage or effusion distends the joint capsule, elevating the anterior fat pad into the shape of a billowing spinnaker sail (\textbf{Sail Sign}) and displacing the **posterior fat pad** backward out of its fossa. A visible posterior fat pad is always abnormal and strongly suggests an occult intra-articular fracture (supracondylar fracture in children; radial head fracture in adults).
+\end{itemize}
+
+% =========================================================================
+\section{Radiation Safety, Dosimetric Quantities, and Protection Standards}
+% =========================================================================
+
+Because projection radiography utilizes ionizing X-ray photons, clinical application requires adherence to radiation physics, dosimetric measurements, and radiation protection standards.
+
+\subsection{Standardized Dosimetric Metrics in Projection Radiography}
+Radiation exposure in projection imaging is quantified using three parameters:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Air Kerma ($K_a$, in mGy)}: \textbf{K}inetic \textbf{E}nergy \textbf{R}eleased per unit \textbf{MA}ss of air. Quantifies raw X-ray energy delivered to a volume of air at the patient entrance surface.
+    \item \textbf{Dose-Area Product (DAP) / Kerma-Area Product (KAP, in $\text{Gy}\cdot\text{cm}^2$ or $\text{cGy}\cdot\text{cm}^2$)}: The entrance air kerma multiplied by the irradiated cross-sectional area of the X-ray beam:
+    \begin{equation}
+        \text{DAP} = K_a \times \text{Beam Area}
+    \end{equation}
+    DAP is invariant to distance from the X-ray tube (as beam area increases with distance squared, air kerma decreases by the inverse square law), providing a robust surrogate for total radiation energy deposited in the patient. Modern digital radiography systems log DAP values directly into DICOM headers.
+    \item \textbf{Effective Dose ($E$, in Sieverts or mSv)}: Quantifies the overall stochastic cancer risk to the entire human organism by weighting equivalent organ doses ($H_T$) with tissue radiosensitivity weighting factors ($w_T$, established by ICRP Publication 103):
+    \begin{equation}
+        E = \sum_T w_T \cdot H_T
+    \end{equation}
+\end{enumerate}
+
+Table~\ref{tab:dose_comparison} presents standard effective doses associated with typical radiographic procedures relative to natural background radiation ($\approx 2.4\text{--}3.0\text{ mSv/year}$).
+
+\begin{table}[htbp]
+\centering
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{p{5.5cm}p{3cm}p{6.5cm}}
+\toprule
+\textbf{Radiographic Examination} & \textbf{Typical Effective Dose (mSv)} & \textbf{Equivalent Natural Background Radiation} \\
+\midrule
+\textbf{Abdomen Radiograph (KUB)} & $0.70\text{--}1.0\text{ mSv}$ & $\approx 4\text{ months}$ of background. \\
+\textbf{AP Portable Bedside CXR} & $0.05\text{--}0.10\text{ mSv}$ & $\approx 1\text{ to }2\text{ weeks}$ of background. \\
+\textbf{Cervical Spine Radiograph} & $0.10\text{--}0.20\text{ mSv}$ & $\approx 2\text{ to }3\text{ weeks}$ of background. \\
+\textbf{Extremity Radiograph (Wrist, Foot)} & $<0.001\text{ mSv}$ & $\approx 3\text{ hours}$ of background. \\
+\textbf{Lumbar Spine Series} & $1.0\text{--}1.5\text{ mSv}$ & $\approx 5\text{ to }6\text{ months}$ of background. \\
+\textbf{PA Chest Radiograph (CXR)} & $0.02\text{ mSv}$ & $\approx 2.5\text{ days}$ of background radiation. \\
+\textbf{Pelvis Radiograph} & $0.60\text{--}0.80\text{ mSv}$ & $\approx 3\text{ months}$ of background. \\
+\textbf{Reference Comparison: Chest CT} & $\mathbf{6.0\text{--}8.0\text{ mSv}}$ & $\approx 300\text{ to }400\text{ PA Chest Radiographs}$. \\
+\bottomrule
+\end{tabular}
+\caption{Typical radiation effective dose values in projection radiography.}
+\label{tab:dose_comparison}
+\end{table}
+
+\subsection{Radiation Protection: The Three Cardinal Principles and ALARA}
+Personnel and patient radiation protection operates under the \textbf{ALARA} (\textbf{A}s \textbf{L}ow \textbf{A}s \textbf{R}easonably \textbf{A}chievable) principle, governed by three rules:
+\begin{enumerate}
+    \item \textbf{Time}: Minimize beam-on exposure time.
+    \item \textbf{Distance (The Inverse Square Law)}: Radiation intensity ($I$) decreases with the square of the distance ($d$) from the X-ray source:
+    \begin{equation}
+        I_1 \cdot d_1^2 = I_2 \cdot d_2^2 \quad \iff \quad I \propto \frac{1}{d^2}
+    \end{equation}
+    Doubling the distance from the patient reduces scatter dose rate by a factor of four; tripling distance reduces dose rate by a factor of nine. Healthcare workers should step back at least 2 meters (6 feet) during mobile bedside exposures.
+    \item \textbf{Shielding}: Use structural lead shielding, mobile lead barriers, and personal protective apparel (lead aprons with $\ge 0.5\text{ mm}$ lead equivalence, thyroid collars, and leaded glass eyewear) to attenuate scatter radiation.
+\end{enumerate}
+
+\subsection{X-ray Imaging in Pregnancy: The 100 mGy Safety Benchmark}
+A common clinical dilemma involves diagnostic radiography in female patients of childbearing age or confirmed pregnancy. 
+\begin{radiationsafety}[Fetal Dose Thresholds and Clinical Guidance]
+According to the International Commission on Radiological Protection (ICRP) and the American College of Obstetricians and Gynecologists (ACOG):
+\begin{itemize}
+    \item Radiation-induced deterministic teratogenic effects (congenital structural malformations, microcephaly, intellectual disability) have a documented physical threshold of \textbf{$100\text{ to }200\text{ mGy}$}.
+    \item Non-pelvic radiographic examinations (CXR, extremity, cervical spine) deliver less than \textbf{$0.001\text{ mGy}$} of scattered radiation to the conceptus—thousands of times below teratogenic thresholds.
+    \item Even direct pelvic radiography (pelvis, hip, lumbar spine) delivers less than \textbf{$1\text{ to }3\text{ mGy}$}.
+    \item \textbf{Clinical Mandate}: Medically indicated diagnostic radiographs (such as a chest radiograph for suspected pneumonia or limb radiograph for trauma) should \textbf{never be withheld or delayed} from a pregnant patient out of fear of fetal radiation exposure. Abdominal shielding is used when feasible.
+\end{itemize}
+\end{radiationsafety}
+
+% =========================================================================
+\section{Comparative Synthesis: Radiography vs. CT vs. MRI vs. Ultrasound}
+% =========================================================================
+
+Selecting the optimal diagnostic imaging modality requires balancing spatial resolution, contrast resolution, speed, radiation dose, and cost. Table~\ref{tab:modality_comparison} provides a comprehensive comparison across all four primary medical imaging modalities.
+
+\begin{table}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{p{2.2cm}p{2.8cm}p{3.2cm}p{3.2cm}p{3.0cm}}
+\toprule
+\textbf{Parameter} & \textbf{Plain Radiography} & \textbf{Computed Tomography} & \textbf{Magnetic Resonance (MRI)} & \textbf{Ultrasound (US)} \\
+\midrule
+\textbf{Bone \& Gas} & \textbf{Excellent} 2D gross bony alignment. & Exceptional cortical detail and lung tissue. & Signal void (few mobile protons; short $T_2$). & Completely blocked (reflection \& shadowing). \\
+\textbf{Ionizing Radiation} & \textbf{Minimal} ($0.02\text{--}1.0\text{ mSv}$). & Present ($2\text{--}15\text{ mSv}$ per exam). & \textbf{Zero} (completely non-ionizing). & \textbf{Zero} (completely non-ionizing). \\
+\textbf{Soft-Tissue Contrast} & \textbf{Poor} (superimposed 2D density shadows). & Moderate (differentiates fat, muscle, fluid, organ). & \textbf{Superior} (multi-parametric: $T_1$, $T_2$, DWI). & Good at fluid-solid interfaces; user dependent. \\
+\textbf{Physical Basis} & 2D planar attenuation of ionizing X-rays. & 3D volumetric differential X-ray attenuation. & Radiofrequency excitation of $^1\text{H}$ protons in $B_0$. & High-frequency mechanical sound waves ($2\text{--}18\text{ MHz}$). \\
+\textbf{Portability \& Cost} & \textbf{Highly portable}; lowest capital cost. & Fixed gantry; intermediate cost. & Fixed installation; highest capital cost. & Highest portability; low cost. \\
+\textbf{Scan Acquisition} & \textbf{Milliseconds} (fraction of a second). & Seconds (torso in a single breath-hold). & $20\text{--}60\text{ minutes}$ across multiple sequences. & Real-time dynamic ($15\text{--}30\text{ min}$ exam). \\
+\textbf{Emergency Role} & \textbf{Universal first-line triage} (fractures, chest). & Primary workhorse (trauma, stroke, acute abdomen). & Hyperacute stroke, cord compression, ligament tear. & Bedside POCUS (trauma FAST, DVT, arrest). \\
+\textbf{Spatial Resolution} & \textbf{Highest} ($0.1\text{--}0.2\text{ mm}$ / $>5\text{ lp/mm}$). & High ($0.3\text{--}0.5\text{ mm}$ isotropic voxels). & Moderate ($0.5\text{--}1.0\text{ mm}$). & Variable ($0.1\text{--}0.5\text{ mm}$ superficial axial). \\
+\bottomrule
+\end{tabular}
+\caption{Cross-modality comparison between Radiography, CT, MRI, and Ultrasound.}
+\label{tab:modality_comparison}
+\end{table}
+
+% =========================================================================
+\section{Conclusion and Future Horizons}
+% =========================================================================
+
+Projection radiography remains the primary diagnostic gateway of modern medicine. Contemporary technological frontiers include:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Dual-Energy Subtraction (DES) Radiography}: Acquires two rapid sequential exposures at differing tube voltages (e.g., 60\,kVp and 120\,kVp) or uses a dual-layer flat panel detector. Exploiting the differential energy dependence of photoelectric absorption versus Compton scatter, DES mathematically decomposes the projection into a **bone-free soft-tissue image** (revealing lung nodules previously obscured by clavicles and ribs) and a **soft-tissue-free bone image** (revealing subtle rib fractures and calcified granulomas).
+    \item \textbf{Digital Tomosynthesis}: The X-ray tube moves through a limited angular arc ($\pm 15^\circ\text{ to }\pm 30^\circ$) over the stationary or rotating flat-panel detector, acquiring dozens of low-dose projections. Iterative algorithms reconstruct cross-sectional focal plane slices, eliminating anatomical tissue overlap in digital breast tomosynthesis (DBT) and orthopedic joint evaluations at a fraction of the radiation dose of CT.
+    \item \textbf{Artificial Intelligence for Point-of-Care Triage}: Deep convolutional neural networks integrated into mobile digital radiography systems screen images within seconds of exposure, automatically highlighting pneumothorax, pulmonary nodules, endotracheal tube malposition, and acute skeletal fractures to triage emergent cases in busy emergency and resource-limited clinics.
+\end{itemize}
+
+% =========================================================================
+\section*{References}
+\addcontentsline{toc}{section}{References}
+% =========================================================================
+
+\begin{enumerate}[label={[\arabic*]},leftmargin=*]
+    \item Bushberg, J. T., Seibert, J. A., Leidholdt, E. M., \& Boone, J. M. (2020). \textit{The Essential Physics of Medical Imaging} (4th ed.). Wolters Kluwer.
+    \item Felson, B. (1973). \textit{Chest Roentgenology}. W. B. Saunders.
+    \item Herring, W. (2019). \textit{Learning Radiology: Recognizing the Basics} (4th ed.). Elsevier.
+    \item Röntgen, W. C. (1896). On a new kind of rays. \textit{Nature}, 53(1369), 274--276.
+    \item Seibert, J. A. (2006). Digital radiography: the bottom line comparison between CR and DR systems. \textit{Applied Radiology}, 35(11), 22--30.
+    \item Chotas, H. G., Dobbins, J. T., \& Ravin, C. E. (1999). Principles of digital radiography with large-area, electronically addressable detectors: a review of the basics. \textit{Radiology}, 210(3), 595--604.
+    \item Eisenberg, R. L., \& Johnson, N. M. (2015). \textit{Comprehensive Radiographic Pathology} (6th ed.). Mosby Elsevier.
+    \item International Commission on Radiological Protection (ICRP). (2007). The 2007 Recommendations of the International Commission on Radiological Protection. ICRP Publication 103. \textit{Annals of the ICRP}, 37(2-4).
+    \item American College of Obstetricians and Gynecologists (ACOG). (2017). Guidelines for Diagnostic Imaging During Pregnancy and Lactation. Committee Opinion No. 723. \textit{Obstetrics \& Gynecology}, 130(4), e210--e216.
+    \item Raoof, S., Feigin, D., Sung, A., et al. (2012). Interpretation of plain chest roentgenogram. \textit{Chest}, 141(2), 545--558.
+\end{enumerate}
+
+\end{document}

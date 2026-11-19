@@ -1,0 +1,667 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{top=1in, bottom=1in, left=1in, right=1in}
+
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=teal!80!black,
+    citecolor=teal!80!black,
+    urlcolor=blue!70!black,
+    pdftitle={Planar Nuclear Scintigraphy: Physical Principles, Gamma Camera Instrumentation, Radiopharmaceutical Dynamics, and Clinical Diagnostics in Bone, Pulmonary, and Thyroid Imaging},
+    pdfauthor={Chaman Singh Verma}
+}
+
+% Styled boxes for clinical pearls, physics formulations, and quality control guidelines
+\newtcolorbox{clinicalpearl}[1][]{
+    colback=teal!5!white,
+    colframe=teal!75!black,
+    fonttitle=\bfseries\sffamily,
+    title={Clinical Pearl: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\newtcolorbox{physicsbox}[1][]{
+    colback=blue!5!white,
+    colframe=blue!70!black,
+    fonttitle=\bfseries\sffamily,
+    title={Scintillation Radiation Physics: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\newtcolorbox{qcbox}[1][]{
+    colback=purple!5!white,
+    colframe=purple!70!black,
+    fonttitle=\bfseries\sffamily,
+    title={Nuclear Medicine Quality Control Protocol: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\newtcolorbox{safetybox}[1][]{
+    colback=red!5!white,
+    colframe=red!70!black,
+    fonttitle=\bfseries\sffamily,
+    title={Nuclear Radiation Safety \& Precautions: #1},
+    arc=2mm,
+    boxrule=0.8pt,
+    left=6pt, right=6pt, top=6pt, bottom=6pt,
+    breakable
+}
+
+\title{\textbf{\huge Planar Nuclear Scintigraphy:}\\[0.4em]
+\Large Physical Principles, Gamma Camera Instrumentation, Radiopharmaceutical Dynamics, and Clinical Diagnostics in Bone, Pulmonary, and Thyroid Imaging}
+
+\author{\textbf{Chaman Singh Verma} \\
+\textit{Department of Medical Imaging and Computation} \\
+\small \textsf{Comprehensive Reference Guide for Nuclear Medicine Physicians,}\\[0.2em]
+\small \textsf{Radiologists, Medical Physicists, and Nuclear Pharmacists}}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Planar nuclear scintigraphy represents the foundational discipline of clinical nuclear medicine, providing non-invasive, functional, and physiological molecular imaging of the human body. In stark contrast to anatomical transmission radiography, scintigraphy is an emission imaging modality: trace amounts of gamma-emitting radiopharmaceuticals administered to the patient home to targeted biological receptors, cellular pathways, or metabolic processes, emitting single gamma photons captured by an external Anger scintillation camera. This comprehensive treatise provides an exhaustive analysis of planar nuclear imaging science. We rigorously formulate radionuclide decay kinetics, radioactive equilibria, and the physical superiority of Technetium-99m ($^{99m}\text{Tc}$, $140.5\,\text{keV}$, $T_{1/2} = 6.01\,\text{h}$), alongside $^{99}\text{Mo}/^{99m}\text{Tc}$ radionuclide generator mechanics. We dissect the physical architecture of the Anger gamma camera: collimator hole geometry and resolution tradeoffs, thallium-doped sodium iodide ($\text{NaI(Tl)}$) scintillation crystals, photomultiplier tube (PMT) array resistor-network Anger positioning logic, and Pulse Height Analyzer (PHA) Compton scatter rejection. Standardized clinical protocols are examined in rigorous depth: three-phase bone scintigraphy ($^{99m}\text{Tc}$-MDP) for osteomyelitis, stress fractures, and skeletal metastases; ventilation-perfusion (V/Q) pulmonary scintigraphy ($^{99m}\text{Tc}$-MAA and $^{133}\text{Xe}$ / DTPA aerosol) with modified PIOPED II mismatch criteria for pulmonary embolism; and thyroid/parathyroid scintigraphy ($^{99m}\text{Tc}\text{O}_4^-$, $^{123}\text{I}$, $^{131}\text{I}$, and $^{99m}\text{Tc}$-sestamibi). Furthermore, dynamic renal scintigraphy ($^{99m}\text{Tc}$-MAG3), gastrointestinal bleeding scans ($^{99m}\text{Tc}$-RBC), hepatobiliary HIDA cholecystitis protocols, daily/weekly NEMA quality control (field uniformity, bar phantoms, FWHM energy resolution), radiation dosimetry via the MIRD formulation, and the transition toward solid-state Cadmium Zinc Telluride (CZT) multi-detector cameras and molecular theranostics are systematically synthesized.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{Introduction and Principles of Molecular Scintigraphy}
+
+Diagnostic radiology historically evolved around \textbf{transmission imaging} (plain radiography, fluoroscopy, computed tomography), in which an external X-ray source generates photons that traverse the patient and undergo anatomical attenuation. While transmission imaging delivers exquisite structural morphology, it provides minimal insight into underlying cellular biochemistry and organ function.
+
+\textbf{Planar Nuclear Scintigraphy} operates under the inverted physical paradigm of \textbf{emission imaging}:
+\begin{enumerate}[leftmargin=*]
+    \item A biologically active chemical compound is labeled with a gamma-emitting radionuclide, forming a \textbf{radiopharmaceutical} (or radiotracer).
+    \item The radiopharmaceutical is introduced into the patient (most commonly via intravenous injection, inhalation, or oral ingestion) in minute, sub-pharmacological concentrations (tracer quantities, typically nanomolar to picomolar), ensuring zero hemodynamic or physiological disruption.
+    \item The biodistribution of the radiotracer is governed strictly by the target organ's underlying biochemistry—such as osteoblastic mineral turnover, pulmonary capillary micro-perfusion, cellular membrane sodium-iodide symporter transport, or renal tubular secretion.
+    \item The emitted monoenergetic gamma photons escape the patient's body and are captured by an external scintillation detector (the \textbf{Anger camera}), yielding a two-dimensional planar projection map of metabolic function.
+\end{enumerate}
+
+\subsection{Historical Milestones in Scintigraphic Imaging}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{1930s (Ernest Lawrence and the Cyclotron):} The invention of the cyclotron at the University of California, Berkeley, enabled the artificial synthesis of radioactive isotopes, including Iodine-131 ($^{131}\text{I}$) and Technetium-99m ($^{99m}\text{Tc}$).
+    \item \textbf{1951 (Benedict Cassen and the Rectilinear Scanner):} Cassen constructed the first automated mechanical scanner using a motorized calcium tungstate scintillation crystal coupled to a focused lead collimator. The device moved back and forth across the patient in a slow raster pattern, mechanically producing line-by-line images of thyroid uptake.
+    \item \textbf{1957 (Hal Anger and the Scintillation Camera):} Hal Anger at the Donner Laboratory, UC Berkeley, revolutionized medical imaging by inventing the stationary \textbf{Anger Scintillation Camera}. By coupling a large, single-sheet sodium iodide crystal to an array of photomultiplier tubes through a resistor-divider coordinate positioning network, the Anger camera captured entire anatomical fields of view simultaneously in real time without mechanical scanning. The core physical architecture of the Anger camera remains the governing foundation of planar nuclear medicine today.
+    \item \textbf{1960s (The Technetium-99m Generator):} Richards and colleagues at Brookhaven National Laboratory developed the Molybdenum-99/Technetium-99m ($^{99}\text{Mo}/^{99m}\text{Tc}$) radionuclide generator, making pure, short-lived gamma emitters readily accessible on demand to hospitals worldwide.
+\end{itemize}
+
+\newpage
+\section{Radionuclide Physics and Radiopharmaceutical Kinetics}
+
+Radioactive decay is the spontaneous nuclear transition of an unstable radionuclide into a more stable nuclear state, accompanied by the emission of ionizing particles or electromagnetic gamma radiation.
+
+\subsection{Radioactive Decay Kinetics and Half-Life Formulations}
+
+The rate of radioactive disintegration (activity, $A(t)$) in a radioactive sample containing $N(t)$ radioactive atoms is governed by the fundamental differential decay law:
+\begin{equation}
+    A(t) = -\frac{dN(t)}{dt} = \lambda \cdot N(t)
+\end{equation}
+where $\lambda$ is the characteristic \textbf{decay constant} of the radionuclide ($\text{time}^{-1}$). Integrating Equation (1) yields the exponential radioactive decay equation:
+\begin{equation}
+    N(t) = N_0 \exp(-\lambda t) \implies A(t) = A_0 \exp(-\lambda t)
+\end{equation}
+where $N_0$ and $A_0$ represent the initial atomic quantity and activity at $t = 0$.
+
+The \textbf{Physical Half-Life ($T_{1/2}$)} is the duration required for half of the radioactive atoms to decay ($A(T_{1/2}) = A_0 / 2$):
+\begin{equation}
+    \frac{A_0}{2} = A_0 \exp(-\lambda T_{1/2}) \implies \ln(2) = \lambda T_{1/2} \implies T_{1/2} = \frac{\ln(2)}{\lambda} \approx \frac{0.69315}{\lambda}
+\end{equation}
+In the International System of Units (SI), activity is quantified in \textbf{Becquerels (Bq)}, where $1\,\text{Bq} = 1\,\text{disintegration per second}$. In clinical practice, the historical unit \textbf{Curie (Ci)} remains widely utilized:
+\begin{equation}
+    1\,\text{Curie (Ci)} = 3.7 \times 10^{10}\,\text{Bq} = 37\,\text{GBq} \qquad 1\,\text{millicurie (mCi)} = 37\,\text{MBq}
+\end{equation}
+
+\subsection{Effective Half-Life and Biological Elimination}
+
+When a radiopharmaceutical is administered in vivo, its physical presence within the target organ diminishes through two simultaneous, independent exponential processes:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Physical Radioactive Decay:} Characterized by physical decay constant $\lambda_{\text{phys}}$ and physical half-life $T_{\text{phys}}$.
+    \item \textbf{Biological Clearance:} Characterized by biological excretion/metabolic turnover constant $\lambda_{\text{biol}}$ and biological half-life $T_{\text{biol}}$.
+\end{enumerate}
+The total clearance rate constant is the sum of both individual constants:
+\begin{equation}
+    \lambda_{\text{eff}} = \lambda_{\text{phys}} + \lambda_{\text{biol}}
+\end{equation}
+Substituting $\lambda = \ln(2) / T$:
+\begin{equation}
+    \frac{\ln(2)}{T_{\text{eff}}} = \frac{\ln(2)}{T_{\text{phys}}} + \frac{\ln(2)}{T_{\text{biol}}} \implies \frac{1}{T_{\text{eff}}} = \frac{1}{T_{\text{phys}}} + \frac{1}{T_{\text{biol}}}
+\end{equation}
+Solving for the \textbf{Effective Half-Life ($T_{\text{eff}}$)}:
+\begin{equation}
+    T_{\text{eff}} = \frac{T_{\text{phys}} \cdot T_{\text{biol}}}{T_{\text{phys}} + T_{\text{biol}}}
+\end{equation}
+Notice that $T_{\text{eff}}$ is always shorter than either $T_{\text{phys}}$ or $T_{\text{biol}}$ alone. If either physical decay or biological excretion is exceptionally rapid, $T_{\text{eff}}$ is dominated by the shorter process.
+
+\subsection{The Ideal Diagnostic Radionuclide: Technetium-99m}
+
+Over \textbf{$85\%$ of all nuclear medicine procedures worldwide} utilize Technetium-99m ($^{99m}\text{Tc}$):
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Pure Gamma Isomeric Transition:} $^{99m}\text{Tc}$ is a metastable nuclear isomer that decays to ground-state Technetium-99 ($^{99}\text{Tc}$) strictly by isomeric transition, emitting a \textbf{single monochromatic gamma photon of energy $E_\gamma = 140.5\,\text{keV}$} with an $89\%$ abundance:
+    \begin{equation}
+        ^{99m}_{43}\text{Tc} \xrightarrow{T_{1/2} = 6.01\,\text{h}} \, ^{99}_{43}\text{Tc} + \gamma \, (140.5\,\text{keV})
+    \end{equation}
+    Crucially, $^{99m}\text{Tc}$ emits \textbf{zero particulate radiation} (no beta or alpha particles), drastically minimizing patient radiation dose.
+    \item \textbf{Optimal Photon Energy ($140.5\,\text{keV}$):} This energy is optimal for clinical imaging: high enough to escape deep human tissues with minimal attenuation ($> 50\%$ transmission through $5\,\text{cm}$ of tissue), yet low enough to be stopped with $> 90\%$ efficiency by a thin, high-resolution $9.5\,\text{mm}$ sodium iodide scintillation crystal.
+    \item \textbf{Ideal Physical Half-Life ($6.01\,\text{hours}$):} Long enough to allow multi-step chemical synthesis, patient administration, physiological organ uptake, and delayed imaging, but short enough to decay rapidly, minimizing prolonged patient radioactive exposure.
+    \item \textbf{Versatile Coordination Chemistry:} Technetium is a transition metal with multiple accessible oxidation states (from $-1$ to $+7$), permitting stable chelation to diverse biological ligands (diphosphonates, peptides, sulfur colloids, macroaggregated albumin, lipophilic cations).
+\end{itemize}
+
+\subsection{The \texorpdfstring{$^{99}\text{Mo}/^{99m}\text{Tc}$}{99Mo/99mTc} Radionuclide Generator}
+
+Because a 6-hour half-life prevents long-distance commercial shipment of pre-formulated $^{99m}\text{Tc}$, clinical departments rely on the \textbf{$^{99}\text{Mo}/^{99m}\text{Tc}$ radioisotope generator} (the ``nuclear cow''):
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Parent-Daughter Physics:} Parent Molybdenum-99 ($^{99}\text{Mo}$, $T_{1/2} = 66.0\,\text{h}$) decays via beta emission ($\beta^-$) into daughter Technetium-99m ($^{99m}\text{Tc}$, $T_{1/2} = 6.01\,\text{h}$) with an $87.6\%$ branching yield.
+    \item \textbf{Transient Equilibrium:} Because $T_{\text{parent}} > T_{\text{daughter}}$ (by a factor of $\approx 11$), the system achieves \textbf{transient radioactive equilibrium} within approximately 4 half-lives of the daughter ($24\,\text{hours}$), at which point daughter activity reaches a maximum and subsequently decays with the apparent half-life of the parent:
+    \begin{equation}
+        A_{\text{Tc}}(t) = A_{\text{Mo}}(0) \cdot \frac{\lambda_{\text{Tc}}}{\lambda_{\text{Tc}} - \lambda_{\text{Mo}}} \cdot \text{BR} \cdot \left[ \exp(-\lambda_{\text{Mo}} t) - \exp(-\lambda_{\text{Tc}} t) \right]
+    \end{equation}
+    where $\text{BR} = 0.876$ is the branching ratio. Peak $^{99m}\text{Tc}$ activity occurs at:
+    \begin{equation}
+        t_{\text{max}} = \frac{\ln(\lambda_{\text{Tc}} / \lambda_{\text{Mo}})}{\lambda_{\text{Tc}} - \lambda_{\text{Mo}}} \approx 22.9\,\text{hours} \approx 23\,\text{hours}
+    \end{equation}
+    \item \textbf{Chromatographic Elution ("Milking"):} The generator column contains acidic aluminum oxide ($\text{Al}_2\text{O}_3$, alumina). Parent $^{99}\text{Mo}$ in the chemical form of molybdate ($\text{MoO}_4^{2-}$) binds tenaciously to alumina. As it decays, daughter $^{99m}\text{Tc}$ forms pertechnetate ($\text{TcO}_4^-$), a singly charged anion with weak binding affinity. Passing sterile isotonic saline ($0.9\%\,\text{NaCl}$) through the column elutes the daughter as \textbf{Sodium Pertechnetate ($\text{Na}^{99m}\text{TcO}_4$)}, while the parent remains bound to the column.
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{2.5cm}p{2.3cm}p{2.1cm}p{2.7cm}p{4.8cm}}
+\toprule
+\textbf{Radionuclide} & \textbf{Decay Mode} & \textbf{Physical $T_{1/2}$} & \textbf{Principal $\gamma$ Energy} & \textbf{Primary Clinical Application} \\
+\midrule
+\textbf{Gallium-67 ($^{67}\text{Ga}$)} & Electron Capture & $3.26\,\text{days}$ & $93, 185, 300\,\text{keV}$ & Chronic osteomyelitis, discitis, lymphoma, sarcoidosis, and fever of unknown origin. \\
+\addlinespace
+\textbf{Indium-111 ($^{111}\text{In}$)} & Electron Capture & $2.80\,\text{days}$ & $171\,\text{keV}$ ($90\%$), $245\,\text{keV}$ ($94\%$) & Leukocyte infection imaging ($^{111}\text{In}$-WBC); OctreoScan somatostatin receptor scintigraphy. \\
+\addlinespace
+\textbf{Iodine-123 ($^{123}\text{I}$)} & Electron Capture & $13.2\,\text{hours}$ & $159\,\text{keV}$ ($83\%$) & Thyroid uptake and organification; MIBG neuroendocrine and pheochromocytoma imaging. \\
+\addlinespace
+\textbf{Iodine-131 ($^{131}\text{I}$)} & $\beta^-$ and $\gamma$ & $8.02\,\text{days}$ & $364\,\text{keV}$ ($81\%$), $\beta_{\text{max}} = 0.61\,\text{MeV}$ & Thyroid carcinoma ablation and metastatic surveys; treatment of Graves' hyperthyroidism. \\
+\addlinespace
+\textbf{Technetium-99m} & Isomeric Trans. & $6.01\,\text{hours}$ & $140.5\,\text{keV}$ ($89\%$) & Workhorse agent: Bone, lung, renal, cardiac, thyroid, hepatobiliary scintigraphy. \\
+\addlinespace
+\textbf{Xenon-133 ($^{133}\text{Xe}$)} & $\beta^-$ and $\gamma$ & $5.24\,\text{days}$ & $81\,\text{keV}$ ($37\%$) & Inhaled radioactive gas for pulmonary ventilation scintigraphy (V/Q scanning). \\
+\bottomrule
+\end{tabular}
+\caption{Physical characteristics and clinical roles of major gamma-emitting radionuclides in planar scintigraphy.}
+\label{tab:radionuclides}
+\end{figure}
+
+\newpage
+\section{The Anger Scintillation Camera Instrumentation}
+
+The Anger gamma camera converts incoming individual gamma photons into localized two-dimensional electrical coordinate pulses ($X, Y$) and an energy pulse ($Z$). It comprises four primary stages: the \textbf{collimator}, the \textbf{scintillation crystal}, the \textbf{photomultiplier tube (PMT) array}, and the \textbf{pulse height analyzer (PHA)}.
+
+\subsection{Collimator Physics: Geometric Optics of Gamma Rays}
+
+Because high-energy gamma rays cannot be refracted or focused by optical lenses or curved mirrors, spatial localization requires \textbf{absorptive geometric collimation}:
+\begin{itemize}[leftmargin=*]
+    \item A collimator is a thick plate of high-density, high-atomic-number material (lead, $Z=82$, $\rho = 11.34\,\text{g/cm}^3$, or tungsten, $Z=74$, $\rho = 19.25\,\text{g/cm}^3$) perforated by thousands of microscopic geometric channels (holes) separated by lead absorbing walls called \textbf{septa}.
+    \item \textbf{Acceptance Principle:} Only gamma photons travelling parallel (or within a narrow acceptance angle) to the hole axis traverse the channels and strike the crystal. Photons emitted at oblique angles strike the lead septa and are absorbed via photoelectric interactions.
+\end{itemize}
+
+\subsubsection{Parallel-Hole Collimator Resolution and Efficiency}
+For a parallel-hole collimator with circular or hexagonal holes of diameter $d$, channel length $l$, and septal thickness $t$, operating at a distance $b$ from the patient source:
+\begin{equation}
+    R_{\text{coll}} \approx \frac{d \cdot (l + b)}{l}
+\end{equation}
+Equation (11) demonstrates that \textbf{spatial resolution degrades linearly as distance $b$ increases}. To maximize spatial resolution, the gamma camera head must be positioned \textbf{as close to the patient's skin as physically possible}.
+
+The geometric collimator efficiency ($g$), representing the fraction of emitted photons passing through the holes, is:
+\begin{equation}
+    g \propto \left( \frac{d^2}{l \cdot (d + t)} \right)^2 \approx K \cdot \left( \frac{d}{l} \right)^2
+\end{equation}
+Notice that geometric efficiency is \textbf{independent of distance $b$} (because as distance increases, the solid angle of each individual hole decreases as $1/b^2$, but the total number of holes viewing the source increases as $b^2$, canceling distance dependence for extended sources).
+
+\begin{physicsbox}[The Inherent Resolution-Sensitivity Tradeoff]
+Equations (11) and (12) establish the non-negotiable physical compromise of collimator design:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Low-Energy High-Resolution (LEHR):} Small hole diameter ($d \approx 1.5\,\text{mm}$), long channel length ($l \approx 35\text{--}40\,\text{mm}$). Maximizes spatial resolution ($R_{\text{coll}} \approx 6\text{--}8\,\text{mm}$ at $10\,\text{cm}$), but delivers low sensitivity ($\approx 150\text{--}200\,\text{cpm/}\mu\text{Ci}$). Workhorse for routine bone and renal scans.
+    \item \textbf{Low-Energy All-Purpose / High-Sensitivity (LEAP / LEGP):} Wider hole diameter ($d \approx 1.9\text{--}2.5\,\text{mm}$). Increases count sensitivity by $200\text{--}300\%$, but degrades spatial resolution ($R_{\text{coll}} \approx 10\text{--}12\,\text{mm}$). Used for rapid dynamic first-pass blood flow studies.
+    \item \textbf{Septal Penetration Criterion:} The septal thickness $t$ must be sufficiently thick to ensure that \textbf{less than $5\%$ of photons} penetrate the septa obliquely:
+    \begin{equation}
+        t \ge \frac{6 \cdot d \cdot \mu_{\text{lead}}^{-1}}{l - 3 \cdot \mu_{\text{lead}}^{-1}}
+    \end{equation}
+    For low energies ($^{99m}\text{Tc}$, $140\,\text{keV}$), $t \approx 0.2\text{--}0.3\,\text{mm Pb}$. For high energies ($^{131}\text{I}$, $364\,\text{keV}$), $t \ge 1.0\text{--}1.5\,\text{mm Pb}$, mandating thick High-Energy (HE) collimators.
+\end{itemize}
+\end{physicsbox}
+
+\subsubsection{Specialized Collimator Geometries}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Pinhole Collimator:} A single conical aperture ($2\text{ to }6\,\text{mm}$) in a lead/platinum cone. Inverts and \textbf{magnifies small organs} (thyroid gland, pediatric hip joints). Yields sub-millimeter spatial resolution at close proximity.
+    \item \textbf{Converging Collimator:} Holes angle inward toward a focal point in front of the camera. Magnifies the organ without image inversion; useful for small organs (pediatric brain, heart).
+    \item \textbf{Diverging Collimator:} Holes angle outward. Minifies the image, allowing a small camera detector to image an organ larger than the crystal face (e.g., adult lungs). Largely obsolete due to modern large-field-of-view (LFOV) rectangular detectors.
+\end{itemize}
+
+\subsection{The Scintillation Crystal: Thallium-Doped Sodium Iodide}
+
+Photons passing through the collimator strike a single, large planar \textbf{Thallium-activated Sodium Iodide ($\text{NaI(Tl)}$)} crystal (dimensions up to $40 \times 55\,\text{cm}$):
+\begin{itemize}[leftmargin=*]
+    \item \textbf{High Photoelectric Capture:} Due to the high atomic number of iodine ($Z = 53$) and physical density ($\rho = 3.67\,\text{g/cm}^3$), $\text{NaI(Tl)}$ possesses strong stopping power for $140\,\text{keV}$ photons.
+    \item \textbf{Scintillation Efficiency:} Absorption of a $140\,\text{keV}$ photon excites valence electrons across the bandgap into the conduction band. The thallium dopant ($\text{Tl}^+$) creates activator energy levels within the forbidden bandgap. De-excitation through these levels releases a burst of approximately \textbf{$30\text{ to }40$ visible light photons per $\text{keV}$} of absorbed energy (approximately $4{,}000\text{ to }5{,}000$ blue-violet optical photons at $\lambda \approx 415\,\text{nm}$ per $140\,\text{keV}$ interaction).
+    \item \textbf{Crystal Thickness Tradeoff:}
+    \begin{itemize}
+        \item \textbf{Standard $3/8\text{-inch}$ ($9.5\,\text{mm}$):} Absorbs $\approx 90\%$ of $140\,\text{keV}$ gamma photons with minimal lateral optical light dispersion. Optimized for $^{99m}\text{Tc}$.
+        \item \textbf{Thick $5/8\text{-inch}$ ($15.9\,\text{mm}$):} Required for high-energy isotopes ($^{131}\text{I}$, $^{111}\text{In}$, $^{67}\text{Ga}$), but causes increased light dispersion that degrades intrinsic spatial resolution by $20\text{--}30\%$.
+    \end{itemize}
+    \item \textbf{Hygroscopic Protection:} $\text{NaI(Tl)}$ is extremely hygroscopic; exposure to ambient atmospheric moisture causes yellowing and loss of transparency. The crystal is hermetically sealed within a moisture-proof aluminum casing backed by a transparent Pyrex glass or quartz optical exit window.
+\end{itemize}
+
+\subsection{The Photomultiplier Tube (PMT) Array and Anger Positioning Logic}
+
+An optical light pipe (optical grease) couples the glass backing of the scintillation crystal to a tightly packed hexagonal array of \textbf{37, 61, 75, or 91 Photomultiplier Tubes (PMTs)}:
+\begin{enumerate}[leftmargin=*]
+    \item Optical photons strike the photocathode of each PMT (bialkali material), ejecting primary photoelectrons via the photoelectric effect (quantum efficiency $\approx 25\%$).
+    \item An accelerating high-voltage dynode chain ($1000\text{ to }1500\,\text{V}$, 10 dynodes) amplifies the electron cascade by secondary electron emission, producing an electrical current pulse with a gain of $10^6\text{ to }10^7$.
+    \item \textbf{Anger Positioning Network:} The scintillation flash produces light that spreads across multiple neighboring PMTs. The PMT directly above the interaction site receives the highest light intensity, while adjacent PMTs receive progressively lower fractions. The anodes of all PMTs are wired into four cross-connected resistor-divider networks, producing four position-weighted coordinate signals: $X^+, X^-, Y^+,\text{ and }Y^-$.
+    \item \textbf{Normalized Spatial Coordinates:}
+    \begin{equation}
+        Z = X^+ + X^- + Y^+ + Y^- \quad (\text{Total Pulse Height / Energy Signal})
+    \end{equation}
+    \begin{equation}
+        x = \frac{X^+ - X^-}{Z} \qquad y = \frac{Y^+ - Y^-}{Z}
+    \end{equation}
+    Dividing by total energy $Z$ normalizes the $(x,y)$ coordinates, ensuring that spatial positioning is invariant to statistical fluctuations in total light yield.
+\end{enumerate}
+
+\subsection{Pulse Height Analysis (PHA) and Compton Scatter Rejection}
+
+A major physical challenge in emission imaging is \textbf{Compton scattering inside the patient's body}:
+\begin{itemize}[leftmargin=*]
+    \item If a $140.5\,\text{keV}$ gamma photon scatters through angle $\theta$ before exiting the patient, its energy drops according to the Compton scattering formula:
+    \begin{equation}
+        E' = \frac{E_0}{1 + \left( \frac{E_0}{m_e c^2} \right) (1 - \cos\theta)}
+    \end{equation}
+    For $E_0 = 140.5\,\text{keV}$ and $\theta = 45^\circ$, $E' \approx 129\,\text{keV}$.
+    \item Because the scattered photon changed direction, if it passes through the collimator, it will be mapped to the wrong spatial location, creating a diffuse background haze that degrades image contrast.
+    \item \textbf{The Energy Window:} The \textbf{Pulse Height Analyzer (PHA)} inspects the total energy pulse $Z$. It establishes an electronic \textbf{photopeak energy window} centered symmetrically on $140.5\,\text{keV}$ with a standard \textbf{$15\%$ to $20\%$ window width}:
+    \begin{equation}
+        \text{20\% Window on } 140.5\,\text{keV} \implies 140.5 \pm 10\% = \mathbf{126.5\,\text{keV to } 154.5\,\text{keV}}
+    \end{equation}
+    Any detected event whose energy falls below $126.5\,\text{keV}$ (Compton scattered photons) or above $154.5\,\text{keV}$ is electronically rejected within nanoseconds.
+\end{itemize}
+
+\newpage
+\section{Clinical Bone Scintigraphy (Skeletal Imaging)}
+
+Bone scintigraphy is one of the most frequently performed nuclear medicine investigations, providing whole-body skeletal surveys for osteoblastic metabolic turnover, occult trauma, and osteomyelitis.
+
+\subsection{Radiopharmaceutical Chemistry: \texorpdfstring{$^{99m}\text{Tc}$}{99mTc}-Diphosphonates}
+
+The workhorse skeletal radiopharmaceuticals are synthetic \textbf{diphosphonates}:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{$^{99m}\text{Tc}$-MDP} (Methylene Diphosphonate) and \textbf{$^{99m}\text{Tc}$-HDP} (Hydroxymethylene Diphosphonate).
+    \item \textbf{Chemical Structure:} Diphosphonates contain a non-hydrolyzable Carbon-Phosphorus-Carbon ($\text{P-C-P}$) backbone resisting enzymatic breakdown by alkaline phosphatase (unlike organic $\text{P-O-P}$ pyrophosphate bonds).
+    \item \textbf{Localization Mechanism:} $^{99m}\text{Tc}$-MDP adsorbs directly onto the crystalline surface of bone mineral (\textbf{chemisorption} onto calcium hydroxyapatite crystals). Radiotracer uptake is governed by two physiological parameters:
+    \begin{enumerate}
+        \item \textbf{Regional Osteoblastic Bone Turnover:} Accelerated bone deposition exposes fresh, non-crystalline amorphous calcium phosphate with vast surface areas, binding high concentrations of MDP.
+        \item \textbf{Regional Skeletal Blood Perfusion:} Hyperemic vessels deliver higher tracer fractions per unit time.
+    \end{enumerate}
+    \item \textbf{Pharmacokinetics:} Following IV injection of $740\text{--}925\,\text{MBq}$ ($20\text{--}25\,\text{mCi}$), approximately $50\%$ of the dose binds to the skeleton within 2 to 3 hours; the remaining $50\%$ is cleared by renal glomerular filtration into the urine. Patients must hydrate aggressively and void frequently to minimize radiation dose to the bladder wall.
+\end{itemize}
+
+\subsection{The Three-Phase Bone Scintigraphy Protocol}
+
+In evaluating localized skeletal pain, suspected infection, or trauma, a dynamic \textbf{Three-Phase Bone Scan} distinguishes soft-tissue infection from cortical osseous pathology:
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{3.2cm}p{3.8cm}p{7.4cm}}
+\toprule
+\textbf{Phase Name} & \textbf{Acquisition Timing} & \textbf{Physiological Principle \& Clinical Diagnostic Hallmark} \\
+\midrule
+\textbf{Phase 1: Flow Phase (Radionuclide Angiogram)} & Continuous dynamic acquisition: $1\text{ to }3\,\text{s/frame}$ for $60\,\text{seconds}$ immediately upon bolus IV injection. & Evaluates \textbf{regional arterial blood perfusion}. Asymmetrical early arterial inflow indicates active acute inflammation, hypervascular tumor, or complex regional pain syndrome (CRPS). \\
+\addlinespace
+\textbf{Phase 2: Blood Pool Phase (Tissue Equilibrium)} & Static planar image ($500\text{k--}1000\text{k counts}$) acquired at $5\text{ to }10\,\text{minutes}$ post-injection. & Evaluates \textbf{localized capillary hyperemia and soft-tissue permeability}. Tracer equilibrates within extracellular soft-tissue fluid. Hyperemic soft-tissue inflammation produces diffuse pooling. \\
+\addlinespace
+\textbf{Phase 3: Delayed Skeletal Phase} & High-count static or whole-body sweep acquired at $2\text{ to }4\,\text{hours}$ post-injection. & Evaluates \textbf{osteoblastic bone turnover and hydroxyapatite incorporation}. Soft-tissue background clears via renal excretion, leaving sharp skeletal definition. Focal cortical uptake confirms osseous involvement. \\
+\bottomrule
+\end{tabular}
+\caption{The Three-Phase Bone Scintigraphy protocol, acquisition parameters, and physiological hallmarks.}
+\label{tab:three_phase_bone}
+\end{figure}
+
+\subsection{Differential Diagnostic Patterns on Three-Phase Bone Scanning}
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{3.8cm}p{2.6cm}p{2.8cm}p{5.2cm}}
+\toprule
+\textbf{Clinical Pathology} & \textbf{Phase 1 (Flow)} & \textbf{Phase 2 (Pool)} & \textbf{Phase 3 (Delayed Skeletal)} \\
+\midrule
+\textbf{Acute Osteomyelitis} & \textbf{Focal Increased} & \textbf{Focal Increased} & \textbf{Intense Focal Cortical Uptake} (Positive on all 3 phases). \\
+\addlinespace
+\textbf{Acute Stress Fracture} & Mild to Moderate & Mild to Moderate & \textbf{Intense, sharply delineated focal oval/fusiform} cortical lesion. \\
+\addlinespace
+\textbf{Aseptic Prosthetic Loosening} & Normal to Mild & Normal to Mild & Mild, focal uptake limited strictly to stem tip or trochanter. \\
+\addlinespace
+\textbf{Cellulitis / Soft Tissue Infection} & \textbf{Diffuse Increased} & \textbf{Diffuse Increased} & \textbf{Normal or Faint Diffuse} (No focal cortical skeletal hotspot). \\
+\addlinespace
+\textbf{Infected Prosthesis (Periprosthetic)} & \textbf{Marked Increased} & \textbf{Marked Increased} & \textbf{Intense, diffuse uptake} extending along the entire prosthesis shaft. \\
+\addlinespace
+\textbf{Shin Splints (Medial Tibial Stress)} & Normal & Normal & \textbf{Long, linear, superficial cortical uptake} along posteromedial tibial cortex ($> 1/3$ length). \\
+\bottomrule
+\end{tabular}
+\caption{Differential diagnostic criteria of musculoskeletal conditions on three-phase bone scintigraphy.}
+\label{tab:bone_ddx}
+\end{figure}
+
+\subsection{Skeletal Metastases and the Pathognomonic "Superscan"}
+
+Bone scintigraphy remains a primary screening modality for skeletal metastases from prostate, breast, lung, and renal carcinomas:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Metastatic Distribution:} Hematogenous metastatic seeding preferentially targets the red-marrow-rich \textbf{axial skeleton} ($> 80\%$ involve spine, pelvis, ribs, and skull; appendicular involvement is distal and late). Lesions present as multiple, asymmetrical, randomly distributed hot spots of varying intensity.
+    \item \textbf{The "Superscan" (Metabolic Bone Exhaustion):}
+    \begin{itemize}
+        \item In diffuse osteoblastic skeletal metastases (e.g., advanced prostate cancer) or severe metabolic bone disease, skeletal uptake of $^{99m}\text{Tc}$-MDP is so intense and uniform that virtually the entire injected dose is captured by bone.
+        \item \textbf{Hallmarks on Planar Image:} Intensely dark, beautiful whole-body skeleton with \textbf{complete absence of renal excretion and empty urinary bladder} (the classic \textbf{``absent kidney sign''}).
+    \end{itemize}
+    \item \textbf{The Post-Therapeutic Flare Phenomenon:} Within 2 to 12 weeks of initiating successful systemic chemotherapy or hormonal therapy, healing bone margins exhibit an intense osteoblastic osteoid repair reaction. Paradoxically, the bone scan appears visually worse with more intense radiotracer uptake. This represents a \textbf{favorable clinical response (flare)}, which resolves on subsequent 6-month imaging.
+\end{itemize}
+
+\newpage
+\section{Ventilation-Perfusion (V/Q) Pulmonary Scintigraphy}
+
+Pulmonary embolism (PE) is a life-threatening cardiovascular emergency resulting from thromboemboli (originating from deep vein thrombosis, DVT) occluding pulmonary arterial branches. While Computed Tomography Pulmonary Angiography (CTPA) is widely used, \textbf{V/Q Scintigraphy} remains the primary modality in patients with renal insufficiency, severe iodinated contrast anaphylaxis, extreme obesity, or pregnancy (delivering substantially lower maternal breast radiation dose than CTPA).
+
+\subsection{Perfusion Scintigraphy (\texorpdfstring{$Q$}{Q}): \texorpdfstring{$^{99m}\text{Tc}$}{99mTc}-Macroaggregated Albumin}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Radiopharmaceutical:} Technetium-99m labeled \textbf{Macroaggregated Albumin ($^{99m}\text{Tc}$-MAA)}.
+    \item \textbf{Particle Sizing and Physics:} Human serum albumin aggregates are denatured and cross-linked into particles with a strictly regulated size distribution:
+    \begin{equation}
+        \mathbf{10\,\mu\text{m} \text{ to } 90\,\mu\text{m}} \quad (\text{mean } 20\text{--}40\,\mu\text{m})
+    \end{equation}
+    Particles larger than $150\,\mu\text{m}$ are removed during manufacture to prevent bronchial arterial occlusion.
+    \item \textbf{Mechanism of Micro-Embolization:} The human lung contains approximately $3 \times 10^8$ pulmonary precapillary arterioles (caliber $10\text{--}20\,\mu\text{m}$) and $3 \times 10^{11}$ capillaries ($7\text{--}10\,\mu\text{m}$). Injecting $200{,}000\text{ to }500{,}000$ particles of $^{99m}\text{Tc}$-MAA results in the temporary mechanical entrapment of particles in terminal arterioles, transiently occluding \textbf{fewer than $0.1\%$ (one in a thousand)} of pulmonary vessels. The particle distribution is strictly proportional to regional pulmonary blood flow at the instant of injection.
+    \item \textbf{Biological Clearance:} Particles are broken down mechanically by pulmonary pulsatile pressures and enzymatic hydrolysis, cleared by the reticuloendothelial system with an effective half-life of $T_{\text{biol}} \approx 2\text{--}6\,\text{hours}$.
+\end{itemize}
+
+\begin{safetybox}[Safety Precautions with \texorpdfstring{$^{99m}\text{Tc}$}{99mTc}-MAA Particles]
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Severe Pulmonary Arterial Hypertension:} In patients with resting mean PAP $> 50\,\text{mmHg}$, the pulmonary vascular bed is severely compromised. Particle count must be reduced to \textbf{$100{,}000\text{ to }200{,}000$ particles} to prevent hemodynamic collapse.
+    \item \textbf{Right-to-Left Cardiac Shunt:} If an anatomical right-to-left shunt exists (Eisenmenger syndrome, Tetralogy of Fallot, large PFO), particles bypass the pulmonary capillary filter, entering the systemic circulation. Micro-embolization of cerebral, renal, or coronary capillary beds can occur. Particle count must be reduced to \textbf{$50{,}000\text{--}100{,}000$ particles}. A whole-body scan quantifying brain and renal uptake calculates the precise right-to-left shunt fraction.
+\end{itemize}
+\end{safetybox}
+
+\subsection{Ventilation Scintigraphy (\texorpdfstring{$V$}{V})}
+
+Ventilation imaging assesses regional alveolar air distribution, matching or mismatching perfusion defects:
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Xenon-133 Gas ($^{133}\text{Xe}$):} Inhaled through a closed-loop spirometer. Involves three distinct phases:
+    \begin{itemize}
+        \item \textbf{Single-Breath Phase:} Patient takes a maximal inhalation and holds breath for 10--20 seconds; maps regional lung compliance and inspiratory volume.
+        \item \textbf{Equilibrium Phase:} Patient breathes a mixture of $^{133}\text{Xe}$ and oxygen for 3--5 minutes; maps total lung capacity.
+        \item \textbf{Washout Phase:} Patient breathes fresh room air while exhaled gas is captured in a charcoal trap. \textbf{Focal retention ("air trapping")} after 3--5 minutes indicates chronic obstructive airway disease (COPD, asthma).
+    \end{itemize}
+    \item \textbf{$^{99m}\text{Tc}$-DTPA Radioaerosol:} Liquid $^{99m}\text{Tc}$-DTPA is aerosolized in an ultra-fine nebulizer, generating sub-micrometer droplets ($0.5\text{ to }1.0\,\mu\text{m}$) that reach terminal bronchioles and alveoli, remaining stable for 1--2 hours.
+    \item \textbf{Technegas:} Combustion of $^{99m}\text{Tc}$-pertechnetate at $2500^\circ\text{C}$ in a graphite crucible creates an ultra-fine aerosol of carbon nanoparticles ($< 0.1\,\mu\text{m}$) that behaves like a true gas without airway clumping in COPD.
+\end{enumerate}
+
+\subsection{The V/Q Mismatch Paradigm and Modified PIOPED II Criteria}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{The Pathognomonic V/Q Mismatch:} Because pulmonary emboli physically occlude vascular lumens without obstructing regional airways, the pulmonary parenchyma distal to the clot remains ventilated. A wedge-shaped, segmental or subsegmental defect demonstrating \textbf{absent perfusion with normal, preserved ventilation} is the hallmark of \textbf{Pulmonary Embolism (V/Q Mismatch)}.
+    \item \textbf{V/Q Match (Triple Match):} When a perfusion defect corresponds geometrically to a matched ventilation defect and a concordant radiographic opacity on chest X-ray, the defect is secondary to primary parenchymal/airway disease (pneumonia, atelectasis, COPD, pulmonary edema).
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{3.5cm}p{5.6cm}p{5.6cm}}
+\toprule
+\textbf{PIOPED II Category} & \textbf{Scintigraphic Criteria} & \textbf{PE Probability \& Management} \\
+\midrule
+\textbf{High Probability} & $\ge 2$ Large ($> 75\%$ of segment) mismatched segmental defects (or equivalent moderate defects $\ge 4$). & \textbf{$> 85\text{--}90\%$ Probability of PE.} Immediate therapeutic anticoagulation indicated. \\
+\addlinespace
+\textbf{Intermediate (Indeterminate)} & 1 Large mismatched defect, or extensive matched defects, or indeterminate lung opacities. & \textbf{$20\text{--}80\%$ Probability of PE.} Inconclusive; requires clinical correlation, lower extremity venous ultrasound, or CTPA. \\
+\addlinespace
+\textbf{Low Probability} & Small subsegmental defects ($< 25\%$), non-segmental defects (costophrenic blunting, cardiomegaly), or matched defects with normal CXR. & \textbf{$< 10\text{--}15\%$ Probability of PE.} Safely excludes PE when combined with low clinical pre-test probability (Wells score $< 2$). \\
+\addlinespace
+\textbf{Normal} & Completely normal, uniform perfusion throughout both lungs in all 8 projections. & \textbf{$< 1\%$ Probability of PE.} Completely excludes pulmonary embolism; anticoagulation withheld. \\
+\bottomrule
+\end{tabular}
+\caption{Modified PIOPED II diagnostic criteria and clinical management pathways for V/Q scanning.}
+\label{tab:pioped}
+\end{figure}
+
+\newpage
+\section{Thyroid and Parathyroid Scintigraphy}
+
+\subsection{Thyroid Functional Radiopharmaceuticals}
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{3.2cm}p{3.6cm}p{3.8cm}p{3.8cm}}
+\toprule
+\textbf{Parameter} & \textbf{$^{99m}\text{Tc}$-Pertechnetate ($\text{TcO}_4^-$)} & \textbf{Iodine-123 ($^{123}\text{I}$)} & \textbf{Iodine-131 ($^{131}\text{I}$)} \\
+\midrule
+\textbf{Cellular Physiology} & \textbf{Trapped Only:} Transported into follicular cell via Na/I symporter (NIS), but \textbf{not organified}. & \textbf{Trapped AND Organified:} Oxidized by TPO and incorporated into thyroglobulin. & \textbf{Trapped AND Organified:} Incorporates into thyroid follicular colloid. \\
+\addlinespace
+\textbf{Decay Mode \& Energy} & Isomeric transition ($140\,\text{keV}$) & Electron capture ($159\,\text{keV}$) & Beta minus ($\beta_{\text{max}} = 0.61\,\text{MeV}$) and Gamma ($364\,\text{keV}$) \\
+\addlinespace
+\textbf{Imaging Timing} & Rapid: $20\,\text{minutes}$ post IV injection. & Standard: $4\text{ and }24\,\text{hours}$ post oral capsule. & Delayed: $48\text{ to }72\,\text{hours}$ post oral administration. \\
+\addlinespace
+\textbf{Physical Half-Life} & $6.01\,\text{hours}$ & $13.2\,\text{hours}$ & $8.02\,\text{days}$ \\
+\addlinespace
+\textbf{Primary Role} & Rapid morphological scan; differentiation of thyroiditis vs. Graves'. & Gold standard for Thyroid Uptake (RAIU) and nodule functional assessment. & \textbf{Therapy:} Hyperthyroidism and thyroid cancer ablation; metastatic survey. \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of thyroid radiopharmaceuticals in nuclear endocrinology.}
+\label{tab:thyroid_agents}
+\end{figure}
+
+\subsection{Thyroid Nodule Characterization}
+
+Thyroid scintigraphy with a pinhole collimator evaluates solitary thyroid nodules:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{"Hot" (Hyperfunctioning) Nodule:} Demonstrates increased radiotracer uptake relative to surrounding normal parenchyma, with suppression of the contralateral thyroid lobe. Represents an autonomously functioning toxic adenoma or Plummer's disease. \textbf{Malignancy risk is $< 1\%$}; fine-needle aspiration biopsy (FNAB) is not indicated.
+    \item \textbf{"Warm" (Functioning) Nodule:} Demonstrates radiotracer concentration identical to normal surrounding parenchyma. Low malignancy risk ($< 5\%$).
+    \item \textbf{"Cold" (Non-functioning) Nodule:} Demonstrates a focal absence of radiotracer uptake. Follicular cells are deficient in the sodium-iodide symporter. Carries a \textbf{$15\text{ to }20\%$ risk of thyroid malignancy} (papillary, follicular, medullary, or anaplastic carcinoma; or benign thyroid cyst/adenoma). \textbf{Ultrasound-guided FNAB is mandatory}.
+\end{itemize}
+
+\subsection{Parathyroid Scintigraphy: Dual-Phase and Subtraction Imaging}
+
+In primary hyperparathyroidism, over $85\%$ of cases are caused by a solitary benign \textbf{parathyroid adenoma}. Preoperative localization enables targeted minimally invasive parathyroidectomy.
+
+\subsubsection{Dual-Phase \texorpdfstring{$^{99m}\text{Tc}$}{99mTc}-Sestamibi (MIBI) Washout Scintigraphy}
+\begin{itemize}[leftmargin=*]
+    \item $^{99m}\text{Tc}$-Sestamibi is a lipophilic cation that distributes into tissues in proportion to blood flow and is retained within mitochondria due to high mitochondrial transmembrane electrical potential.
+    \item \textbf{Early Phase ($10\text{--}15\,\text{min}$):} MIBI concentrates avidly in both normal thyroid tissue and parathyroid adenomas.
+    \item \textbf{Delayed Phase ($2\text{--}3\,\text{hours}$):} Normal thyroid tissue rapidly washes out MIBI. In contrast, parathyroid adenomas (rich in oxyphil cells packed with mitochondria) \textbf{retain MIBI tenaciously}, remaining visible as a solitary persistent hotspot behind the cleared thyroid bed.
+\end{itemize}
+
+\newpage
+\section{Renal, Gastrointestinal, and Hepatobiliary Modalities}
+
+\subsection{Dynamic Renal Scintigraphy and Diuretic Renography}
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{3.2cm}p{3.8cm}p{7.4cm}}
+\toprule
+\textbf{Radiotracer} & \textbf{Renal Clearance Physiology} & \textbf{Clinical Indications \& Renogram Hallmarks} \\
+\midrule
+\textbf{$^{99m}\text{Tc}$-DMSA} & \textbf{Cortical Tubular Binding:} Binds to proximal convoluted tubular cells; slow clearance. & High-resolution planar/SPECT static imaging: detects acute pyelonephritis (focal cortical photopenia) and permanent cortical scarring. \\
+\addlinespace
+\textbf{$^{99m}\text{Tc}$-DTPA} & \textbf{$100\%$ Glomerular Filtration:} Zero tubular reabsorption or secretion. & Direct measurement of Glomerular Filtration Rate (GFR); Captopril renography for renovascular renal artery stenosis. \\
+\addlinespace
+\textbf{$^{99m}\text{Tc}$-MAG3} & \textbf{$> 90\%$ Tubular Secretion:} Rapidly cleared by proximal renal tubules. High target-to-background ratio. & Gold standard for assessing renal obstructive uropathy, renal transplant dysfunction, and pediatric hydronephrosis. Safe in severe renal impairment (eGFR $< 20$). \\
+\bottomrule
+\end{tabular}
+\caption{Classification and clinical roles of dynamic and static renal scintigraphy radiopharmaceuticals.}
+\label{tab:renal_radiotracers}
+\end{figure}
+
+\subsubsection{Diuretic Renography (F+20 Lasix Renogram)}
+Distinguishes mechanical ureteropelvic junction (UPJ) obstruction from non-obstructive physiological dilation (flaccid renal pelvis):
+\begin{itemize}[leftmargin=*]
+    \item Intravenous Furosemide ($0.5\text{--}1.0\,\text{mg/kg}$ Lasix) is administered 20 minutes after radiotracer injection (F+20 protocol).
+    \item The clearance half-time ($T_{1/2}$) of activity from the renal pelvis is monitored:
+    \begin{itemize}
+        \item \textbf{Normal / Non-Obstructed:} $T_{1/2} < \mathbf{10\,\text{minutes}}$. Prompt washout following diuretic challenge.
+        \item \textbf{Indeterminate:} $T_{1/2} = 10\text{ to }20\,\text{minutes}$.
+        \item \textbf{True Mechanical Obstruction:} $T_{1/2} > \mathbf{20\,\text{minutes}}$. Tracing continues to rise or plateaus despite maximal diuretic diuresis; mandates surgical pyeloplasty.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Gastrointestinal Scintigraphic Modalities}
+
+\subsubsection{Gastrointestinal Bleeding Scintigraphy (\texorpdfstring{$^{99m}\text{Tc}$}{99mTc}-RBCs)}
+Utilizes in-vitro labeled autologous red blood cells ($^{99m}\text{Tc}$-RBCs via ultratag kit, $> 97\%$ labeling efficiency). Dynamic planar images are acquired continuously for 60 to 90 minutes.
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Sensitivity:} Detects active bleeding rates as low as $0.05\text{--}0.1\,\text{mL/min}$, which is ten times more sensitive than catheter mesenteric angiography ($0.5\text{--}1.0\,\text{mL/min}$).
+    \item \textbf{Hallmark on Planar Scintigraphy:} Focus of activity outside normal vascular structures that \textbf{moves anterograde or retrograde conforming to bowel anatomy} on sequential dynamic frames.
+\end{itemize}
+
+\subsubsection{Meckel's Diverticulum Scintigraphy (\texorpdfstring{$^{99m}\text{Tc}$}{99mTc}-Pertechnetate)}
+Detects bleeding Meckel's diverticula containing ectopic gastric mucosa in pediatric patients presenting with painless lower GI bleeding. Sodium pertechnetate ($\text{TcO}_4^-$) is selectively concentrated by the mucus-secreting epithelial cells of gastric mucosa. Premedication with an $\text{H}_2$-blocker (cimetidine/ranitidine) prevents tracer secretion into the intestinal lumen. A focal hotspot appears in the right lower quadrant synchronously with normal stomach uptake.
+
+\subsubsection{Hepatobiliary Scintigraphy (HIDA / \texorpdfstring{$^{99m}\text{Tc}$}{99mTc}-Cholescintigraphy)}
+Utilizes $^{99m}\text{Tc}$-disofenin or $^{99m}\text{Tc}$-mebrofenin: taken up by hepatocytes and excreted unmetabolized into bile canaliculi.
+\begin{itemize}[leftmargin=*]
+    \item In a normal patient, activity traverses the common bile duct, entering the gallbladder and duodenum within 30 to 60 minutes.
+    \item \textbf{Acute Cholecystitis:} Complete non-visualization of the gallbladder at 1 hour (and remaining absent at 4 hours or following morphine provocation), accompanied by normal excretion into the small bowel. Confirms \textbf{cystic duct obstruction} with $> 95\%$ sensitivity and specificity.
+\end{itemize}
+
+\newpage
+\section{Quality Control, Calibration, and Artifact Management}
+
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{3.5cm}p{3.5cm}p{7.4cm}}
+\toprule
+\textbf{Quality Control Test} & \textbf{Frequency} & \textbf{Procedure, Acceptance Criteria \& Failure Action} \\
+\midrule
+\textbf{Energy Resolution (FWHM)} & Monthly / Quarterly & Evaluates photopeak Full Width at Half Maximum ($\text{FWHM}$) at $140\,\text{keV}$: $\text{FWHM} = (\Delta E / 140.5) \times 100\%$. \textbf{Acceptance:} $\text{FWHM} \le 9\text{--}10\%$. Values $> 11\%$ indicate PMT degradation or crystal optical decoupling. \\
+\addlinespace
+\textbf{Extrinsic Flood Field Uniformity} & Daily & Cobalt-57 ($^{57}\text{Co}$) flat sheet source placed over collimator ($5\text{ to }10\,\text{million counts}$). Tests crystal, PMTs, electronics, and collimator combined. \textbf{Acceptance:} Integral Uniformity $< 3\text{--}5\%$. If defective PMT or tuning drift observed $\implies$ recalibrate or service PMT before clinical use. \\
+\addlinespace
+\textbf{Intrinsic Flood Field Uniformity} & Weekly & Point source ($^{99m}\text{Tc}$, $10\text{--}20\,\text{MBq}$) placed 5 crystal diameters ($> 2\,\text{m}$) away with \textbf{collimator removed}. Tests raw detector response. \textbf{Acceptance:} Differential Uniformity $< 3\%$. \\
+\addlinespace
+\textbf{Spatial Resolution and Linearity} & Weekly / Monthly & 4-Quadrant Bar Phantom or Orthogonal Hole Phantom placed over detector. Verifies that straight lines appear straight across the full field of view (spatial linearity) and resolves $\le 3\text{--}4\,\text{mm}$ bar patterns. \\
+\bottomrule
+\end{tabular}
+\caption{NEMA quality control standards, execution schedules, and acceptance thresholds for Anger cameras.}
+\label{tab:qc_standards}
+\end{figure}
+
+\subsection{Physical Artifacts in Scintigraphy}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{PMT Failure Artifact:} Failure of a single photomultiplier tube produces a prominent, sharp circular \textbf{cold photopenic defect} surrounded by a bright halo (due to spatial mispositioning of adjacent events away from the dead tube).
+    \item \textbf{Cracked Scintillation Crystal:} Physical impact causes a mechanical crack across the brittle $\text{NaI(Tl)}$ crystal. Appears as a sharp, branching, jagged white linear defect with dense dark edges due to total internal reflection of light at the air-crystal interface. Requires complete crystal replacement.
+    \item \textbf{Crystal Hydration ("Measles" Artifact):} Microscopic breach of the hermetic aluminum seal admits atmospheric moisture, causing yellowing and clouding of the crystal surface. Appears as hundreds of tiny punctate spots across flood field images.
+    \item \textbf{Radiochemical Impurity Artifact:} Insufficient stannous chloride ($\text{Sn}^{2+}$) reducing agent during $^{99m}\text{Tc}$ kit preparation leaves unreduced \textbf{"Free Pertechnetate" ($\text{TcO}_4^-$)}. Free pertechnetate biodistributes abnormally, producing intense confounding uptake in the \textbf{gastric mucosa, thyroid gland, and salivary glands} on a bone scan. Radiochemical purity must exceed \textbf{$> 90\text{--}95\%$} on paper thin-layer chromatography (TLC).
+\end{itemize}
+
+\newpage
+\section{Radiation Dosimetry and the MIRD Schema}
+
+Internal radiation dosimetry in nuclear medicine is calculated using the \textbf{Medical Internal Radiation Dose (MIRD)} formalism developed by the Society of Nuclear Medicine:
+\begin{equation}
+    D(r_T) = \sum_{r_S} \tilde{A}(r_S) \cdot S(r_T \leftarrow r_S)
+\end{equation}
+where:
+\begin{itemize}[leftmargin=*]
+    \item $D(r_T)$ is the total absorbed radiation dose delivered to the target organ $r_T$ ($\text{Gray}$).
+    \item $\tilde{A}(r_S)$ is the \textbf{cumulated activity} within source organ $r_S$ ($\text{Bq}\cdot\text{s}$), calculated by integrating the time-activity curve:
+    \begin{equation}
+        \tilde{A}(r_S) = \int_0^\infty A_{r_S}(t) \, dt = 1.443 \cdot A_0 \cdot T_{\text{eff}}
+    \end{equation}
+    \item $S(r_T \leftarrow r_S)$ is the \textbf{MIRD S-value} ($\text{Gy} / (\text{Bq}\cdot\text{s})$), a physical constant reflecting the fraction of emitted energy deposited in the target organ per disintegration in the source organ, based on Monte Carlo anatomical phantoms.
+\end{itemize}
+
+\subsection{Typical Effective Doses in Planar Nuclear Medicine}
+\begin{itemize}[leftmargin=*]
+    \item $^{99m}\text{Tc}$-MDP Whole-Body Bone Scan ($740\,\text{MBq}$): $\approx 4.0\text{--}4.5\,\text{mSv}$ (Critical organ: Urinary Bladder Wall).
+    \item $^{99m}\text{Tc}$-MAA / $^{133}\text{Xe}$ V/Q Lung Scan: $\approx 1.5\text{--}2.0\,\text{mSv}$ (Critical organ: Lungs).
+    \item $^{99m}\text{Tc}$-Pertechnetate Thyroid Scan ($185\,\text{MBq}$): $\approx 1.5\text{--}2.0\,\text{mSv}$ (Critical organ: Stomach / Colon).
+    \item $^{123}\text{I}$ Diagnostic Thyroid Scan ($7.4\,\text{MBq}$): $\approx 1.5\text{--}2.5\,\text{mSv}$ (Critical organ: Thyroid Gland).
+\end{itemize}
+
+\newpage
+\section{Comparative Multi-Modality Matrix}
+
+\begin{figure}[htbp]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{2.6cm}p{3.0cm}p{3.1cm}p{3.1cm}p{2.8cm}}
+\toprule
+\textbf{Feature} & \textbf{Planar Scintigraphy} & \textbf{SPECT} & \textbf{PET / PET-CT} & \textbf{Diagnostic CT} \\
+\midrule
+\textbf{Depth Resolution} & \textbf{Zero (superimposed 2D projection)} & High (resolves depth and slice planes) & Outstanding (true 3D volume) & Outstanding isotropic cross-sections \\
+\addlinespace
+\textbf{Equipment Cost} & \textbf{Low to Moderate} & Moderate & High & Moderate to High \\
+\addlinespace
+\textbf{Primary Role} & Real-time functional surveys; whole-body screening & 3D anatomical depth localization of hot spots & Quantitative metabolic oncology & Structural anatomy and tissue density \\
+\addlinespace
+\textbf{Physical Basis} & 2D planar single-photon emission ($\gamma$) & 3D tomographic single-photon emission ($\gamma$) & Positron coincidence annihilation ($511\,\text{keV}$ $\gamma$-rays) & X-ray transmission volumetric attenuation \\
+\addlinespace
+\textbf{Radionuclide Half-Life} & Hours to days ($6\,\text{h}$ for $^{99m}\text{Tc}$) & Hours to days & Short ($110\,\text{min}$ for $^{18}\text{F}$, $2\,\text{min}$ for $^{15}\text{O}$) & N/A (electrically generated X-rays) \\
+\addlinespace
+\textbf{Spatial Resolution} & Moderate ($6\text{--}10\,\text{mm}$) & Moderate-High ($4\text{--}8\,\text{mm}$) & High ($3\text{--}5\,\text{mm}$) & \textbf{Ultra-High ($0.4\text{--}0.6\,\text{mm}$)} \\
+\bottomrule
+\end{tabular}
+\caption{Comprehensive comparative matrix comparing Planar Scintigraphy against SPECT, PET, and Diagnostic CT.}
+\label{tab:scintigraphy_comparison}
+\end{figure}
+
+\section{Solid-State CZT Cameras and Future Frontiers}
+
+\subsection{Cadmium Zinc Telluride (CZT) Direct-Conversion Cameras}
+
+The classical Anger camera design—relying on fragile, hygroscopic $\text{NaI(Tl)}$ crystals and bulky vacuum photomultiplier tubes—is being superseded by solid-state \textbf{Cadmium Zinc Telluride ($\text{Cd}_{1-x}\text{Zn}_x\text{Te}$)} detectors:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Direct Solid-State Conversion:} Photons ($140\,\text{keV}$) directly generate electron-hole pairs collected by micro-pixelated electrodes ($1.5\text{--}2.5\,\text{mm}$ pixel pitch).
+    \item \textbf{Superior Energy Resolution:} While conventional $\text{NaI(Tl)}$ achieves an energy resolution of $9\text{--}10\%$ FWHM, CZT achieves \textbf{$\text{FWHM} < 5\text{--}6\%$}. This narrow photopeak permits ultra-tight energy windowing, eliminating virtually all Compton scatter events.
+    \item \textbf{Multiplexed Dual-Isotope Imaging:} The superior energy resolution allows simultaneous acquisition of two distinct radiotracers with closely spaced photopeaks (e.g., $^{99m}\text{Tc}$ at $140\,\text{keV}$ and $^{123}\text{I}$ at $159\,\text{keV}$) without cross-talk contamination.
+\end{itemize}
+
+\subsection{Molecular Theranostics}
+
+The emerging paradigm of \textbf{Theranostics} pairs a diagnostic planar/SPECT gamma emitter with an identical or biologically analogous therapeutic beta or alpha particle emitter on the same targeting molecule:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Prostate Cancer:} Diagnostic $^{99m}\text{Tc}$-PSMA planar/SPECT imaging confirms target expression, followed by therapeutic Lutetium-177 ($^{177}\text{Lu}$-PSMA-617) beta radiotherapy.
+    \item \textbf{Neuroendocrine Tumors:} $^{111}\text{In}$-OctreoScan maps somatostatin receptors, guiding targeted radionuclide therapy (PRRT) with $^{177}\text{Lu}$-DOTATATE.
+\end{itemize}
+
+\section{Summary and Conclusions}
+
+Planar nuclear scintigraphy remains a vital cornerstone of clinical diagnostics. By capitalizing on the radioactive decay physics of Technetium-99m, the geometric optics of Anger camera collimation, and the biochemical specificity of radiopharmaceutical ligands, scintigraphy interrogates metabolic function, bone mineral turnover, pulmonary perfusion, and endocrine regulation at the cellular level. As solid-state CZT detectors and theranostic radio-ligands continue to mature, planar and molecular scintigraphy will maintain an indispensable role in personalized precision medicine.
+
+\end{document}

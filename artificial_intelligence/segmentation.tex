@@ -1,0 +1,110 @@
+\chapter{Automated Segmentation}
+
+\section*{Patient focus}
+Imagine you have a CT scan of your abdomen. A radiologist can look at it and estimate how large your liver is, or whether a tumour has grown since the last scan. But what if a computer could draw a precise outline around every organ and lesion, measuring volumes down to the millilitre? That is what automated segmentation does. It helps your doctor get faster, more consistent measurements, which can be especially important when planning surgery or monitoring treatment response. Segmentation is not a diagnosis---it is a measurement tool that supports your doctor's clinical decisions.
+
+\section*{Imaging focus}
+Segmentation is the voxel-wise classification of an image into anatomical or pathological regions of interest. It underpins volumetry, radiotherapy planning, radiomics, image registration, and surgical navigation. Understanding the principles, performance metrics, and failure modes of segmentation algorithms is essential for safe clinical adoption.
+\label{ch:ch86_segmentation}
+
+\section{What Is Segmentation?}
+In imaging, every picture is made up of tiny dots called pixels (in 2D) or voxels (in 3D). Segmentation is the process of labelling each pixel or voxel as belonging to a particular structure---an organ, a tumour, a blood vessel, or background tissue. The result is a defined boundary, or mask, that outlines the structure of interest.
+
+Think of it like tracing around organs on a colouring page. Instead of a human hand doing the tracing, an algorithm assigns labels to each voxel based on its intensity and surrounding context.
+
+\section{Types of Segmentation}
+\begin{table}[h]
+\centering
+\caption{Types of image segmentation}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Type} & \textbf{Method} & \textbf{Use case} \\
+\hline
+Fully automatic & Deep learning model & High-throughput pipelines \\
+\hline
+Interactive & User refines AI output & Complex anatomy \\
+\hline
+Manual & Radiologist traces by hand & Gold standard, small studies \\
+\hline
+Semi-automatic & Seed points + algorithm & Clinical workstations \\
+\hline
+\end{tabular}
+\end{table}
+
+Manual segmentation is time-consuming (often hours per study) and subject to inter-observer variability. Automated methods aim to replicate expert-level accuracy in seconds.
+
+\section{Deep Learning for Segmentation}
+The dominant architecture for medical image segmentation is the \textbf{U-Net}, introduced in 2015. U-Net has an encoder path that captures context and a decoder path that recovers spatial detail. Skip connections between the two paths allow the network to preserve fine boundaries.
+
+Variants include:
+\begin{itemize}
+    \item \textbf{V-Net}---3D extension using volumetric convolutions
+    \item \textbf{Attention U-Net}---adds attention gates to suppress irrelevant regions
+    \item \textbf{nnU-Net}---self-configuring framework that adapts to dataset characteristics
+    \item \textbf{Segment Anything Model (SAM)}---foundation model for promptable segmentation
+\end{itemize}
+
+These models learn from thousands of examples where an expert has already provided the ``correct'' outline. At inference, they predict a segmentation mask for a new image in seconds.
+
+\section{Clinical Applications}
+\begin{itemize}
+    \item \textbf{Liver volumetry}---pre-operative volume estimation before hepatectomy; remnant liver volume $<25\%$ predicts post-hepatic failure
+    \item \textbf{Cardiac function}---automated ejection fraction, wall motion analysis, and myocardial mass quantification from cine MRI
+    \item \textbf{Brain tumour delineation}---glioma segmentation for radiotherapy planning (BraTS challenge datasets)
+    \item \textbf{Kidney and tumour volume}---monitoring angiomyolipoma size to guide embolisation thresholds
+    \item \textbf{Radiotherapy contouring}---organ-at-risk delineation to reduce inter-observer variability in planning
+\end{itemize}
+
+\section{Validation Metrics}
+Overlap between predicted and ground-truth segmentation is commonly quantified using:
+\begin{table}[h]
+\centering
+\caption{Common segmentation metrics}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Metric} & \textbf{Range} & \textbf{Interpretation} \\
+\hline
+Dice coefficient & 0--1 (1 = perfect) & Spatial overlap \\
+\hline
+Hausdorff distance & 0--$\infty$ (0 = perfect) & Boundary accuracy \\
+\hline
+Mean surface distance & 0--$\infty$ (0 = perfect) & Average boundary error \\
+\hline
+Sensitivity & 0--1 & Fraction of true voxels detected \\
+\hline
+\end{tabular}
+\end{table}
+
+A Dice score $>0.90$ is often considered acceptable for large organs, but performance drops for small structures (e.g., adrenal nodules, lymph nodes). Always examine failure cases, not just aggregate scores.
+
+\section{Challenges and Limitations}
+\begin{enumerate}
+    \item \textbf{Partial volume effect}---voxels at tissue boundaries contain mixed signals, blurring edges
+    \item \textbf{Small lesions}---models trained on large organs may under-segment nodules $<5$ mm
+    \item \textbf{Scanner variability}---differences in field strength, coil, and reconstruction kernel shift intensities
+    \item \textbf{Pathological anatomy}---post-surgical changes, large masses, or congenital anomalies may lie outside training distribution
+    \item \textbf{Annotation quality}---models are only as good as the labels they learn from
+\end{enumerate}
+
+\begin{pearlbox}[Never trust blindly]
+Always visually verify automated segmentation overlays against the source images before acting on volume measurements. An incorrectly included portal vein branch can falsely elevate liver volume by 10--15\%.
+\end{pearlbox}
+
+\section{When to Trust Automated Measurements}
+Use automated segmentation when:
+\begin{itemize}
+    \item The structure is large, well-defined, and within the model's validated range
+    \item The output has been visually reviewed and is anatomically plausible
+    \item The model version and preprocessing pipeline are documented
+\end{itemize}
+Seek manual or semi-automatic segmentation when:
+\begin{itemize}
+    \item The anatomy is distorted by pathology or prior surgery
+    \item The structure is small ($<1$ cm) or has indistinct borders
+    \item The measurement directly changes management (e.g., surgical volume threshold)
+\end{itemize}
+
+\section{Summary}
+Automated segmentation transforms radiology from qualitative description to quantitative measurement. It accelerates workflows, reduces variability, and enables radiomics. However, it requires rigorous validation, visual oversight, and awareness of failure modes. The clinician---not the algorithm---remains responsible for every measurement that influences patient care.
+
+\clearpage

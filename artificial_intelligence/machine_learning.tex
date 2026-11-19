@@ -1,0 +1,66 @@
+\chapter{Machine Learning}
+
+\section*{Patient focus}
+This chapter explains the examination or clinical problem in accessible language. Patients should use it to prepare questions and understand the purpose, experience, benefits, and limitations of imaging; local instructions and the official report take priority.
+
+
+\label{ch:machine_learning}
+
+Machine Learning (ML) is a subset of Artificial Intelligence (AI) that enables computer systems to learn patterns from data and make predictions without being explicitly programmed. In medical imaging, machine learning algorithms are utilized for computer-aided detection (CADe), disease classification, segmentation, and quantitative radiomic analysis.
+
+---
+
+\section*{1. Machine Learning Paradigms in Radiology}
+Machine learning workflows in medical imaging are categorized into three main paradigms:
+
+\subsection*{Supervised Learning}
+The algorithm is trained on a labeled dataset where each image has a known ground truth (e.g., a dataset of mammograms labeled as "benign" or "malignant"). The model learns mapping functions between the input images and target labels.
+\textbullet \textbf{Classification}: Categorizing an image (e.g., normal chest X-ray vs. pneumonia).
+\textbullet \textbf{Regression}: Predicting a continuous numerical value (e.g., predicting skeletal bone age on a pediatric hand radiograph).
+
+\subsection*{Unsupervised Learning}
+The algorithm analyzes unlabeled data to discover hidden structures or clusters without human intervention.
+\textbullet \textbf{Clustering}: Grouping similar pixel intensities to automatically segment brain tissues (CSF, grey matter, white matter) on MRI.
+\textbullet \textbf{Anomaly Detection}: Identifying outliers that deviate significantly from a database of normal imaging templates.
+
+\subsection*{Reinforcement Learning}
+An agent learns to make decisions by performing actions in an environment to maximize a cumulative reward.
+\textbullet \textbf{Clinical Application}: Automated scan plane prescription during acquisition (e.g., the MRI scanner automatically adjusting itself to align with the anatomical axes of the patient's heart).
+
+---
+
+\section*{2. The Radiomics Pipeline: Handcrafted Feature Extraction}
+Traditional machine learning relies on \textbf{Feature Engineering}—converting raw pixel data into quantitative features that represent shape, intensity, and texture. This process is known as \textbf{Radiomics}:
+
+\begin{enumerate}
+    \item \textbf{Image Acquisition and Preprocessing}: Standardizing resolution, intensity normalization, and noise reduction.
+    \item \textbf{Segmentation}: Defining the Region of Interest (ROI) (e.g., outlining the boundaries of a lung nodule on CT), either manually by a radiologist or semi-automatically.
+    \item \textbf{Feature Extraction}: Calculating quantitative values from the ROI:
+    \begin{itemize}
+        \item \textbf{First-order features (Histogram)}: Mean, median, skewness, and kurtosis of voxel intensities.
+        \item \textbf{Shape features}: Sphericity, surface-to-volume ratio, and maximum diameter.
+        \item \textbf{Texture features (Matrix-based)}: Gray Level Co-occurrence Matrix (GLCM) features, describing how pixel intensities change spatially (heterogeneity vs. homogeneity).
+    \end{itemize}
+    \item \textbf{Feature Selection}: Removing redundant or non-reproducible features to prevent overfitting.
+    \item \textbf{Model Training and Classification}: Feeding the selected features into an ML classifier to predict clinical endpoints (e.g., benign vs. malignant, or response to chemotherapy).
+\end{enumerate}
+
+---
+
+\section*{3. Core Machine Learning Algorithms}
+Several traditional ML classifiers are used in radiomic pipelines:
+
+\begin{itemize}
+    \item \textbf{Support Vector Machines (SVM)}: Finds an optimal hyperplane in a high-dimensional space that separates different classes with the maximum margin. Highly effective for high-dimensional radiomic datasets.
+    \item \textbf{Random Forests}: An ensemble learning method that constructs a multitude of decision trees during training and outputs the class that is the mode or average of individual trees. Resistant to overfitting and handles non-linear relationships well.
+    \item \textbf{Logistic Regression}: Establishes a probabilistic relationship between independent features and a binary outcome, widely used in clinical scoring models.
+\end{itemize}
+
+---
+
+\section*{4. Critical Challenges in Clinical Deployment}
+\textbullet \textbf{Overfitting}: The model memorizes training data noise instead of learning generalizable patterns, resulting in excellent training performance but poor performance on new clinical datasets. Prevented via cross-validation, regularization, and feature reduction.
+\textbullet \textbf{Generalizability \& Domain Shift}: A model trained on scans from a single hospital often fails when deployed at another hospital due to differences in scanner manufacturers (e.g., GE vs. Siemens), imaging protocols, slice thicknesses, and patient demographics.
+\textbullet \textbf{Interpretability (The "Black Box" Problem)}: Understanding *why* a classifier predicted a specific lesion is malignant is vital for clinician trust. Radiomic features (like GLCM entropy) are more interpretable than deep learning nodes, but still require clinical validation.
+
+\clearpage

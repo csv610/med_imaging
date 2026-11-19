@@ -1,0 +1,59 @@
+\chapter{Computer-Aided Detection}
+
+\section*{Patient focus}
+This chapter explains the examination or clinical problem in accessible language. Patients should use it to prepare questions and understand the purpose, experience, benefits, and limitations of imaging; local instructions and the official report take priority.
+
+
+\label{ch:computer_aided_detection}
+
+Computer-Aided Detection (CAD) systems utilize artificial intelligence and computer vision algorithms to assist radiologists in identifying abnormalities on medical images. By acting as a "second set of eyes," CAD systems aim to reduce diagnostic errors, improve consistency, and streamline clinical workflows.
+
+---
+
+\section*{1. CADe vs. CADx: Key Definitions}
+Clinical AI systems are classified into two primary categories based on their diagnostic objective:
+
+\subsection*{CADe (Computer-Aided Detection)}
+\textbullet \textbf{Objective}: To locate and flag suspicious lesions or abnormalities on an image.
+\textbullet \textbf{Metric Focus}: High sensitivity. The goal is to minimize false negatives (missed lesions).
+\textbullet \textbf{Visualization}: Typically displays bounding boxes, circles, or heatmaps over the suspicious regions (e.g. circling a potential lung nodule on a chest radiograph).
+
+\subsection*{CADx (Computer-Aided Diagnosis)}
+\textbullet \textbf{Objective}: To characterize and estimate the likelihood of disease in a marked lesion.
+\textbullet \textbf{Metric Focus}: High specificity and risk stratification.
+\textbullet \textbf{Visualization}: Typically outputs a risk score, probability percentage, or structured classification category (e.g., classifying a mammographic mass as "BI-RADS 4" or estimating a 78\% probability of malignancy).
+
+---
+
+\section*{2. Primary Clinical Applications}
+
+\subsection*{Mammography Screening}
+Mammography was the first modality to widely adopt CAD:
+\textbullet \textbf{Target}: Detects clustered microcalcifications and soft tissue masses.
+\textbullet \textbf{Clinical Impact}: First-generation CAD struggled with high false-positive rates, but modern deep-learning-based CAD significantly improves detection rates for early-stage breast cancers while reducing unnecessary callbacks.
+
+\subsection*{Pulmonary Nodule Detection (Chest CT)}
+\textbullet \textbf{Target}: Locating small, solid and sub-solid pulmonary nodules ($3$--$30$ mm) that can be easily missed on scroll-heavy CT scans.
+\textbullet \textbf{Volumetric tracking}: Modern CAD tracks the volume and calculates the \textbf{volume doubling time (VDT)} of nodules across sequential scans, providing objective data on growth rates.
+
+\subsection*{Acute Case Triage (PACS Integration)}
+Rather than acting as a diagnostic reader for the radiologist, triage CAD runs in the background of the Picture Archiving and Communication System (PACS) immediately following image acquisition:
+\textbullet \textbf{Function}: Scans all incoming CTs/X-rays for life-threatening findings (e.g., intracranial hemorrhage, pulmonary embolism, tension pneumothorax).
+\textbullet \textbf{Worklist Prioritization}: If a positive case is detected, the system immediately bumps the scan to the top of the radiologist's reading worklist, reducing the time-to-diagnosis for critical patients from hours to minutes.
+
+---
+
+\section*{3. Workflow Integration Strategies}
+How a CAD system is integrated into the clinical workflow determines its efficacy:
+\textbullet \textbf{Second Reader (Classical Workflow)}: The radiologist reads the scan first, formulates an opinion, and then activates the CAD system. The radiologist reviews the CAD flags and modifies the report if a missed lesion is confirmed. This prevents the radiologist from being biased by CAD flags during the initial read.
+\textbullet \textbf{Concurrent Reader}: CAD flags are active from the beginning of the read. While faster, this increases the risk of \textbf{automation bias}.
+\textbullet \textbf{Autonomous Reader (Emerging)}: AI signs off on entirely normal screening studies independently (e.g. filtering out completely normal chest X-rays), allowing radiologists to focus exclusively on abnormal cases.
+
+---
+
+\section*{4. Limitations and Clinical Safety Concerns}
+\textbullet \textbf{Alert Fatigue}: High false-positive rates in early CAD systems led radiologists to ignore alerts, rendering the technology ineffective. Modern AI must maintain high sensitivity while keeping false positives below clinical tolerance levels (typically $< 0.1$ false alarms per image).
+\textbullet \textbf{Automation Bias}: The clinical tendency to over-trust or blindly accept the output of an automated system. Radiologists may dismiss a true lesion because the CAD system failed to flag it, or perform unnecessary biopsies on false-positive CAD markers.
+\textbullet \textbf{Socio-Technical Barriers}: Interoperability challenges between different PACS vendors, scanner software configurations, and hospital IT networks.
+
+\clearpage

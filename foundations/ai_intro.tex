@@ -1,0 +1,245 @@
+\chapter{Artificial Intelligence in Medical Imaging}
+
+\section*{Patient focus}
+This chapter explains the examination or clinical problem in accessible language. Patients should use it to prepare questions and understand the purpose, experience, benefits, and limitations of imaging; local instructions and the official report take priority.
+
+
+\label{ch:ch10_ai_intro}
+
+Artificial intelligence (AI) is rapidly entering clinical radiology. It is not a single technology but a family of methods that can assist with image acquisition, detection, segmentation, reporting, and workflow management. This chapter explains what AI is, how it works, what it can and cannot do, and how it fits into clinical practice.
+
+---
+
+\section*{1. Will AI Replace My Radiologist?}
+If you are a patient, the short answer is: \textbf{no}. AI in radiology is designed to assist radiologists, not replace them. Here is what AI can do:
+\begin{itemize}
+    \item \textbf{Triage}: Flag potentially critical findings (e.g., pneumothorax, intracranial haemorrhage) so that a radiologist sees them first.
+    \item \textbf{Detection}: Highlight areas of concern that a radiologist should examine more closely.
+    \item \textbf{Measurement}: Automatically measure structures (tumour size, heart volume, bone density) faster and more reproducibly than manual measurement.
+    \item \textbf{Quality assurance}: Identify when an image is suboptimal and needs to be repeated.
+\end{itemize}
+
+AI does not understand clinical context, patient history, or the nuances of individual cases. It cannot take responsibility for a diagnosis. Every AI output must be reviewed and confirmed by a qualified radiologist before it influences patient care.
+
+\begin{pearlbox}[AI is a tool, not a colleague]
+Think of AI as a very fast, very thorough assistant that highlights things you should look at. It does not make decisions; it helps you make better, faster decisions. The radiologist remains the clinician of record.
+\end{pearlbox}
+
+---
+
+\section*{2. What Do AI, ML, and DL Mean?}
+
+\subsection*{Artificial Intelligence (AI)}
+AI is the broadest term: any system that performs tasks that normally require human intelligence, such as image recognition, language understanding, or decision-making. In radiology, AI includes rule-based expert systems (e.g., CAD algorithms from the 1990s) as well as modern machine learning approaches.
+
+\subsection*{Machine Learning (ML)}
+ML is a subset of AI in which a system learns patterns from data rather than being explicitly programmed with rules. In radiology, ML algorithms learn to associate image features with clinical outcomes by training on large datasets of labelled images.
+
+\subsection*{Deep Learning (DL)}
+DL is a subset of ML that uses artificial neural networks with many layers (hence ``deep''). Convolutional neural networks (CNNs) are the dominant architecture for image analysis. DL can learn features directly from raw pixel data, eliminating the need for manual feature engineering.
+
+\begin{table}[h]
+\centering
+\caption{AI, ML, and DL --- a simple hierarchy}
+\begin{tabular}{|l|p{8cm}|}
+\hline
+\textbf{Term} & \textbf{Description} \\
+\hline
+Artificial Intelligence (AI) & Any system performing intelligent tasks (broadest term). \\
+\hline
+Computer Vision & AI that interprets visual information (used in image analysis). \\
+\hline
+Deep Learning (DL) & ML using multi-layer neural networks (e.g., CNNs for images, transformers for text). \\
+\hline
+Machine Learning (ML) & AI systems that learn from data. \\
+\hline
+Natural Language Processing (NLP) & AI that understands and generates human language (used in report analysis). \\
+\hline
+\end{tabular}
+\end{table}
+
+---
+
+\section*{3. How AI Tools Are Built}
+
+\subsection*{Supervised Learning}
+The most common approach in medical imaging. The algorithm is trained on a large dataset of images that have been labelled by experts (e.g., ``pneumothorax present'' / ``no pneumothorax''). The model learns to predict the label from the image. After training, it is tested on a separate dataset it has never seen before to evaluate performance.
+
+\subsection*{Unsupervised Learning}
+The algorithm finds patterns in unlabelled data. For example, clustering algorithms might group CT images into subtypes of lung disease without being told what the diseases are. Useful for discovering new imaging biomarkers.
+
+\subsection*{Semi-Supervised and Self-Supervised Learning}
+Hybrid approaches that combine small amounts of labelled data with large amounts of unlabelled data, which is particularly relevant in medical imaging where expert labelling is expensive and time-consuming.
+
+\subsection*{Training, Validation, and Test Sets}
+\begin{itemize}
+    \item \textbf{Training set}: The data the model learns from (typically 70--80\% of available data).
+    \item \textbf{Validation set}: Used during training to tune hyperparameters and prevent overfitting.
+    \item \textbf{Test set}: Held out entirely until final evaluation. Performance on the test set is the most honest estimate of real-world performance.
+\end{itemize}
+
+\begin{warnbox}[Data leakage]
+If the training and test sets are not properly separated (e.g., images from the same patient in both sets), the model will appear to perform much better than it actually does. This is called data leakage and is a common pitfall in AI research.
+\end{warnbox}
+
+\subsection*{Performance Metrics}
+
+\begin{table}[h]
+\centering
+\caption{Key AI performance metrics}
+\begin{tabular}{|l|p{8cm}|}
+\hline
+\textbf{Metric} & \textbf{Meaning} \\
+\hline
+AUC (area under the ROC curve) & Overall discriminative ability (0.5 = random, 1.0 = perfect). \\
+\hline
+F1 score & Harmonic mean of precision and recall; useful for imbalanced datasets. \\
+\hline
+Negative predictive value (NPV) & Proportion of negative predictions that are correct. \\
+\hline
+Positive predictive value (PPV) & Proportion of positive predictions that are correct. \\
+\hline
+Sensitivity (recall) & Proportion of true positives correctly identified. High sensitivity = few missed cases. \\
+\hline
+Specificity & Proportion of true negatives correctly identified. High specificity = few false alarms. \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{pearlbox}[Accuracy is not enough]
+In medical imaging, the prevalence of disease matters. A model that says ``no disease'' for every image will have 98\% accuracy if the disease prevalence is 2\%, but it will miss every case. Always look at sensitivity, specificity, and AUC, not just accuracy.
+\end{pearlbox}
+
+---
+
+\section*{4. FDA Clearance and Regulatory Pathways}
+
+\subsection*{How AI Tools Get Approved}
+In the United States, most AI radiology tools are regulated by the FDA as Software as a Medical Device (SaMD). The pathway depends on the risk level:
+\begin{itemize}
+    \item \textbf{510(k)}: Substantial equivalence to a predicate device. Most AI triage and detection tools use this pathway.
+    \item \textbf{De Novo}: For novel devices with no clear predicate.
+    \item \textbf{Premarket Approval (PMA)}: For the highest-risk devices (rarely used for AI software).
+\end{itemize}
+
+In the EU, AI tools are regulated under the Medical Device Regulation (MDR) 2017/745. In the UK, the MHRA oversees AI regulation. Each jurisdiction has its own requirements for clinical evidence, post-market surveillance, and quality management.
+
+\begin{warnbox}[FDA clearance does not mean ``proven'']
+FDA clearance means the device is safe and reasonably effective for its intended use in the studied population. It does not guarantee performance in your specific clinical setting, patient population, or scanner type. Always evaluate external validation data and local performance.
+\end{warnbox}
+
+---
+
+\section*{5. Clinical Applications of AI in Radiology}
+
+\subsection*{Computer-Aided Detection (CAD)}
+
+\begin{table}[h]
+\centering
+\caption{Established CAD and AI applications}
+\begin{tabular}{|l|p{5cm}|p{5cm}|}
+\hline
+\textbf{Application} & \textbf{What it does} & \textbf{Limitations} \\
+\hline
+Bone fracture detection & Highlights fractures on X-ray and CT, especially subtle ones. & Misses are rare but false positives on normal variants are common. \\
+\hline
+Chest X-ray triage & Detects pneumothorax, tube misplacement, large pleural effusion. & Can miss subtle findings; should not replace radiologist review. \\
+\hline
+Lung nodule detection (CT) & Detects and measures pulmonary nodules; assists with Fleischner follow-up. & False positives on vessels and scars; measurement variability between platforms. \\
+\hline
+Mammography CAD & Highlights areas of microcalcification and architectural distortion. & High false-positive rate; now used as a concurrent reader rather than standalone. \\
+\hline
+Stroke CT triage & Detects intracranial haemorrhage, large vessel occlusion, and CT perfusion mismatch. & Performance varies with infarct age and stroke mimics. \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection*{Triage and Prioritisation}
+AI tools can automatically review incoming studies and flag those with potentially critical findings, placing them at the top of the radiologist's worklist. This is particularly valuable in emergency settings where turnaround time is critical.
+
+\subsection*{Automated Segmentation and Measurement}
+AI can outline organs, tumours, and structures on CT and MRI in seconds---tasks that would take a radiologist minutes of manual tracing. Applications include:
+\begin{itemize}
+    \item Liver volumetry for surgical planning.
+    \item Cardiac function analysis (ejection fraction, myocardial mass).
+    \item Brain tumour segmentation for radiotherapy planning.
+    \item Coronary artery calcium scoring.
+\end{itemize}
+
+\subsection*{Structured Reporting AI}
+AI tools can automatically generate structured report templates by extracting key findings from the images, reducing reporting time and ensuring consistency. These tools suggest findings; the radiologist edits and signs off.
+
+\subsection*{Natural Language Processing (NLP) for Reports}
+NLP algorithms can parse completed radiology reports to:
+\begin{itemize}
+    \item Extract structured data from narrative text.
+    \item Identify incidental findings requiring follow-up.
+    \item Monitor reporting quality and consistency.
+    \item Populate cancer registries and research databases.
+    \item Detect discrepancies between report text and AI findings.
+\end{itemize}
+
+\subsection*{Workflow Optimisation}
+AI can automate routine tasks such as:
+\begin{itemize}
+    \item Protocol selection based on clinical indication.
+    \item Image quality assessment and repeat recommendation.
+    \item Dose monitoring and alerting.
+    \item Prior comparison matching.
+\end{itemize}
+
+---
+
+\section*{6. Limitations and Sources of Bias}
+
+\begin{table}[h]
+\centering
+\caption{Key limitations of AI in radiology}
+\begin{tabular}{|l|p{8cm}|}
+\hline
+\textbf{Limitation} & \textbf{Explanation} \\
+\hline
+Calibration & A model may be well-calibrated on the development dataset but poorly calibrated in a new setting. \\
+\hline
+Distribution shift & If the clinical population changes (e.g., a new disease, a pandemic), the model's performance may degrade. \\
+\hline
+False reassurance & Clinicians may over-rely on a negative AI result, missing findings the AI was not designed to detect. \\
+\hline
+Interpretability & Deep learning models are often ``black boxes''---it is difficult to understand why they make a particular prediction. \\
+\hline
+Overfitting & A model that has memorised the training data rather than learning generalisable patterns will fail on new data. \\
+\hline
+Scanner variability & A model trained on Siemens CT data may perform differently on GE or Canon scanners due to differences in image acquisition. \\
+\hline
+Training data bias & If the training set underrepresents certain demographics (age, sex, ethnicity, disease prevalence), the model may perform poorly on those groups. \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{pearlbox}[AI does not know what it does not know]
+A deep learning model will always produce an output, even for an image that is nothing like its training data (e.g., an X-ray of a hand submitted to a chest X-ray triage tool). It may produce a confident but completely wrong prediction. Human oversight is essential.
+\end{pearlbox}
+
+---
+
+\section*{7. Safe Deployment Principles}
+
+\begin{testbox}[Requirements for safe AI deployment in radiology]
+\begin{itemize}
+    \item \textbf{Intended use clarity}: Define exactly what the AI tool is designed to detect and in which population.
+    \item \textbf{External validation}: Test the tool on your local population and scanner before deployment.
+    \item \textbf{Clinical integration}: Embed AI outputs into the existing workflow (e.g., PACS worklist, reporting platform) so they are visible but do not disrupt reading.
+    \item \textbf{Human oversight}: A qualified radiologist must review all AI outputs and retains responsibility for the final report.
+    \item \textbf{Monitoring}: Track performance over time (monitor for drift, false-positive rates, user satisfaction).
+    \item \textbf{Version control}: Maintain records of which version of the AI tool is deployed and when updates occur.
+    \item \textbf{Incident reporting}: Report adverse events involving AI through the same channels used for other medical device incidents.
+    \item \textbf{Transparency}: Patients should be informed that AI tools are used in their care, where applicable.
+    \item \textbf{Governance}: Establish an institutional AI committee with clinical, technical, ethical, and patient representation.
+\end{itemize}
+\end{testbox}
+
+\begin{pearlbox}[The future is augmented intelligence]
+The most effective use of AI in radiology is not replacement but augmentation: combining the speed and consistency of algorithms with the judgement, context, and adaptability of human clinicians. The goal is to make the radiologist better, faster, and more accurate---not redundant.
+\end{pearlbox}
+
+\clearpage

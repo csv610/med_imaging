@@ -1,0 +1,22 @@
+# pdfTeX build products
+*.aux
+*.log
+*.out
+*.toc
+*.idx
+*.ilg
+*.ind
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.4ct
+*.4tc
+*.idv
+*.lg
+*.xref
+
+# Generated book PDF (build locally or publish as a GitHub Release)
+/med_imaging.pdf

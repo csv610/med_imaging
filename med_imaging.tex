@@ -1,0 +1,331 @@
+% Medical Imaging: What Medical Imaging Reveals About Disease
+% Compile with: pdflatex med_imaging.tex
+
+\documentclass[12pt,oneside]{book}
+
+\usepackage[utf8]{inputenc}
+% Superscript isotope notation used in nuclear medicine chapters (pdfTeX).
+\DeclareUnicodeCharacter{1D50}{\textsuperscript{m}}
+\DeclareUnicodeCharacter{2070}{\textsuperscript{0}}
+\DeclareUnicodeCharacter{2074}{\textsuperscript{4}}
+\DeclareUnicodeCharacter{2075}{\textsuperscript{5}}
+\DeclareUnicodeCharacter{2076}{\textsuperscript{6}}
+\DeclareUnicodeCharacter{2077}{\textsuperscript{7}}
+\DeclareUnicodeCharacter{2078}{\textsuperscript{8}}
+\DeclareUnicodeCharacter{2079}{\textsuperscript{9}}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\setlistdepth{9}
+\usepackage{caption}
+\usepackage{tocloft}
+
+\renewcommand{\cftchapnumwidth}{3em}
+
+\geometry{margin=1in}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=cyan,
+    citecolor=red,
+    pdftitle={Medical Imaging: What Medical Imaging Reveals About Disease},
+    pdfauthor={Chaman Singh Verma}
+}
+
+
+% ============================================================
+% CUSTOM COMMANDS
+% ============================================================
+\newenvironment{testbox}[1][]{\noindent\textbf{#1}\par\noindent\ignorespaces}{\par\vspace{0.5em}}
+\newenvironment{refbox}[1][]{\noindent\textbf{#1}\par\noindent\ignorespaces}{\par\vspace{0.5em}}
+\newenvironment{notebox}[1][]{\noindent\textbf{#1}\par\noindent\ignorespaces}{\par\vspace{0.5em}}
+\newenvironment{pearlbox}[1][]{\noindent\textbf{Clinical Pearl: #1}\par\noindent\ignorespaces}{\par\vspace{0.5em}}
+\newenvironment{warnbox}[1][]{\noindent\textbf{#1}\par\noindent\ignorespaces}{\par\vspace{0.5em}}
+\newenvironment{quickref}[1][]{\noindent\textbf{#1}\par\noindent\ignorespaces}{\par\vspace{0.5em}}
+\newcommand{\chapterquote}[1]{\vspace{-0.5em}\textit{\hfill``#1''}\vspace{1em}}
+
+\newcommand{\testcode}[1]{\texttt{#1}}
+
+\title{Medical Imaging:\\ What Medical Imaging Reveals About Disease}
+\author{Chaman Singh Verma}
+\date{2026}
+
+\begin{document}
+
+\frontmatter
+
+% Title Page
+\begin{titlepage}
+    \centering
+    \vspace*{\fill}
+    \includegraphics[height=0.96\textheight,width=0.96\textwidth,keepaspectratio]{medical_imaging_front_cover.png}
+    \vspace*{\fill}
+\end{titlepage}
+
+% Copyright Page
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\noindent \copyright\ 2026 Chaman Singh Verma. All rights reserved.\\[0.5cm]
+\textbf{Disclaimer:} This book is for educational and reference purposes only.\\[0.5cm]
+ISBN: To be assigned\\[0.5cm]
+First Edition: 2026
+
+% Dedication
+\newpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+    \textit{To the radiologists, sonographers, technologists, and clinicians\\
+    who turn images into insight and findings into diagnoses.}
+\end{center}
+\vspace*{\fill}
+
+% Preface
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+\markboth{Preface}{Preface}
+
+Medical imaging makes disease visible through anatomy, tissue structure, physiology and molecular activity. This book focuses on what imaging reveals about disease: the findings each modality can show, how those findings relate to clinical questions, and where interpretation has limits.
+
+\textbf{Organization:} The book moves from imaging principles and modalities to image interpretation, organ systems, disease patterns, emergencies, interventions, artificial intelligence, and practical diagnosis. Across these topics, the emphasis is on imaging appearance, diagnostic contribution, limitations and clinical context.
+
+\vspace{1cm}
+\noindent \textit{Chaman Singh Verma}\\\\\\\textit{2026}
+
+% Medical safety and standards note
+\chapter*{Medical Safety and Use of This Reference}
+\addcontentsline{toc}{chapter}{Medical Safety and Use of This Reference}
+\markboth{Medical Safety}{Medical Safety}
+
+This book is an educational reference about medical imaging and disease. It is not a substitute for a radiologist's interpretation, a patient's treating clinician, or local institutional policy. Imaging choices, protocols, contrast decisions, radiation dose, sedation and follow-up must be individualized to the clinical question, patient characteristics, available equipment and current local guidance.
+
+\section*{How to Use This Book}
+Begin with the clinical question and the body region or disease under consideration. Review the relevant modality to understand what it measures, then compare the imaging findings with the clinical context. Use the interpretation and disease chapters to consider patterns, alternatives and limitations. Imaging findings support clinical assessment; they should be interpreted alongside symptoms, examination, laboratory results and the official report.
+
+\begin{itemize}
+    \item \textbf{Appropriateness:} Select imaging by the clinical question and expected effect on management. Evidence-based referral guidance can support the decision, but the referring clinician and radiologist remain responsible for the final choice.
+    \item \textbf{Radiation:} Ionizing examinations require justification and optimization. Use the lowest exposure consistent with the diagnostic task; do not treat a nominal dose table as a patient-specific risk estimate.
+    \item \textbf{Pregnancy and children:} Do not withhold clinically justified imaging solely because of pregnancy or age. Consider non-ionizing alternatives when diagnostically suitable, and optimize the examination using current local protocols.
+    \item \textbf{Contrast media:} Screen for prior contrast reactions, relevant comorbidities, medications, pregnancy, and kidney function according to the agent and examination. Shellfish allergy is not a specific predictor of iodinated contrast reaction, and fasting is not universal.
+    \item \textbf{MRI:} MRI safety depends on the exact implant, device, object, field strength, and conditions of use. Complete the facility's current screening, gowning, and final-check procedures before entering the controlled access zones.
+    \item \textbf{Communication:} Critical or unexpected findings require prompt communication through the institution's documented escalation pathway. Examples in this book are educational and do not replace local critical-result policy.
+\end{itemize}
+
+The safety framework is informed by the American College of Radiology \textit{Manual on Contrast Media}, the ACR \textit{Manual on MR Safety}, the ACR \textit{Appropriateness Criteria}, and International Atomic Energy Agency principles of justification and optimization. These resources and local regulations should be checked for updates before clinical use.
+
+\textbf{Core resources:} \url{https://www.acr.org/Clinical-Resources/Contrast-Manual}; \url{https://www.acr.org/Clinical-Resources/Radiology-Safety/MR-Safety}; \url{https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria}; \url{https://www.iaea.org/resources/rpop}; \url{https://www.radiologyinfo.org/en}; \url{https://www.nmc.org.in/information-desk/for-colleges/ug-curriculum/}
+
+% Table of Contents
+\setcounter{tocdepth}{0}
+\tableofcontents
+
+% List of Abbreviations
+\chapter*{List of Abbreviations}
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+\markboth{Abbreviations}{Abbreviations}
+
+\begin{footnotesize}
+\begin{longtable}{@{}ll@{}}
+\toprule
+\textbf{Abbreviation} & \textbf{Meaning} \\\\
+\midrule
+\endhead
+ABG & Arterial blood gas \\\\
+ANA & Antinuclear antibody \\\\
+aPTT & Activated partial thromboplastin time \\\\
+BMP & Basic metabolic panel \\\\
+BNP & B-type natriuretic peptide \\\\
+BUN & Blood urea nitrogen \\\\
+CBC & Complete blood count \\\\
+CK & Creatine kinase \\\\
+CMP & Comprehensive metabolic panel \\\\
+CRP & C-reactive protein \\\\
+CT & Computed tomography \\\\
+eGFR & Estimated glomerular filtration rate \\\\
+ESR & Erythrocyte sedimentation rate \\\\
+HbA1c & Glycated hemoglobin \\\\
+LDH & Lactate dehydrogenase \\\\
+MRI & Magnetic resonance imaging \\\\
+POCT & Point-of-care testing \\\\
+PSA & Prostate-specific antigen \\\\
+PT/INR & Prothrombin time / International normalized ratio \\\\
+TSH & Thyroid-stimulating hormone \\\\
+UA & Urinalysis \\\\
+\bottomrule
+\end{longtable}
+\end{footnotesize}
+
+\mainmatter
+
+% ============================================================
+% PART I. FOUNDATIONS
+% ============================================================
+\part{Foundations}
+
+\include{foundations/intro}
+\include{foundations/history}
+\include{foundations/physics}
+\include{foundations/image_formation}
+\include{foundations/image_quality}
+\include{foundations/contrast_agents}
+\include{foundations/radiation_safety}
+\include{foundations/workflow}
+\include{foundations/pacs_dicom}
+\include{foundations/ai_intro}
+% ============================================================
+% PART II. IMAGING MODALITIES
+% ============================================================
+\part{Imaging Modalities}
+
+\include{modalities/x_ray}
+\include{modalities/fluoroscopy}
+\include{modalities/mammography}
+\include{modalities/ultrasound}
+\include{modalities/doppler}
+\include{modalities/echocardiography}
+\include{modalities/computed_tomography}
+\include{modalities/mri}
+\include{modalities/fmri}
+\include{modalities/dmri}
+\include{modalities/nuclear_medicine}
+\include{modalities/spect}
+\include{modalities/pet}
+\include{modalities/hybrid_imaging}
+\include{modalities/interventional_radiology_cardiac_cath}
+\include{modalities/optical}
+\include{modalities/endoscopic_imaging_eus}
+\include{modalities/pocus}
+% ============================================================
+% PART III. IMAGE INTERPRETATION
+% ============================================================
+\part{Image Interpretation}
+
+\include{interpretation/pattern_recognition}
+\include{interpretation/anatomy}
+\include{interpretation/normal_variants}
+\include{interpretation/artifacts}
+\include{interpretation/measurements}
+\include{interpretation/differential_dx}
+\include{interpretation/pitfalls}
+\include{interpretation/structured_reporting}
+\include{interpretation/incidental_findings}
+% ============================================================
+% PART IV. ORGAN-SYSTEM DIAGNOSIS
+% ============================================================
+\part{Organ-System Diagnosis}
+
+\include{organ_systems/brain}
+\include{organ_systems/head_neck}
+\include{organ_systems/spine}
+\include{organ_systems/chest}
+\include{organ_systems/heart}
+\include{organ_systems/blood_vessels}
+\include{organ_systems/abdomen}
+\include{organ_systems/liver}
+\include{organ_systems/gallbladder}
+\include{organ_systems/pancreas}
+\include{organ_systems/spleen}
+\include{organ_systems/kidneys}
+\include{organ_systems/urinary_tract}
+\include{organ_systems/male_reproductive}
+\include{organ_systems/female_reproductive}
+\include{organ_systems/breast}
+\include{organ_systems/musculoskeletal}
+\include{organ_systems/skin_soft_tissue}
+\include{organ_systems/pediatric}
+% ============================================================
+% PART V. DISEASE-BASED IMAGING
+% ============================================================
+\part{Disease-Based Imaging}
+
+\include{disease_imaging/infection}
+\include{disease_imaging/trauma}
+\include{disease_imaging/cancer}
+\include{disease_imaging/stroke}
+\include{disease_imaging/heart_disease}
+\include{disease_imaging/lung_disease}
+\include{disease_imaging/gi_disorders}
+\include{disease_imaging/liver_disease}
+\include{disease_imaging/kidney_disease}
+\include{disease_imaging/endocrine_disorders}
+\include{disease_imaging/autoimmune}
+\include{disease_imaging/congenital}
+\include{disease_imaging/degenerative}
+% ============================================================
+% PART VI. EMERGENCY IMAGING
+% ============================================================
+\part{Emergency Imaging}
+
+\include{emergency/polytrauma}
+\include{emergency/acute_abdomen}
+\include{emergency/stroke_imaging}
+\include{emergency/pulmonary_embolism}
+\include{emergency/aortic_dissection}
+\include{emergency/pneumothorax}
+\include{emergency/intracranial_hemorrhage}
+% ============================================================
+% PART VII. INTERVENTIONAL IMAGING
+% ============================================================
+\part{Interventional Imaging}
+
+\include{interventional/biopsy}
+\include{interventional/drainage}
+\include{interventional/angioplasty}
+\include{interventional/embolization}
+\include{interventional/tumor_ablation}
+\include{interventional/pain_procedures}
+% ============================================================
+% PART VIII. ARTIFICIAL INTELLIGENCE
+% ============================================================
+\part{Artificial Intelligence}
+
+\include{artificial_intelligence/machine_learning}
+\include{artificial_intelligence/deep_learning}
+\include{artificial_intelligence/computer_aided_detection}
+\include{artificial_intelligence/segmentation}
+\include{artificial_intelligence/foundation_models}
+\include{artificial_intelligence/lvm}
+\include{artificial_intelligence/ai_safety}
+\include{artificial_intelligence/future_radiology}
+% ============================================================
+% PART IX. PRACTICAL DIAGNOSIS
+% ============================================================
+\part{Practical Diagnosis}
+
+\include{practical/read_cxr}
+\include{practical/read_ct}
+\include{practical/read_mri}
+\include{practical/read_ultrasound}
+\include{practical/read_mammogram}
+\include{practical/read_pet}
+\include{practical/write_report}
+\include{practical/cases}
+\include{practical/algorithms}
+\include{practical/mistakes}
+
+\appendix
+
+% Use the appendix files
+\include{chapters/appendix_a_reference_ranges}
+\include{chapters/appendix_b_critical_values}
+\include{chapters/appendix_c_interference}
+\include{chapters/appendix_d_test_codes}
+\include{chapters/appendix_e_algorithms}
+\include{chapters/appendix_f_quality_control}
+
+\backmatter
+
+
+\end{document}

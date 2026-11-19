@@ -1,0 +1,80 @@
+\chapter{Reading PET Images}
+
+\section*{Patient focus}
+This chapter explains the examination or clinical problem in accessible language. Patients should use it to prepare questions and understand the purpose, experience, benefits, and limitations of imaging; local instructions and the official report take priority.
+
+
+\label{ch:read_pet}
+
+Positron Emission Tomography (PET) is a functional, molecular imaging modality. Unlike radiographic modalities (like X-ray, CT) or magnetic resonance (MRI) which map anatomy, PET maps biochemistry and metabolism. Fusing PET with anatomical CT (PET/CT) allows clinicians to localize hypermetabolic pathology precisely.
+
+---
+
+\section*{1. Physical Principles and Tracers}
+PET imaging relies on the injection of a positron-emitting radiopharmaceutical. The most widely used clinical tracer is \textbf{Fluorodeoxyglucose ($^{18}$F-FDG)}, a glucose analog:
+
+\textbullet \textbf{FDG Mechanism}: Active, rapidly dividing cells (like brain cells, inflammatory cells, and cancer cells) require high amounts of glucose. FDG is transported into cells by GLUT transporters and phosphorylated by hexokinase. However, unlike normal glucose, FDG-6-phosphate cannot undergo glycolysis and becomes biochemically \textbf{trapped} in the cell, allowing its concentration to be imaged.
+\textbullet \textbf{Positron Annihilation}: The $^{18}$F isotope decays by emitting a positron. The positron travels a short distance, collides with a tissue electron, and annihilates. This produces two \textbf{511 keV gamma photons} traveling in exactly opposite directions ($180^\circ$ apart), which are detected by the PET scanner ring to reconstruct the image.
+
+---
+
+\section*{2. Standardized Uptake Value (SUV)}
+To quantify tracer uptake in a tissue, radiologists measure the \textbf{Standardized Uptake Value (SUV)}:
+$$\text{SUV} = \frac{\text{Radioactivity concentration in tissue (kBq/mL)}}{\text{Injected radioactivity dose (MBq)} \,/\, \text{Patient body weight (g)}}$$
+
+\textbullet \textbf{SUV max}: The maximum voxel density inside a region of interest. It is the most common clinical parameter.
+\textbullet \textbf{Clinical Thresholds}: An SUV max \textbf{> 2.5} in a focal pulmonary nodule or lymph node is generally considered suspicious for malignancy, though active infectious or inflammatory processes can also exceed this threshold.
+
+---
+
+\section*{3. Normal Physiological Uptake (Avoid False Positives)}
+To identify abnormal pathology, you must first recognize where FDG normally pools in the body:
+
+\textbullet \textbf{Brain}: High baseline glucose consumption makes the cerebral cortex intensely "hot" (hypermetabolic).
+\textbullet \textbf{Myocardium}: Variable glucose/fatty acid metabolism makes the left ventricle appear moderately to intensely hot.
+\textbullet \textbf{Excretory Pathway (Kidneys, Ureters, Bladder)}: FDG is renally excreted; hence, the urinary tract appears intensely hot.
+\textbullet \textbf{Liver and Spleen}: Mild, homogeneous background uptake (used as a reference standard for comparing other lesions).
+\textbullet \textbf{Salivary Glands \& Vocal Cords}: Mild-to-moderate uptake. (Vocal cords will appear hot if the patient speaks during the tracer uptake phase).
+\textbullet \textbf{Brown Fat}: Symmetric, intense uptake in the neck, supraclavicular, and mediastinal regions, especially if the patient was cold during tracer uptake.
+
+---
+
+\section*{4. Systematic Reading of a PET/CT Scan}
+When interpreting a PET/CT, follow a structured workflow:
+
+1. \textbf{Verify Patient Preparation}: Confirm that the patient fasted for 6 hours and that their blood glucose was \textbf{< 150 mg/dL} before tracer injection. High blood insulin causes tracer redirection into skeletal muscle, washing out tumor contrast.
+2. \textbf{Review the MIP (Maximum Intensity Projection)}: Examine the 3D rotating overview of the patient. Look for abnormal, focal "hot spots" outside normal physiological sites.
+3. \textbf{Trace Slice-by-Slice (Skull Vertex to Mid-Thigh)}: Scan through the axial fusion slices. When you locate a hypermetabolic area, correlate it with the co-registered CT slice:
+   \textbullet Is the uptake localized within a structurally abnormal lymph node, a lung nodule, or a normal physiological structure (like a bowel loop)?
+4. \textbf{Distinguish Malignancy from Inflammation}: 
+   \textbullet *Malignancy*: Typically presents as focal, asymmetric, highly hypermetabolic (high SUV max) lesions.
+   \textbullet *Inflammation*: Can also be hypermetabolic. Check CT for signs of active infection (e.g., consolidation, abscess cavity) or surgical healing.
+
+---
+
+\section*{5. Common Pitfalls}
+\textbullet \textbf{Infection and Granulomatous Disease}: Active tuberculosis, sarcoidosis, fungal infections (histoplasmosis), and healing surgical wounds show high FDG uptake and can easily mimic metastatic cancer.
+\textbullet \textbf{Muscle Activation}: If a patient chews gum, talks, or moves during the 60-minute tracer uptake window, the corresponding muscles will take up FDG, creating false positives.
+
+---
+
+\section*{6. Structured Reporting Example: Lymphoma Staging}
+
+\begin{testbox}[Indications:]
+42-year-old male with biopsy-proven Hodgkin Lymphoma. PET/CT requested for baseline staging.
+\end{testbox}
+\begin{refbox}[Findings:]
+\textbf{Physiological Background}: Normal physiological uptake is noted in the brain, salivary glands, myocardium, liver, spleen, and urinary tract. No abnormal supraclavicular brown fat activation.\\
+\textbf{Lymph Nodes}:
+\textbullet \textbf{Right Cervical (Level II)}: Multiple enlarged nodes are hypermetabolic, the largest measuring 2.4 x 1.8 cm with an SUV max of 12.4.
+\textbullet \textbf{Mediastinum}: Confluent prevascular and paratracheal lymphadenopathy is present, measuring up to 4.5 cm in width, demonstrating intense FDG avidity (SUV max 16.2).
+\textbullet \textbf{Abdomen \& Pelvis}: No hypermetabolic adenopathy below the diaphragm.\\
+\textbf{Extranodal Structures}: The lungs are clear. The liver and spleen are normal in size and demonstrate uniform background activity (SUV max 2.0). No focal hypermetabolic skeletal lesions.
+\end{refbox}
+\begin{pearlbox}[Impression:]
+1. Intense FDG-avid lymphadenopathy in the right neck and mediastinum, consistent with active lymphoma.
+2. No evidence of disease below the diaphragm or extranodal involvement.
+3. Staging: Ann Arbor Stage II.
+\end{pearlbox}
+
+\clearpage

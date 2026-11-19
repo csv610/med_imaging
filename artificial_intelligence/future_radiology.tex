@@ -1,0 +1,145 @@
+\chapter{Future of Radiology}
+
+\section*{Patient focus}
+Radiology is changing rapidly. In the future, your scans may be read faster, with AI helping to prioritise urgent cases and provide more precise measurements. New techniques may allow your doctor to predict how a disease will progress, or to create a virtual model of your body to plan surgery. Some of these advances are already in use; others are still being developed. What will not change is that a trained doctor will always be involved in interpreting your results and discussing them with you. Technology improves the tools, but the human connection in healthcare remains essential.
+
+\section*{Imaging focus}
+The future of radiology encompasses AI-augmented workflows, autonomous AI, radiomics, radiogenomics, digital twins, federated learning, and generative AI for synthetic data. Understanding these emerging paradigms prepares the next generation of radiologists to evaluate, adopt, and critically appraise new technologies.
+\label{ch:ch90_future_radiology}
+
+\section{AI-Augmented Workflows}
+The near-term future of radiology is not replacement but augmentation. AI will integrate into existing workflows to:
+\begin{itemize}
+    \item \textbf{Triage and prioritisation}---automatically flagging critical findings (intracranial haemorrhage, pulmonary embolism, pneumothorax) for immediate review
+    \item \textbf{Measurement automation}---providing volumetric quantification of tumours, organs, and vessels without manual calipers
+    \item \textbf{Quality assurance}---detecting protocol deviations, motion artefacts, and incomplete studies before radiologist review
+    \item \textbf{Report drafting}---generating preliminary structured reports for radiologist editing and sign-off
+    \item \textbf{Worklist management}---routing studies to subspecialty-trained radiologists based on image content
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\caption{AI-augmented workflow components}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Function} & \textbf{Current state} & \textbf{Near-future target} \\
+\hline
+Measurements & Semi-automated & Fully automated with QC \\
+\hline
+QA & Manual audits & Continuous automated monitoring \\
+\hline
+Reporting & Templated text & AI-drafted, human-edited \\
+\hline
+Triage & Pilot studies & Real-time ED integration \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Autonomous AI}
+Autonomous AI refers to systems that can render a clinical decision without requiring a radiologist to review the images. The FDA has cleared a small number of autonomous AI devices, notably for diabetic retinopathy screening.
+
+Key considerations:
+\begin{itemize}
+    \item Appropriate for well-defined, narrow tasks with high consequence of delay
+    \item Requires extremely high sensitivity and specificity
+    \item Must include mechanisms for uncertain cases to be escalated to a human
+    \item Raises profound questions about liability and the definition of ``practice of medicine''
+\end{itemize}
+
+Most experts predict autonomous AI will remain limited to specific screening tasks (e.g., retinal screening, bone age assessment) while the majority of diagnostic imaging will continue to require human--AI collaboration.
+
+\section{Radiomics}
+Radiomics extracts high-throughput quantitative features from medical images---texture, shape, intensity histograms, wavelet coefficients---that are not perceptible to the human eye. These features can be correlated with:
+\begin{itemize}
+    \item \textbf{Pathological grade}---differentiating low-grade from high-grade gliomas
+    \item \textbf{Treatment response}---predicting chemoradiotherapy response in rectal cancer
+    \item \textbf{Prognosis}---estimating overall survival from tumour heterogeneity
+    \item \textbf{Genomic markers}---linking imaging features to molecular subtypes
+\end{itemize}
+
+\begin{pearlbox}[Radiomics is not diagnosis]
+Radiomic features are statistical descriptors of voxel distributions. They do not directly identify pathology---they generate hypotheses that must be validated against clinical outcomes in prospective studies.
+\end{pearlbox}
+
+\section{Radiogenomics}
+Radiogenomics combines radiomic features with genomic data to discover imaging biomarkers of underlying molecular biology. Applications include:
+\begin{enumerate}
+    \item \textbf{Non-invasive genotyping}---predicting EGFR mutation status in lung cancer from CT features
+    \item \textbf{Tumour heterogeneity}---linking imaging heterogeneity to intratumoral genetic diversity
+    \item \textbf{Immunotherapy response}---predicting PD-L1 expression from pre-treatment imaging
+    \item \textbf{Pharmacogenomics}---tailoring treatment based on imaging-derived genomic surrogates
+\end{enumerate}
+
+\section{Digital Twins}
+A digital twin is a virtual computational model of a patient's anatomy or physiology, constructed from imaging data, clinical parameters, and biological models. In radiology, digital twins may enable:
+\begin{itemize}
+    \item \textbf{Surgical simulation}---testing different operative approaches on a virtual liver before hepatectomy
+    \item \textbf{Radiation planning}---simulating dose distribution across tumour and organs at risk
+    \item \textbf{Disease progression modelling}---predicting tumour growth or atrophy over time
+    \item \textbf{Personalised screening}---adjusting surveillance intervals based on simulated individual risk
+\end{itemize}
+
+\section{Federated Learning}
+Federated learning allows AI models to be trained across multiple institutions without sharing raw patient data. Each hospital trains the model locally and shares only model weight updates, which are aggregated centrally.
+
+\begin{table}[h]
+\centering
+\caption{Centralised vs federated learning}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Property} & \textbf{Centralised} & \textbf{Federated} \\
+\hline
+Communication & Minimal & Requires secure aggregation \\
+\hline
+Data sharing & All data in one location & Data stays local \\
+\hline
+Diversity & Depends on source & Inherently multi-site \\
+\hline
+Privacy & Higher risk & Lower risk \\
+\hline
+Regulatory & Single data governance & Multi-institutional agreements \\
+\hline
+\end{tabular}
+\end{table}
+
+Federated learning is particularly relevant for rare diseases and paediatric imaging, where no single institution has sufficient cases for robust model training.
+
+\section{Generative AI and Synthetic Data}
+Generative models (GANs, diffusion models) can create synthetic medical images that mimic real scans. Potential uses:
+\begin{itemize}
+    \item \textbf{Data augmentation}---supplementing small training datasets for rare pathologies
+    \item \textbf{Privacy preservation}---training AI on synthetic data that contains no real patient information
+    \item \textbf{Education}---generating realistic teaching cases with known ground truth
+    \item \textbf{Protocol optimisation}---simulating image quality under different acquisition parameters
+\end{itemize}
+
+Risks include generating unrealistic images that introduce bias, creating images that could be mistaken for real clinical data, and potential misuse for generating fraudulent medical records.
+
+\section{Skills for the Future Radiologist}
+The radiologist of tomorrow will need:
+\begin{enumerate}
+    \item \textbf{AI literacy}---understanding model validation, limitations, and regulatory context
+    \item \textbf{Quantitative imaging}---interpreting volumetric, radiomic, and molecular imaging data
+    \item \textbf{Clinical integration}---linking imaging findings to genomics, pathology, and clinical outcomes
+    \item \textbf{Communication}---explaining AI-assisted findings to patients and referring clinicians
+    \item \textbf{Critical appraisal}---evaluating new AI claims with the same rigour applied to new drugs
+\end{enumerate}
+
+\section{What Will Not Change}
+Despite technological advances, several core elements of radiology practice will persist:
+\begin{itemize}
+    \item \textbf{Clinical correlation}---imaging must always be interpreted in clinical context
+    \item \textbf{Patient communication}---explaining findings, answering questions, providing reassurance
+    \item \textbf{Procedural judgement}---decisions about biopsies, drains, and interventions require human expertise
+    \item \textbf{Accountability}---a named clinician must be responsible for every report
+    \item \textbf{Ethical obligation}---the duty of care transcends any technology
+\end{itemize}
+
+\begin{pearlbox}[Technology changes; responsibility does not]
+AI will make radiology faster, more quantitative, and more efficient. But the obligation to act in the patient's best interest, to communicate honestly, and to take responsibility for decisions---these remain firmly human.
+\end{pearlbox}
+
+\section{Summary}
+The future of radiology is one of human--AI partnership. Augmented workflows will improve speed and consistency. Radiomics and radiogenomics will unlock quantitative biomarkers. Digital twins and federated learning will enable personalised, privacy-preserving medicine. Generative AI will expand training data and educational resources. Through all of this, the radiologist's role evolves---from pattern recognition expert to integrated clinical scientist, data interpreter, and patient advocate. The tools change; the mission does not.
+
+\clearpage
