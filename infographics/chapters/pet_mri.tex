@@ -1,0 +1,196 @@
+\infographicchapter{PET/MRI: PET and Magnetic Resonance Imaging}{pet_mri.png}
+\label{ch:infographic-pet-mri}
+
+\section{Overview}
+
+Positron emission tomography--magnetic resonance imaging (PET/MRI) is an advanced ``two-in-one'' hybrid scan that captures two very different kinds of medical pictures at the exact same time. The PET part tracks a tiny amount of safe radioactive tracer---often a sugar-like molecule called FDG---to spotlight cells that are burning energy rapidly, dividing, or inflamed. Meanwhile, the MRI part uses a powerful magnet and harmless radio waves to build crisp, high-contrast images of your soft tissues, such as the brain, heart muscle, liver, and pelvic organs. By merging molecular activity with fine anatomical detail in a single session, doctors see both \textit{what} cells are doing and \textit{exactly where} they sit.
+
+Because PET/MRI replaces the X-ray CT portion of a traditional PET/CT scanner with radiation-free MRI, it cuts total patient radiation exposure by roughly 50\% to 80\%, depending on the protocol. This dramatic dose reduction, paired with MRI's unmatched soft-tissue clarity and the convenience of one appointment (and one sedation session when needed), makes PET/MRI especially valuable for children with cancer, adults with brain tumors, hard-to-treat epilepsy, or memory disorders like Alzheimer's disease, as well as prostate, rectal, gynecologic, and liver cancers and inflammatory heart conditions such as cardiac sarcoidosis.
+
+Because building a PET detector ring that works inside a strong magnetic field requires specialized solid-state electronics, PET/MRI scanners are much rarer and costlier than PET/CT machines and are mainly found at major academic medical centers. Scans also take longer than PET/CT, require careful metal and implant screening for the magnet, and remain less sensitive than CT for spotting very tiny lung nodules. Still, when soft-tissue precision and lower radiation matter most, PET/MRI offers one of the clearest combined views in modern medicine.
+
+\section{Underlying Physical Principles}
+\begin{itemize}
+\item \textbf{Positron Emission and Annihilation (PET):} A tiny dose of a radiotracer (such as $^{18}$F-FDG, $^{68}$Ga-PSMA, or an amino-acid tracer) travels through the bloodstream into target tissues. As the tracer decays, it emits a positron that collides with a nearby electron, producing two 511~keV gamma-ray photons flying apart in opposite directions (180 degrees).
+\item \textbf{Magnet-Safe Solid-State PET Detectors:} Standard PET photomultiplier tubes fail inside strong magnetic fields. Hybrid PET/MRI scanners instead use solid-state avalanche photodiodes or silicon photomultipliers (SiPMs) embedded directly inside the MRI bore so both scans run simultaneously without interference.
+\item \textbf{Magnetic Alignment and Radio Echoes (MRI):} A high-field superconducting magnet (typically 3.0~Tesla) aligns hydrogen protons in your body's water and fat, while brief radiofrequency pulses nudge them out of alignment. As they relax back, different soft tissues emit distinct radio signals that map fine anatomy without X-rays.
+\item \textbf{Simultaneous Time-and-Space Alignment:} Recording PET counts and MRI slices during the exact same minutes eliminates positioning shifts between separate appointments and even lets MRI motion tracking correct PET blurring from breathing or heartbeats.
+\item \textbf{MRI-Based Attenuation Correction (MRAC):} To measure tracer brightness accurately, the computer estimates how much tissue blocks outgoing gamma rays. Because MRI does not measure X-ray density directly like CT, specialized MRI sequences (such as Dixon, ultrashort echo-time, or atlas/AI-assisted maps) separate fat, soft tissue, air, and bone.
+\end{itemize}
+
+\section{Imaging Mechanism}
+\begin{enumerate}
+\item \textbf{Tracer Injection and Quiet Uptake:} After checking blood sugar and metal safety, a technologist places an IV line and injects the radiotracer. You rest quietly in a dim uptake room for 30--60 minutes (while FDG or a targeted tracer settles into cells), or imaging begins immediately for dynamic brain or cardiac studies.
+\item \textbf{Table Setup and Coil Placement:} After emptying your bladder, you lie comfortably on the padded scanner table while lightweight, PET-compatible MRI receiver coils are positioned over your head, chest, or pelvis.
+\item \textbf{Simultaneous PET and MRI Acquisition:} The table glides into the 3.0~Tesla bore. While the PET detector ring continuously records paired 511~keV gamma rays, the MRI runs tailored anatomical and functional sequences (and gives IV gadolinium contrast dye if ordered).
+\item \textbf{MR Attenuation Correction and Image Fusion:} Computers convert specialized MRI tissue maps into attenuation maps, reconstruct the 3D PET metabolic volume, and overlay it seamlessly onto high-resolution MRI slices.
+\item \textbf{Joint Specialist Review:} Nuclear medicine physicians and subspecialty radiologists review the fused PET/MRI images, standardized uptake values (SUVs), and multiparametric MRI sequences together to guide diagnosis and treatment.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Coincident detection of paired 511~keV annihilation photons (PET) simultaneous with nuclear magnetic resonance of hydrogen protons (MRI) \\
+Energy / Signal Source & Positron-emitting radiotracer ($^{18}$F-FDG, $^{68}$Ga/$^{18}$F-PSMA, $^{18}$F-FET, or amyloid tracers) plus 3.0~T magnet, gradient coils, and RF receiver coils \\
+Typical Frequency / Energy & 511~keV gamma-ray photon pairs (PET); 3.0~Tesla static magnetic field (about 128~MHz proton frequency) \\
+Spatial Resolution & 4--5~mm intrinsic PET resolution fused with 0.5--1.0~mm in-plane MRI soft-tissue detail \\
+Typical Scan Duration & 30--60 minutes on the scanner table (plus 30--60 minute uptake wait; ~2--3 hours total visit) \\
+Contrast Agent & IV PET radiotracer required; IV macrocyclic gadolinium MRI contrast dye added when clinically indicated \\
+Ionizing Radiation & Low (radiotracer only, typically 4--7~mSv for FDG; MRI uses zero X-rays, reducing total dose by 50--80\% vs.\ PET/CT) \\
+\bottomrule
+\end{tabularx}
+
+\section{Common Symptoms That Prompt This Scan}
+\begin{itemize}
+\item \textbf{New or Returning Brain Symptoms:} Worsening headaches, seizures, weakness, or unclear spots on a standard brain MRI after radiation or surgery for a brain tumor.
+\item \textbf{Drug-Resistant Seizures or Memory Decline:} Frequent seizures not controlled by medicine (when planning epilepsy surgery), or progressive memory loss, confusion, or language changes being evaluated for Alzheimer's or other dementias.
+\item \textbf{Unexplained Heart Rhythm Problems or Heart Failure:} Fainting, palpitations, heart block, or reduced heart pumping in someone with known or suspected sarcoidosis.
+\item \textbf{Elevated Tumor Markers or Pelvic/Liver Symptoms:} Rising PSA after prostate cancer treatment, rectal bleeding or pelvic pain from gynecologic/rectal tumors, or suspicious liver lesions needing exact staging.
+\item \textbf{Pediatric Cancer Staging or Follow-Up:} Newly diagnosed lymphoma, sarcoma, or neuroblastoma in a child or teenager where repeated scans require the lowest possible radiation.
+\end{itemize}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+\begin{itemize}
+\item \textbf{Pediatric Oncology:} Preferred whole-body staging and treatment-response scan for children and young adults with lymphoma, soft-tissue or bone sarcomas, and neuroblastoma, cutting cumulative radiation by 50--80\% and combining PET and MRI into one anesthesia session.
+\item \textbf{Neuro-Oncology (Brain Tumors):} Pairs amino-acid or FDG PET with multiparametric brain MRI to grade gliomas, target biopsies, map surgical margins, and tell true tumor recurrence apart from harmless post-radiation swelling or scar tissue.
+\item \textbf{Epilepsy and Dementia Evaluation:} Pinpoints subtle seizure-causing brain regions (focal cortical dysplasia) when standard MRI looks normal, and combines hippocampal MRI measurements with FDG or amyloid PET to distinguish Alzheimer's disease from frontotemporal and other dementias.
+\item \textbf{Pelvic, Prostate, and Liver Cancers:} Integrates PSMA PET with multiparametric prostate MRI to localize primary or recurrent prostate cancer, maps rectal and cervical tumors for surgical or radiation planning, and detects small liver metastases more accurately than PET/CT.
+\item \textbf{Cardiac Sarcoidosis:} Pairs FDG-PET (which lights up active heart-muscle inflammation) with cardiac MRI late gadolinium enhancement (which maps permanent scar and fibrosis) in a single heartbeat-gated exam.
+\end{itemize}
+
+\subsection{Secondary Usages}
+\begin{itemize}
+\item \textbf{Head and Neck Cancers:} Evaluates complex skull-base, nasopharyngeal, and tongue-base tumors where MRI separates tumor from muscle and nerves while PET tracks lymph-node and distant spread.
+\item \textbf{Musculoskeletal Tumors and Bone Infections:} Assesses bone and soft-tissue sarcomas, multiple myeloma, and complex osteomyelitis or prosthetic joint infections around delicate nerves.
+\item \textbf{Pancreatic and Neuroendocrine Tumors:} Tracks treatment response in locally advanced pancreatic cancer and maps neuroendocrine tumors using $^{68}$Ga-DOTATATE PET combined with high-resolution liver MRI.
+\item \textbf{Longitudinal Research and Clinical Trials:} Measures early molecular and blood-flow responses to new targeted therapies or immunotherapies without adding repeated CT radiation.
+\end{itemize}
+
+\section{Advantages}
+\begin{itemize}
+\item \textbf{50--80\% Lower Radiation Dose Than PET/CT:} Eliminating the CT X-ray beam leaves only the small radiotracer dose, protecting children, young adults, and patients needing repeated follow-up scans.
+\item \textbf{Unmatched Soft-Tissue Detail:} High-field 3.0~T MRI resolves brain folds, pelvic organs, liver tissue, heart muscle, and bone marrow far better than low-dose CT.
+\item \textbf{True Simultaneous Alignment:} Acquiring PET and MRI together avoids organ-shift mismatches between separate visits and lets MRI track breathing or heart motion to sharpen PET images.
+\item \textbf{Single Appointment and Single Sedation:} Replaces two separate hospital visits with one test---especially helpful for young children or anxious patients who need anesthesia.
+\item \textbf{Multiparametric Tumor Biology:} Combines metabolic PET activity with MRI diffusion, blood-flow perfusion, and late scar imaging for stronger diagnostic confidence.
+\end{itemize}
+
+\section{Disadvantages}
+\begin{itemize}
+\item \textbf{Limited Availability and Higher Cost:} Specialized magnet-safe PET/MRI systems are expensive and available mainly at major academic centers rather than community clinics.
+\item \textbf{Longer Scan Time and Confined Bore:} Table time runs 30--60 minutes (versus 15--20 minutes for PET/CT), with loud MRI knocking inside a narrower tunnel that can trigger claustrophobia.
+\item \textbf{Lower Sensitivity for Tiny Lung Nodules:} Air-filled lungs produce weak MRI signals, so PET/MRI can miss small pulmonary metastases under 5~mm that chest CT detects easily.
+\item \textbf{Complex Attenuation Correction:} Estimating bone and air attenuation from MRI rather than CT can introduce minor SUV quantification errors near the lungs, skull, or metal hardware.
+\item \textbf{Strict Metal Restrictions:} Non-MRI-safe pacemakers, cochlear implants, or metal fragments prevent scanning, whereas PET/CT has no magnetic restrictions.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+\begin{itemize}
+\item \textbf{Non-MRI-Safe Implants and Metallic Foreign Bodies:} Non-MRI-conditional pacemakers or defibrillators, older magnetic brain aneurysm clips, cochlear implants, metallic eye fragments, and ferromagnetic neurostimulators cannot enter the 3.0~T magnet room.
+\end{itemize}
+
+\subsection{Relative}
+\begin{itemize}
+\item \textbf{Pregnancy and Breastfeeding:} Elective PET/MRI is generally avoided during pregnancy due to radiotracer fetal exposure (and gadolinium is avoided unless essential); breastfeeding mothers may continue nursing after gadolinium per ACR guidance, while brief milk-pumping pauses (typically 12--24 hours depending on the tracer) follow nuclear medicine advice.
+\item \textbf{Uncontrolled High Blood Sugar (For FDG Scans):} Severe hyperglycemia competes with FDG sugar uptake in tumors and degrades scan accuracy; the scan may be delayed until glucose is controlled.
+\item \textbf{Severe Kidney Disease, Claustrophobia, or Body-Size Limits:} Severe renal failure restricts optional gadolinium dye (though PET radiotracers alone remain safe), while severe claustrophobia, inability to lie flat for 45 minutes, or exceeding bore/table limits may favor PET/CT or sedation.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+\begin{itemize}
+\item \textbf{Dual MRI and Radiation Safety Screening:} Every patient completes a full MRI metal/implant screening checklist before entering the magnet zone, alongside radiotracer dose optimization (weight-based low-dose pediatric and adult protocols).
+\item \textbf{Safe Gadolinium and Radiotracer Handling:} When MRI contrast dye is added, teams use modern ACR Group II macrocyclic gadolinium agents; after the PET tracer is injected, drinking water helps flush the remaining tracer smoothly through your urine.
+\item \textbf{Skin Heating and Hearing Protection:} Staff remove metal clothing, jewelry, and foil-backed patches, place foam pads so skin does not touch skin in a loop, monitor radiofrequency warmth, and provide earplugs or MRI-safe headphones.
+\item \textbf{Constant Monitoring and Call Button:} Technologists watch you continuously through the window and intercom while you hold a squeeze-ball call button; any rare emergency is managed outside the magnet room per ACR MR safety rules.
+\end{itemize}
+
+\section{Prerequisite Tests}
+\begin{itemize}
+\item \textbf{Blood Glucose Check (FDG Scans):} A finger-stick blood sugar test is performed right before tracer injection (typically aiming below 150--200~mg/dL) so excess blood sugar does not block FDG uptake.
+\item \textbf{Implant Documentation and Orbit X-Ray (If Needed):} Manufacturer safety cards are verified for any cardiac device, stent, or surgical clip; an X-ray checks the eyes if prior metal-grinding or welding injury is suspected.
+\item \textbf{Kidney Function and Pregnancy Screening:} Baseline creatinine/eGFR is checked if gadolinium contrast dye is planned in patients with kidney risk, and pregnancy testing is performed when applicable.
+\item \textbf{Prior Scans for Comparison:} Recent diagnostic CT, MRI, or PET/CT images and pathology/treatment dates are gathered so the team can interpret post-treatment changes accurately.
+\end{itemize}
+
+\section{Preparing for the Scan}
+\begin{itemize}
+\item \textbf{Fasting and Low-Carb Diet (FDG Scans):} Follow a low-carbohydrate, high-protein, no-sugar diet for 24 hours beforehand, and fast for 4--6 hours before arrival (drinking only plain water; no gum, mints, coffee, or juice). Non-FDG tracers (like PSMA or DOTATATE) usually have lighter or no fasting rules.
+\item \textbf{Special Cardiac Sarcoidosis Prep:} If your scan checks for cardiac sarcoidosis, you will follow a strict 24--72 hour high-fat, zero-carbohydrate (ketogenic) diet plus prolonged fasting (often 12--18 hours) so healthy heart muscle switches from sugar to fat and stops glowing on FDG-PET.
+\item \textbf{Skip Heavy Exercise and Stay Warm:} Avoid strenuous workouts, running, or lifting for 24 hours before an FDG scan so recovering muscles do not absorb tracer, and dress warmly to prevent brown-fat activation.
+\item \textbf{Diabetes and Routine Medicines:} Ask your care team how to time morning insulin or diabetes pills around fasting; most other daily pills can be taken with plain water.
+\item \textbf{Metal-Free Attire and Comfort Planning:} Leave jewelry, watches, hairpins, and underwire bras at home, bring implant cards, and ask early if you need a mild prescribed sedative for claustrophobia (with a ride home).
+\end{itemize}
+
+\section{During Scan}
+\begin{itemize}
+\item \textbf{Quiet Uptake Period:} After the painless IV tracer injection, you rest quietly for 30--60 minutes in a dim recliner without reading, chewing, or talking so your brain and muscles stay calm.
+\item \textbf{Positioning and Staying Still:} After using the restroom, you lie flat on the padded table with cushioned MRI coils resting lightly over your body. Staying completely still keeps PET and MRI layers aligned.
+\item \textbf{Sounds and Contrast Sensations:} You will hear rhythmic knocking, tapping, and buzzing from the MRI (softened by earplugs). If gadolinium dye is given midway through, you may briefly feel coolness in your arm.
+\item \textbf{Duration and Communication:} Expect 30--60 minutes inside the scanner (broken into sets of several minutes with breathing instructions for chest or liver views) and 2--3 hours total at the center. Use the squeeze-ball call button anytime you need help.
+\end{itemize}
+
+\section{Normal Appearance}
+\begin{itemize}
+\item \textbf{Expected Physiological Tracer Activity:} On a normal FDG PET/MRI, the brain cortex shines brightly (because neurons run on glucose), while the kidneys, ureters, and bladder glow brightly as the tracer leaves in urine. Mild activity is normal in the tonsils, salivary glands, and bowel.
+\item \textbf{Suppressed Heart Muscle (Cardiac Prep):} With proper high-fat/low-carb preparation for cardiac sarcoidosis, healthy heart muscle looks dark on FDG-PET and shows smooth, uniform muscle wall motion and zero late scar brightening on MRI.
+\item \textbf{Symmetric MRI Soft-Tissue Anatomy:} Brain hemispheres look symmetric, liver and pelvic organs show crisp, uniform tissue boundaries without mass effect, and normal lymph nodes appear small and oval.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+\begin{itemize}
+\item \textbf{Focal ``Hot Spots'' Matching MRI Lesions:} A bright PET focus sitting right inside an irregular mass on MRI---such as a recurrent glioma, prostate nodule on PSMA PET, or liver metastasis---strongly indicates active cancer rather than harmless scar tissue.
+\item \textbf{Hypometabolic Brain Zones:} In epilepsy or Alzheimer's disease, PET/MRI looks for the opposite pattern---focal ``cold spots'' of reduced glucose uptake (often paired with subtle cortical thinning or hippocampal shrinkage on MRI) that mark seizure zones or neurodegeneration.
+\item \textbf{Active Cardiac Inflammation vs.\ Scar:} In cardiac sarcoidosis, focal patchy FDG uptake matched to non-ischemic MRI late gadolinium enhancement identifies active granulomatous inflammation, whereas MRI scar without FDG activity points to inactive healed fibrosis.
+\item \textbf{Benign Uptake Mimics:} Healing surgical wounds, recent radiation inflammation, brown fat around the neck/shoulders, and benign reactive lymph nodes can also glow on PET, requiring careful side-by-side MRI review.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+\begin{itemize}
+\item \textbf{Distinguishing Treatment Effects from Cancer:} After brain or pelvic radiation, normal tissue swelling can mimic tumor on MRI and show mild FDG warmth. Amino-acid PET tracers ($^{18}$F-FET), MRI perfusion, and diffusion sequences work together to separate scar from active recurrence.
+\item \textbf{Incomplete Cardiac Dietary Suppression:} If a patient accidentally eats carbohydrates before a cardiac sarcoidosis scan, healthy heart muscle can glow diffusely and obscure inflammation, sometimes requiring a repeat scan with stricter ketogenic prep.
+\item \textbf{SUV Artifacts and Small Lung Check:} Near metal implants, lungs, or body edges, MR attenuation maps can slightly underestimate SUVs; physicians examine uncorrected PET images alongside MRI and add a quick dedicated chest CT if lung metastasis staging is critical.
+\end{itemize}
+
+\section{Augmenting Methods}
+\begin{itemize}
+\item \textbf{Target-Specific PET Radiotracers:} Beyond FDG sugar, specialized tracers---such as $^{68}$Ga/$^{18}$F-PSMA (prostate cancer), $^{68}$Ga-DOTATATE (neuroendocrine tumors), $^{18}$F-FET/FDOPA (brain tumors), and amyloid/tau tracers (dementia)---sharpen disease specificity.
+\item \textbf{Advanced Multiparametric MRI Sequences:} Diffusion-weighted imaging (DWI), MR spectroscopy, arterial spin labeling perfusion, and cardiac T1/T2 mapping add cellular, chemical, and blood-flow data in the same sitting.
+\item \textbf{Dedicated Diagnostic Chest CT and Biopsy:} Adding a quick breath-hold chest CT covers tiny lung nodules, while fused PET/MRI coordinates guide high-precision surgical or needle biopsies to the most active tumor core.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+\begin{itemize}
+\item \textbf{Versus PET/CT:} PET/CT is much faster (15--20 minutes), far more widely available, less expensive, and superior for small lung nodules and bone detail. PET/MRI delivers 50--80\% less radiation, far better brain, liver, heart, and pelvic soft-tissue contrast, and true simultaneous acquisition.
+\item \textbf{Versus Standalone MRI:} Standalone MRI maps structure, blood flow, and scar tissue without radiation, but cannot directly measure cellular glucose metabolism, PSMA receptor density, or amyloid plaques---making PET/MRI stronger for detecting hidden recurrence or active inflammation.
+\item \textbf{Versus Standalone PET or SPECT:} Standalone nuclear scans show molecular activity at lower spatial resolution; fusing PET simultaneously with 3.0~T MRI localizes tiny hotspots to exact millimeter-level structures.
+\end{itemize}
+
+\section{Follow-up Steps}
+\begin{itemize}
+\item \textbf{Immediate Post-Scan Care:} Your IV is removed, and you can eat normally right away. Drink extra water over the next 12--24 hours to help clear the tiny remaining radiotracer through your kidneys and urine.
+\item \textbf{Joint Multidisciplinary Review:} Your nuclear medicine physician and radiologist send a combined report to your oncologist, neurologist, or cardiologist, who often reviews the fused images in a tumor board or specialty conference.
+\item \textbf{Targeted Action or Serial Monitoring:} Results guide next steps---such as targeting a brain or prostate biopsy to the hottest spot, starting or tapering steroid therapy in cardiac sarcoidosis, planning epilepsy surgery, or tracking chemotherapy response with future low-dose PET/MRI scans.
+\end{itemize}
+
+\section{Key References}
+\begin{itemize}
+\item Stanford Health Care. \textit{PET/MRI Scan}. Stanford, CA: Stanford Medicine. Available at: \url{https://stanfordhealthcare.org/medical-tests/p/pet-mri-scan.html}.
+\item UCSF Brain Tumor Center. \textit{PET/MRI}. San Francisco, CA: University of California, San Francisco. Available at: \url{https://braintumorcenter.ucsf.edu/treatment/experimental-diagnostics-therapies/petmri}.
+\item Memorial Sloan Kettering Cancer Center (MSKCC). \textit{About Your PET-MRI}. New York, NY: MSKCC Patient Education. Available at: \url{https://www.mskcc.org/pdf/cancer-care/patient-education/about-your-pet-mri}.
+\item Melsaether AN, Raad RA, Pujara AC, et al. Comparison of Whole-Body $^{18}$F FDG PET/MR Imaging and Whole-Body $^{18}$F FDG PET/CT in Terms of Lesion Detection and Radiation Dose in Patients with Breast Cancer. \textit{Radiology}. 2016;281(1):193--202. Available at: \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC5028256/}.
+\item Pedersen C, Aboian M, McConathy JE, Daldrup-Link H, Franceschi AM. PET/MRI in Pediatric Neuroimaging: Primer for Clinical Practice. \textit{AJNR Am J Neuroradiol}. 2022;43(7):938--943. Available at: \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC9262074/}.
+\item Munoz C, Schneider A, Botnar RM, Prieto C. Recent advances in PET-MRI for cardiac sarcoidosis. \textit{Front Nucl Med}. 2022;2:1032444. Available at: \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC11440945/}.
+\item Radiopaedia.org. \textit{PET-MRI}. Radiopaedia. Available at: \url{https://radiopaedia.org/articles/pet-mri}.
+\end{itemize}
+
+\section{Further Reading}
+\begin{itemize}
+  \item Wikipedia contributors. \textit{PET/MRI}. Wikipedia, The Free Encyclopedia. Available at: \url{https://en.wikipedia.org/wiki/PET/MRI}.
+\end{itemize}

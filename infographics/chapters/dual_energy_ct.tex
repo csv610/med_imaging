@@ -1,0 +1,197 @@
+\infographicchapter{Dual-Energy and Spectral CT (DECT)}{dual_energy_ct.png}
+\label{ch:infographic-dual-energy-ct}
+
+\section{Overview}
+
+Dual-energy computed tomography (DECT), often called spectral CT, is an advanced X-ray CT scan that captures pictures of your body at two different X-ray energy levels---one lower energy and one higher energy---instead of just one. A standard CT scan measures only how strongly tissues block a single X-ray beam, which means two very different materials---such as uric acid crystals and calcium, or blood and iodinated contrast dye---can look almost identical in shades of gray. By comparing how each tissue absorbs low-energy versus high-energy X-rays, DECT reveals what a spot is actually made of, not just its shape and size.
+
+This material-sensing ability solves several everyday clinical puzzles in a single quick scan. Doctors use DECT to tell uric acid kidney stones (which can often be dissolved with medicine) apart from calcium-based stones (which usually need physical removal), and to spot color-coded uric acid crystal deposits in painful joints to diagnose gout without always needing a needle aspiration. When IV iodine contrast dye is given, DECT creates color-coded lung blood-flow (iodine) maps to highlight pulmonary embolisms, mathematically removes the iodine to build ``virtual non-contrast'' pictures that can spare an extra radiation pass, and tunes the energy level upward to dramatically clear away harsh metal streaks around hip replacements, spinal rods, or surgical clips.
+
+From the patient's perspective, a DECT exam feels just like a routine CT scan: it takes only seconds to minutes on an open, donut-shaped table with no enclosed tunnel like an MRI. Modern dual-energy and newer spectral or photon-counting CT systems deliver radiation doses comparable to---and sometimes lower than---standard CT when virtual non-contrast views replace a separate pre-dye scan. When IV iodine dye is needed, your care team checks kidney function, contrast allergy history, and possible pregnancy ahead of time to keep the scan safe and tailored to your needs.
+
+\section{Underlying Physical Principles}
+\begin{itemize}
+\item \textbf{Two X-Ray Energy Spectra:} Instead of relying on one composite X-ray beam (typically around 120~kVp), DECT acquires matching datasets at a low energy (around 70--100~kVp) and a high energy (around 140~kVp), or sorts photons into energy bins directly at the detector.
+\item \textbf{Photoelectric Effect Versus Compton Scatter:} X-rays weaken in the body mainly through two interactions: Compton scatter (driven by tissue electron density) and the photoelectric effect (strongly dependent on an element's atomic number and photon energy). Heavy elements such as iodine and calcium absorb low-energy X-rays much more strongly than high-energy X-rays, whereas lighter substances such as uric acid or soft tissue change far less.
+\item \textbf{K-Edge Absorption and Material Decomposition:} Elements like iodine have a sharp jump in X-ray absorption just above their inner-electron binding energy (the K-edge, at 33.2~keV for iodine). Comparing low- and high-energy measurements allows computer algorithms to separate each voxel into base materials---such as iodine, calcium, uric acid, water, or fat.
+\item \textbf{Virtual Monoenergetic Imaging (VMI):} Spectral data can be mathematically blended to mimic a scan taken with a single pure photon energy (measured in keV). Low-keV views (around 40--55~keV) boost the brightness of iodine dye, while high-keV views (around 95--200~keV) suppress beam-hardening and metal streak artifacts.
+\item \textbf{Virtual Non-Contrast (VNC) Subtraction:} By identifying and digitally subtracting iodine from a contrast-enhanced scan, software reconstructs a simulated unenhanced image from the same dataset---often eliminating the need to scan the patient twice.
+\end{itemize}
+
+\section{Imaging Mechanism}
+\begin{enumerate}
+\item \textbf{Hardware Energy Separation:} The scanner captures two energy datasets simultaneously or nearly simultaneously using dual-source X-ray tubes, rapid kilovoltage switching on a single tube, a split-filter beam, a dual-layer (``sandwich'') detector, or a next-generation photon-counting detector.
+\item \textbf{Rapid Helical Acquisition:} As the padded table glides smoothly through the wide gantry ring during a brief breath-hold (or while a foot or hand rests still), detectors record thousands of low- and high-energy X-ray attenuation measurements in seconds.
+\item \textbf{Spectral Material Decomposition:} Dedicated workstation software compares the low- and high-energy signals at every 3D point to separate substances like iodine, calcium, and monosodium urate crystals.
+\item \textbf{Specialized Reconstructions:} From a single scan, computers automatically generate standard blended images alongside iodine perfusion maps, virtual non-contrast slices, color-coded kidney stone or gout maps, and high-keV metal-artifact-reduced views.
+\item \textbf{Radiologist Interpretation:} A radiologist reviews the standard anatomy together with the color-coded spectral maps and quantitative iodine or energy measurements to deliver a clearer diagnosis.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Energy-dependent X-ray attenuation (photoelectric effect and Compton scatter) enabling material decomposition \\
+Energy / Signal Source & Dual X-ray tubes, rapid kVp-switching tube, split-filter beam, dual-layer detector, or photon-counting detector \\
+Typical Frequency / Energy & Low/high pairs around 70--100~kVp and 140~kVp; virtual monoenergetic reconstructions from 40 to 200~keV \\
+Spatial Resolution & High submillimeter detail (about 0.4--0.6~mm in-plane) with thin 0.5--1.5~mm image slices \\
+Typical Scan Duration & 5--10 minutes total room time; actual X-ray scan takes only 3--15 seconds \\
+Contrast Agent & IV iodinated contrast for vascular, pulmonary embolism, and organ/tumor exams; none needed for kidney stone or gout scans \\
+Ionizing Radiation & Low to moderate X-ray dose (typically 2--10~mSv depending on body region; comparable to standard CT and lower if VNC replaces a pre-contrast scan) \\
+\bottomrule
+\end{tabularx}
+
+\section{Common Symptoms That Prompt This Scan}
+\begin{itemize}
+\item \textbf{Sharp Flank Pain or Blood in Urine:} Sudden severe back-to-groin pain or recurrent kidney stones, where knowing stone chemistry guides whether pills can dissolve the stone.
+\item \textbf{Painful, Swollen, or Red Joints:} Classic big-toe, ankle, knee, or hand flares suspicious for gout when joint fluid cannot be tapped or standard X-rays look inconclusive.
+\item \textbf{Sudden Shortness of Breath or Chest Pain:} Urgent evaluation for suspected pulmonary embolism (blood clots in the lungs) using both vessel views and lung iodine blood-flow maps.
+\item \textbf{Pain or Loosening Near Metal Implants:} Discomfort or suspected infection/fracture around hip or knee replacements, spinal hardware, or surgical clips where standard CT is blurred by metal streaks.
+\item \textbf{Unclear Findings in Internal Organs:} Incidental kidney, liver, or adrenal spots, or suspected internal bleeding, where separating blood, calcium, and contrast uptake avoids repeat scans.
+\end{itemize}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+\begin{itemize}
+\item \textbf{Kidney Stone Composition Analysis:} Non-contrast DECT accurately separates uric acid stones from non-uric acid stones (such as calcium oxalate, brushite, or cystine)---even in stones smaller than 3~mm---helping urologists prescribe urine-alkalinizing medication for uric acid stones instead of immediate surgery.
+\item \textbf{Gout Crystal Detection and Burden Tracking:} Non-contrast DECT color-codes monosodium urate (MSU) crystal deposits in feet, ankles, knees, and hands separately from calcium and bone, confirming gout non-invasively when joint fluid aspiration fails or is impractical and measuring total crystal volume over time to track urate-lowering therapy.
+\item \textbf{Pulmonary Embolism (PE) Iodine Perfusion Maps:} During CT pulmonary angiography, DECT displays both the clot blocking a pulmonary artery and a color-coded lung iodine map showing wedge-shaped blood-flow drops downstream, boosting detection of small subsegmental clots and showing right-heart strain or chronic thromboembolic disease.
+\item \textbf{Virtual Non-Contrast (VNC) Imaging:} Mathematically subtracting IV iodine from a post-contrast scan creates simulated unenhanced images to confirm whether a bright kidney cyst, adrenal nodule, or stomach/brain spot is harmless calcium, fresh bleeding, or true contrast-absorbing tissue---often eliminating a dedicated pre-contrast scan.
+\item \textbf{Metal Artifact Reduction (MAR):} High-energy virtual monoenergetic reconstructions (95--200~keV), often paired with iterative metal-artifact reduction software, cut dark streaks and bright starbursts around joint prostheses, spinal rods, dental fillings, and cardiac devices so nearby bone and soft tissue remain clear.
+\end{itemize}
+
+\subsection{Secondary Usages}
+\begin{itemize}
+\item \textbf{Bone Marrow Edema in Trauma:} Virtual non-calcium algorithms remove overlying mineral bone to reveal hidden bone bruises and subtle occult fractures in the wrist, hip, knee, or spine that behave similarly to MRI marrow edema.
+\item \textbf{Automated Bone Removal in CT Angiography:} Strips away dense skull-base bone and vessel wall calcium plaques so radiologists can inspect carotid, brain, and leg arteries clearly in heavily calcified vessels.
+\item \textbf{Oncology and Organ Characterization:} Quantitative iodine maps measure true blood supply inside liver, pancreas, and kidney tumors, detect subtle bowel-wall ischemia, and track whether targeted cancer therapies are cutting tumor blood flow.
+\item \textbf{Radiation Therapy Planning:} Improves electron-density mapping for precision radiation and proton therapy dose calculations while reducing streaks from metallic implants near the tumor.
+\end{itemize}
+
+\section{Advantages}
+\begin{itemize}
+\item \textbf{Identifies Tissue Chemistry Without Biopsy:} Distinguishes uric acid kidney stones, gout crystals, calcium, bleeding, and iodine contrast non-invasively when standard single-energy CT sees only matching shades of gray.
+\item \textbf{Adds Functional Blood-Flow Data to Anatomy:} Lung and organ iodine maps reveal downstream perfusion loss in pulmonary embolism or tumor viability in the same breath-hold as standard anatomical CT.
+\item \textbf{Fewer Repeat Scans and Potential Dose Savings:} Creating virtual non-contrast views from one contrast scan can skip a baseline unenhanced pass, and low-keV boosts can maintain vessel brightness with smaller IV contrast doses in selected patients.
+\item \textbf{Clearer Views Around Metal Hardware:} High-keV monoenergetic reconstructions dramatically rescue scans near joint replacements, spinal hardware, and surgical clips without needing a repeat exam.
+\item \textbf{Fast and Widely Accessible Compared with MRI:} Completed in seconds on an open gantry ring, making it ideal for acute chest pain, kidney colic, trauma, or patients who cannot tolerate MRI.
+\end{itemize}
+
+\section{Disadvantages}
+\begin{itemize}
+\item \textbf{Uses Ionizing X-Ray Radiation:} Although modern scanners keep doses near standard CT, DECT still delivers X-ray radiation and requires extra care in children, young adults, and pregnant patients.
+\item \textbf{Iodine Contrast Risks When Dye Is Used:} Vascular, pulmonary embolism, and abdominal exams require IV iodinated contrast, carrying small risks of allergic-like reactions or kidney stress in severe renal impairment.
+\item \textbf{Higher Noise in Very Large Bodies or Low-keV Views:} Low-energy X-rays weaken more in larger body types, and virtual non-contrast images can appear slightly grainier than true non-contrast scans, occasionally limiting stone typing in large abdomens.
+\item \textbf{False-Positive Spectral Artifacts:} Keratin in nail beds and thickened calloused heel skin can mimic gout crystals, and dense cortical bone or motion can create spurious color pixels if readers do not verify them anatomically.
+\item \textbf{Equipment Availability and Post-Processing Time:} Requires specialized DECT or spectral CT hardware, extra computer storage for multi-energy datasets, and additional radiologist review time.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+\begin{itemize}
+\item \textbf{No Universal Absolute Contraindications for Non-Contrast DECT:} Standard non-contrast scans (such as for kidney stones, gout, or orthopedic hardware) have no strict absolute contraindications, though pregnancy requires careful risk--benefit review. For contrast-enhanced DECT, a life-threatening unpremedicated iodinated contrast allergy or severe hemodynamic instability precludes IV dye unless urgent benefit outweighs risk under emergency cover.
+\end{itemize}
+
+\subsection{Relative}
+\begin{itemize}
+\item \textbf{Pregnancy:} Abdominal or pelvic CT is generally deferred during pregnancy and replaced by ultrasound or non-contrast MRI when possible; however, urgent chest DECT for suspected pulmonary embolism is never withheld when medically necessary, with dose-reduction shielding and low-dose protocols.
+\item \textbf{Moderate-to-Severe Kidney Disease:} When IV iodine dye is needed and estimated glomerular filtration rate (eGFR) is below 30~mL/min/1.73~m$^2$, clinicians weigh risks carefully, consider non-contrast alternatives or IV hydration, and may use low-keV DECT to lower the required iodine dose.
+\item \textbf{Prior Mild-to-Moderate Contrast Allergy or Hyperthyroidism:} Managed with corticosteroid/antihistamine premedication or endocrinology review before giving iodinated dye.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+\begin{itemize}
+\item \textbf{ALARA Radiation Stewardship:} Technologists tailor tube voltage and current to your body size and clinical question, keeping radiation as low as reasonably achievable and omitting separate pre-contrast passes whenever virtual non-contrast reconstructions suffice.
+\item \textbf{Pre-Contrast Allergy and Kidney Screening:} Staff verify past reactions to iodinated contrast, severe asthma, kidney disease, and metformin use before inserting an IV line.
+\item \textbf{Pregnancy Verification:} Patients of childbearing age are asked about possible pregnancy so alternative radiation-free imaging can be considered or fetal-sparing protocols applied.
+\item \textbf{Breastfeeding Guidance:} Current American College of Radiology (ACR) guidance confirms that mothers who receive IV iodinated contrast can continue breastfeeding normally with no need to pump and dump.
+\item \textbf{Emergency Readiness:} Imaging suites keep resuscitation equipment and medications on hand to treat rare contrast reactions promptly, and monitor IV injection sites to prevent contrast leakage under the skin.
+\end{itemize}
+
+\section{Prerequisite Tests}
+\begin{itemize}
+\item \textbf{Kidney Function Blood Test (eGFR / Creatinine):} Checked before IV iodinated contrast in patients with known kidney disease, diabetes, heart failure, or age over 60 per clinic policy; not needed for non-contrast kidney stone or gout DECT.
+\item \textbf{Pregnancy Test When Indicated:} Performed in patients of childbearing potential if pregnancy is uncertain before abdominal or pelvic scanning.
+\item \textbf{Prior Imaging and Clinical Labs:} Recent serum uric acid levels (for gout), D-dimer or chest X-ray (for pulmonary embolism), or prior CT/ultrasound studies help the radiologist choose the best spectral protocol and compare changes over time.
+\end{itemize}
+
+\section{Preparing for the Scan}
+\begin{itemize}
+\item \textbf{Eating, Drinking, and Hydration:} Non-contrast kidney stone, gout, and orthopedic hardware DECT exams require no fasting---stay well hydrated. If IV contrast is planned, you may be asked to avoid solid food for 3--4 hours beforehand while drinking clear water.
+\item \textbf{Medication and Allergy Review:} Bring a list of all medications (especially metformin for diabetes, blood thinners, or thyroid drugs) and tell your doctor well in advance about any prior contrast dye reaction so premedication can be arranged if needed.
+\item \textbf{Clothing and Metal Removal:} Wear loose, comfortable clothes and remove jewelry, watches, rings, belts, hairpins, and metal-wired bras from the area being scanned so they do not create artificial streaks or false gout-like pixels.
+\end{itemize}
+
+\section{During Scan}
+\begin{itemize}
+\item \textbf{Comfortable Open Positioning:} You lie on a padded table (usually flat on your back, or with your foot, ankle, or hand resting comfortably in a foam cradle for a gout scan) that glides through a wide, open donut-shaped ring---not a closed tunnel.
+\item \textbf{IV Dye Sensations (If Contrast Is Used):} When iodinated dye flows through your arm IV, it is normal to feel a brief warm flush throughout your body or a mild metallic taste in your mouth for 15--30 seconds.
+\item \textbf{Brief Breath-Holds and Staying Still:} A voice prompt asks you to hold your breath for 5--15 seconds while the table moves smoothly, or to keep your limb completely still so low- and high-energy images align cleanly.
+\item \textbf{Two-Way Monitoring:} The technologist watches you through a large window and speaks with you via a two-way intercom throughout the 5--10 minute visit.
+\end{itemize}
+
+\section{Normal Appearance}
+\begin{itemize}
+\item \textbf{Clear Urinary Tract Without Stones:} Kidneys filter smoothly, ureters look unobstructed, and normal abdominal vessels and organs show uniform attenuation without calcified or uric acid calculi.
+\item \textbf{Clean Joints Without Crystal Deposits:} On gout DECT maps, bone and normal cartilage appear in their baseline bone color (often blue or purple depending on vendor software) with no green or purple urate crystal deposits along tendons or joints, aside from expected harmless keratin signal at the nail beds.
+\item \textbf{Uniform Lung Iodine Perfusion:} On pulmonary embolism iodine maps, both lungs show even, symmetric color-coded blood perfusion from center to edge, with smooth contrast-filled pulmonary arteries and no wedge-shaped dark defects.
+\item \textbf{Clean Virtual Non-Contrast and Implant Interfaces:} Subtracted VNC images match expected baseline organ density, and high-keV views around metal hardware show crisp bone-implant borders without dark streak shadows.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+\begin{itemize}
+\item \textbf{Color-Coded Kidney Stones:} Uric acid stones show a distinct low-to-high energy ratio and appear in a dedicated color (commonly red or pink) separate from calcium-containing stones (commonly blue or green), guiding immediate medical versus surgical care.
+\item \textbf{Monosodium Urate Deposits in Gout:} True gout crystals appear as clustered color-coded deposits inside joints, along flexor or Achilles tendons, or in soft-tissue tophi, clearly separated from calcium in bone or pseudogout cartilage calcification (CPPD).
+\item \textbf{Pulmonary Embolism Clots and Perfusion Defects:} Blood clots show as dark filling defects inside bright pulmonary arteries paired with matching triangular, wedge-shaped drops in iodine color on the lung perfusion map.
+\item \textbf{True Enhancement Versus Hemorrhage or Calcium:} On VNC comparison, hyperdense areas that disappear on the VNC image confirm active iodine uptake (such as a vascular tumor), whereas spots that stay bright on VNC indicate true blood clot or calcification.
+\item \textbf{Periprosthetic Loosening or Fluid:} High-keV metal-artifact-reduced slices uncover subtle dark gaps around loosening joint stems, hidden fractures, or fluid collections beside spinal rods.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+\begin{itemize}
+\item \textbf{Recognizing Spectral Artifacts:} Radiologists double-check apparent gout signal at nail beds, thickened heel calluses, or skin folds, and trace tiny isolated color dots across multiple planes to separate true tendon deposits from random noise.
+\item \textbf{Small Stones and Mixed Compositions:} Stones smaller than 3~mm, mixed uric-acid/calcium stones, or heavy image noise in large abdomens can blur material curves; radiologists review both raw Hounsfield measurements and dual-energy ratios together.
+\item \textbf{Perfusion Map Mimics in the Lungs:} Chronic emphysema, pneumonia, mucus plugging, or contrast timing artifacts near the heart can cause reduced iodine signal without an acute clot, so iodine maps are always read side by side with the blood-vessel CT slices.
+\end{itemize}
+
+\section{Augmenting Methods}
+\begin{itemize}
+\item \textbf{Iterative Metal Artifact Reduction (iMAR / O-MAR):} Software algorithms combined with high-keV virtual monoenergetic DECT views to remove extreme photon-starvation streaks from dense steel or cobalt-chromium implants.
+\item \textbf{Photon-Counting Detector CT (PCCT):} Next-generation spectral CT that counts individual X-ray photons into multiple energy bins at even finer spatial resolution and lower radiation dose.
+\item \textbf{Quantitative Volume and Perfusion Software:} Automated 3D tools that measure total gout crystal volume, lung perfusion defect percentage, and lesion iodine concentration (mg/mL) for objective treatment tracking.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+\begin{itemize}
+\item \textbf{Versus Conventional Single-Energy CT:} Standard CT uses one X-ray energy and cannot reliably tell uric acid from calcium stones, confirm gout crystals, map lung iodine perfusion, or reconstruct virtual non-contrast images from a single pass.
+\item \textbf{Versus Ultrasound:} Ultrasound uses zero radiation and spots joint effusions or kidney blockage quickly, but cannot see deep inside lungs, bone, or behind bowel gas, and cannot quantify chemical stone makeup or total gout crystal burden as reliably as DECT.
+\item \textbf{Versus MRI:} MRI excels at soft tissue, brain, and bone marrow without X-rays, but takes 30--45 minutes, struggles near metal hardware, and cannot directly visualize tiny kidney stones or lung airspaces the way DECT does in seconds.
+\item \textbf{Versus Nuclear Medicine V/Q Scan:} Ventilation--perfusion scans detect pulmonary embolism without iodinated dye, whereas DECT pulmonary angiography with iodine maps delivers both vessel anatomy and lung perfusion in one rapid emergency scan.
+\end{itemize}
+
+\section{Follow-up Steps}
+\begin{itemize}
+\item \textbf{Immediate Post-Scan Care:} After non-contrast DECT, you can return immediately to normal activities. If IV iodine dye was given, your IV is removed and drinking extra water over the next day helps flush the dye smoothly through your kidneys.
+\item \textbf{Targeted Treatment Based on Chemistry:} Confirmed uric acid kidney stones may be treated with oral urine-alkalinizing medicine instead of surgery, while confirmed gout deposits allow prompt start or adjustment of urate-lowering therapy.
+\item \textbf{Urgent Action on Perfusion or Hardware Findings:} Acute pulmonary embolism findings trigger immediate blood-thinner therapy and heart-strain assessment, while metal-reduced hardware views guide orthopedic surgery or physical therapy.
+\end{itemize}
+
+\section{Key References}
+\begin{itemize}
+\item Stanford University, 3D and Quantitative Imaging Laboratory. \textit{Dual Energy CT}. Stanford Medicine. Available at: \url{https://3dqlab.stanford.edu/dual-energy-ct/}.
+\item American College of Radiology (ACR) and Radiological Society of North America (RSNA). \textit{How to Prepare for Your CT Exam}. RadiologyInfo.org. Available at: \url{https://www.radiologyinfo.org/en/info/how-to-prepare-your-ct-exam}.
+\item Hamid S, Nasir MU, So A, Andrews G, Nicolaou S, Qamar SR. Clinical Applications of Dual-Energy CT. \textit{Korean Journal of Radiology}. 2021;22(6):970--982. Available at: \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC8154785/}.
+\item Hong YJ, Shim J, Lee SM, Im DJ, Hur J. Dual-Energy CT for Pulmonary Embolism: Current and Evolving Clinical Applications. \textit{Korean Journal of Radiology}. 2021;22(9):1555--1568. Available at: \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC8390816/}.
+\item Chou H, Chin TY, Peh WCG. Dual-energy CT in gout -- A review of current concepts and applications. \textit{Journal of Medical Radiation Sciences}. 2017;64(1):41--51. Available at: \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC5355369/}.
+\item Euler A, Wullschleger S, Sartoretti T, et al. Dual-energy CT kidney stone characterization---can diagnostic accuracy be achieved at low radiation dose? \textit{European Radiology}. 2023;33(9):6238--6244. Available at: \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC10415460/}.
+\item Radiopaedia.org. \textit{Dual-energy CT}. Radiopaedia. Available at: \url{https://radiopaedia.org/articles/dual-energy-ct-2}.
+\end{itemize}
+
+\section{Further Reading}
+\begin{itemize}
+  \item Wikipedia contributors. \textit{Spectral imaging (radiography)}. Wikipedia, The Free Encyclopedia. Available at: \url{https://en.wikipedia.org/wiki/Spectral_imaging_(radiography)}.
+\end{itemize}

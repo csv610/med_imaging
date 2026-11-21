@@ -1,0 +1,150 @@
+\infographicchapter{Microwave Imaging}{microwave.png}
+\label{ch:infographic-microwave-imaging}
+
+\section{Overview}
+
+Microwave imaging is a research-stage medical scan that looks inside the body using very weak, harmless radio waves---similar to the signals used by Wi-Fi or cell phones, only much gentler. Unlike X-rays or CT scans, it uses no ionizing radiation. Instead, it relies on how different tissues hold water and conduct tiny electrical signals. Because cancerous breast tumors and pooled blood from a bleeding stroke contain more water and blood than healthy tissue around them, microwave signals bounce off them differently.
+
+Researchers adapted microwave imaging from radar and industrial non-destructive testing, and they use two main ways to turn bounced signals into pictures. The \emph{qualitative} (radar-style) approach focuses reflected echoes to pinpoint where an unusual spot sits. The \emph{quantitative} (inverse-scattering) approach builds a detailed map of each tissue's electrical properties---specifically how much electrical energy it stores (\emph{permittivity}) and how easily currents flow through it (\emph{conductivity}). Many modern prototypes also use computer software and artificial intelligence to help filter out background noise and improve accuracy.
+
+Today, microwave imaging is still being tested in clinical studies and is not yet a routine hospital scan. It cannot replace standard tests like mammograms, ultrasound, CT, or MRI. The two most promising uses under study are breast cancer detection---offering a gentle, squeeze-free option that may help women with dense breast tissue---and portable head helmets that could one day help paramedics tell a bleeding stroke from a clot stroke inside an ambulance. Before it enters everyday care, researchers must improve picture sharpness and prove its accuracy in large patient studies.
+
+\section{Underlying Physical Principles}
+\begin{itemize}
+  \item \textbf{Gentle, Low-Power Radio Waves:} Small antennas send very weak, non-ionizing microwave signals (in the 0.3 to 10 gigahertz range) through a soft gel or liquid into the breast, head, or chest.
+  \item \textbf{Water and Blood Create the Contrast:} Tissues with more water, dissolved salts, and blood---such as malignant tumors or fresh bleeding in the brain---slow down and absorb microwaves differently than fatty or normal tissue.
+  \item \textbf{Waves Bounce and Pass Through Tissue:} As microwaves travel through the body, they reflect off boundaries between different tissue types. Because these waves are a few centimeters long, they can travel several centimeters into soft tissue, though they cannot show tiny details as sharply as X-rays.
+  \item \textbf{Multi-Antenna Signal Recording:} Scanners use either separate transmitting and receiving antennas arranged in a ring or helmet (\emph{bistatic} or multistatic arrays) or a single moving antenna that both sends and catches echoes (\emph{monostatic} scanning, which mimics a larger virtual array while reducing interference between closely spaced antennas). Both setups measure the strength and timing of waves from many angles and frequencies.
+  \item \textbf{Radar and Computer Map Building:} Computer programs either focus the returning echoes like radar to highlight a suspicious area, or solve complex wave equations---often with the help of machine learning---to map out tissue properties.
+\end{itemize}
+
+\section{Imaging Mechanism}
+\begin{enumerate}
+  \item \textbf{Setup and Calibration:} The patient's breast, head, or chest is placed inside a soft array of antennas or a lightweight helmet. Staff use a skin-safe gel or liquid to close any air gaps between the skin and the antennas, after first running a quick empty-scanner check.
+  \item \textbf{Gentle Multi-Angle Scanning:} Electronic switches turn the antennas on and off in rapid order, sending weak microwave signals across the tissue from many directions without any painful squeezing.
+  \item \textbf{Capturing the Returning Signals:} Nearby receiving antennas pick up the strength and timing of the waves that reflect off or travel through the tissue, and the system converts those signals into digital data.
+  \item \textbf{Cleaning Up the Data:} Software removes strong surface reflections from the skin and background chatter between antennas, then builds a radar image, a tissue-property map, or a stroke risk score.
+  \item \textbf{Displaying the Research Results:} The workstation shows 2D or 3D color maps of the area so researchers can compare them side by side with standard mammograms, ultrasounds, MRIs, or head CT scans.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Weak microwaves bounce off and pass through tissues differently depending on water content, blood volume, and electrical properties \\
+Energy / Signal Source & Arrays of small, low-power microwave antennas arranged in a cup, panel, or helmet \\
+Typical Frequency / Energy & 0.3--10~GHz (commonly 1--6~GHz for breast scans and 0.5--2~GHz for head prototypes); very low power (milliwatt level) \\
+Spatial Resolution & About 5--15~mm (less sharp than mammography, CT, or MRI) \\
+Typical Scan Duration & Seconds to a few minutes of actual scanning (15--30~minutes total visit including setup and positioning) \\
+Contrast Agent & None routinely needed (relies on natural water and blood differences; experimental particles are studied only in labs) \\
+Ionizing Radiation & None (uses safe, non-ionizing radiofrequency/microwave energy) \\
+\bottomrule
+\end{tabularx}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+\begin{itemize}
+  \item \textbf{Helping Spot Breast Cancer (Clinical Trials):} Gentle, radiation-free breast microwave prototypes are being tested alongside mammograms and ultrasounds, especially for women with dense breast tissue where standard mammograms can be harder to read.
+  \item \textbf{Early Stroke Triage in Ambulances (Research Prototypes):} Portable microwave helmets are being tested in emergency pilot studies to help tell a bleeding stroke apart from a clot-caused stroke before a patient reaches the hospital, which could speed up clot-busting treatment.
+  \item \textbf{Tracking Breast Cancer Treatment (Investigational):} Because tumors lose water and shrink as chemotherapy works, researchers are studying whether repeated microwave scans can safely track treatment progress without X-rays.
+  \item \textbf{Checking for Head Injury Bleeding (Research Target):} Compact microwave devices are being explored to screen quickly for bleeding inside the skull after head trauma in remote clinics, military settings, or hospital bedsides when a CT scanner is not nearby.
+\end{itemize}
+
+\subsection{Secondary Usages}
+\begin{itemize}
+  \item \textbf{Monitoring Chest and Lung Fluid (Early Studies):} Experimental chest scanners are being tested to spot fluid around the lungs (pleural effusion), a collapsed lung (pneumothorax), or fluid inside the lungs in heart failure patients.
+  \item \textbf{Guiding Heat-Based Tumor Treatments (Investigational):} Because tissue electrical properties change as tissue warms up, researchers are testing whether microwave imaging can monitor temperature during heat-based tumor ablation.
+  \item \textbf{Checking Bone Health and Joint Swelling (Lab Research):} Early laboratory studies are looking at whether microwave signals can detect bone thinning (osteoporosis) or swollen joint fluid in arthritis without X-rays.
+\end{itemize}
+
+\section{Advantages}
+\begin{itemize}
+  \item \textbf{No Ionizing Radiation:} Low-power microwaves do not damage DNA, making the scan safe to repeat for dense-breast monitoring or tracking chemotherapy response.
+  \item \textbf{No Painful Squeezing:} Breast microwave scanners rest comfortably around the breast and avoid the firm compression plates used in standard mammography.
+  \item \textbf{No Contrast Dye Needed:} Natural differences in tissue water and blood create the image contrast, so no injected contrast agents are required.
+  \item \textbf{Compact and Potentially Affordable:} Small solid-state antennas can fit into lightweight helmets or bedside units that could one day work in ambulances and smaller clinics.
+\end{itemize}
+
+\section{Disadvantages}
+\begin{itemize}
+  \item \textbf{Modest Image Sharpness:} Because microwaves have centimeter-scale wavelengths, they cannot clearly show very small lumps or the tiny calcium specks (microcalcifications) seen on mammograms.
+  \item \textbf{Complex Image Processing and Clutter:} Turning bounced radio waves into clean pictures is mathematically hard, and reflections off the skin or nearby antennas can create confusing background noise.
+  \item \textbf{Skull and Dense Tissue Blocking:} In brain scans, the thick skull and scalp block and reflect much of the signal, making deep brain areas harder to read.
+  \item \textbf{False Alarms from Harmless Tissue:} Normal dense breast tissue, fluid-filled cysts, and benign lumps (fibroadenomas) also hold lots of water, so their electrical properties can overlap with cancer from person to person and trigger false alarms.
+  \item \textbf{Still in the Research Stage:} Microwave imaging is not yet approved for routine standalone care. Across 11 early breast-imaging trials, prototype scanners spotted 63\% to 100\% of cancers, yet the four trials that checked false-alarm rates found only 20\% to 65\% specificity---meaning the technology still needs standardized image-quality checks, better software, and large multi-hospital trials.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+\begin{itemize}
+  \item \textbf{Replacing Standard Medical Scans:} Research microwave scanners must never be used in place of proven medical tests---such as an emergency head CT for stroke or a diagnostic mammogram and ultrasound for a breast lump.
+  \item \textbf{Active Implanted Electronic Devices:} Most research trials exclude people with pacemakers, implanted heart defibrillators, cochlear implants, or deep brain stimulators so the radio waves do not interfere with the device or cause local heating.
+\end{itemize}
+
+\subsection{Relative}
+\begin{itemize}
+  \item \textbf{Local Metal Hardware or Skin Problems:} Metal skull plates, large metallic chest or breast clips, open sores, active skin infections, or severe rashes where the antennas touch can scramble the signal or cause discomfort.
+  \item \textbf{Difficulty Holding the Scan Position:} People who cannot lie comfortably on their stomach for a breast-table prototype or keep their head still inside a helmet array may not be able to get a clear scan.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+\begin{itemize}
+  \item \textbf{Formal Ethics and Research Oversight:} Because microwave imaging is still investigational, all human scans must take place in approved research studies (under an Institutional Review Board and FDA investigational rules) with clear written consent.
+  \item \textbf{Strict Low-Power Heating Limits:} Scanners keep radiofrequency power and tissue absorption (known as SAR) far below international safety limits (IEEE~C95.1, ICNIRP, and IEC~60601) so the skin, breast, or head does not heat up.
+  \item \textbf{Checking for Implants and Metal:} Staff screen every participant for pacemakers, defibrillators, neurostimulators, cochlear implants, and nearby metal plates before scanning to prevent device interference.
+  \item \textbf{Electrical Safety and Clean Surfaces:} Prototype systems undergo medical electrical safety checks, use gentle skin-safe gels or liquids, and have all contact surfaces thoroughly cleaned between participants.
+  \item \textbf{Never Delaying Standard Care:} Research scans must never slow down or replace urgent medical imaging, such as a head CT for stroke or standard mammography and ultrasound for breast symptoms.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+\begin{itemize}
+  \item \textbf{Bright Spots in Breast Scans (Research Target):} Invasive breast cancers hold more water and blood vessels than surrounding fat, so they tend to appear as bright, localized spots on radar or property maps.
+  \item \textbf{Uneven Brain Signals in Stroke Studies:} In acute stroke helmet prototypes, fresh bleeding inside the skull creates a localized pocket of high water and electrical activity on one side of the brain, helping software separate bleeding strokes from clot strokes.
+  \item \textbf{Shrinking Signal During Chemotherapy:} In breast cancer treatment studies, researchers watch for a tumor's microwave brightness to fade over several cycles of chemotherapy as cancer cells die and shrink.
+  \item \textbf{Harmless Lumps That Look Like Cancer:} Dense normal breast tissue, simple fluid cysts, and benign fibroadenomas also contain lots of water, so they often light up just like cancer and can cause false alarms.
+  \item \textbf{Signal Clutter and False Hot Spots:} Strong bounces off the skin or skull, stray signals between antennas, tiny air bubbles in the gel, or slight movement can create fake bright spots that mimic a real lesion.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+\begin{itemize}
+  \item \textbf{Overlap Between Benign and Malignant Tissue:} Because harmless cysts, dense breast tissue, and non-cancerous lumps hold high water content, microwave scans alone cannot reliably tell them apart from cancer.
+  \item \textbf{Sensitive Math Models:} Turning microwave data into detailed tissue maps is mathematically tricky; small amounts of background noise or different starting settings in the software can change how the final map looks.
+  \item \textbf{Skull Blocking and Gel Bubbles:} Reflections from the skin or skull, tiny air bubbles in the coupling gel, shifted antennas, or patient movement can hide deep problems or create false spots.
+  \item \textbf{Limited Detail and Unproven Cutoffs:} Centimeter-sized waves cannot see breast microcalcifications or very tiny tumors, and research scoring systems have not yet been validated in large clinical trials.
+  \item \textbf{Relying on Proven Standard Tests:} Study teams reduce technical glitches by calibrating with test models, checking the gel contact, and repeating sweeps. All real medical decisions are based strictly on standard mammograms, ultrasounds, MRIs, emergency head CTs, and biopsies.
+\end{itemize}
+
+\section{Augmenting Methods}
+\begin{itemize}
+  \item \textbf{Mammography and 3D Tomosynthesis:} Standard X-ray mammograms remain the main benchmark for breast microwave studies because they clearly show tiny calcium specks and fine details that microwaves miss.
+  \item \textbf{Breast Ultrasound and MRI:} Ultrasound easily tells fluid-filled cysts from solid lumps in dense breasts, while contrast-enhanced breast MRI gives a detailed look at blood flow and tumor extent.
+  \item \textbf{Emergency Head CT and Brain MRI:} For stroke helmet prototypes, a standard non-contrast head CT, CT blood-vessel scan (CTA), and brain MRI remain the mandatory clinical gold standards.
+  \item \textbf{Needle Biopsy and Lab Pathology:} Examining a small tissue sample under a microscope (core-needle biopsy) provides the final, definitive answer in breast cancer and chemotherapy trials.
+  \item \textbf{Artificial Intelligence and Test Phantoms:} Machine-learning software, noise-removal filters, and tissue-like calibration models help clean up raw antenna readings and improve accuracy.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+\begin{itemize}
+  \item \textbf{Versus Mammography:} Microwave breast prototypes use no radiation and do not squeeze the breast, while mammography gives much sharper detail, spots tiny calcifications, and is the proven screening standard (even though routine mammograms carry a 20\% to 60\% cumulative risk of a false-positive callback over ten screening rounds).
+  \item \textbf{Versus Breast Ultrasound and MRI:} Ultrasound and MRI are widely proven clinical tools with much better clarity and accuracy for dense breasts, whereas microwave imaging is still an experimental, potentially lower-cost candidate.
+  \item \textbf{Versus Emergency Head CT (Stroke):} Portable microwave helmets aim to help paramedics sort bleeding from clot strokes before hospital arrival, while a hospital head CT remains the fast, definitive test required before stroke treatment.
+  \item \textbf{Versus Terahertz and Optical Scans:} Microwaves travel several centimeters into breast tissue and partly through the skull---much deeper than light or terahertz waves---though with less surface detail.
+\end{itemize}
+
+\section{Key References}
+\begin{itemize}
+  \item Nikolova NK. Microwave imaging for breast cancer. \textit{IEEE Microwave Magazine}. 2011;12(7):78--94.
+  \item Persson M, Fhager A, Trefna HD, et al. Microwave-based stroke diagnosis making global prehospital thrombolytic treatment possible. \textit{IEEE Transactions on Biomedical Engineering}. 2014;61(11):2806--2817.
+  \item Kwon S, Lee S. Recent advances in microwave imaging for breast cancer detection. \textit{International Journal of Biomedical Imaging}. 2016;2016:5054912.
+  \item Institute of Electrical and Electronics Engineers (IEEE). \textit{IEEE Standard C95.1-2019: Safety Levels with Respect to Human Exposure to Electric, Magnetic, and Electromagnetic Fields, 0 Hz to 300 GHz}. New York: IEEE, 2019.
+  \item Reimer T, Pistorius S. \textit{Review and Analysis of Tumour Detection and Image Quality Analysis in Experimental Breast Microwave Sensing}. National Library of Medicine (NIH PubMed Central). Available at: \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC10255334/}.
+\end{itemize}
+
+\section{Further Reading}
+\begin{itemize}
+  \item Wikipedia contributors. \textit{Microwave imaging}. Wikipedia, The Free Encyclopedia. Available at: \url{https://en.wikipedia.org/wiki/Microwave_imaging}.
+\end{itemize}

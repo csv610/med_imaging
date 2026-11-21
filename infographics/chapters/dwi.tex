@@ -1,0 +1,202 @@
+\infographicchapter{Diffusion-Weighted Imaging}{dwi.png}
+\label{ch:infographic-dwi}
+
+\section{Overview}
+
+Diffusion-weighted imaging (DWI) is a fast, specialized MRI technique that watches how freely microscopic water molecules move inside your body's tissues. In healthy tissue or clear fluid, water molecules jiggle and wander around freely. When cells swell suddenly---such as during a stroke---or when cells are packed tightly together inside a tumor or thick pocket of pus, water gets trapped and cannot move as easily. By turning on special magnetic pulses (controlled by a setting called the b-value), the MRI scanner dims areas where water moves freely and makes areas with trapped, slowed water glow brightly. The scanner also calculates a companion map called an apparent diffusion coefficient (ADC) map to double-check that a bright spot truly represents trapped water rather than a harmless background glow (called T2 shine-through).
+
+DWI is the single fastest and most accurate test for catching a brand-new ischemic stroke (a stroke caused by a blocked blood vessel). Within minutes of a blockage, starving brain cells pull in water and swell, lighting up clearly on DWI hours before a regular CT or standard MRI shows anything. Pairing DWI with another MRI view called FLAIR even helps doctors estimate when a ``wake-up stroke'' started so they know whether clot-busting medicine is still safe. Beyond stroke, doctors rely on DWI to tell brain abscesses (pockets of thick pus) apart from necrotic tumors, spot tightly packed cancers in the prostate or liver, detect subtle shear injuries after head trauma, and evaluate rare brain conditions like Creutzfeldt-Jakob disease.
+
+Best of all, DWI takes only 1--3 minutes, requires no IV contrast dye, and uses zero X-ray radiation. Its main limits are that its fast scanning style can slightly warp or drop signal near air-filled sinuses, skull bones, or metal hardware, its images are a bit softer than standard anatomical MRI, and an older stroke can temporarily look ``normal'' on the ADC map about 1--2 weeks later. Standard MRI safety rules still apply regarding metal implants, medical devices, and claustrophobia.
+
+\section{Underlying Physical Principles}
+\begin{itemize}
+\item \textbf{Tracking Tiny Water Movements (Brownian Motion):} Driven by natural body heat, water molecules inside your body are constantly jiggling in random microscopic motion known as Brownian motion. During a fresh stroke, starving brain cells run out of energy and their tiny water-balancing pumps fail, pulling fluid inside the cells (\textit{cytotoxic edema}) and crowding them tightly; thick pus inside an abscess or densely packed cancer cells likewise trap water molecules and sharply slow their movement.
+\item \textbf{Paired Magnetic Pulses:} Inside the MRI scanner, a special sequence fires two strong, matched magnetic pulses back to back. Water molecules that stay trapped in place keep their full signal and look bright white, while freely wandering water molecules drift away between the two pulses, lose signal, and look dark.
+\item \textbf{Adjusting Sensitivity with the b-Value:} Doctors control how strongly the scan highlights trapped water using a setting called the b-value. Higher b-values make freely moving water fade out darker so areas with restricted water stand out more boldly.
+\item \textbf{Ultra-Fast Capture Across All Directions:} To keep normal breathing or heartbeat motion from ruining the scan, the machine captures each slice in less than a tenth of a second (echo-planar imaging) and checks water motion in at least three directions, blending them into one clean, direction-free picture.
+\item \textbf{Double-Checking with the ADC Map:} By comparing a regular image against a high b-value diffusion image, the scanner builds a quantitative apparent diffusion coefficient (ADC) map. True trapped water (like a fresh stroke) looks bright on DWI and dark on the ADC map, cleanly ruling out a fake bright spot caused by simple fluid swelling (T2 shine-through).
+\end{itemize}
+
+\section{Imaging Mechanism}
+\begin{enumerate}
+\item \textbf{Coil Setup and Magnetic Balancing:} You lie comfortably inside a 1.5 or 3.0 Tesla MRI scanner with a lightweight cushioned coil placed around your head or body. First, the scanner runs a quick automatic balancing check (shimming) to keep the magnetic field smooth and reduce warping.
+\item \textbf{Fast Multi-Direction Diffusion Scanning:} The scanner fires rapid, strong magnetic gradient pulses in at least three directions at two or more sensitivity levels (typically b = 0 and b = 800--1000 s/mm\textsuperscript{2}), capturing each full image slice in under 100 milliseconds.
+\item \textbf{Capturing and Digitizing Signals:} The receiver coil picks up faint radio echoes from your tissues and sends them to fast digital processors, using modern acceleration methods to shorten the scan and cut down image warping.
+\item \textbf{Building Trace DWI and ADC Maps:} Computer software corrects subtle magnetic distortions, blends the directional scans into one crisp ``trace'' DWI image, and calculates the matching quantitative ADC map pixel by pixel.
+\item \textbf{Side-by-Side Radiologist Review:} The high b-value DWI images, ADC maps, and standard anatomical MRI views (like FLAIR and T2) appear side by side on the doctor's monitor so they can confirm true restricted water movement within seconds.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Fast MRI sequence using paired magnetic pulses to track microscopic water movement and generate quantitative ADC maps \\
+Energy / Signal Source & Superconducting static magnet, fast-switching gradient coils, and radiofrequency pulses \\
+Typical Frequency / Energy & 1.5 Tesla or 3.0 Tesla MRI scanner; typical diffusion settings (b-values) of 0 and 800--1000 s/mm\textsuperscript{2} (up to 1500--2000 for prostate/brain) \\
+Spatial Resolution & Moderate detail (about 1.5--2.0 mm in-plane, 3--5 mm slice thickness), paired with sharper anatomical MRI views \\
+Typical Scan Duration & Only 1--3 minutes for the DWI part itself (within a 15--45 minute full MRI exam) \\
+Contrast Agent & None needed (relies naturally on water movement inside your tissues) \\
+Ionizing Radiation & None (uses safe magnetic fields and radio waves) \\
+\bottomrule
+\end{tabularx}
+
+\section{Common Symptoms That Prompt This Scan}
+\begin{itemize}
+\item \textbf{Sudden Stroke Symptoms:} Abrupt face drooping, one-sided weakness, slurred speech, or sudden balance loss---DWI spots fresh stroke injury within minutes.
+\item \textbf{Fever With Severe Headache or Confusion:} Symptoms suggesting a deep brain abscess or severe brain infection that needs rapid differentiation from other masses.
+\item \textbf{Rapidly Worsening Memory Loss or Personality Changes:} Unexplained cognitive decline or involuntary jerking movements needing specialized brain evaluation.
+\item \textbf{Abdominal, Pelvic, or Cancer Staging Workups:} Prompted alongside standard MRI when doctors check suspicious liver, prostate, or pelvic spots or monitor how a tumor responds to treatment.
+\end{itemize}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+\begin{itemize}
+\item \textbf{Catching Brand-New Strokes Immediately:} The gold-standard test for spotting a fresh ischemic stroke within minutes of onset, telling new strokes apart from old scars, and using DWI-FLAIR matching to guide clot-busting therapy in wake-up strokes.
+\item \textbf{Telling Brain Abscesses Apart from Tumors:} Thick pus inside a bacterial brain abscess traps water strongly, separating it from the watery dead center of a cystic glioblastoma or brain metastasis with about 96\% sensitivity and specificity---and helping spot infection spilling into the brain's fluid chambers (ventriculitis) early.
+\item \textbf{Spotting and Grading Cancers:} Tightly packed cancer cells restrict water movement, making DWI a key tool for detecting and grading prostate cancer (core PI-RADS sequence), liver cancer, liver metastases, and lymphoma.
+\item \textbf{Distinguishing Brain Cysts:} Clearly separates epidermoid cysts (which glow brightly with restricted water) from harmless fluid-filled arachnoid cysts (which stay dark like normal brain fluid).
+\end{itemize}
+
+\subsection{Secondary Usages}
+\begin{itemize}
+\item \textbf{Evaluating Rare Brain Infections and Conditions:} Detects classic ribbon-like bright patterns along the brain surface in Creutzfeldt-Jakob disease and early brain inflammation in herpes simplex encephalitis (often as early as 40 hours after symptoms start).
+\item \textbf{Spotting Active Multiple Sclerosis Flares and Metabolic Brain Stress:} Reveals active multiple sclerosis (MS) plaques sometimes even before contrast dye lights up, and detects early, potentially reversible cell swelling within 24 hours in carbon monoxide poisoning, severe low blood sugar, or rapid sodium shifts.
+\item \textbf{Spotting Subtle Head-Trauma Shear Injury:} Uncovers tiny nerve-fiber stretching injuries (diffuse axonal injury) after serious concussions or accidents when regular CT and MRI look normal.
+\item \textbf{Tracking Cancer Treatment Response:} As cancer cells break down during chemotherapy or radiation, water moves more freely again (rising ADC values), helping doctors tell dying tumor or scar tissue apart from returning cancer.
+\item \textbf{Ear Cholesteatomas and Whole-Body Cancer Staging (DWIBS):} Specialized non-warping DWI spots middle-ear skin cysts (cholesteatomas) without contrast dye, and whole-body background-suppressed DWI (DWIBS) dims healthy background tissue so doctors can stage multiple myeloma, non-small-cell lung cancer, and widespread metastases without X-rays.
+\end{itemize}
+
+\section{Advantages}
+\begin{itemize}
+\item \textbf{Fastest, Most Accurate Stroke Detection:} Spots a fresh ischemic stroke within minutes of a blocked artery---hours earlier than a standard CT scan or routine MRI.
+\item \textbf{No Contrast Dye and No X-Ray Radiation:} Uses natural water motion inside your body, making it completely safe for people with severe kidney disease and for repeated follow-up scans.
+\item \textbf{Measurable Numbers via ADC Maps:} Pairing DWI with ADC maps confirms true trapped water, rules out look-alike fluid glow, and tracks whether tumors are responding to treatment.
+\item \textbf{Clear Answers Across Brain and Body Conditions:} Reliably separates brain abscesses from necrotic tumors, distinguishes epidermoid cysts from arachnoid cysts, and sharpens prostate and liver cancer detection.
+\item \textbf{Very Quick Sequence:} Takes just 1--3 minutes to run, fitting easily into urgent stroke protocols and routine multiparametric MRI exams.
+\end{itemize}
+
+\section{Disadvantages}
+\begin{itemize}
+\item \textbf{Warping Near Air Sinuses and Metal:} Fast echo-planar DWI can look stretched or show bright pile-up spots near air-filled sinuses, skull base bones, ear bones, or metal dental work and surgical hardware.
+\item \textbf{Softer Detail Than Standard MRI:} Because strong diffusion pulses dim the overall signal, DWI looks slightly grainier and less sharp than standard T1 and T2 anatomical MRI pictures.
+\item \textbf{Needs Side-by-Side Comparison:} Simple fluid swelling (T2 shine-through), fresh bleeding (T2 blackout), or a 1-to-2-week-old stroke temporarily normalizing on ADC can be misread if DWI is not checked right next to ADC and regular MRI views.
+\item \textbf{Sensitive to Slight Movement:} Because DWI measures microscopic water motion, even small head movements or swallowing can cause ghosting or blur.
+\item \textbf{Standard MRI Limits:} Cannot be used in patients with non-MRI-safe implants or metal fragments, and is affected by claustrophobia, higher cost, and narrower emergency access than CT.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+\begin{itemize}
+\item \textbf{Non-MRI-Safe Implants and Metal Fragments:} Non-MRI-conditional heart pacemakers or defibrillators, magnetic brain aneurysm clips, cochlear implants, metal shavings near the eyes, and unsafe nerve stimulators cannot enter the MRI magnet room.
+\end{itemize}
+
+\subsection{Relative}
+\begin{itemize}
+\item \textbf{Severe Claustrophobia or Trouble Staying Still:} Intense anxiety in enclosed spaces, confusion, or inability to lie still (especially during an acute stroke) can blur DWI unless managed with coaching, calming medicine, or sedation.
+\item \textbf{Nearby Metal Hardware:} Joint replacements, braces, or surgical clips right next to the scanned area can severely warp standard DWI, though specialized non-warping DWI sequences or CT can often be used instead.
+\item \textbf{Kidney Disease and Pregnancy (Safe for Standalone DWI):} Because standalone DWI uses zero gadolinium dye and zero X-rays, kidney failure and medically needed pregnancy scans are NOT contraindications, though any companion contrast-dye scans may be skipped.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+\begin{itemize}
+\item \textbf{Strict Magnet Room Screening:} Staff use strict four-zone safety controls and double-check every patient and helper for metal objects, eye metal fragments, and implanted devices before anyone enters the magnet room.
+\item \textbf{Ear Protection and Mild Nerve Tingling Limits:} Because DWI switches strong magnetic gradients rapidly, it makes loud knocking sounds and can occasionally cause a faint, harmless muscle twitch or tingle (peripheral nerve stimulation). Scanners enforce strict safety limits, and well-fitted earplugs or earmuffs are mandatory.
+\item \textbf{Preventing Skin Heating:} Staff have you remove metal clothing, jewelry, and foil-backed skin patches, use foam pads to prevent skin-to-skin loops, and monitor radio-wave warmth limits closely, especially on 3 Tesla scanners.
+\item \textbf{Fast, Safe Care in Acute Stroke:} In stroke emergencies, teams perform rapid but thorough MRI safety checks without delaying clot-busting medicine or clot removal, using MRI-safe monitors and watching you continuously.
+\item \textbf{Safe Dye-Free Option for Vulnerable Patients:} Doctors often choose standalone DWI as a safe, radiation-free, dye-free scan for pregnant patients and people with severe kidney disease.
+\end{itemize}
+
+\section{Prerequisite Tests}
+\begin{itemize}
+\item \textbf{No Routine Lab Tests for Standalone DWI:} Because standalone DWI needs no contrast dye, you do not need blood work, kidney tests, or fasting just for DWI.
+\item \textbf{Standard MRI Metal and Implant Screening:} Every patient completes a written and verbal safety check for metal fragments, pacemakers, cochlear implants, aneurysm clips, and nerve stimulators; a quick plain X-ray (such as an eye X-ray) is taken first if metal exposure is suspected.
+\item \textbf{Emergency Stroke Checks:} For a suspected stroke, doctors perform a quick bedside nerve exam (NIHSS score), note when symptoms started or when you were last seen normal, and often review a fast non-contrast head CT first to rule out brain bleeding.
+\item \textbf{Contrast Checks Only for Larger MRI Protocols:} If DWI is part of a broader contrast-enhanced MRI (for a brain tumor, liver, or prostate), staff screen for past gadolinium reactions and check kidney function only when clinically needed.
+\end{itemize}
+
+\section{Preparing for the Scan}
+\begin{itemize}
+\item \textbf{No Fasting for Standalone DWI:} You can eat normally and take your regular daily medications for a standalone brain or body DWI scan. If your DWI is part of a belly/pelvis MRI or involves sedation, follow your clinic's specific fasting instructions.
+\item \textbf{Remove All Metal and Bring Implant Cards:} Before entering the magnet room, take off jewelry, watches, hairpins, glasses, hearing aids, removable dentures, clothes with metal threads, and foil-backed medicine patches. Bring safety cards for any heart devices, nerve stimulators, or surgical clips.
+\item \textbf{Plan Ahead for Comfort and Staying Still:} Because DWI is super sensitive to motion, staying completely still is key. Tell the team ahead of time if claustrophobia, back pain, or anxiety makes lying still tough so they can offer extra cushions, coaching, or a prescribed calming pill (with an adult driver to take you home).
+\item \textbf{Ear Protection and IV Readiness If Needed:} Plan to wear the provided earplugs or earmuffs for the loud knocking sounds. If your MRI includes contrast-dye sequences alongside DWI, expect a small IV line and mention any past dye reactions or kidney disease.
+\end{itemize}
+
+\section{During Scan}
+\begin{itemize}
+\item \textbf{Comfortable Setup and Staying Still:} You lie flat on your back on the padded MRI table with soft cushions and a lightweight coil placed around your head or target body area. Staying completely still is very important so the tiny water-movement pictures stay crisp.
+\item \textbf{Simple Breathing Cues:} For brain or spine DWI, breathe slowly and quietly without moving your head or swallowing repeatedly. For belly or pelvis DWI, follow the technologist's gentle prompts for steady shallow breaths or short 10--20 second breath-holds.
+\item \textbf{Loud Sounds and Harmless Sensations:} Rapidly switching magnetic gradients create loud rhythmic knocking, clicking, or buzzing sounds---keep your earplugs or earmuffs snug. You may feel gentle table vibration or a faint, harmless muscle tingle, and standalone DWI is completely painless with no injection.
+\item \textbf{Your Call Button and Intercom:} You hold a squeeze-ball call button the whole time and can speak with the technologist over the intercom anytime if you feel claustrophobic, uncomfortably warm, sore, or anxious.
+\item \textbf{Quick Sequence Inside a Full MRI:} The DWI scan itself takes only 1--3 minutes, though it is usually part of a complete MRI exam lasting 15--45 minutes depending on the body area.
+\end{itemize}
+
+\section{Normal Appearance}
+\begin{itemize}
+\item \textbf{Healthy Brain Tissue:} On high b-value DWI, normal brain tissue looks evenly mid-gray on both sides with no focal bright spots, and the companion ADC map shows smooth, even mid-gray values across both halves of the brain.
+\item \textbf{Normal Brain Fluid (CSF):} Freely moving spinal fluid inside the brain's fluid spaces looks completely dark on high b-value DWI and bright white on the ADC map.
+\item \textbf{Naturally Dense Normal Organs:} Certain healthy organs that are naturally packed with cells---such as the spleen, lymph nodes, bone marrow, uterine lining, and normal prostate---can look mildly bright on DWI without showing a suspicious dark lump on the ADC map.
+\item \textbf{Clean, Even Lower Brain:} Normal scans show symmetric brainstem, cerebellum, and temporal lobes with minimal warping near the air-filled sinuses and ear bones.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+\begin{itemize}
+\item \textbf{True Trapped Water Versus Simple Fluid Glow:} Real restricted water movement---as in a brand-new stroke---glows bright white on high b-value DWI AND looks dark on the companion ADC map. By contrast, simple fluid swelling (T2 shine-through) looks bright on both DWI and ADC, telling the radiologist it is not an acute restriction.
+\item \textbf{Timing a Stroke (DWI-FLAIR Mismatch):} A spot that glows brightly on DWI but has not yet turned bright on the companion FLAIR image usually means the stroke started within the past 4.5 hours. About 7--14 days after a stroke, the ADC map temporarily fades back to normal gray (pseudonormalization) even though DWI may stay faintly bright.
+\item \textbf{Brain Abscess Versus Necrotic Tumor:} A ring-shaped brain lesion whose center glows brightly on DWI and looks dark on ADC points strongly to thick pus inside a bacterial abscess. By contrast, the watery dead center of a tumor usually looks dark on DWI and bright on ADC, with restriction only along its solid cellular rim.
+\item \textbf{Other Classic Restricted-Water Patterns:} Bright restricted water in a non-enhancing fluid-space mass separates an epidermoid cyst from an arachnoid cyst; a bright ribbon-like outline along the brain surface points to Creutzfeldt-Jakob disease; and a dark spot on ADC in the prostate or liver flags tightly packed cancer cells.
+\item \textbf{Harmless Quirks Near Sinuses or Bleeding:} Air-filled sinuses and skull bones can cause stretched bright pile-up spots that mimic small strokes, while fresh blood inside a bleed can cause dark ``T2 blackout'' on both DWI and ADC maps.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+\begin{itemize}
+\item \textbf{Warping Near the Skull Base and Metal:} Fast echo-planar DWI can stretch or pile up bright signal near sinuses, ear bones, or metal hardware, which can either hide or imitate small strokes in the brainstem or temporal lobes.
+\item \textbf{Reading DWI Without Its Companion Maps:} A bright spot on DWI alone never tells the whole story---fluid glow (T2 shine-through), bleeding (T2 blackout), and 1-to-2-week-old strokes normalizing on ADC all require checking DWI, ADC, FLAIR, and bleeding-sensitive scans together.
+\item \textbf{Different Conditions Sharing the Same Bright Sign:} Restricted water movement is not unique to stroke; it also shows up in brain abscesses, tightly packed tumors (like primary CNS lymphoma, glioblastoma, or childhood medulloblastoma), active MS plaques, herpes brain infection, Creutzfeldt-Jakob disease, temporary post-seizure swelling (seen in up to 85\% of prolonged status epilepticus cases versus about 4\% after a single seizure), and even normal healing-edge injury right along a recent brain-surgery cavity.
+\item \textbf{Special Clearer Sequences and Add-On Scans:} Doctors clear up warped skull-base or brainstem spots using thin angled views or specialized non-warping DWI sequences (such as RESOLVE or PROPELLER), and pair DWI with contrast MRI, blood-flow scans, or vessel scans (MRA/CTA) to separate stroke from infection or tumor.
+\item \textbf{Short-Term Repeat Scan or Biopsy:} Because tiny early brainstem strokes can occasionally look normal at first, doctors may repeat the MRI in 24--48 hours if stroke symptoms persist. For an unclear mass, a team review or targeted biopsy gives a definite answer.
+\end{itemize}
+
+\section{Augmenting Methods}
+\begin{itemize}
+\item \textbf{Standard FLAIR, T2, and Bleeding-Sensitive (SWI) MRI:} Pairing DWI and ADC with FLAIR helps estimate stroke timing, while susceptibility-weighted imaging (SWI) spots fresh bleeding or tiny microbleeds that cause dark T2 blackout.
+\item \textbf{Blood-Flow (Perfusion) and Vessel Scans (MRA/CTA):} Comparing the already-injured DWI stroke core against surrounding low-blood-flow tissue shows how much brain can still be saved, while MRA or CTA pinpoints the blocked artery for clot removal.
+\item \textbf{Nerve-Path Mapping (DTI) and Advanced Body Diffusion (IVIM):} Multi-direction diffusion tensor imaging (DTI) maps vital white-matter nerve highways to guide brain tumor surgery safely, while multi-level body diffusion separates tiny blood-vessel flow from true tissue crowding in cancer care.
+\item \textbf{Multiparametric Cancer MRI, Spectroscopy, and Lab Markers:} Combining DWI with contrast MRI (as in PI-RADS prostate or LI-RADS liver exams), chemical analysis (MR spectroscopy), blood markers like PSA or AFP, and targeted biopsy establishes exact cancer diagnosis and grading.
+\item \textbf{AI Stroke and Tumor Software:} Automated tools quickly measure stroke volume on DWI for urgent triage, while AI analysis of ADC maps helps predict tumor grade and early treatment response.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+\begin{itemize}
+\item \textbf{Versus Non-Contrast Head CT:} Head CT is faster, more widely available, and the first step in emergencies to immediately rule out brain bleeding. DWI is far better at catching a brand-new ischemic stroke within minutes, spotting tiny brainstem strokes, and identifying brain abscesses.
+\item \textbf{Versus Regular T1, T2, and FLAIR MRI:} Regular MRI gives sharper everyday anatomical detail and shows old scars or bleeding clearly, whereas DWI uniquely catches fresh cell swelling hours before FLAIR turns bright and separates thick pus from dead tumor tissue.
+\item \textbf{Versus PET/CT for Cancer Staging:} PET/CT tracks sugar activity across the whole body with high sensitivity for many solid tumors, while whole-body DWI offers a radiation-free, dye-free alternative especially helpful in multiple myeloma, children, and pregnant patients.
+\end{itemize}
+
+\section{Follow-up Steps}
+\begin{itemize}
+\item \textbf{Right After the Exam:} Standalone non-contrast DWI has zero recovery time---you can get up and resume your day right away. If done for an acute stroke or with IV contrast dye, staff continue normal stroke checks or remove your IV line cleanly before you leave.
+\item \textbf{Immediate Alerts for Urgent Findings:} Radiologists always review DWI alongside ADC and regular MRI views, and call your care team immediately if a fresh stroke, brain abscess, or spinal cord stroke is found so urgent clot-busting, clot removal, or antibiotic care can start without delay.
+\item \textbf{Finding the Root Cause:} After a stroke is confirmed on DWI, doctors typically add vessel scans (MRA/CTA), heart ultrasound, and heart-rhythm monitoring to find why the stroke happened. Suspected abscesses, tumors, or high-risk prostate spots are followed with targeted drainage or biopsy.
+\item \textbf{Tracking Recovery Over Time:} After stroke clot treatment, a follow-up CT or MRI within about 24 hours checks how the brain is healing and watches for any bleeding. During cancer or abscess treatment, repeat DWI and ADC checks track rising water movement as a reassuring sign that treatment is working.
+\end{itemize}
+
+\section{Key References}
+\begin{itemize}
+\item American College of Radiology (ACR). \textit{ACR Manual on MR Safety} and \textit{ACR Appropriateness Criteria: Cerebrovascular Diseases --- Stroke and Stroke-Related Conditions}. Reston, VA: ACR; updated 2023--2024.
+\item Thomalla G, Simonsen CZ, Boutitie F, et al. MRI-guided thrombolysis for stroke with unknown time of onset (WAKE-UP Trial). \textit{New England Journal of Medicine}. 2018;379(7):611--622.
+\item Baliyan V, Das CJ, Sharma R, Gupta AK. Diffusion weighted imaging: technique and applications. \textit{World Journal of Radiology}. 2016;8(9):785--798.
+\item American College of Radiology (ACR). \textit{PI-RADS v2.1: Prostate Imaging --- Reporting and Data System}. Reston, VA: ACR; 2019.
+\item Gaddamanugu S, Shafaat O, Sotoudeh H, et al. \textit{Clinical applications of diffusion-weighted sequence in brain imaging: beyond stroke}. NIH PubMed Central / Neuroradiology (Johns Hopkins University School of Medicine \& University of Alabama at Birmingham). Available at: \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC8484843/}.
+\item Radiopaedia.org. \textit{Diffusion-weighted imaging}. Radiopaedia. Available at: \url{https://radiopaedia.org/articles/diffusion-weighted-imaging-2}.
+\end{itemize}
+
+\section{Further Reading}
+\begin{itemize}
+  \item Wikipedia contributors. \textit{Diffusion-weighted magnetic resonance imaging}. Wikipedia, The Free Encyclopedia. Available at: \url{https://en.wikipedia.org/wiki/Diffusion-weighted_magnetic_resonance_imaging}.
+\end{itemize}

@@ -1,0 +1,118 @@
+\infographicchapter{Medical Imaging Classification}{med_imaging_cls.png}
+\label{ch:infographic-imaging-classification}
+
+\section{Overview}
+
+Medical imaging covers a wide range of tests that let doctors look inside the body without surgery. To make sense of all these tools, medicine organizes them into five main families based on the type of energy they use: X-ray imaging (standard X-rays, live fluoroscopy, mammograms, and CT scans), nuclear medicine (bone scans, SPECT, and PET), magnetic imaging (MRI, functional MRI, MEG, and research-stage MPI), sound-wave imaging (standard, blood-flow, and stiffness ultrasound), and light or electromagnetic-wave imaging (visible light, near-infrared, terahertz, microwave, and hybrid light-plus-sound photoacoustic systems).
+
+Doctors also group scans by what kind of story they tell: \emph{anatomical} scans show body structure and shape, \emph{functional} scans show live movement or blood flow, and \emph{molecular} scans show cell metabolism or chemical targets. Most imaging tests are \emph{noninvasive}---meaning no surgical instrument enters the body---and span from simple \emph{visible-light} clinical photos (such as dermatology and wound checks) to flat \emph{projectional} 2D X-rays and \emph{tomographic} ``slice-by-slice'' 3D views like CT, MRI, PET, and SPECT. Scans also differ in whether they use ionizing radiation, how sharp their pictures are, how fast they run, how deeply they see into the body, and whether they can roll right up to a hospital bed. No single test is best at everything---CT is fast and sharp for emergencies but uses X-rays, PET spots tiny cellular changes across the whole body, and ultrasound works live at the bedside with zero radiation.
+
+Understanding these groups helps doctors pick the safest, smartest test for your symptoms, avoid unnecessary radiation or costs, and combine complementary scans---such as PET/CT, SPECT/CT, or PET/MRI---when both structure and function are needed.
+
+\section{Underlying Physical Principles}
+\begin{itemize}
+  \item \textbf{Passing X-Rays Through the Body (X-Ray and CT Family):} X-rays travel through you and get absorbed differently by each tissue. Dense bone absorbs lots of X-rays and looks bright white, air-filled lungs let X-rays pass right through and look dark, and soft organs sit in shades of gray.
+  \item \textbf{Tracers Glowing From Inside (Nuclear Medicine Family):} A tiny dose of a radioactive tracer travels to specific organs or tumors and gives off gamma rays from inside the body. Outside cameras (SPECT or PET) detect those rays to map cell activity, blood flow, or tumor targets.
+  \item \textbf{Magnets and Natural Brain Signals (Magnetic Family):} MRI uses strong magnets and harmless radio waves to gently nudge hydrogen atoms in body water and fat without any X-ray radiation. Passive MEG simply listens to the ultra-faint natural magnetic fields created by firing brain cells.
+  \item \textbf{Bouncing Sound Waves (Ultrasound Family):} High-pitched sound waves (too high for human ears to hear) bounce off internal tissue edges to draw live pictures, track moving red blood cells (Doppler), and feel tissue stiffness (elastography).
+  \item \textbf{Light and Gentle Radio-Range Waves (Optical and EM Family):} Visible light, near-infrared light, terahertz, and microwave tools measure how surface tissues absorb or scatter light, glow with safe dyes, create tiny heat-driven sound waves, or hold water---turning those clues into detailed surface maps.
+\end{itemize}
+
+\section{Imaging Mechanism}
+\begin{enumerate}
+  \item \textbf{Getting Positioned:} Across all five families, you are comfortably positioned with the right equipment---standing or lying by an X-ray plate or CT ring, lying inside a PET/SPECT or MRI scanner, sitting under a MEG helmet, resting with cool gel for an ultrasound probe, or sitting at an optical camera.
+  \item \textbf{Sending or Listening for Signals:} Active machines send controlled X-rays, radio waves, sound pulses, or gentle light into the body (often timed to a breath-hold or heartbeat), while passive nuclear and MEG systems quietly record signals coming out from your body.
+  \item \textbf{Capturing Digital Data:} Detectors, crystals, receiver coils, sound probes, or light sensors turn the returning energy into electrical signals and save them as digital files.
+  \item \textbf{Building Clear Pictures:} Computers clean up background noise, correct for tissue shadows or motion, and assemble sharp 2D snapshots, live videos, or 3D cross-sectional volumes.
+  \item \textbf{Reviewing and Blending:} Specialists adjust contrast, add color overlays, and blend hybrid scans together when needed. Hospitals store studies from every imaging family in a universal medical file format called \emph{DICOM} inside secure digital archives (\emph{PACS}), so any doctor on your care team can view them and compare them with future scans.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & X-ray absorption (X-ray/CT), internal tracer rays (PET/SPECT), magnets and radio waves (MRI/MEG), sound echoes (ultrasound), and light or wave reflection (optical/EM) \\
+Energy / Signal Source & X-ray tubes, radiotracers, magnets and radio coils, ultrasound probes, and medical lights or gentle wave emitters \\
+Typical Frequency / Energy & 20--140 keV X-rays; 140--511 keV gamma rays; 1.5--3.0 Tesla MRI; 2--18 MHz sound waves; visible, near-infrared, THz, and microwave bands \\
+Spatial Resolution & Ultra-fine under 1 mm (CT, mammograms, eye OCT) to 0.5--2 mm (MRI, ultrasound) and 3--10 mm (PET, SPECT, MEG) \\
+Typical Scan Duration & Seconds (X-ray, CT) to 15--60 minutes (ultrasound, MRI, PET/SPECT) and 60--90 minutes (MEG) \\
+Contrast Agent & Varies by scan: none, iodine or barium dye, gadolinium dye, radiotracers, tiny ultrasound microbubbles, or optical dyes \\
+Ionizing Radiation & Yes for X-ray, CT, fluoroscopy, mammography, and nuclear medicine; zero for MRI, MEG, ultrasound, and optical/microwave/THz scans \\
+\bottomrule
+\end{tabularx}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+\begin{itemize}
+  \item \textbf{Picking the Right First Test:} Grouping scans by how they work and what they show helps doctors follow trusted medical guidelines (such as the ACR Appropriateness Criteria) to choose the best test for your symptoms right away.
+  \item \textbf{Diagnostic Screening vs. Image-Guided Treatment:} Clinical radiology spans \emph{diagnostic radiology}---screening for silent conditions (such as breast cancer, colon cancer, or heart disease), diagnosing symptoms, and tracking treatment response---and \emph{interventional radiology}, which uses live CT, ultrasound, MRI, or fluoroscopy to guide catheters, stents, biopsies, or tumor treatments through pinhole openings instead of open surgery, usually with only moderate sedation and rarely a hospital stay.
+  \item \textbf{Protecting Patients From Unneeded Radiation:} Separating radiation-based scans (X-ray, CT, nuclear medicine) from radiation-free scans (ultrasound, MRI, optical) helps teams favor radiation-free options for children, pregnant patients, and people needing frequent checkups.
+  \item \textbf{Combining Complementary Scans:} Seeing where each family shines---such as speed, fine detail, or cellular sensitivity---guides when to use hybrid scanners (PET/CT, SPECT/CT, PET/MRI) or step-by-step multi-scan workups in cancer, heart, and brain care.
+  \item \textbf{Teaching and Clear Teamwork:} A shared map of imaging families helps doctors, technologists, physicists, and patients talk clearly about why a specific scan was chosen and what trade-offs it involves.
+\end{itemize}
+
+\subsection{Secondary Usages}
+\begin{itemize}
+  \item \textbf{Planning Hospital Equipment:} Health systems use these categories to balance bedside portable units, rapid emergency CT rooms, and specialized MRI or nuclear medicine suites.
+  \item \textbf{Separating Proven Care From Research:} Clearly distinguishing everyday hospital scans from emerging research tools (like microwave, terahertz, or photoacoustic imaging) helps patients and regulators know which tests are proven standards.
+  \item \textbf{Standardizing Clinical Research:} Clear categories help multicenter clinical trials keep scan settings and measurements consistent across different hospitals.
+\end{itemize}
+
+\section{Advantages}
+\begin{itemize}
+  \item \textbf{Smarter Test Selection:} Helps doctors match the exact right scan to each medical question instead of ordering unnecessary or low-value tests.
+  \item \textbf{Clear Radiation Awareness:} Makes it easy to spot radiation-free choices for children, pregnant patients, and long-term monitoring.
+  \item \textbf{Better Multi-Scan Strategy:} Shows how combining two families (like PET/CT or ultrasound plus MRI) fills in each test's blind spots.
+  \item \textbf{Common Language Across Care Teams:} Gives radiologists, referring doctors, engineers, and patients a simple, organized way to compare imaging options.
+\end{itemize}
+
+\section{Disadvantages}
+\begin{itemize}
+  \item \textbf{Hybrid Tools Cross Boundaries:} Modern combined scanners---such as photoacoustic imaging, PET/MRI, and spectral CT---blend two physical families and do not fit neatly into just one box.
+  \item \textbf{Mixing Everyday and Experimental Tools:} Listing proven hospital staples alongside early research tools in the same family can make experimental scans sound more widely available than they really are.
+  \item \textbf{Does Not Reflect Local Access or Cost:} A physics-based chart cannot show which machines your local hospital has, how much a scan costs, or your personal medical limits (like claustrophobia or implants).
+  \item \textbf{Technology Moves Fast:} Rapid advances in artificial intelligence, wearable brain sensors, and next-generation CT detectors keep blurring traditional lines between structure and function.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+\begin{itemize}
+  \item \textbf{Choosing Only Necessary Scans:} Doctors follow evidence-based guidelines to pick the safest scan that truly answers your medical question, avoiding duplicate or unnecessary tests.
+  \item \textbf{Favoring Radiation-Free Options When Equal:} Whenever ultrasound or MRI can answer the question just as well as CT or X-ray, teams choose the radiation-free option---especially for children, pregnant patients, and repeat checkups.
+  \item \textbf{Tailored Safety Checklists:} Each family has its own safety checklist: metal and kidney checks for MRI, pregnancy and dose checks for X-ray/CT/nuclear scans, safe heat limits for ultrasound, and eye-safe limits for medical light tools.
+  \item \textbf{Safe Handling of Dyes and Tracers:} Before giving any contrast dye or radiotracer, staff check allergies, kidney health, pregnancy, and breastfeeding status, with emergency care ready just in case.
+  \item \textbf{Clear Line Between Proven Care and Research:} Hospitals clearly separate FDA-cleared clinical scans from experimental platforms (such as microwave, terahertz, or MPI), which require ethics-board oversight and must never delay standard care.
+\end{itemize}
+
+\section{Augmenting Methods}
+\begin{itemize}
+  \item \textbf{Hybrid Scanners (PET/CT, SPECT/CT, PET/MRI):} Combine sharp anatomy with sensitive cellular activity in one visit, overcoming the limits of standalone scans.
+  \item \textbf{Step-by-Step Multi-Scan Workups:} Pairing tests in sequence---like a mammogram or ultrasound followed by MRI, or an emergency CT followed by diffusion MRI---delivers the highest accuracy.
+  \item \textbf{Blood and Lab Markers:} Lab tests like PSA, heart troponins, D-dimer, hormone panels, or DNA blood tests provide vital clues that narrow down what an imaging spot means.
+  \item \textbf{Tissue Biopsy and Genetic Testing:} Image-guided needle biopsies and lab pathology remain the final gold standard for confirming uncertain lumps across all scan families.
+  \item \textbf{Computer Fusion and Smart AI Tools:} Software that lines up past and present scans, uses structured report templates, and flags urgent findings helps teams work faster and more accurately.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+\begin{itemize}
+  \item \textbf{Structure vs. Function:} X-ray, CT, and standard MRI excel at showing shape and anatomy, while PET, SPECT, fMRI, and MEG catch early chemical, metabolic, or electrical changes before structural damage appears.
+  \item \textbf{Radiation vs. Radiation-Free:} CT and nuclear medicine provide rapid emergency answers or whole-body cellular reach with controlled radiation, while ultrasound, MRI, and optical scans allow safe repeated checks for children and pregnant patients.
+  \item \textbf{Deep Whole-Body vs. Portable Surface Scans:} CT, MRI, and PET/CT inspect deep organs throughout the body, whereas ultrasound and optical tools trade depth for bedside portability, live guidance, and microscopic surface clarity.
+  \item \textbf{Single Scan vs. Hybrid Scan:} A single focused scan is faster and less expensive for straightforward questions, while hybrid scanners shine for complex cancer staging, heart viability, and brain care.
+\end{itemize}
+
+\section{Key References}
+\begin{itemize}
+  \item American College of Radiology (ACR). \textit{ACR Appropriateness Criteria}. Reston, VA: American College of Radiology, 2024.
+  \item Bushberg JT, Seibert JA, Leidholdt EM, Boone JM. \textit{The Essential Physics of Medical Imaging}. 4th ed. Philadelphia, PA: Wolters Kluwer, 2020.
+  \item National Institute of Biomedical Imaging and Bioengineering (NIBIB). \textit{Science Topics: Medical Imaging Modalities Overview}. Bethesda, MD: National Institutes of Health, 2024.
+  \item International Commission on Radiological Protection (ICRP). \textit{The 2007 Recommendations of the International Commission on Radiological Protection (ICRP Publication 103)}. Oxford: Elsevier, 2007.
+  \item MedlinePlus Medical Encyclopedia. \textit{Imaging and radiology}. U.S. National Library of Medicine, National Institutes of Health. Available at: \url{https://medlineplus.gov/ency/article/007451.htm}.
+\end{itemize}
+
+\section{Further Reading}
+\begin{itemize}
+  \item Wikipedia contributors. \textit{Medical imaging}. Wikipedia, The Free Encyclopedia. Available at: \url{https://en.wikipedia.org/wiki/Medical_imaging}.
+\end{itemize}

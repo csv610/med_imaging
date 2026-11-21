@@ -1,0 +1,147 @@
+\infographicchapter{Electrical Impedance Tomography (EIT)}{eit.png}
+\label{ch:infographic-eit}
+
+\section{Overview}
+
+Electrical impedance tomography (EIT) is a painless, radiation-free bedside monitoring tool that creates live, moving maps of how air moves through the lungs. A soft elastic belt holding 16 to 32 small sensors wraps gently around the chest. The belt sends tiny, completely unfelt alternating electrical currents across the chest and measures the faint voltages at the skin surface. Because air resists electricity while blood and wet lung tissue conduct it easily, every breath creates clear shifts in electrical resistance that a computer turns into a live cross-sectional video of lung airflow.
+
+EIT is a specialized and emerging clinical tool rather than a routine hospital scan. First pioneered in the early 1980s by medical physicists in Sheffield, England (under the name applied potential tomography), EIT today is most widely used in adult and pediatric intensive care units (ICUs) to watch patients on breathing machines (mechanical ventilators), especially those with severe lung failure known as acute respiratory distress syndrome (ARDS). It helps ICU teams see which parts of the lungs are opening well, which areas have collapsed, and which areas are being stretched too much---guiding safer ventilator settings, breathing pressure adjustments (PEEP), and turning patients onto their stomachs (prone positioning). Researchers are also studying EIT for bedside lung blood-flow checks (using a brief saltwater infusion) and for experimental brain or breast imaging.
+
+The biggest strengths of EIT are continuous, real-time monitoring right at the patient's bed, zero X-ray radiation, and avoiding the risk of moving fragile ICU patients down the hall to a CT scanner. Its main limits are coarse, low-detail pictures---making it a functional breathing monitor rather than a sharp anatomical scan---along with sensitivity to loose belt contact, fluid around the lungs, body size, and movement. EIT is safe for hours of repeated use, though it must be avoided or used with strict precautions in patients who have certain active implanted heart devices like pacemakers or defibrillators.
+
+\section{Underlying Physical Principles}
+\begin{itemize}
+    \item \textbf{Tiny, Unfelt Electrical Signals:} A soft belt of 16 to 32 skin sensors around the chest sends very weak, high-frequency alternating electrical currents from one pair of sensors to the next. The current is far too gentle to feel or to trigger muscles or nerves.
+    \item \textbf{Air vs. Fluid and Tissue:} Blood, muscle, and wet lung tissue contain salty ions that conduct electricity easily, whereas fat, bone, and air-filled lung act more like electrical insulators. As air fills the lungs during a breath in, electrical resistance rises; as air leaves or fluid builds up, resistance drops.
+    \item \textbf{Measuring Surface Voltages:} While one pair of sensors sends a tiny current, all the other sensors around the chest measure faint voltage changes on the skin. The belt cycles through all pairs 20 to 50 times every second, capturing breathing in real time.
+    \item \textbf{Building a Live Functional Map:} Unlike X-rays in a CT scan that travel in straight lines, EIT is a ``soft-field'' technique in which electric currents bend and spread in three dimensions along paths of least resistance. Turning those skin readings back into an internal picture requires specialized computer math to solve an intricate ``inverse problem,'' which is why EIT produces smooth, color-coded maps of lung expansion rather than sharp organ edges.
+\end{itemize}
+
+\section{Imaging Mechanism}
+\begin{enumerate}
+    \item \textbf{Fitting the Chest Belt:} A nurse or respiratory therapist wraps a properly sized elastic sensor belt evenly around the mid-chest (around the fourth to sixth rib spaces), applies a little contact gel or saltwater spray, and checks the monitor to make sure every sensor touches the skin cleanly.
+    \item \textbf{Cycling the Tiny Currents:} The bedside unit automatically sends gentle, high-frequency electrical currents around the belt from pair to pair, completing 20 to 50 full sweeps per second.
+    \item \textbf{Reading the Skin Signals:} Sensitive electronics measure the tiny voltage differences at all the other sensors, filter out background electrical noise, and turn the signals into digital data.
+    \item \textbf{Creating the Moving Lung Map:} The computer compares each breath against a resting baseline at the end of exhalation and builds a live cross-sectional color map of where air is entering and leaving the lungs.
+    \item \textbf{Bedside Display and Trends:} Right at the bedside, the screen displays a live breathing video, waveforms for each lung region, and graphs that help the ICU team balance lung opening against overstretching.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Cross-sectional mapping of electrical resistance changes inside the chest from tiny skin-surface voltages \\
+Energy / Signal Source & Very weak (1--5 mA), high-frequency alternating electrical current delivered through a 16--32 sensor chest belt \\
+Typical Frequency / Energy & 50--250 kHz alternating current \\
+Spatial Resolution & Coarse functional map (about 10--15 percent of chest width; 5--10 cm slice thickness) with very fast live speed (20--50 frames per second) \\
+Typical Scan Duration & 5--10 minutes to set up; 15--30 minutes for ventilator tuning, or continuous multi-hour ICU bedside monitoring \\
+Contrast Agent & None for breathing monitoring; investigational concentrated saltwater (hypertonic saline) IV flush for lung blood-flow checks \\
+Ionizing Radiation & None (0 mSv) \\
+\bottomrule
+\end{tabularx}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+\begin{itemize}
+    \item \textbf{Fine-Tuning Ventilator Pressure (PEEP) in ARDS:} Helping ICU teams choose the safest positive end-expiratory pressure (PEEP) for patients with severe lung injury by finding the sweet spot between collapsed air sacs and overstretched air sacs. In studies of severe COVID-19 ARDS, EIT showed that over 60\% of patients needed a meaningfully different pressure setting than standard ``one-size-fits-all'' ventilator charts suggested, though clinical trials have not yet confirmed whether EIT-guided tuning directly lowers mortality on its own.
+    \item \textbf{Continuous Bedside Airflow Monitoring:} Showing breath-by-breath how evenly air reaches the front, back, left, and right regions of the lungs in critically ill adults and children without any radiation.
+    \item \textbf{Checking Response to Turning and Lung Opening:} Tracking in real time whether lungs open better after gentle lung-opening maneuvers, ventilator changes, or turning a patient onto their stomach (prone positioning). Because lying face down alters chest-wall mechanics, ventilator pressures set on the back often need re-tuning once prone, which continuous EIT helps guide.
+    \item \textbf{Spotting Sudden Breathing Problems:} Alerting the ICU team quickly to uneven airflow, a breathing tube that slipped too far into one lung, mucus blockages, lung collapse after suctioning, or a developing collapsed lung (pneumothorax).
+\end{itemize}
+
+\subsection{Secondary Usages}
+\begin{itemize}
+    \item \textbf{Checking Readiness to Come Off a Ventilator:} Watching for uneven airflow or air sloshing back and forth between lung regions (pendelluft) during spontaneous breathing trials to help decide if a patient is ready to breathe on their own.
+    \item \textbf{Bedside Lung Blood-Flow Checks (Investigational):} Using a brief, specialized saltwater flush through an IV to estimate blood flow alongside airflow right at the bedside---helping spot mismatched air and blood flow, such as from a lung blood clot (pulmonary embolism), with newer methods beginning to capture these readings without requiring a breath-hold pause.
+    \item \textbf{Monitoring Around Major Surgery:} Watching for small areas of lung collapse during and after major chest, heart, or abdominal operations.
+    \item \textbf{Emerging Research Uses:} Studying radiation-free brain monitoring (such as for stroke or epilepsy), breast tissue electrical properties, and stomach emptying in research settings.
+\end{itemize}
+
+\section{Advantages}
+\begin{itemize}
+    \item \textbf{Live, Continuous Bedside View:} Tracks every single breath right in the ICU room without interrupting life support or ventilator care.
+    \item \textbf{Completely Radiation-Free and Painless:} Uses harmless, unfelt electrical signals with zero X-rays, making it safe for hours of repeated monitoring in critically ill adults and children.
+    \item \textbf{Avoids Risky ICU Trips:} Eliminates the danger of disconnecting and wheeling unstable ICU patients---especially those connected to advanced bedside life support such as heart-lung bypass (ECMO) or cardiac assist pumps---to a CT scanner just to check lung inflation.
+    \item \textbf{Personalized Lung Protection:} Shows collapsed areas and overstretched areas at the same time, helping doctors tailor ventilator settings to protect fragile lungs.
+\end{itemize}
+
+\section{Disadvantages}
+\begin{itemize}
+    \item \textbf{Low Image Detail:} Because electricity spreads broadly through the chest, EIT produces blurry functional maps rather than sharp anatomical pictures like a CT scan.
+    \item \textbf{Single Chest-Slice View:} A standard chest belt measures a band about 5--10 cm thick around the middle of the chest, so it can miss problems near the very top or bottom of the lungs.
+    \item \textbf{Sensitive to Skin Contact and Surroundings:} Dry contact gel, chest bandages or wounds, severe obesity, large pockets of fluid around the lungs, movement, or nearby ICU electronics can disturb the signal.
+    \item \textbf{Restrictions With Active Implants:} Must be avoided or used only under strict manufacturer rules in patients with certain pacemakers, defibrillators, or nerve stimulators because of possible electrical interference.
+    \item \textbf{Specialized, Emerging Technology:} Still found mostly in specialized ICU centers, with evolving measurement standards, limited insurance coverage, and research-only status for blood-flow and non-lung uses.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+\begin{itemize}
+    \item \textbf{Incompatible Active Implanted Devices:} Patients with cardiac pacemakers, implantable defibrillators (ICDs), or active nerve stimulators that the manufacturer lists as unsafe for EIT, because the tiny alternating currents could interfere with device sensing.
+\end{itemize}
+
+\subsection{Relative}
+\begin{itemize}
+    \item \textbf{Chest Wounds or Bandages:} Large chest burns, open surgical incisions, unstable rib injuries, or thick dressings around the mid-chest can prevent safe, even placement of the sensor belt.
+    \item \textbf{Electrical Procedures and Saltwater Contrast Limits:} The belt must be disconnected during external heart shocks (defibrillation) or certain surgical cautery tools. Investigational concentrated saltwater flushes for lung blood flow should be avoided in patients with very high blood sodium or severe fluid overload.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+\begin{itemize}
+    \item \textbf{Screening for Active Implants:} Staff always check for pacemakers, defibrillators, vagus nerve stimulators, or other active electronic implants beforehand and follow strict manufacturer and cardiology safety rules to prevent electrical interference.
+    \item \textbf{Electrical Safety and Disconnecting During Shocks:} Hospitals use medically certified, electrically isolated EIT monitors and disconnect or remove the belt if external defibrillation, cardioversion, or monopolar surgical cautery is needed, preventing skin burns or equipment damage.
+    \item \textbf{Protecting the Skin:} Nurses check the chest skin before and during long sessions, avoid placing the belt over open wounds or burns, adjust tension so it never squeezes breathing or causes pressure sores, and sanitize reusable belts carefully.
+    \item \textbf{Using EIT Alongside Other Checks:} Clinicians always combine EIT maps with blood oxygen tests, ventilator readings, and standard X-rays or ultrasound. If an investigational concentrated saltwater flush is used, staff closely watch blood sodium and fluid balance.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+\begin{itemize}
+    \item \textbf{Dark ``Silent'' Zones (Collapsed Lung Areas):} Dim or missing color changes in the back (lower) parts of the lungs in a patient lying flat signal collapsed air sacs (atelectasis). When most air goes only to the front of the chest, it helps guide pressure adjustments or turning the patient onto their stomach.
+    \item \textbf{Overstretching vs. Collapse During Pressure Tuning:} As ventilator pressure (PEEP) is stepped up and down, EIT maps where front lung areas start getting overstretched and where back lung areas start collapsing, helping clinicians pick the safest middle setting.
+    \item \textbf{Sudden One-Sided Airflow Loss:} An abrupt drop in movement on one side of the chest warns of a breathing tube slipping into one lung, a mucus plug, or a collapsed lung (pneumothorax), where trapped air causes a sudden jump in baseline resistance with no breathing motion on that side.
+    \item \textbf{Air Sloshing Between Lung Zones (Pendelluft):} Waveforms that rise in one lung region while dropping in another show air shifting back and forth inside the chest during strong breathing efforts, warning of strain and ventilator mismatch.
+    \item \textbf{False Signals From Loose Belts or Fluid:} Dry gel, loose sensors, bandages, or nearby electrical interference can create dark edge gaps or jumpy spikes. Large pockets of fluid around the lungs can also create odd reversed signals, and simply rolling a patient changes the baseline reading.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+\begin{itemize}
+    \item \textbf{Low Detail and Single-Band View:} Because EIT only maps a 5--10 cm slice around the mid-chest at low detail, it cannot show sharp anatomy and can miss problems at the very top or bottom of the lungs.
+    \item \textbf{Contact Drift and ICU Noise:} Drying gel, shifting posture, bandages, or electrical interference from nearby machines can cause sudden signal drops or spikes that look like a breathing change.
+    \item \textbf{Overlapping Causes of Dark Zones:} Collapsed air sacs, mucus plugs, a slipped breathing tube, and a collapsed lung can all reduce airflow on EIT, while fluid around the lung can distort edge signals.
+    \item \textbf{Quick Belt Check and Reset:} If the signal suddenly drops or looks erratic, staff check the sensor contact screen, add gel or spray, make sure the belt sits evenly around the mid-chest, and reset the baseline after any position change.
+    \item \textbf{Confirming With Other Bedside Tools:} Teams never make major treatment decisions from EIT alone. Any sudden or unclear change is double-checked right away by listening with a stethoscope, checking ventilator numbers and blood oxygen, and doing a bedside lung ultrasound or portable chest X-ray.
+\end{itemize}
+
+\section{Augmenting Methods}
+\begin{itemize}
+    \item \textbf{Bedside Lung Ultrasound:} Pairs directly with EIT at the bedside to show anatomy clearly---distinguishing fluid pockets, pneumonia, lung swelling, and collapsed lungs without any radiation.
+    \item \textbf{Portable Chest X-Ray and Chest CT:} Provide sharp structural pictures to verify breathing-tube position, check areas outside the chest belt, and confirm major lung complications.
+    \item \textbf{Ventilator Pressure Readings:} Combining EIT maps with ventilator driving pressure, lung stiffness (compliance), and specialized pressure monitors helps fine-tune lung-protective settings.
+    \item \textbf{Blood Gases and Carbon Dioxide Monitors:} Checking oxygen and carbon dioxide levels in the blood confirms whether ventilator changes guided by EIT truly improve gas exchange.
+    \item \textbf{Experimental Blood-Flow EIT and Smart Software:} Investigational saltwater flushes and real-time computer analytics are being developed to measure airflow-to-blood-flow matching automatically at the bedside.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+\begin{itemize}
+    \item \textbf{Compared With Chest CT:} CT gives sharp, whole-lung 3D anatomy, but uses radiation and requires risky transport out of the ICU. EIT stays right at the bedside for continuous, radiation-free ventilator tuning.
+    \item \textbf{Compared With Bedside Lung Ultrasound:} Ultrasound is better for telling apart fluid, infection, and collapsed lungs, whereas EIT uniquely watches breath-by-breath overstretching, collapse, and air sloshing continuously.
+    \item \textbf{Compared With Portable Chest X-Ray:} A chest X-ray gives a single static snapshot of the whole chest and tube positions, while EIT shows live, ongoing breathing changes without any radiation.
+\end{itemize}
+
+\section{Key References}
+\begin{itemize}
+    \item Frerichs I, Amato MBP, van Kaam AH, et al. Chest Electrical Impedance Tomography Examination, Data Analysis, Terminology, Clinical Use and Recommendations: Consensus Statement of the TRanslational EIT developmeNt stuDy Group. \textit{Thorax}. 2017;72(1):83--93.
+    \item Costa ELV, Borges JB, Melo A, et al. Bedside Estimation of Recruitable Alveolar Collapse and Hyperdistension by Electrical Impedance Tomography. \textit{Intensive Care Medicine}. 2009;35(6):1132--1137.
+    \item Scaramuzzo G, Pavlovsky B, Adler A, et al. Electrical Impedance Tomography Monitoring in Adult ICU Patients: State-of-the-Art, Recommendations for Standardized Acquisition, Processing, and Clinical Use, and Future Directions. \textit{Critical Care}. 2024;28(1):377.
+    \item Bachmann MC, Morais C, Bugedo G, et al. Electrical Impedance Tomography in Acute Respiratory Distress Syndrome. \textit{Critical Care}. 2018;22(1):263.
+    \item Iwashita Y, Nebuya S. \textit{Clinical Application of Electrical Impedance Tomography in Emergency and Critical Care Medicine}. National Institutes of Health (PubMed Central). Available at: \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC13207637/}.
+\end{itemize}
+
+\section{Further Reading}
+\begin{itemize}
+  \item Wikipedia contributors. \textit{Electrical impedance tomography}. Wikipedia, The Free Encyclopedia. Available at: \url{https://en.wikipedia.org/wiki/Electrical_impedance_tomography}.
+\end{itemize}

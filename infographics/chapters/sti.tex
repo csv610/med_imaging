@@ -1,0 +1,220 @@
+\infographicchapter{Diffusion Tensor Imaging (DTI)}{sti.png}
+\label{ch:infographic-sti}
+
+\section{Overview}
+
+Diffusion Tensor Imaging (DTI) is a specialized type of MRI scan that maps the brain's internal wiring---the bundles of nerve fibers called white matter tracts that carry signals for movement, speech, and vision. It works by tracking the natural, tiny movement of water molecules inside brain tissue. In open fluid spaces, water moves freely in every direction, but inside tightly packed nerve fiber bundles, water moves much more easily lengthwise along the fibers than sideways across them. By measuring this directional flow from many angles, the MRI scanner builds detailed color-coded maps and 3D pictures of your brain's major nerve pathways.
+
+On standard DTI color maps, colors show which way the nerve fibers run: red for left-to-right pathways, green for front-to-back pathways, and blue for up-and-down pathways. Doctors most often use DTI before brain surgery to see where important movement, language, or vision pathways sit in relation to a tumor or blood vessel tangle. It is also used to spot subtle nerve-fiber injury after a concussion or head trauma when regular MRI looks normal, to check nerve pathway changes after a stroke, and to study white matter conditions such as multiple sclerosis, Alzheimer's disease, and ALS.
+
+DTI is painless, uses no radiation, and does not require a contrast dye injection on its own. It runs on standard hospital MRI scanners and gives doctors valuable measurements of nerve-fiber health. Its main limits are that regions where many nerve pathways cross each other are harder to map accurately, areas near air-filled sinuses or metal dental work can look distorted, and the 3D maps depend on staying completely still. Safety follows standard MRI rules regarding metal implants, loud scanner noise, and comfort in an enclosed space.
+
+\section{Underlying Physical Principles}
+
+\begin{itemize}
+    \item \textbf{Tracking Water Movement With Magnetic Pulses:} DTI runs on a standard 1.5 T or 3.0 T MRI scanner. It sends out carefully timed pairs of magnetic pulses that are sensitive to microscopic water movement: still water gives back a strong signal, while moving water loses signal in proportion to how far it travels.
+    \item \textbf{Water Flows Along Nerve Fibers:} In open brain fluid, water drifts equally in all directions. Inside organized white matter tracts, the walls and protective sheaths around nerve fibers act like tiny bowling-alley gutters, guiding water to move mostly lengthwise along the fibers rather than sideways. During each 30--100 millisecond measurement, water molecules typically drift only 1--15 micrometers---about the width of a single nerve fiber---so each 1.5--2.5 mm imaging block averages across hundreds of thousands of tightly packed axons (around 338,000 per square millimeter in the corpus callosum).
+    \item \textbf{Measuring From Many Directions:} The scanner repeats these water-tracking measurements along at least 6---and usually 20 to 64---different directions in every tiny 3D block of the brain, alongside a baseline reference scan. This lets the computer determine both how fast water is moving and which direction it prefers to travel.
+    \item \textbf{Simple Scores of Nerve Health:} From these directional measurements, the scanner calculates helpful scores, including Mean Diffusivity (how freely water moves overall) and Fractional Anisotropy (a 0-to-1 score showing how strongly water movement is aligned in one direction, which is high in healthy, tightly packed nerve bundles).
+    \item \textbf{Color Maps and 3D Fiber Tracing:} Using a mathematical shape called a \textit{tensor} (a 3D football-like ellipsoid stretched along the fibers, unlike a round sphere in open fluid), the scanner paints the main alignment axis onto a red--green--blue map. Note that colors show which axis fibers run along, not which way nerve signals travel. Special software (called tractography) then links matching directions step by step to draw 3D computer-modeled pathways (``streamlines'') rather than direct photos of single axons.
+\end{itemize}
+
+\section{Imaging Mechanism}
+
+\begin{enumerate}
+    \item \textbf{Head Positioning and Field Tuning:} You lie on your back with your head resting comfortably inside a cushioned helmet-like receiver coil at the center of the MRI magnet. The scanner automatically fine-tunes the magnetic field so it is as even as possible across your brain.
+    \item \textbf{Multi-Direction Water Tracking:} The MRI runs a fast sequence that first takes a baseline reference scan and then steps through 20 to 64 different directional magnetic pulses across your whole brain.
+    \item \textbf{Capturing the Radio Signals:} Sensitive coils around your head pick up the faint radio signals returning from brain tissue, boost them, and turn them into digital data for every slice and direction.
+    \item \textbf{Cleaning Up Artifacts and Tracing Fibers:} Computer software corrects for tiny head movements and magnetic distortions, calculates the directional health scores (FA and MD) for every spot, and traces 3D nerve pathways starting from key brain landmarks.
+    \item \textbf{Creating 3D Maps for Doctors:} The color maps and 3D nerve bundles are lined up with high-resolution structural brain MRI pictures and sent to the radiologist's screen---or directly to the neurosurgeon's surgical navigation system.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Specialized MRI that tracks directional water movement along 6 to 64 angles to map brain nerve pathways \\
+Energy / Signal Source & Strong static magnetic field, radio waves, and directional magnetic pulses \\
+Typical Frequency / Energy & 1.5 T (64 MHz radio waves) or 3.0 T (128 MHz radio waves); typical diffusion weighting 700--1,000 s/mm\textsuperscript{2} \\
+Spatial Resolution & About 1.5--2.5 mm 3D building blocks (voxels) \\
+Typical Scan Duration & 5--12 minutes for the DTI portion (30--50 minutes for a full brain MRI) \\
+Contrast Agent & None needed \\
+Ionizing Radiation & None (0 mSv) \\
+\bottomrule
+\end{tabularx}
+
+\section{Common Symptoms That Prompt This Scan}
+\begin{itemize}
+    \item \textbf{Brain Tumor Symptoms Requiring Surgical Planning:} New seizures, headaches, weakness, or speech changes caused by a brain mass near vital wiring pathways that surgeons must protect.
+    \item \textbf{Hard-to-Control Seizures:} Medication-resistant epilepsy when doctors look for subtle white-matter wiring differences before considering surgery.
+    \item \textbf{Unexplained Weakness, Numbness, or Walking Difficulty:} Progressive spinal cord or brain symptoms (such as in multiple sclerosis or spinal compression) where nerve-fiber health is being evaluated.
+    \item \textbf{Persistent Symptoms After Head Injury (Specialized Use):} Lingering headaches, memory trouble, or concentration issues after concussion or trauma when standard MRI looks normal.
+\end{itemize}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+
+\begin{itemize}
+    \item \textbf{Planning Safe Brain Surgery:} Mapping critical nerve highways---such as those controlling movement, speech, and vision---so neurosurgeons can see whether a tumor or blood vessel tangle is pushing, invading, or breaking those fibers and protect function during surgery. In a randomized trial of 238 patients with brain tumors involving movement pathways, adding preoperative DTI to surgical navigation improved survival and reduced lasting postoperative movement deficits.
+    \item \textbf{Evaluating Head Trauma and Concussions:} Detecting subtle microscopic nerve-fiber stretching or tearing (diffuse axonal injury) when a person has ongoing symptoms after a head injury even though standard MRI looks normal.
+    \item \textbf{Assessing Stroke Recovery:} Checking the health of major movement pathways after a stroke to look for downstream nerve wear (Wallerian degeneration) and help estimate how well movement may recover.
+    \item \textbf{Congenital Brain Pathway Conditions:} Mapping unusual wiring patterns in conditions present from birth, such as a missing bridge between the two halves of the brain (agenesis of the corpus callosum) or Joubert syndrome.
+\end{itemize}
+
+\subsection{Secondary Usages}
+
+\begin{itemize}
+    \item \textbf{Multiple Sclerosis and Myelin Disorders:} Measuring subtle white matter damage in areas of the brain that still look normal on standard MRI scans, helping track nerve-fiber loss beyond visible plaques.
+    \item \textbf{Neurodegenerative Conditions:} Supporting the evaluation of nerve-pathway wear in conditions such as amyotrophic lateral sclerosis (ALS), Alzheimer's disease, and frontotemporal dementia.
+    \item \textbf{Deep Brain Stimulation and Epilepsy Surgery:} Helping surgeons target exact nerve bundles for deep brain stimulation in movement or mood disorders, and mapping speech or vision pathways before epilepsy surgery.
+    \item \textbf{Spinal Cord and Peripheral Nerves:} Evaluating nerve-fiber compression in neck spinal cord conditions, spinal cord tumors, or nerve healing in specialized centers.
+\end{itemize}
+
+\section{Advantages}
+
+\begin{itemize}
+    \item \textbf{Unique Noninvasive Wiring Map:} Provides the only widely available way to see 3D nerve-fiber highways inside a living brain without surgery or invasive dyes.
+    \item \textbf{No Radiation and No Dye Needed:} Uses natural water movement inside standard 1.5 T or 3.0 T MRI scanners, avoiding X-ray radiation and intravenous contrast injections.
+    \item \textbf{Spots Subtle Injury Early:} Quantitative scores (FA and MD) can detect microscopic nerve and myelin injury after head trauma or stroke before changes show up on regular MRI.
+    \item \textbf{Guides Safer Brain Surgery:} Helps neurosurgeons plan their approach around vital movement, speech, and vision pathways to reduce the risk of lasting side effects.
+\end{itemize}
+
+\section{Disadvantages}
+
+\begin{itemize}
+    \item \textbf{Trouble Where Pathways Cross:} Standard DTI assumes one main fiber direction in each tiny block of tissue. Where nerve bundles cross or branch, the computer can stop tracing too early or draw false paths.
+    \item \textbf{Warping Near Sinuses and Metal:} The fast MRI method used for DTI can warp or lose signal near air-filled sinuses, the base of the skull, and metal dental work or surgical clips.
+    \item \textbf{Results Need Context and Expert Setup:} A drop in the directional score (FA) does not tell by itself whether the cause is swelling, myelin loss, or permanent nerve damage. Also, 3D fiber maps depend on settings chosen by the specialist, and swelling around a tumor can hide healthy fibers that are still there.
+    \item \textbf{Sensitive to Movement and Extra Scan Time:} Measuring many directions adds several minutes to an MRI, and even small head movements can blur the maps.
+    \item \textbf{Standard MRI Limits and Brain Shift:} People with non-MRI-safe metal implants cannot be scanned. Also, during brain surgery, the brain shifts slightly once the skull is opened, so preoperative maps lose some pinpoint accuracy during the operation.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+
+\begin{itemize}
+    \item \textbf{Non-MRI-Safe Metal Implants:} Certain older magnetic brain aneurysm clips, non-MRI-conditional pacemakers or defibrillators, cochlear implants, nerve stimulators, and metal fragments in the eye strictly prevent having an MRI.
+\end{itemize}
+
+\subsection{Relative}
+
+\begin{itemize}
+    \item \textbf{Claustrophobia or Trouble Staying Still:} Severe anxiety in enclosed spaces, head tremors, or difficulty lying flat without moving can blur the maps unless managed with coaching or mild calming medication.
+    \item \textbf{Early Pregnancy and Nearby Metal:} Non-urgent MRI in early pregnancy is usually postponed unless clearly needed per American College of Radiology (ACR) guidance. Nearby surgical metal or dental braces can also distort DTI pictures.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+
+\begin{itemize}
+    \item \textbf{Strict Metal and Implant Screening:} Staff complete a thorough MRI safety check before you enter the magnet room to rule out unsafe metal fragments, pacemakers, cochlear implants, or aneurysm clips, and to verify safe settings for any MRI-conditional implants.
+    \item \textbf{Preventing Skin Warming:} Technologists keep radio-wave energy within strict safety limits, ask you to remove metallic clothing or foil-backed medication patches, place foam pads so skin does not touch the tunnel walls or fold against itself, and keep cables straight.
+    \item \textbf{Ear Protection and Mild Tingling:} Because fast DTI pulses are loud, you will wear snug earplugs or headphones. The scanner stays within strict limits to minimize harmless nerve tingling (peripheral nerve stimulation), and staff check in if anything feels uncomfortable.
+    \item \textbf{Constant Contact and Comfort:} You hold a squeeze-ball call button at all times with a two-way intercom and constant visual monitoring, while soft head cushions keep you still and comfortable.
+    \item \textbf{Safe Surgical Use:} Because DTI can underestimate fibers hidden by swelling and cannot predict brain shift during surgery, neurosurgeons always combine DTI maps with anatomical landmarks and direct electrical testing during the operation rather than relying on DTI alone.
+\end{itemize}
+
+\section{Prerequisite Tests}
+
+\begin{itemize}
+    \item \textbf{No Routine Blood Tests Needed:} Standard DTI uses no contrast dye and no radiation, so no blood work or kidney tests are needed unless a contrast-enhanced structural MRI is also ordered at the same visit.
+    \item \textbf{MRI Safety Screening:} Everyone completes a detailed implant and metal-exposure checklist beforehand. If you have a history of metalworking or possible metal near your eyes, quick X-rays may be taken first to confirm safety.
+    \item \textbf{Prior Brain Scans and Clinical Exam:} Reviewing earlier brain MRI or CT scans along with your neurological exam (strength, speech, or vision) helps the imaging team focus on the most important nerve pathways.
+    \item \textbf{Pregnancy Check (When Relevant):} Patients who could be pregnant are screened per ACR guidance so the team can confirm the scan is needed and avoid unnecessary contrast dye.
+\end{itemize}
+
+\section{Preparing for the Scan}
+
+\begin{itemize}
+    \item \textbf{Remove All Metal:} Change into a metal-free hospital gown and remove jewelry, watches, hairpins, removable dental work, foil-backed skin patches, and phones before entering the magnet room.
+    \item \textbf{Bring Implant Cards:} Bring manufacturer ID cards for any medical implants (such as heart devices, stimulators, clips, or shunts), and let staff know ahead of time about any past metalworking or eye injuries.
+    \item \textbf{Eat and Take Medicines Normally:} Standard contrast-free DTI requires no fasting. Take your regular medicines unless sedation is planned or your doctor gives special instructions for another part of the MRI.
+    \item \textbf{Plan for Comfort and Calm:} Let the team know in advance if tight spaces make you anxious or if lying flat is uncomfortable, so they can arrange coaching, mirror glasses, or calming medicine. Use the restroom right before the scan.
+    \item \textbf{Ear Protection and Staying Still:} Wear the earplugs or MRI-safe headphones provided, and be ready to keep your head completely still inside the padded cushions, since even tiny movements can distort the fiber maps.
+\end{itemize}
+
+\section{During Scan}
+
+\begin{itemize}
+    \item \textbf{Lying Still Inside the Head Coil:} You lie flat on your back on a padded table with soft foam cushions gently supporting your head inside a smooth open frame. Staying completely motionless helps keep the nerve-pathway maps crisp.
+    \item \textbf{Calm, Steady Breathing:} Breathe slowly and naturally, trying not to cough, yawn, or shift your jaw or shoulders while the loud knocking sequences are running.
+    \item \textbf{Expected Sounds and Sensations:} Rapid magnetic pulses create loud rhythmic knocking, tapping, and gentle table vibrations---all safely muffled by your earplugs or headphones. You may occasionally feel a mild, harmless muscle twitch or gentle warmth.
+    \item \textbf{Call Button and Two-Way Intercom:} Keep the squeeze-ball button in your hand. Press it or speak over the intercom right away if you feel anxious, claustrophobic, too warm, or uncomfortable so the technologist can pause and help.
+    \item \textbf{Time and Pacing:} The DTI portion itself usually takes 5--12 minutes within a complete 30--50 minute brain MRI, with short quiet breaks between sets of pictures while the technologist checks on you.
+\end{itemize}
+
+\section{Normal Appearance}
+
+\begin{itemize}
+    \item \textbf{Bright, Well-Organized Nerve Bundles:} On grayscale directional maps (FA maps), tightly packed white matter highways---like the bridge between the two brain halves (corpus callosum) and main movement tracts---appear bright, while gray matter looks dimmer and fluid spaces look dark.
+    \item \textbf{Clear, Symmetric Color Coding:} Both sides of the brain look balanced in vivid standard colors: red for left-to-right fibers, green for front-to-back fibers, and blue for up-and-down fibers.
+    \item \textbf{Smooth 3D Pathways:} Major nerve bundles reconstruct as smooth, continuous, matching ribbons on both sides without sudden cutoffs, thinning, or detours.
+    \item \textbf{Even Background Water Movement:} Overall water movement (MD) looks uniform across normal brain tissue and stands out clearly from open fluid spaces.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+
+\begin{itemize}
+    \item \textbf{Lower Directional Score and Higher Fluid Movement:} A drop in directional alignment (FA) paired with freer water movement (MD) signals disrupted nerve fibers, myelin wear, or fluid swelling---key clues in head trauma, multiple sclerosis, and neurodegenerative diseases.
+    \item \textbf{Pushed, Invaded, or Broken Pathways Around Tumors:} Slow-growing or benign masses usually push intact nerve bundles smoothly to the side while keeping their normal bright color. Aggressive tumors more often invade fibers (dimming their color) or cut right through vital movement or speech pathways.
+    \item \textbf{Thinning Pathways After a Stroke:} Gradual shrinkage and lower directional scores along the movement pathway downstream from a stroke reveal secondary nerve degeneration (Wallerian degeneration) and help doctors understand lasting weakness.
+    \item \textbf{Unusual Wiring Present From Birth:} Missing red left-to-right bridge fibers replaced by green front-to-back bundles (Probst bundles) confirms agenesis of the corpus callosum, while missing brainstem fiber crossings point to Joubert syndrome.
+    \item \textbf{Common Look-Alike Artifacts:} Areas where many fibers cross naturally look dimmer and can appear falsely cut off. Heavy swelling around a tumor can also hide intact fibers, and air sinuses or metal hardware near the skull base can warp apparent fiber paths.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+
+\begin{itemize}
+    \item \textbf{Crossing-Fiber Confusion:} Because standard DTI models only one main direction per tiny block of tissue, intersecting pathways can cause artificial drops in directional scores and false cutoffs on 3D maps. For example, standard DTI can miss outer side-branching motor fibers leading to the hand or lips, or trace false detours where neighboring tracts cross or touch (``kissing'' fibers).
+    \item \textbf{Swelling and Overlapping Causes:} Fluid swelling around a tumor can lower scores enough to hide live nerve fibers, and a low FA score alone cannot separate temporary swelling from myelin loss or permanent nerve injury.
+    \item \textbf{Warping and Head Motion:} Air-filled sinuses, skull-base bone, old blood, or metal hardware can warp the fast MRI images, while even slight head motion blurs directional maps.
+    \item \textbf{Settings and Surgical Brain Shift:} How thick or close a traced nerve bundle looks depends partly on software settings, and preoperative maps shift slightly once brain surgery begins.
+    \item \textbf{How Doctors Confirm Findings:} Specialists always review DTI alongside standard high-resolution MRI, your physical exam, and sometimes functional MRI (fMRI). Advanced multi-direction diffusion models help untangle crossing fibers, and during surgery, neurosurgeons confirm vital pathways directly with gentle electrical testing.
+\end{itemize}
+
+\section{Augmenting Methods}
+
+\begin{itemize}
+    \item \textbf{Functional MRI (fMRI):} Pairs DTI's wiring maps with fMRI's activity maps of the brain's surface (showing exact movement, speech, and vision hubs) for complete pre-surgery planning.
+    \item \textbf{Standard High-Resolution MRI and SWI:} Lining up DTI with regular contrast MRI, swelling-sensitive FLAIR, and bleeding-sensitive SWI shows exact tumor edges, tiny bleeds, and swelling to put DTI scores in context.
+    \item \textbf{Advanced Multi-Direction Diffusion Models:} Newer techniques---such as HARDI, diffusion kurtosis imaging, NODDI (which estimates how densely fibers are packed and how much they fan out), and probabilistic tractography (which maps a range of likely branching routes instead of one strict line)---help untangle crossing nerve fibers where standard single-direction DTI struggles.
+    \item \textbf{Surgical Navigation and Live Electrical Testing:} Loading DTI maps into surgical navigation systems and double-checking them with awake electrical stimulation during surgery keeps vital pathways safe even if the brain shifts.
+    \item \textbf{Automated AI Mapping and Reference Charts:} Automated fiber-tracing software and age-matched normal databases reduce manual guesswork in head trauma, multiple sclerosis, and memory disorders.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+
+\begin{itemize}
+    \item \textbf{Versus Standard Structural MRI:} Regular MRI shows brain anatomy, tumors, and swelling in sharper detail, while DTI uniquely maps the 3D direction of nerve-fiber highways and spots hidden microscopic nerve injury.
+    \item \textbf{Versus Functional MRI (fMRI):} Functional MRI highlights active gray-matter surface hubs (like speech or hand-movement centers), while DTI traces the white-matter cables connecting them. Doctors routinely use both together before brain surgery.
+    \item \textbf{Versus Routine Diffusion MRI (DWI):} Standard DWI quickly checks overall water movement to spot acute strokes or abscesses, while DTI measures many directions to map fiber orientation and build 3D wiring models.
+\end{itemize}
+
+\section{Follow-up Steps}
+
+\begin{itemize}
+    \item \textbf{Right After the Scan:} Standard contrast-free DTI requires no recovery time or special restrictions---you can return to normal activities right away unless you took calming medicine or received contrast dye for other MRI views.
+    \item \textbf{Team Review for Brain Surgery:} Co-registered 3D fiber maps are loaded into surgical navigation computers and reviewed together by neurosurgeons, neuroradiologists, and neurologists while keeping intraoperative brain shift in mind.
+    \item \textbf{Combining With Functional Tests:} Pre-surgery DTI is often paired with functional MRI (fMRI) and confirmed with gentle direct electrical mapping during tumor removal to protect movement and speech.
+    \item \textbf{Tracking Changes Over Time:} Repeat DTI scans may be done alongside standard MRI using the same scanner and settings to follow recovery after surgery, stroke, or multiple sclerosis.
+\end{itemize}
+
+\section{Key References}
+
+\begin{itemize}
+    \item Alexander AL, Lee JE, Lazar M, Field AS. Diffusion tensor imaging of the brain. \textit{Neurotherapeutics}. 2007;4(3):316--329.
+    \item American Society of Functional Neuroradiology (ASFNR). Guidelines for Clinical Application of Diffusion Tensor Imaging (DTI).
+    \item American College of Radiology (ACR). \textit{ACR Manual on MR Safety} and \textit{ACR--ASNR--SPR Practice Parameter for the Performance of Brain MRI}.
+    \item Soares JM, Marques P, Alves V, Sousa N. A hitchhiker's guide to diffusion tensor imaging. \textit{Frontiers in Neuroscience}. 2013;7:31.
+    \item O'Donnell LJ, Westin CF. \textit{An introduction to diffusion tensor image analysis}. National Institutes of Health (PubMed Central). Available at: \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC3163395/}.
+    \item Radiopaedia.org. \textit{Diffusion tensor imaging and fibre tractography}. Radiopaedia. Available at: \url{https://radiopaedia.org/articles/diffusion-tensor-imaging-and-fibre-tractography-1}.
+\end{itemize}
+
+\section{Further Reading}
+\begin{itemize}
+  \item Wikipedia contributors. \textit{Diffusion-weighted magnetic resonance imaging}. Wikipedia, The Free Encyclopedia. Available at: \url{https://en.wikipedia.org/wiki/Diffusion-weighted_magnetic_resonance_imaging}.
+\end{itemize}

@@ -1,0 +1,216 @@
+\infographicchapter{Functional MRI (fMRI)}{functional.png}
+\label{ch:infographic-functional}
+
+\section{Overview}
+
+Functional magnetic resonance imaging (fMRI) is a safe, noninvasive brain scan that shows which parts of your brain are working while you perform simple tasks---like tapping your fingers or silently thinking of words---or while you rest quietly. Instead of measuring brain electricity directly, clinical fMRI tracks natural changes in blood oxygen (called BOLD contrast). Whenever a brain region becomes active, extra oxygen-rich blood rushes to that spot. Because oxygen-rich blood and oxygen-poor blood react slightly differently to an MRI magnet, the scanner picks up a tiny signal boost and highlights active brain areas in color on top of a detailed brain picture.
+
+fMRI maps the brain's most vital working zones---including areas controlling movement, touch, vision, speech, and memory. Its main medical use is helping brain surgeons plan safe operations for brain tumors, hard-to-treat epilepsy, or tangled blood vessels, showing which side of the brain controls language and whether disease has caused the brain to shift functions to a new spot. Researchers also use fMRI widely to study stroke recovery, head injury, and memory disorders.
+
+The biggest advantages of fMRI are sharp millimeter-level brain mapping, zero X-ray radiation, and no IV contrast dye. Its main limits are that it measures blood flow rather than nerve firing directly---so nearby tumors or vessel problems can sometimes blunt the signal---it reacts a few seconds slower than actual brain firing, and even tiny head movements can blur the map. Safety follows standard MRI screening for metallic implants, ear protection, and comfort in enclosed spaces.
+
+\section{Underlying Physical Principles}
+
+\begin{itemize}
+    \item \textbf{Rapid Whole-Brain Snapshots:} Inside a strong 1.5 T or 3.0 T MRI magnet, a high-speed scanning mode captures a fresh snapshot of your entire brain every 1 to 2.5 seconds so the computer can watch brain activity change over time.
+    \item \textbf{Natural Blood-Oxygen Contrast (BOLD):} Discovered by Seiji Ogawa in 1990, BOLD contrast relies on a subtle magnetic difference between oxygen-rich and oxygen-poor blood. When brain cells fire actively, local blood vessels open wide and send in a surge of oxygen-rich blood---even more than the cells immediately use. Because oxygen-poor hemoglobin is weakly magnetic and slightly disturbs the local MRI field while oxygen-rich hemoglobin does not, flushing it out creates a small 1--5\% boost in brightness on fast T2*-weighted echo-planar MRI snapshots right where the brain is working.
+    \item \textbf{Separating Brain Activity from Normal Body Noise:} Because that signal boost is subtle and peaks about 4--6 seconds after you start a task, computer software lines up every brain frame, corrects for tiny head shifts, and filters out normal heartbeat and breathing rhythms.
+    \item \textbf{Building Color Activity Maps:} Statistical software compares your brain scans during active tasks against rest periods (or tracks matching rhythms during quiet rest) to highlight active clusters in bright colors on top of a crisp 3D anatomical MRI.
+\end{itemize}
+
+\section{Imaging Mechanism}
+
+\begin{enumerate}
+    \item \textbf{Head Coil and Task Gear Setup:} You lie comfortably inside a padded head coil fitted with MRI-safe mirrors or goggles so you can see a screen, soft audio headphones, and an optical button box in your hand if needed.
+    \item \textbf{Timed Tasks and Continuous Brain Scanning:} The scanner automatically syncs simple visual or spoken cues (such as ``tap your fingers'' or ``rest'') with rapid whole-brain MRI sweeps every 1 to 2.5 seconds across short 3--6 minute runs (or continuously while you rest quietly).
+    \item \textbf{Recording Faint Oxygen Signals:} Sensitive antennas in the head coil capture tiny radio signals from every slice of your brain at each time point and turn them into sequential digital 3D brain volumes.
+    \item \textbf{Cleaning Motion and Computing Maps:} Automated software straightens out slight head movements, smooths out background noise, and runs statistical comparisons to pinpoint exactly which brain areas lit up during each task.
+    \item \textbf{Overlaying Color Maps for Your Doctor:} The color-coded activity zones and language-dominance scores are placed directly onto a crisp 3D brain MRI and sent to radiology and neurosurgery navigation workstations.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+
+\noindent\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Tracks natural blood-oxygen changes (BOLD signal) tied to active brain regions inside an MRI scanner \\
+Energy / Signal Source & Strong static magnetic field (1.5 T or 3.0 T), rapid magnetic gradients, and radio waves \\
+Typical Frequency / Energy & 64 MHz (1.5 T) or 128 MHz (3.0 T) radiofrequency waves; whole-brain frame captured every 1.0--2.5 seconds \\
+Spatial Resolution & 2.0--3.5 mm brain cubes (blood-flow response naturally lags brain firing by about 4--6 seconds) \\
+Typical Scan Duration & 3--6 minutes per task run; 45--60 minutes for a full presurgical fMRI and standard brain MRI visit \\
+Contrast Agent & None needed (uses your own natural blood oxygen) \\
+Ionizing Radiation & None (MRI uses magnets and radio waves; zero X-rays) \\
+\bottomrule
+\end{tabularx}
+
+\section{Common Symptoms That Prompt This Scan}
+\begin{itemize}
+    \item \textbf{Brain Tumor or Vessel Tangle Near Speech or Movement Areas:} Seizures, headaches, or subtle speech or limb changes when neurosurgeons need to pinpoint exact language, hand, or vision centers before operating.
+    \item \textbf{Medication-Resistant Epilepsy:} Ongoing seizures not controlled by medicine, where fMRI helps determine which side of the brain controls speech and memory before epilepsy surgery.
+    \item \textbf{Evaluating Brain Function Around Prior Injury:} Specialized pre-surgical mapping when a past stroke or scar may have shifted language or movement areas to an unexpected location.
+    \item \textbf{Note---Not a First-Line Symptom Scan:} Routine headaches, anxiety, or general memory concerns are not evaluated with fMRI; it is reserved for specialized surgical planning and research.
+\end{itemize}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+
+\begin{itemize}
+    \item \textbf{Mapping Movement and Touch Centers:} Pinpoints exact hand, foot, face, and touch areas---often called \textit{eloquent cortex} by neurosurgeons---next to brain tumors, tangled blood vessels, or abnormal tissue. Typically using alternating blocks of activity and rest overlaid on high-resolution 3D anatomical MRI, these maps help surgeons maximize safe removal while protecting vital function.
+    \item \textbf{Mapping Speech and Language:} Noninvasively identifies which side of the brain controls language and locates key speech zones (Broca and Wernicke areas), often avoiding the need for an invasive catheter-based Wada test.
+    \item \textbf{Planning Epilepsy Surgery:} Maps vital speech, movement, and memory networks before seizure surgery to estimate and minimize any risk to thinking or language afterward.
+    \item \textbf{Spotting Brain Rewiring:} Detects when a slow-growing tumor, vessel tangle, or early-life injury has nudged a brain function to move to a nearby spot or even to the opposite side of the brain.
+\end{itemize}
+
+\subsection{Secondary Usages}
+
+\begin{itemize}
+    \item \textbf{Resting-State fMRI for People Who Cannot Do Tasks:} Maps movement and language networks while a patient simply lies quietly---ideal for young children, sedated patients, or people who have trouble speaking or following task cues.
+    \item \textbf{Guiding Focused Brain Radiation:} Feeds functional maps into radiosurgery computers so doctors can steer high radiation doses away from vital speech or movement areas.
+    \item \textbf{Tracking Stroke and Injury Recovery:} Used in specialized research and rehabilitation programs to watch how brain networks rewire over time after a stroke or head injury.
+    \item \textbf{Brain Research and Neurofeedback:} Helps scientists study network changes in memory, mood, and consciousness conditions.
+\end{itemize}
+
+\section{Advantages}
+
+\begin{itemize}
+    \item \textbf{Completely Noninvasive and Dye-Free:} Maps critical movement, speech, touch, and vision areas with zero X-ray radiation, no radioactive tracers, and no IV contrast dye.
+    \item \textbf{Sharp Millimeter-Level Pinpointing:} Places color activity zones directly onto high-detail 3D brain MRI scans for surgical and radiation planning.
+    \item \textbf{Reduces Need for Invasive Tests:} Often replaces or reduces the need for the invasive Wada test when checking which side of the brain controls speech.
+    \item \textbf{Shows Brain Adaptation:} Reveals when the brain has naturally shifted vital skills away from a tumor or old injury.
+    \item \textbf{Works With or Without Active Tasks:} Resting-state fMRI extends brain mapping to children, sedated patients, and people who cannot perform active tasks.
+\end{itemize}
+
+\section{Disadvantages}
+
+\begin{itemize}
+    \item \textbf{Blood-Flow Signal Can Be Misled Near Tumors:} Because fMRI watches blood flow rather than direct nerve firing, nearby aggressive tumors or vessel tangles can disrupt local blood-vessel responses (neurovascular uncoupling) and falsely hide truly active brain tissue.
+    \item \textbf{Slower Timing Than Electrical Tests:} Blood flow takes 4--6 seconds to respond after brain cells fire, so fMRI is slower than electrical tests like EEG or MEG.
+    \item \textbf{Very Sensitive to Head Movement and Sinuses:} Even millimeter-sized head shifts, jaw movement, or air pockets near the sinuses and old surgery cavities can blur or erase the signal.
+    \item \textbf{Relies on Cooperation and Still Needs Surgical Checks:} Task fMRI requires clear understanding and steady participation, and map size can vary with statistical settings---so surgeons still combine fMRI with direct brain testing during surgery.
+    \item \textbf{Standard MRI Limits:} Carries the same restrictions as any MRI regarding unsafe metal implants, loud noises, longer scan times, and claustrophobia.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+
+\begin{itemize}
+    \item \textbf{Unsafe Metal and Electronic Implants:} Non-MRI-safe pacemakers or defibrillators, magnetic brain aneurysm clips, metal fragments in the eye, non-MRI-safe cochlear implants, and incompatible implanted pumps or nerve stimulators strictly prevent entering the MRI scanner.
+\end{itemize}
+
+\subsection{Relative}
+
+\begin{itemize}
+    \item \textbf{MRI-Conditional Devices and Pregnancy:} MRI-conditional implants require strict vendor-approved scanner limits. Severe claustrophobia may require extra support, and non-urgent scans are usually postponed during the first trimester of pregnancy.
+    \item \textbf{Difficulty Performing Tasks:} Severe speech trouble, confusion, sedation, or uncontrollable head movement can prevent reliable task fMRI, though task-free resting-state fMRI may still work well.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+
+\begin{itemize}
+    \item \textbf{Thorough Metal Screening:} Staff follow strict MRI safety zone checks before magnet entry to screen for any metal fragments, implants, or electronic devices, scanning only verified MRI-safe or MRI-conditional hardware.
+    \item \textbf{MRI-Safe Task Equipment:} Only specially tested MRI-safe goggles, headphones, and button boxes enter the scanner room, and cables are positioned carefully so they never form loops against your skin.
+    \item \textbf{Ear Protection and Safe Heating Limits:} Well-fitted hearing protection shields your ears from loud scanning noises, and scanners stay within strict FDA warming and gradient safety limits.
+    \item \textbf{Practice Ahead and Constant Contact:} Practicing tasks before entering the scanner eases anxiety and avoids repeat runs. You hold an emergency squeeze-bulb call button and stay in voice contact with the technologist throughout.
+    \item \textbf{Smart Surgical Safeguards:} Doctors always check for tumor-related blood-flow blunting and head motion, using fMRI alongside direct electrical brain mapping during surgery rather than as the sole guide for surgical margins.
+\end{itemize}
+
+\section{Prerequisite Tests}
+
+\begin{itemize}
+    \item \textbf{No Routine Blood Tests Needed:} Standard fMRI uses no IV contrast dye and needs no blood work. A kidney blood test is needed only if a separate gadolinium contrast MRI is scheduled at the same visit and you have kidney risk factors.
+    \item \textbf{MRI Safety and Implant Check:} Complete MRI safety screening, including documentation for any past brain clips, shunts, or stimulators.
+    \item \textbf{Prior Brain MRI and Quick Neurologic Profile:} Reviewing your earlier brain MRI along with your vision, hearing, handedness, and symptoms helps the team choose the best tasks and fit the right goggles or headphones.
+    \item \textbf{Pre-Scan Practice:} A quick check of speech, movement, and comprehension---plus practicing the tasks outside the scanner---makes sure the tasks fit you well or shows whether resting-state fMRI is a better choice.
+\end{itemize}
+
+\section{Preparing for the Scan}
+
+\begin{itemize}
+    \item \textbf{Practice the Tasks First:} Before entering the scanner, a technologist or specialist will walk you through the simple movement, picture, or word tasks and show you how the button box works so everything feels easy and familiar.
+    \item \textbf{Remove All Metal:} Fill out your MRI safety form, bring ID cards for any implants, and take off jewelry, watches, metal-pigment makeup, hairpins, and clothing with metal zippers or metallic threads. You may be asked to change into a hospital gown and leave keys, phones, coins, and magnetic-strip cards outside the scan room.
+    \item \textbf{Eat Normally, Take Routine Medicines, and Come Well Rested:} Unless your care team gives specific fasting instructions (for example, if sedation is planned), you can usually eat, drink normally, and take your regular daily medications as prescribed. Get a good night's sleep and avoid sedating medicines, alcohol, or heavy caffeine beforehand so your brain stays alert and blood flow responds naturally. Bring your glasses prescription (or wear contact lenses) so MRI-safe corrective goggles can be fitted clearly.
+    \item \textbf{Plan for Comfort and Stillness:} Use the restroom before the scan, tell the team early if tight spaces bother you (sedatives are avoided during task fMRI whenever possible so you stay alert), and let the technologist cushion your head comfortably since tiny head movements blur the maps.
+\end{itemize}
+
+\section{During Scan}
+
+\begin{itemize}
+    \item \textbf{Getting Set Up:} You will lie flat on your back inside the MRI scanner with soft foam head cushions, MRI-safe headphones, a mirror or goggles showing a screen, and a handheld button box if needed. Keep your head and jaw completely still---even when silently thinking of words or pressing buttons.
+    \item \textbf{Doing Simple Tasks or Resting:} Follow the practiced screen or audio cues steadily---such as gently tapping your fingers, silently thinking of words, or pressing a button---without moving your head. For resting-state fMRI, simply lie quietly awake and let your mind wander naturally.
+    \item \textbf{Sounds and Breathing:} Expect loud, rhythmic knocking and buzzing noises along with mild table vibration. Breathe naturally and evenly unless your exam includes a brief, coached breath-hold test to check blood-vessel response.
+    \item \textbf{Staying Connected:} The technologist watches your task progress and head stillness live and checks in via intercom between runs. Squeeze the emergency call bulb right away if you cannot see or hear the cues clearly, feel anxious, or notice unusual warmth on your skin.
+    \item \textbf{How Long It Takes:} Each short task run lasts about 3--6 minutes with brief rest breaks in between, and the full presurgical fMRI and standard brain MRI session usually takes 45--60 minutes.
+\end{itemize}
+
+\section{Normal Appearance}
+
+\begin{itemize}
+    \item \textbf{Movement and Touch Zones:} Gently tapping fingers, moving a foot, or wiggling the tongue lights up the expected movement and touch strip on the opposite side of the brain, along with helper movement areas.
+    \item \textbf{Typical Language Side:} In most right-handed people, word and sentence tasks light up classic speech and language zones on the left side of the brain (Broca and Wernicke areas).
+    \item \textbf{Healthy Vessel Response and Quiet Networks:} A brief breath-hold test produces an even, balanced blood-flow boost across both sides of the brain, and resting-state scans show neat, well-organized networks free of motion rings.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+
+\begin{itemize}
+    \item \textbf{Shifted Brain Functions:} When movement or speech activity appears pushed away from its usual landmark---curved around a tumor or moved to the opposite side of the brain---it shows healthy brain rewiring that directly guides a safer surgical path.
+    \item \textbf{Right-Sided or Two-Sided Language:} Strong speech activity on both sides or mainly on the right side of the brain identifies atypical language dominance, which is more common in left-handed people or long-standing left-sided epilepsy.
+    \item \textbf{Blunted Signal Near Tumors (Neurovascular Uncoupling):} Weak or missing fMRI color in an area that still works normally---often right next to an aggressive tumor or vessel tangle---means abnormal blood vessels are hiding active brain tissue rather than the tissue being inactive. Doctors often use a breath-hold check to catch this trap.
+    \item \textbf{Signal Sitting Over Nearby Veins:} Because fMRI tracks blood oxygen, the brightest color spot can sometimes sit a few millimeters over a nearby draining vein rather than the exact nerve cells.
+    \item \textbf{Harmless Look-Alikes:} Moving your head in rhythm with a task creates a telltale false ring of color around the outer edge of the brain, while air pockets near the sinuses or old surgery sites can create blank spots that mimic missing activity.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+
+\begin{itemize}
+    \item \textbf{False Blank Spots Near Tumors:} Tumors or vessel tangles can stop nearby blood vessels from widening normally, hiding truly active speech or movement areas; a quick breath-hold blood-flow check helps flag these risky zones.
+    \item \textbf{Head Movement and Fatigue:} Tiny task-timed head shifts create false edge rings, while tiredness, anxiety, or confusion about a task weakens the signal and can make a run unreadable.
+    \item \textbf{Map Borders and Vein Shift:} Color clusters grow or shrink depending on statistical cutoff choices, and draining veins can shift the brightest dot by a few millimeters.
+    \item \textbf{Backing Up Unclear Maps:} Teams fix unclear runs by coaching stillness and repeating a task, switching to task-free resting-state fMRI when needed, pairing fMRI with DTI fiber tractography, and confirming exact boundaries with awake surgical brain mapping, MEG, or selective Wada testing.
+\end{itemize}
+
+\section{Augmenting Methods}
+
+\begin{itemize}
+    \item \textbf{DTI Fiber Tractography:} Combines fMRI's active surface ``control centers'' with tractography's deep white-matter ``wiring cables'' to give surgeons a complete 3D safety map.
+    \item \textbf{Breath-Hold Blood-Flow Checks (CVR):} Tests whether blood vessels near a tumor still widen normally, alerting doctors if a blank spot on fMRI could be a false negative.
+    \item \textbf{EEG, MEG, and Magnetic Brain Mapping (nTMS):} Measure brain electricity directly in milliseconds without waiting for blood flow, adding fast, independent confirmation.
+    \item \textbf{Awake Surgical Mapping and Memory Testing:} Gentle direct stimulation during awake brain surgery remains the gold standard for final safe borders, while formal memory and thinking tests (and selective Wada testing) help guide counseling.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+
+\begin{itemize}
+    \item \textbf{Compared with the Wada Test:} fMRI is completely noninvasive and maps exact millimeter-level brain locations in addition to language side, so the invasive catheter-based Wada test is now saved for unclear fMRI results or complex memory checks in epilepsy surgery.
+    \item \textbf{Compared with MEG and EEG:} MEG and EEG track brain electricity directly in milliseconds and are unaffected by tumor blood-vessel issues, while fMRI is more widely available and pinpoints deep brain folds more sharply.
+    \item \textbf{Compared with Awake Surgical Brain Mapping:} Direct stimulation during surgery is the definitive final check for safe margins, while fMRI helps plan the operation, counsel patients on risks, and guide where surgeons test first.
+    \item \textbf{Compared with Brain PET Scans:} fMRI gives sharper location detail with zero radiation or radioactive tracers, while PET is preferred for spotting seizure zones between seizures or checking brain sugar use in memory disorders.
+\end{itemize}
+
+\section{Follow-up Steps}
+
+\begin{itemize}
+    \item \textbf{No Recovery Downtime and Instant Quality Check:} Standard fMRI needs zero recovery time. Before you leave, the team checks your head-motion and task charts so any blurry run can be repeated right away while you are still there.
+    \item \textbf{Team Review for Surgery Planning:} Because fMRI data requires careful computer post-processing, results are rarely ready the same day and often take several days to reach your doctor. Neuroradiologists finish statistical mapping, align the color maps with standard MRI and DTI fiber tractography, and review them with your neurosurgery or epilepsy team---clearly noting any tumor zones where blood-flow signals could be blunted---before discussing next steps with you.
+    \item \textbf{Confirming Sensitive Borders:} If fMRI shows unclear language dominance, a tumor sitting right next to vital cortex, or possible blood-flow blunting, your team may add awake surgical mapping, MEG, or a selective Wada test.
+    \item \textbf{After-Surgery Care:} Follow-up exams and standard MRI track recovery and healing; repeat fMRI is rarely needed except when checking long-term brain rewiring before a staged surgery or in specialized rehab programs.
+\end{itemize}
+
+\section{Key References}
+
+\begin{itemize}
+    \item American College of Radiology (ACR). \textit{ACR--ASNR--SPR Practice Parameter for the Performance of Functional Magnetic Resonance Imaging (fMRI) of the Brain}. Reston, VA: ACR, 2022.
+    \item American Society of Functional Neuroradiology (ASFNR). Clinical fMRI Paradigm Guidelines. \textit{AJNR American Journal of Neuroradiology}, 2018.
+    \item Pillai JJ. The Evolution of Clinical Functional Imaging During the Past 2 Decades and Its Current Impact on Neurosurgical Planning. \textit{AJNR American Journal of Neuroradiology}, 2010;31(2):219--225.
+    \item Glover GH. Overview of Functional Magnetic Resonance Imaging. \textit{Neurosurgery Clinics of North America}, 2011;22(2):133--139.
+    \item Cleveland Clinic. \textit{Functional MRI (fMRI)}. Cleveland Clinic. Available at: \url{https://my.clevelandclinic.org/health/diagnostics/25034-functional-mri-fmri}.
+    \item Radiopaedia.org. \textit{Functional MRI}. Radiopaedia. Available at: \url{https://radiopaedia.org/articles/functional-mri}.
+\end{itemize}
+
+\section{Further Reading}
+\begin{itemize}
+  \item Wikipedia contributors. \textit{Functional magnetic resonance imaging}. Wikipedia, The Free Encyclopedia. Available at: \url{https://en.wikipedia.org/wiki/Functional_magnetic_resonance_imaging}.
+\end{itemize}

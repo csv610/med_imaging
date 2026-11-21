@@ -1,0 +1,123 @@
+\infographicchapter{Nuclear Medicine Imaging Overview}{nuclear_cls.png}
+\label{ch:infographic-nuclear-imaging-overview}
+
+\section{Overview}
+
+Nuclear medicine imaging is a group of medical scans that show how organs and cells are working inside the body, rather than just what they look like. Before the scan, you receive a tiny, carefully measured amount of a mildly radioactive substance called a radiotracer (or radiopharmaceutical) that meets strict FDA safety and performance standards. Depending on the test, it may be given through an IV, swallowed as a pill or liquid, breathed in as a gentle mist, or injected directly into a local tissue area; for certain bleeding or infection scans, a small sample of your own blood cells is even labeled with the tracer in the lab and returned to your vein. The tracer is built on the ``tracer principle'': this microscopic dose travels to a specific organ, metabolic pathway, or cell target without causing drug effects or changing how your body normally works. Unlike X-rays, which pass through you from the outside, nuclear scans detect faint energy signals coming out from inside your body, often spotting disease changes long before they show up as a lump or structural change.
+
+The main nuclear medicine scans are planar scintigraphy (flat 2D pictures), SPECT (single-photon emission computed tomography), and PET (positron emission tomography). SPECT uses tracers like technetium-99m or iodine-123 to check heart blood flow, bones, kidneys, thyroid function, and certain brain conditions. PET uses tracers such as FDG (a sugar-like tracer) or specialized prostate and neuroendocrine tracers to produce sharper, more sensitive 3D pictures of cell activity across the whole body.
+
+Today, most SPECT and PET scanners are combined with a CT or MRI scanner (known as SPECT/CT, PET/CT, or PET/MRI). Blending these two scans lets doctors see both the exact biological activity and the exact body landmark at the same time. Nuclear medicine plays a vital role in cancer care, heart disease, brain disorders, thyroid conditions, and targeted radionuclide treatments (theranostics) that pair a diagnostic scan with a matching therapy.
+
+\section{Underlying Physical Principles}
+\begin{itemize}
+  \item \textbf{Signals Coming from Inside the Body:} Tiny amounts of mildly radioactive atoms are attached to natural body-friendly molecules. As they settle in the target organ, they release faint gamma rays (used in planar scans and SPECT) or pairs of energy rays traveling in opposite directions (used in PET).
+  \item \textbf{Showing Function Instead of Shape:} Bright areas on the scan reflect how active the cells are---such as how fast cancer cells use sugar (FDG), how well blood reaches the heart muscle, or whether specific receptors are present---rather than simply showing tissue density.
+  \item \textbf{Special Cameras and Detector Rings:} Planar and SPECT scans use a gamma (Anger) camera: a lead collimator blocks scattered rays, a special scintillation crystal turns incoming gamma rays into tiny flashes of visible light, and sensitive light detectors map where each ray came from. Instead of heavy lead filters, PET scanners use a full ring of ultra-fast detectors to catch paired 511~keV rays arriving at almost the exact same instant (coincidence detection), giving much higher sensitivity and sharper detail.
+  \item \textbf{Correcting for Body Thickness:} Some signals lose strength or bounce slightly as they travel out of the body. The paired CT or MRI scan helps the computer measure body thickness and correct those losses so the brightness readings stay accurate.
+  \item \textbf{3D Image Building and Activity Scores:} Computers combine signals from many angles to build 3D maps of tracer activity. On PET scans, doctors often measure a standardized uptake value (SUV), which is a simple number showing how strongly a spot absorbed the tracer.
+\end{itemize}
+
+\section{Imaging Mechanism}
+\begin{enumerate}
+  \item \textbf{Giving the Tracer and Waiting for Uptake:} A carefully measured dose of radiotracer is given through an IV, by mouth, or by breathing it in. You then rest quietly for a set waiting period so the tracer has time to reach the target organs.
+  \item \textbf{Scanning with the Camera or Ring:} You lie on a padded table. For SPECT, open camera heads slowly rotate around your body. For PET/CT or PET/MRI, the table glides smoothly through an open ring scanner that collects both the tracer signals and a companion CT or MRI map.
+  \item \textbf{Detecting and Recording the Signals:} Sensitive crystals or solid-state detectors catch the faint gamma rays leaving your body, check their energy and exact arrival time, and turn them into digital counts.
+  \item \textbf{Cleaning Up and Building the 3D Picture:} Software uses the CT or MRI scan to correct for tissue thickness, filters out stray background rays, and builds clear 3D slices of tracer activity.
+  \item \textbf{Fusing the Images for Review:} The computer lays the color-coded nuclear scan directly on top of the grayscale CT or MRI image, giving doctors both a full-body view and precise activity measurements.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Faint energy rays emitted from a small radiotracer inside the body are detected by external gamma cameras (SPECT) or detector rings (PET) \\
+Energy / Signal Source & Medical radiotracers such as Tc-99m, I-123, F-18 (FDG), Ga-68, or Rb-82 measured by specialized nuclear cameras \\
+Typical Frequency / Energy & Gamma rays from 140~keV (SPECT) to 511~keV paired rays (PET); typical radiation dose is about 2--20~mSv depending on the tracer and paired CT \\
+Spatial Resolution & About 3--5~mm for modern PET scanners; 7--12~mm for SPECT and planar scans \\
+Typical Scan Duration & 15--45~minutes under the camera (plus a 30-minute to 4-hour waiting period beforehand for the tracer to settle) \\
+Contrast Agent & Radiotracer is always required (IV, oral, or inhaled); standard IV CT contrast dye is optional in hybrid PET/CT or SPECT/CT \\
+Ionizing Radiation & Yes (small internal dose from the radiotracer, plus external X-ray dose if combined with CT) \\
+\bottomrule
+\end{tabularx}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+\begin{itemize}
+  \item \textbf{Cancer Staging and Treatment Tracking:} Whole-body FDG PET/CT and targeted scans (such as PSMA PET for prostate cancer or DOTATATE PET for neuroendocrine tumors) help find where cancer is located, check if it has returned, and see how well treatment is working.
+  \item \textbf{Heart Blood Flow and Muscle Health:} Heart SPECT and PET scans check whether the heart muscle gets enough blood during rest and stress, identify living versus scarred heart tissue, and detect heart inflammation (such as sarcoidosis or amyloidosis).
+  \item \textbf{Bone Scans:} Technetium-99m bone scans and PET bone scans detect cancer that has spread to bone, hidden stress fractures, loose joint replacements, and deep bone infections.
+  \item \textbf{Brain and Memory Conditions:} Specialized brain PET scans (FDG, amyloid, and tau) and dopamine SPECT scans (DaTscan) help evaluate Alzheimer's disease, Parkinson's disease, and hard-to-treat epilepsy.
+  \item \textbf{Thyroid, Kidney, and Lung Function:} Radioiodine thyroid scans, parathyroid scans, lung ventilation-perfusion (V/Q) scans for blood clots, and kidney function scans are everyday clinical tools.
+\end{itemize}
+
+\subsection{Secondary Usages}
+\begin{itemize}
+  \item \textbf{Matching Patients to Targeted Radiation Therapies (Theranostics):} Diagnostic nuclear scans confirm that cancer cells carry the right target before doctors give matching radioligand treatments, such as lutetium-177 PSMA or DOTATATE. Medical physicists can also use those diagnostic images for dosimetry---calculating how much radiation will reach the tumor and healthy organs---before giving the therapeutic dose.
+  \item \textbf{Finding Sentinel Lymph Nodes:} Gentle tracer injections help surgeons pinpoint the first draining lymph nodes during surgery for breast cancer, melanoma, or head-and-neck tumors.
+  \item \textbf{Tracking Hidden Infections:} FDG PET/CT and labeled white-blood-cell scans help locate hard-to-find infections around artificial heart valves, blood-vessel grafts, or unexplained fevers.
+  \item \textbf{Digestive and Gallbladder Function:} Gastric emptying scans check how fast food leaves the stomach, HIDA scans check for gallbladder blockage or bile leaks, and tagged red-blood-cell scans help find intermittent intestinal bleeding.
+\end{itemize}
+
+\section{Advantages}
+\begin{itemize}
+  \item \textbf{Spots Disease Early at the Cellular Level:} Nuclear tracers detect changes in cell metabolism, blood flow, and receptors often well before a lump or structural change appears on CT or MRI.
+  \item \textbf{Whole-Body Check in One Visit:} A single PET or bone scan can survey the entire body to look for cancer spread, hidden infection, or multiple affected areas at once.
+  \item \textbf{Clear Numbers to Track Progress:} Activity measurements (such as SUV) help doctors measure how active a tumor is and see early on whether chemotherapy or radiation is working.
+  \item \textbf{Best of Both Worlds with Hybrid Scans:} Combining PET or SPECT with CT or MRI gives both exact anatomical landmarks and deep biological insight in one appointment.
+  \item \textbf{Direct Link to Targeted Therapy:} The same targeting molecule used to find a tumor on a scan can often be loaded with a stronger therapeutic isotope to treat it directly.
+\end{itemize}
+
+\section{Disadvantages}
+\begin{itemize}
+  \item \textbf{Ionizing Radiation Exposure:} Radiotracers---and any paired CT scan---deliver a small dose of ionizing radiation, so exams must be medically justified and require special care during pregnancy and breastfeeding.
+  \item \textbf{Less Sharp Anatomical Detail:} Nuclear scans are naturally less sharp than CT or MRI, so very small lesions (under a centimeter) can sometimes blur into the background.
+  \item \textbf{Non-Cancerous Spots Can Light Up:} Normal organ activity, infections, and healing inflammation after surgery can absorb sugar tracers like FDG and sometimes mimic cancer.
+  \item \textbf{Complex Scheduling and Higher Cost:} Because medical isotopes fade away quickly, they must be made fresh in nearby facilities and timed tightly to your appointment, which raises cost and limits last-minute availability.
+  \item \textbf{Longer Prep and Waiting Times:} Many exams require fasting, careful blood-sugar control, and a waiting period before scanning, and moving during the scan can blur the overlap with CT or MRI.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+\begin{itemize}
+  \item \textbf{Keeping Radiation as Low as Possible (ALARA):} Nuclear medicine teams confirm every scan is needed, use the smallest tracer dose that gives a clear picture, adjust doses carefully by weight for children, and use low-dose CT settings whenever possible. For most diagnostic nuclear scans, the total radiation exposure is comparable to routine chest X-rays or CT exams, and any small cumulative risk is outweighed by the benefit of an accurate diagnosis.
+  \item \textbf{Pregnancy and Nursing Checks:} Staff check for possible pregnancy before giving any radiotracer and give nursing mothers clear, written instructions on whether and how long to pause breastfeeding.
+  \item \textbf{Careful Tracer Handling:} Technologists double-check your identity, the exact tracer, and the measured dose before injection, use shielded syringes, and watch the IV site so the tracer flows smoothly into the vein.
+  \item \textbf{Simple Hygiene After the Scan:} Drinking plenty of water and using the bathroom often helps flush the tracer out quickly. Thorough handwashing and flushing the toilet keep hygiene simple, and staff will give written distancing tips around babies or pregnant family members if a higher-dose or therapeutic isotope is used.
+  \item \textbf{Prep Checks and Hybrid Safety:} Checking fasting and blood sugar before FDG PET prevents wasted or repeat radiation doses, and standard CT-dye or MRI-magnet safety checks protect you during hybrid scans.
+\end{itemize}
+
+\section{Augmenting Methods}
+\begin{itemize}
+  \item \textbf{Dedicated CT and MRI:} High-resolution CT and MRI provide crisp anatomical borders and detect tiny nodules that nuclear scans cannot resolve alone.
+  \item \textbf{Ultrasound and Heart Echo:} Neck ultrasound guides biopsies of ``cold'' thyroid nodules and helps locate parathyroid glands, while heart ultrasound (echocardiography) pairs with nuclear heart scans to show valve motion and pumping strength.
+  \item \textbf{Blood Tests and Markers:} Lab markers---such as PSA for prostate PET, thyroglobulin and TSH for thyroid scans, or heart enzymes---help doctors interpret what the scan means and track progress.
+  \item \textbf{Tissue Biopsy:} Taking a small biopsy sample confirms whether a bright spot is truly cancer or harmless inflammation and verifies whether targeted radionuclide therapy is a good fit.
+  \item \textbf{Modern Software and AI Tools:} Fast time-of-flight PET detectors, breathing-motion tracking, standardized activity measurements, and automated tumor-volume software make scans clearer and help personalize treatment doses.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+\begin{itemize}
+  \item \textbf{Versus CT:} Nuclear medicine spots cellular and metabolic changes much earlier than CT, while CT is faster in emergencies and shows much sharper fine anatomy.
+  \item \textbf{Versus MRI:} PET and SPECT can check the whole body's cell activity in one visit and guide targeted radionuclide therapies, while MRI gives unmatched local soft-tissue detail with zero ionizing radiation.
+  \item \textbf{Versus Ultrasound:} Ultrasound is portable, radiation-free, and great for quick first-line anatomy and blood-flow checks, while nuclear medicine uniquely measures whole-organ function like stomach emptying or split kidney function.
+  \item \textbf{PET Versus SPECT:} PET offers higher sensitivity, sharper detail (3--5~mm), and routine numeric activity scores, while SPECT is more widely available, costs less, and works with longer-lasting tracers like Tc-99m.
+\end{itemize}
+
+\section{Key References}
+\begin{itemize}
+  \item Boellaard R, Delgado-Bolton R, Oyen WJG, et al. FDG PET/CT: EANM procedure guidelines for tumour imaging: version 2.0. \textit{European Journal of Nuclear Medicine and Molecular Imaging}. 2015;42(2):328--354.
+  \item Society of Nuclear Medicine and Molecular Imaging (SNMMI). \textit{SNMMI Procedure Standards for Nuclear Medicine and Molecular Imaging}. Reston, VA: SNMMI, 2024.
+  \item International Commission on Radiological Protection (ICRP). \textit{Radiation Dose to Patients from Radiopharmaceuticals: A Compendium of Current Information Related to Frequently Used Substances (ICRP Publication 128)}. Thousand Oaks, CA: SAGE, 2015.
+  \item Cherry SR, Sorenson JA, Phelps ME. \textit{Physics in Nuclear Medicine}. 4th ed. Philadelphia, PA: Elsevier Saunders, 2012.
+  \item National Institute of Biomedical Imaging and Bioengineering (NIBIB). \textit{Nuclear Medicine}. National Institutes of Health (NIH). Available at: \url{https://www.nibib.nih.gov/science-education/science-topics/nuclear-medicine}.
+  \item Radiopaedia.org. \textit{Single photon emission computed tomography (SPECT)}. Radiopaedia. Available at: \url{https://radiopaedia.org/articles/single-photon-emission-computed-tomography}.
+  \item Radiopaedia.org. \textit{Positron emission tomography}. Radiopaedia. Available at: \url{https://radiopaedia.org/articles/positron-emission-tomography}.
+\end{itemize}
+
+\section{Further Reading}
+\begin{itemize}
+  \item Wikipedia contributors. \textit{Nuclear medicine}. Wikipedia, The Free Encyclopedia. Available at: \url{https://en.wikipedia.org/wiki/Nuclear_medicine}.
+\end{itemize}

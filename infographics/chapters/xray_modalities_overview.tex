@@ -1,0 +1,122 @@
+\infographicchapter{X-ray Imaging Modalities}{xray_cls.png}
+\label{ch:infographic-xray-imaging-overview}
+
+\section{Overview}
+
+First discovered by physicist Wilhelm Conrad R\"ontgen in 1895, X-ray imaging is the foundational family of medical scans that uses carefully controlled beams of X-ray energy to look inside the body. As the beam passes through you toward a digital sensor, different tissues block different amounts of X-rays depending on how dense and thick they are. Hard, dense structures like bones and metal implants block most X-rays and show up bright white. Air-filled lungs let almost all X-rays pass right through and look dark black, while muscles, organs, and fat appear in shades of gray.
+
+The X-ray family includes both quick 2D snapshots and detailed 3D cross-sectional scans. Standard plain X-rays are the fast first choice for broken bones, chest infections, and checking medical tubes. Mammograms and 3D breast tomosynthesis use gentle, low-energy X-rays tailored to spot early breast lumps and tiny calcium specks. Fluoroscopy and angiography act like live X-ray movies to guide blood-vessel procedures, swallowing studies, and bone repairs, often using contrast dye to make vessels or digestive organs stand out. Computed tomography (CT) spins an X-ray beam around your body to build sharp 3D slices for trauma, strokes, cancer, and heart care, DEXA scans use an ultra-low dose to measure bone strength for osteoporosis, and specialized slot-scanning X-ray systems capture full-length standing views of the spine and legs at very low dose.
+
+Doctors rely on X-ray scans every day because they are fast, widely available, and show crisp anatomical detail. Because X-rays use ionizing radiation, medical teams follow strict ALARA (``as low as reasonably achievable'') rules to keep doses as small as possible, with special care for children and pregnant patients.
+
+\section{Underlying Physical Principles}
+\begin{itemize}
+  \item \textbf{Creating a Controlled X-Ray Beam:} Inside a shielded X-ray tube, fast-moving electrons strike a spinning metal target (usually tungsten, or molybdenum/rhodium for mammograms), producing a focused beam of X-rays shaped tightly to the body part being checked.
+  \item \textbf{How Tissues Create the Picture:} As X-rays pass through the body, tissues reduce (attenuate) the beam based on their thickness, physical density, and atomic number. Radiologists describe structures that block most rays and look bright white---such as bone, metal, or contrast dye---as \emph{radiopaque}, while structures that let most rays pass through and look dark---such as air-filled lungs or fat---are called \emph{radiolucent}, creating five classic shades from black air to dark-gray fat, gray soft tissue and fluid, white bone, and brilliant white metal. Some rays scatter slightly, which anti-scatter grids and digital software filter out.
+  \item \textbf{Flat 2D Pictures vs. 3D CT Slices:} Plain X-rays, mammograms, and fluoroscopy capture flat 2D shadow pictures on digital panels. CT scanners spin the X-ray tube and detectors all the way around your body to gather views from every angle and build 3D slices.
+  \item \textbf{Dual-Energy and Photon-Counting Detail:} Advanced DEXA, dual-energy CT, and newer photon-counting CT measure X-rays at different energy levels to tell materials apart---such as separating bone mineral, kidney-stone types, gout crystals, and contrast dye.
+  \item \textbf{Standard Density Scale (Hounsfield Units):} CT software turns raw scan data into sharp 3D volumes using a standard brightness scale (Hounsfield units), where air is very negative, water is zero, and dense bone is high positive.
+\end{itemize}
+
+\section{Imaging Mechanism}
+\begin{enumerate}
+  \item \textbf{Positioning and Focusing the Beam:} You stand against a digital plate (for chest or limb X-rays and mammograms), lie on a motorized table gliding through a wide CT ring, or lie beneath a fluoroscopy arm. Built-in shutters narrow the beam strictly to the area being examined.
+  \item \textbf{Brief, Controlled Exposure:} Automatic exposure controls deliver just enough X-ray energy for your body size---capturing a split-second snapshot (plain X-ray or DEXA), a short angled sweep (3D mammogram), pulsed live video (fluoroscopy), or a fast 360-degree spin (CT).
+  \item \textbf{Digital Detection:} Digital flat panels or CT detector rings catch the X-rays that pass through your body and convert them immediately into digital signals.
+  \item \textbf{Cleaning Up and Building the Image:} Computers correct for scatter and metal glare, subtract background structures (in blood-vessel angiography), or reconstruct crisp 3D CT slices using modern low-dose and AI software.
+  \item \textbf{Viewing and Saving:} Radiologists view the images using tailored contrast settings (such as bone, lung, soft-tissue, or 3D blood-vessel views) on high-definition monitors and save them to your medical record.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Controlled X-ray beams pass through the body and are blocked differently by bone, soft tissue, fat, air, or contrast dye \\
+Energy / Signal Source & X-ray tubes paired with digital flat panels, CT detector rings, or fluoroscopy screens \\
+Typical Frequency / Energy & 25--35~kVp (mammography), 60--120~kVp (plain X-ray/fluoroscopy), 80--140~kVp (CT); typical dose ranges from 0.001--0.1~mSv (DEXA/chest X-ray) to 2--15~mSv (CT) \\
+Spatial Resolution & About 0.05--0.2~mm (mammography and plain X-ray); 0.25--0.6~mm in 3D (modern CT) \\
+Typical Scan Duration & Seconds of actual X-ray exposure (5--20~minutes total visit for X-ray, mammogram, DEXA, or CT); 30--90~minutes for interventional angiography \\
+Contrast Agent & None for routine X-rays, mammograms, DEXA, or non-contrast CT; optional IV or oral iodine dye or oral barium for CT and fluoroscopy \\
+Ionizing Radiation & Yes (external X-ray beam managed strictly under ALARA safety rules) \\
+\bottomrule
+\end{tabularx}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+\begin{itemize}
+  \item \textbf{Broken Bones, Injuries, and Chest Checks:} Plain X-rays and CT scans are the fast first-line tools for fractures, dislocated joints, osteoarthritis, spine curvature (such as scoliosis), pneumonia, collapsed lungs, swallowed or lodged foreign objects, medical line checks, and major trauma.
+  \item \textbf{Stroke and Blood-Vessel Emergencies:} A quick non-contrast head CT immediately checks for brain bleeding in stroke or head injury, while CT angiography (CTA) and catheter angiography (DSA) spot blocked brain arteries, aneurysms, lung clots, and aortic tears.
+  \item \textbf{Breast Cancer Screening and Diagnosis:} Digital mammography and 3D breast tomosynthesis are the primary proven screening tests to spot early breast lumps and tiny calcium specks (microcalcifications).
+  \item \textbf{Cancer Staging and Belly Emergencies:} Contrast CT of the chest, abdomen, and pelvis stages cancers, tracks treatment, and quickly diagnoses appendicitis, bowel blockages, and kidney stones.
+  \item \textbf{Live Procedure Guidance:} Fluoroscopy and angiography guide heart stents, stroke clot removal, valve replacements, fracture repairs, and swallowing studies in real time.
+\end{itemize}
+
+\subsection{Secondary Usages}
+\begin{itemize}
+  \item \textbf{Bone Density Screening (DEXA):} Dual-energy X-ray absorptiometry (DEXA) is the clinical standard for checking osteoporosis, estimating fracture risk, and tracking bone-strengthening treatments.
+  \item \textbf{Material-Specific Spectral CT:} Dual-energy and photon-counting CT help identify kidney-stone makeup, spot gout crystals in joints, and map blood flow in the lungs or heart.
+  \item \textbf{CT-Guided Biopsies and Treatments:} Live CT slices guide precise needle biopsies, abscess drainages, tumor heat treatments, and targeted spine pain injections.
+  \item \textbf{Radiation Therapy Planning and Dental Scans:} Specialized CT scanners map exact body geometry for cancer radiation therapy, while dental X-rays and cone-beam CT guide fillings, root canals, and dental implants.
+\end{itemize}
+
+\section{Advantages}
+\begin{itemize}
+  \item \textbf{Fast and Ready for Emergencies:} Plain X-rays and CT scans capture life-saving images in seconds, making them indispensable for severe trauma, stroke, and unstable patients.
+  \item \textbf{Sharp Detail for Bone, Lungs, and Calcium:} X-rays clearly show hairline fractures, lung tissue, contrast-filled blood vessels, and tiny breast calcifications.
+  \item \textbf{Available Almost Everywhere:} X-ray and CT machines are standard across hospitals and clinics worldwide, with plain X-rays being especially quick and affordable.
+  \item \textbf{Live Guidance for Minimally Invasive Procedures:} Fluoroscopy and angiography let specialists guide catheters, stents, and surgical screws safely without large open incisions.
+  \item \textbf{Full 3D and Quantitative Views:} Modern CT creates crisp 3D views from any angle, while DEXA provides standardized bone-strength scores.
+\end{itemize}
+
+\section{Disadvantages}
+\begin{itemize}
+  \item \textbf{Ionizing Radiation Exposure:} X-rays carry a small long-term radiation risk---and very long fluoroscopy procedures can occasionally cause skin redness---so every scan must be justified under ALARA rules, especially in children and pregnancy.
+  \item \textbf{Less Soft-Tissue Detail Than MRI:} Without contrast dye, X-rays and CT show less fine soft-tissue detail than MRI for the brain, spinal cord, ligaments, cartilage, and pelvic organs.
+  \item \textbf{Contrast Dye Side Effects:} IV iodine contrast used in CT and angiography carries small risks of allergic-like reactions, temporary kidney strain in severe kidney disease, or rare thyroid flares.
+  \item \textbf{Overlapping Shadows and Metal Glare:} Flat 2D X-rays stack structures on top of each other, while CT can show streaks from metal implants, dental fillings, or patient movement.
+  \item \textbf{Shows Structure Rather Than Cell Activity:} Standard X-rays show body shape and density rather than direct cell metabolism or chemical activity.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+\begin{itemize}
+  \item \textbf{Keeping Radiation Low (ALARA):} Teams confirm every scan is needed, tailor doses to body size (using child-sized Image Gently and adult Image Wisely protocols), narrow the beam tightly, and audit doses regularly. Because children are more sensitive to radiation and have more years of life ahead, parents are encouraged to ask whether machine settings have been adjusted for a child's size.
+  \item \textbf{Careful Fluoroscopy Monitoring:} During live X-ray procedures, doctors use brief pulsed beams, freeze-frame holds, and dose tracking, arranging a quick skin check 2 to 4~weeks later if a long complex procedure ever reaches high skin-dose thresholds.
+  \item \textbf{Pregnancy Checks and Updated Shielding Rules:} Staff check for possible pregnancy before belly, pelvic, or higher-dose exams; when imaging areas away from the abdomen or pelvis (such as a limb or tooth), diagnostic X-rays pose no known risk to a developing baby. Following updated ACR and AAPM safety guidance, routine lead aprons over the belly or pelvis are no longer recommended because they can interfere with modern automatic dose controls.
+  \item \textbf{Contrast Dye Safety:} Staff screen for prior dye reactions, check kidney function (eGFR) in at-risk patients, give clear instructions about metformin diabetes pills if needed, keep allergy treatments ready, and avoid barium if a bowel tear is suspected.
+  \item \textbf{Equipment Checks and Staff Protection:} Medical physicists test X-ray and CT machines regularly to ensure accurate dosing, and staff wear lead aprons and radiation badges during fluoroscopy or bedside exams.
+\end{itemize}
+
+\section{Augmenting Methods}
+\begin{itemize}
+  \item \textbf{MRI:} Radiation-free MRI pairs with X-ray and CT to give unmatched soft-tissue detail for the brain, spine, bone marrow, ligaments, cartilage, and pelvis.
+  \item \textbf{Targeted Ultrasound:} Bedside ultrasound helps evaluate dense breasts after mammography, checks gallbladders and kidneys without radiation, and guides fluid drainages.
+  \item \textbf{Nuclear Medicine (PET/CT and Bone Scans):} PET/CT and SPECT/CT add cell-activity and cancer-metabolism insight to sharp CT anatomy.
+  \item \textbf{Blood Tests and Guided Biopsies:} Labs like D-dimer, troponin, and blood counts guide CT decisions, while mammogram- or CT-guided core biopsies provide definitive lab answers.
+  \item \textbf{Spectral CT and AI Triage:} Dual-energy and photon-counting CT, low-dose AI reconstruction, and FDA-cleared AI alert tools help radiologists spot brain bleeds, lung clots, collapsed lungs, and breast changes faster and more accurately.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+\begin{itemize}
+  \item \textbf{Versus MRI:} X-ray and CT are much faster, cost less, excel in emergencies, and show bone, lungs, fresh bleeding, and calcium better, while MRI gives unmatched soft-tissue detail with zero ionizing radiation.
+  \item \textbf{Versus Ultrasound:} X-ray and CT give broad views unaffected by bone or bowel gas and do not depend on operator skill, while ultrasound uses no radiation and is the top first choice for pregnancy, children, gallbladders, and bedside checks.
+  \item \textbf{Versus Nuclear Medicine:} CT shows crisp sub-millimeter anatomy in seconds, while nuclear medicine reveals early cellular activity (making combined PET/CT especially powerful).
+  \item \textbf{Plain X-Ray Versus CT:} Plain X-rays use an ultra-low dose at minimal cost for initial bone or chest checks, while CT removes overlapping shadows to give full 3D clarity for trauma, blood vessels, and cancer care.
+\end{itemize}
+
+\section{Key References}
+\begin{itemize}
+  \item American College of Radiology (ACR) Committee on Drugs and Contrast Media. \textit{ACR Manual on Contrast Media}. Reston, VA: American College of Radiology, 2024.
+  \item International Commission on Radiological Protection (ICRP). \textit{Managing Patient Dose in Multi-Detector Computed Tomography (MDCT) (ICRP Publication 102)}. Oxford: Elsevier, 2007.
+  \item American Association of Physicists in Medicine (AAPM). \textit{AAPM Position Statement on the Use of Patient Gonadal and Fetal Shielding}. Alexandria, VA: AAPM, 2019.
+  \item Bushberg JT, Seibert JA, Leidholdt EM, Boone JM. \textit{The Essential Physics of Medical Imaging}. 4th ed. Philadelphia, PA: Wolters Kluwer, 2020.
+  \item National Institute of Biomedical Imaging and Bioengineering (NIBIB). \textit{Medical X-rays}. National Institutes of Health (NIH). Available at: \url{https://www.nibib.nih.gov/science-education/science-topics/medical-x-rays}.
+  \item Radiopaedia.org. \textit{General radiography}. Radiopaedia. Available at: \url{https://radiopaedia.org/articles/general-radiography}.
+\end{itemize}
+
+\section{Further Reading}
+\begin{itemize}
+  \item Wikipedia contributors. \textit{Radiography}. Wikipedia, The Free Encyclopedia. Available at: \url{https://en.wikipedia.org/wiki/Radiography}.
+\end{itemize}
