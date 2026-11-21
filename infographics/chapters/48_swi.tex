@@ -1,2 +1,216 @@
 \infographicchapter{Susceptibility-Weighted Imaging}{swi.png}
 \label{ch:infographic-swi}
+
+\section{Overview}
+
+Susceptibility-Weighted Imaging (SWI) is a highly detailed, 3D MRI technique that is exceptionally good at spotting tiny traces of blood, iron, calcium, and delicate brain veins. Regular MRI scans mostly look at the strength of returning radio signals and throw away subtle timing details (called phase data). SWI keeps both sets of information and combines them, using tiny shifts in the local magnetic field caused by iron-rich blood products or calcium deposits to make these features stand out sharply. Doctors also merge thin slices together to create clear, branch-like maps of the brain's smallest veins.
+
+SWI is widely used after head trauma to uncover tiny shear-injury microbleeds that regular CT and MRI scans often miss. In stroke care, it helps spot fresh blood clots inside arteries, bleeding inside a stroke, and stressed veins around areas with low blood flow. It also helps tell apart different causes of tiny brain bleeds (such as high blood pressure versus cerebral amyloid angiopathy), monitor patients taking newer Alzheimer's medications for microbleeds, evaluate hidden blood vessel tangles (cavernomas), track iron buildup in conditions like Parkinson's disease, and inspect bleeding or calcium inside brain tumors.
+
+Its biggest strengths are unmatched sensitivity to tiny spots of blood and iron, clear maps of brain veins without needing any dye injection, and the ability to help tell blood apart from harmless calcium. Limitations include a dark ``blooming'' effect that makes tiny spots look slightly bigger than they really are, dark distortions near air-filled sinuses and dental metal, sensitivity to head movement, and occasional look-alikes such as small veins seen head-on. Standard non-contrast MRI safety rules apply, with zero X-ray radiation.
+
+\section{Underlying Physical Principles}
+
+\begin{itemize}
+    \item \textbf{High-Resolution 3D Gradient-Echo MRI:} SWI uses a finely tuned 3D MRI sequence with a longer listening window so even tiny disturbances in the magnetic field have time to show up clearly, while built-in motion compensation keeps flowing blood from blurring the picture.
+    \item \textbf{How Blood and Calcium Tug on the Magnetic Field:} Different substances react differently inside an MRI magnet. Iron-rich blood products (such as deoxyhemoglobin, hemosiderin, and ferritin) slightly pull magnetic field lines inward, while calcium gently pushes them outward. These opposite magnetic tugs shift the timing (phase) of nearby radio signals in opposite directions.
+    \item \textbf{Keeping Both Strength and Timing Data:} Unlike standard MRI scans that discard timing data, SWI saves both the standard brightness image and the timing (phase) image. A spatial filter removes broad background distortions (like those from nearby air spaces) so only tiny local tissue shifts remain.
+    \item \textbf{Boosting Contrast With a Phase Mask:} The filtered timing data is turned into a digital contrast mask and multiplied into the brightness image several times. This makes tiny veins, microbleeds, and iron deposits stand out starkly dark against normal brain tissue.
+    \item \textbf{Building Vein Maps and Checking Phase:} Thin groups of slices are blended using a technique called minimum intensity projection (minIP) to trace continuous dark blood vessels and tiny bleeds, while doctors inspect the filtered phase map alongside the main image to tell blood apart from calcium.
+\end{itemize}
+
+\section{Imaging Mechanism}
+
+\begin{enumerate}
+    \item \textbf{Head Positioning and Field Tuning:} You lie on your back with soft cushions stabilizing your head inside a multi-channel brain coil at the center of the MRI magnet. Automated tuning smooths out background magnetic unevenness before scanning begins.
+    \item \textbf{3D High-Resolution Scanning:} The scanner runs a finely detailed, flow-compensated 3D gradient-echo sequence across your entire brain, collecting thin overlapping slices over 3 to 6 minutes.
+    \item \textbf{Capturing Full Signal Data:} Receiver coils pick up the faint returning radio waves and digitize both their strength (amplitude) and timing (phase) into a complete 3D dataset.
+    \item \textbf{Filtering and Blending the Images:} The computer builds separate brightness and timing volumes, filters out broad background magnetic shifts, creates a contrast mask, and blends it repeatedly into the brightness images to generate the final SWI slices.
+    \item \textbf{Creating Synchronized Views:} Post-processing creates thin-slab vein maps (minIP) and presents four linked image sets---standard magnitude, filtered phase, native SWI, and vein-map minIP---on the radiologist's workstation for careful review.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & High-resolution 3D gradient-echo MRI blending signal brightness with filtered magnetic-field timing (phase) maps \\
+Energy / Signal Source & Strong static magnetic field, radio waves, and gradient-echo readout \\
+Typical Frequency / Energy & 1.5 T (64 MHz radio waves) or 3.0 T (128 MHz radio waves; even stronger blood/iron sensitivity at 3.0 T) \\
+Spatial Resolution & Submillimeter detail (about 0.5--1.0 mm across; 1.0--2.0 mm slice thickness) \\
+Typical Scan Duration & 3--6 minutes for the 3D SWI sequence (20--45 minutes for a full brain MRI) \\
+Contrast Agent & None needed \\
+Ionizing Radiation & None (0 mSv) \\
+\bottomrule
+\end{tabularx}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+
+\begin{itemize}
+    \item \textbf{Head Trauma and Concussion Injuries:} Spotting tiny shearing microbleeds (diffuse axonal injury) deep in the brain that CT scans and routine MRI often cannot see.
+    \item \textbf{Brain Microbleeds and Alzheimer's Therapy Safety:} Telling apart microbleeds caused by fragile surface vessels (cerebral amyloid angiopathy) from those caused by high blood pressure deep in the brain, and monitoring for microbleeds (ARIA-H) during anti-amyloid Alzheimer's treatments.
+    \item \textbf{Hidden Blood Vessel Malformations:} Finding slow-flowing vessel clusters---such as cavernous malformations (cavernomas), developmental venous anomalies, and capillary telangiectasias---much more reliably than standard MRI.
+    \item \textbf{Acute Stroke and Vein Clots:} Detecting fresh clots inside brain arteries (susceptibility vessel sign), bleeding inside a stroke, clots in brain veins, and stressed veins surrounding threatened brain tissue.
+    \item \textbf{Separating Blood From Calcium:} Using the filtered phase map alongside the main image to tell iron-rich blood apart from harmless calcium deposits in brain tissue or tumors.
+\end{itemize}
+
+\subsection{Secondary Usages}
+
+\begin{itemize}
+    \item \textbf{Brain Tumor Evaluation:} Spotting tiny bleeds and abnormal new blood vessels inside tumors to help judge tumor grade and tell different tumor types apart.
+    \item \textbf{Iron Buildup in Movement Disorders:} Checking abnormal iron deposits in deep brain regions in Parkinson's disease (including loss of the normal ``swallow-tail'' pattern in the substantia nigra) and rare iron-accumulation disorders.
+    \item \textbf{Brain Infections and Multiple Sclerosis:} Finding a tiny central vein running through multiple sclerosis plaques (the central vein sign), small bleeds in viral or fungal brain infections, and classic rim patterns in brain abscesses.
+    \item \textbf{Children and Rare Syndromes:} Checking abnormal surface vessels and calcium deposits in Sturge--Weber syndrome and spotting newborn brain bleeds without any X-ray radiation.
+\end{itemize}
+
+\section{Advantages}
+
+\begin{itemize}
+    \item \textbf{Unmatched Sensitivity to Blood and Iron:} Detects tiny specks of old or new blood, hemosiderin, and iron far more sensitively than CT or standard T2*-weighted MRI.
+    \item \textbf{Clear Vein Maps Without Dye:} Shows tiny brain veins and slow-flowing vessel malformations in sharp detail without intravenous gadolinium dye or ionizing radiation.
+    \item \textbf{Tells Blood Apart From Calcium:} Filtered phase maps use opposing magnetic effects to help distinguish iron-rich bleeding from calcium deposits.
+    \item \textbf{Improves Diagnosis of Subtle Conditions:} Boosts diagnostic confidence in head trauma, cerebral amyloid angiopathy, Alzheimer's therapy monitoring, acute stroke clots, and multiple sclerosis.
+\end{itemize}
+
+\section{Disadvantages}
+
+\begin{itemize}
+    \item \textbf{Dark ``Blooming'' Makes Spots Look Bigger:} Magnetic disturbances spread slightly beyond a tiny bleed, metal speck, or calcium deposit, making it look larger than its true size and hiding tissue right next to it.
+    \item \textbf{Dark Shadows Near Sinuses and Metal:} Air-filled sinuses, ear bones, the skull base, dental braces, and surgical clips create heavy dark distortions that limit views of the lower front and side parts of the brain.
+    \item \textbf{Sensitive to Head Movement:} Because this detailed 3D scan takes 3--6 minutes, moving your head can blur both the main pictures and the phase maps.
+    \item \textbf{Look-Alikes and Scanner Differences:} Tiny surface veins seen head-on can look like microbleeds on a single slice. Also, different MRI brands display phase colors in opposite ways, so radiologists must check the scanner's local convention when telling blood from calcium.
+    \item \textbf{Standard MRI Restrictions:} Cannot be performed in people with non-MRI-conditional metal implants, certain heart devices, metal eye fragments, or severe unmanageable claustrophobia.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+
+\begin{itemize}
+    \item \textbf{Non-MRI-Safe Metal Implants:} Older magnetic aneurysm clips, non-conditional cardiac pacemakers or defibrillators, cochlear implants, neurostimulators, and metal fragments in the eye strictly prevent MRI scanning.
+\end{itemize}
+
+\subsection{Relative}
+
+\begin{itemize}
+    \item \textbf{Claustrophobia or Trouble Staying Still:} Severe anxiety in enclosed spaces, confusion, or involuntary head movement degrades 3D image quality unless managed with coaching or calming medication.
+    \item \textbf{Nearby Metal and Early Pregnancy:} Heavy dental braces or metal brain clips can create large dark blind spots. Elective non-urgent MRI in early pregnancy follows ACR medical-necessity guidance.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+
+\begin{itemize}
+    \item \textbf{Thorough Metal and Eye-Injury Screening:} Staff complete strict ACR MRI safety checks before you enter the magnet room, paying special attention to past metalworking eye injuries, vascular clips, heart devices, and stimulators. Quick eye X-rays are done first if metal in the eye is suspected.
+    \item \textbf{Preventing Skin Warming:} Technologists stay within strict radio-wave heating limits, have you remove foil-backed patches and metallic clothing, place foam padding between your body and the scanner wall, and keep coil cables straight.
+    \item \textbf{Hearing Protection and Constant Monitoring:} You wear fitted earplugs or headphones throughout the scan, test your call button beforehand, and stay in constant visual and intercom contact with staff.
+    \item \textbf{Safe for Children and Kidney Disease:} Because SWI uses no X-ray radiation and no intravenous dye, it is safe for children and people with kidney problems. During pregnancy, non-contrast MRI is performed only when medically needed.
+    \item \textbf{Careful Reading for Treatment Safety:} Radiologists verify their scanner's phase display convention and check all image sets together so harmless calcium or normal veins are never mistaken for brain bleeds when guiding blood thinners or Alzheimer's therapies.
+\end{itemize}
+
+\section{Prerequisite Tests}
+
+\begin{itemize}
+    \item \textbf{No Routine Blood Work Needed:} Standard SWI needs no contrast dye and no radiation, so no routine lab work or kidney tests are needed unless intravenous dye is ordered for another part of the MRI.
+    \item \textbf{MRI Safety and Metal Screening:} Everyone completes a detailed implant and metal-exposure questionnaire beforehand, with eye X-rays if there is any chance of metal fragments near the eyes.
+    \item \textbf{Prior Brain Scans:} Reviewing an initial head CT (often done first in emergency trauma or stroke) or earlier baseline MRI helps put microbleeds, calcium, or Alzheimer's therapy monitoring into context.
+    \item \textbf{Medication and History Review:} Sharing your blood-thinner medicines, head injury history, and any anti-amyloid therapy schedule helps your doctor interpret tiny bleeding spots safely.
+\end{itemize}
+
+\section{Preparing for the Scan}
+
+\begin{itemize}
+    \item \textbf{Remove Metal and Metallic Makeup:} Change into a metal-free gown and remove jewelry, watches, hairpins, hearing aids, removable dentures, metallic eye makeup, and foil-backed skin patches before entering the magnet room to stay safe and prevent dark artifacts.
+    \item \textbf{Bring Implant Information:} Bring ID cards for any surgical implants, clips, heart devices, or stimulators, and tell staff ahead of time about any past shrapnel or metalworking eye injury.
+    \item \textbf{Normal Meals and Medicines:} Standard non-contrast SWI requires no fasting unless sedation is planned. Take your usual daily medications---including blood thinners---unless your doctor tells you otherwise.
+    \item \textbf{Comfort and Anxiety Planning:} Use the restroom right before the scan, and let the team know ahead of time if tight spaces or lying flat bothers you so they can arrange cushions, coaching, or prescribed calming medicine.
+    \item \textbf{Ear Protection and Staying Still:} Put in the provided earplugs or headphones and keep your head completely still inside the padded coil, as even slight movement blurs the detailed 3D pictures.
+\end{itemize}
+
+\section{During Scan}
+
+\begin{itemize}
+    \item \textbf{Comfortable Support and Stillness:} You lie on your back with your head resting snugly inside a padded frame and cushions under your knees if helpful. Staying as still as possible keeps fine veins and tiny spots sharp.
+    \item \textbf{Easy, Quiet Breathing:} Breathe smoothly and naturally, avoiding sudden head nods, heavy swallowing, or talking while the scanner is humming or knocking.
+    \item \textbf{Expected Sounds and Feelings:} You will hear normal MRI tapping, buzzing, and rhythmic knocking---softened by your earplugs or headphones. Standard non-contrast SWI causes no pain, radiation, or injection sensations.
+    \item \textbf{Call Button and Intercom:} Hold the squeeze-ball call button throughout the exam and press it right away if you feel claustrophobic, too warm, short of breath, or unable to stay still.
+    \item \textbf{Scan Time and Pacing:} The 3D SWI sequence itself runs smoothly for 3--6 minutes inside a 20--45 minute routine brain MRI, with short quiet pauses between different picture sets.
+\end{itemize}
+
+\section{Normal Appearance}
+
+\begin{itemize}
+    \item \textbf{Balanced Brain Veins:} Thin, smooth, matching dark lines representing normal surface and deep brain veins appear clearly on the vein-map (minIP) views without swelling or lopsided prominence.
+    \item \textbf{Clean Brain Tissue:} Brain tissue looks smooth and even in shade with no tiny dark ``blooming'' bleeding spots or dark lines tracing the brain's outer surface.
+    \item \textbf{Normal Age-Related Minerals:} Mild, matching dark shading from normal iron in deep brain centers (including the healthy bright ``swallow-tail'' pattern in the substantia nigra) and normal harmless calcium in the pineal gland and choroid plexus.
+    \item \textbf{Clear Arteries:} Major brain arteries look normal without thick dark clot signals inside them.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+
+\begin{itemize}
+    \item \textbf{Tiny Dark ``Blooming'' Microbleeds:} Small, sharp round black dots (often 2--10 mm across due to blooming) represent tiny old or new bleeds. Dots near the brain's outer lobes (sometimes with dark surface staining) point to cerebral amyloid angiopathy or ARIA-H; dots deep in the brain point to high blood pressure; and dots at tissue junctions point to head-trauma shearing injury.
+    \item \textbf{Clot Sign and Stressed Veins in Stroke:} A thick dark blooming segment inside a major artery flags a fresh blood clot (susceptibility vessel sign), while lopsided, enlarged dark veins on one side show oxygen-starved tissue around a stroke.
+    \item \textbf{Blood Versus Calcium on Phase Maps:} Both blood and calcium look dark on the main SWI picture, but they shift in opposite directions on the filtered phase map, helping radiologists tell them apart.
+    \item \textbf{Classic Vessel, MS, and Parkinson's Patterns:} A ``popcorn-like'' spot ringed in dark iron points to a cavernoma; a starburst cluster of veins points to a harmless developmental venous anomaly; a tiny vein passing through a white-matter spot supports multiple sclerosis; and loss of the bright ``swallow-tail'' sign in the brainstem suggests Parkinson's disease.
+    \item \textbf{Common Look-Alikes:} Small veins seen end-on can mimic microbleeds on a single slice (resolved by scrolling through neighboring slices to see the vessel continue), and dark shadows near sinuses or dental metal can hide or mimic bleeds in the lower brain.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+
+\begin{itemize}
+    \item \textbf{Blind Spots Near Sinuses and Metal:} Heavy magnetic shadows near the sinuses, skull base, dental braces, or surgical clips can obscure the lower front and side brain areas.
+    \item \textbf{Blooming Size and Head Movement:} Dark blooming makes tiny bleeds or calcium specks look bigger than their real size, and head motion during the 3--6 minute scan blurs fine details.
+    \item \textbf{Look-Alike Spots:} End-on veins, normal vessel flow voids, and small calcium specks can look very similar to microbleeds on a single view.
+    \item \textbf{Scanner Phase Conventions:} Because different MRI manufacturers display phase polarity differently, radiologists must double-check their scanner's convention before calling a spot blood versus calcium.
+    \item \textbf{How Doctors Clarify Results:} Radiologists scroll through neighboring slices and compare all four image sets together to trace vessels. When doubt remains, they may compare with a non-contrast CT scan (the best test to confirm calcium), add MR angiography or contrast MRI, or repeat a motion-blurred scan when important blood-thinner or Alzheimer's treatment decisions depend on the count.
+\end{itemize}
+
+\section{Augmenting Methods}
+
+\begin{itemize}
+    \item \textbf{Non-Contrast Head CT:} The fastest, clearest test to confirm calcium deposits and measure larger acute brain bleeds without blooming exaggeration.
+    \item \textbf{Quantitative Susceptibility Mapping (QSM):} Advanced computer processing of SWI data that removes blooming distortion, directly measures iron levels, and cleanly separates calcium from blood.
+    \item \textbf{MR Angiography (MRA) and Venography (MRV):} Specialized blood-vessel MRI scans that map blocked arteries, fast-flowing vessel tangles, and clots in large brain veins.
+    \item \textbf{Standard Structural and Contrast MRI:} Pairing SWI with routine T1, T2, FLAIR, diffusion, and contrast MRI puts microbleeds in full context and helps distinguish tumor bleeding from infection or amyloid angiopathy.
+    \item \textbf{Biomarkers and AI Counting Tools:} Combining SWI with Alzheimer's biomarkers (amyloid PET or spinal fluid tests) and AI microbleed-counting software helps standardize safety tracking across repeat visits.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+
+\begin{itemize}
+    \item \textbf{Versus Standard Gradient-Echo (T2*-GRE) MRI:} Routine T2*-GRE is quicker and less sensitive to motion, while 3D SWI adds phase data to be 3 to 6 times more sensitive for tiny microbleeds, hidden cavernomas, and fine brain veins.
+    \item \textbf{Versus Non-Contrast Head CT:} CT is the rapid emergency choice for larger acute bleeds and confirming calcium, while SWI catches microscopic concussion bleeds, amyloid angiopathy, and ARIA-H that CT misses---with zero radiation.
+    \item \textbf{Versus Quantitative Susceptibility Mapping (QSM):} QSM builds on SWI to remove blooming and measure exact iron and calcium amounts, though standard SWI is currently more widely available in everyday clinics.
+\end{itemize}
+
+\section{Follow-up Steps}
+
+\begin{itemize}
+    \item \textbf{Right After the Scan:} Standard non-contrast SWI requires no recovery time or restrictions unless you received calming medication or contrast dye for other MRI sequences.
+    \item \textbf{Guiding Blood Thinners and Alzheimer's Care:} Any microbleeds, surface blood staining, or stroke bleeding are shared promptly with neurology or stroke teams to guide safe use of blood thinners, clot-busters, or anti-amyloid Alzheimer's therapies.
+    \item \textbf{Follow-Up Scans When Needed:} Unclear spots may be checked with a quick non-contrast CT (to confirm calcium), blood-vessel MRI (MRA/MRV), or contrast MRI if a tumor or infection is suspected.
+    \item \textbf{Scheduled Monitoring:} Follow-up SWI scans are timed to your care plan---such as routine safety checks during anti-amyloid therapy or periodic checkups for cavernomas or healing brain bleeds.
+\end{itemize}
+
+\section{What You Should Know About Susceptibility-Weighted Imaging?}
+
+\begin{itemize}
+    \item \textbf{Painless, Needle-Free Brain MRI:} Standard SWI needs no dye injection. You simply lie still on a padded MRI table with head cushions and ear protection while the machine makes rhythmic tapping and humming sounds.
+    \item \textbf{Zero Radiation and Kidney-Safe:} SWI uses safe magnetic fields and radio waves with no X-rays and no contrast dye, making it safe for children, people with kidney disease, and repeat safety checkups.
+    \item \textbf{Short Sequence and Clear Turnaround:} The SWI part takes 3--6 minutes inside a 20--45 minute brain MRI. Emergency scans are read right away, while routine outpatient results usually arrive in 1--3 business days.
+    \item \textbf{Why Your Doctor Orders It:} SWI is extraordinarily sensitive to tiny specks of old or new blood, delicate brain veins, iron, and calcium---helping spot hidden concussion microbleeds, evaluate strokes or vessel tangles, and safely monitor newer Alzheimer's medications.
+    \item \textbf{Most Important Thing to Tell Your Care Team:} Always share any metal or electronic implants (pacemakers, clips, cochlear implants, or past metal eye injuries), claustrophobia, and any blood thinners or anti-amyloid treatments you take.
+\end{itemize}
+
+\section{Key References}
+
+\begin{itemize}
+    \item Haacke EM, Mittal S, Wu Z, Neelavalli J, Cheng YC. Susceptibility-weighted imaging: technical aspects and clinical applications, part 1. \textit{American Journal of Neuroradiology (AJNR)}. 2009;30(1):19--30.
+    \item Mittal S, Wu Z, Neelavalli J, Haacke EM. Susceptibility-weighted imaging: technical aspects and clinical applications, part 2. \textit{American Journal of Neuroradiology (AJNR)}. 2009;30(2):232--252.
+    \item American College of Radiology (ACR). \textit{ACR Manual on MR Safety} and \textit{ACR Appropriateness Criteria for Head Trauma and Cerebrovascular Disease}.
+    \item Cogswell PM, Barakos JA, Barkhof F, et al. Amyloid-related imaging abnormalities with emerging Alzheimer disease therapeutics: detection and reporting recommendations for clinical practice. \textit{AJNR}. 2022;43(9):E19--E35.
+\end{itemize}

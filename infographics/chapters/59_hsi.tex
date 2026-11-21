@@ -1,2 +1,191 @@
 \infographicchapter{Hyperspectral Imaging (HSI)}{hsi.png}
 \label{ch:infographic-hsi}
+
+\section{Overview}
+
+Hyperspectral imaging (HSI) is an emerging, touch-free, radiation-free camera technology that measures how light bounces off body tissues. A regular camera captures only three broad colors (red, green, and blue). An HSI camera goes much further, recording dozens to hundreds of narrow bands of visible and near-infrared light at every single pixel. This creates a rich three-dimensional color dataset---often called a ``hypercube''---that reveals natural substances inside the tissue, such as oxygen-rich blood (oxyhemoglobin), oxygen-poor blood (deoxyhemoglobin), water, and skin pigment, without needing any dye injections.
+
+Using this light data, HSI builds instant color-coded maps of tissue oxygen levels, blood supply, hemoglobin content, and tissue water. Although HSI is still an emerging, specialized technology rather than a standard tool in every hospital, approved open-surgery and keyhole (laparoscopic) HSI cameras are increasingly used at specialized centers. Surgeons use them during bowel, stomach, liver, and organ-transplant operations to check whether reconnected tissue has a healthy blood supply and lower the risk of leaks. Researchers are also testing HSI to monitor healing in skin flaps, diabetic foot ulcers, chronic wounds, and to help spot cancer edges during tumor surgery.
+
+The main benefits of HSI are dye-free, touch-free, real-time blood-flow maps with zero radiation and almost no slowdown during surgery or clinic visits. Its main limits are very shallow depth (light only reaches a few millimeters beneath the surface), sensitivity to room lights, glare from wet tissue, surface blood, and movement, along with complex data and cutoff values that are not yet fully standardized across all machines. Because it uses only gentle visible and near-infrared light, HSI poses virtually no direct safety risk to patients.
+
+\section{Underlying Physical Principles}
+\begin{itemize}
+    \item \textbf{Gentle Visible and Near-Infrared Light:} A calibrated halogen or LED lamp shines harmless visible and near-infrared light onto the skin or surgical area from a short distance. The light travels about 1 to 6 millimeters into the surface tissue before scattering back to the camera.
+    \item \textbf{Natural Color Signatures of Tissue:} Different natural ingredients in tissue absorb specific shades of light. Oxygen-rich blood, oxygen-poor blood, water, and skin pigment each leave a unique ``light fingerprint'' in the reflected beam.
+    \item \textbf{Capturing Hundreds of Color Bands:} Instead of three basic colors, the HSI camera splits the returning light into dozens to hundreds of narrow color slices, recording a full light spectrum at every tiny pixel of the picture.
+    \item \textbf{Turning Light Into Health Maps:} After calibrating against bright white and dark reference frames, computer software translates those light fingerprints into easy-to-read color maps showing tissue oxygen saturation, deeper near-infrared blood flow, hemoglobin levels, and water buildup.
+\end{itemize}
+
+\section{Imaging Mechanism}
+\begin{enumerate}
+    \item \textbf{Calibration and Positioning:} After warming up the light and running quick white and dark reference checks, the clinician positions the touch-free HSI camera (or a sterile-covered keyhole camera) straight above the tissue, about 30 to 50 centimeters away, while dimming competing room lights.
+    \item \textbf{Shining Light and Scanning:} Built-in lamps light up the area evenly across visible and near-infrared wavelengths while the camera scans the scene in about 5 to 15 seconds.
+    \item \textbf{Recording the Color Cube:} Reflected light passes through lenses and color-splitting optics onto a high-sensitivity digital sensor, saving dozens to hundreds of narrow color bands for every pixel.
+    \item \textbf{Computing Oxygen and Blood-Flow Maps:} On-board software adjusts for reference lighting, cleans up background noise, and calculates pixel-by-pixel oxygen, blood-flow, hemoglobin, and water levels.
+    \item \textbf{Instant Color Display:} Within seconds, a standard color photo appears side by side with easy-to-read false-color oxygen and blood-flow maps on the operating room or bedside screen.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Touch-free optical light measurement across many narrow color bands to map natural tissue oxygen, blood, and water \\
+Energy / Signal Source & Gentle halogen or LED visible and near-infrared light \\
+Typical Frequency / Energy & 500--1000 nm light wavelengths across dozens to hundreds of narrow bands (about 5 nm wide) \\
+Spatial Resolution & Very fine surface detail (0.1--0.5 mm pixels) with shallow depth (1--6 mm below the surface) \\
+Typical Scan Duration & 5--15 seconds per picture; 5--15 minutes for a full clinic or surgical check \\
+Contrast Agent & None required (completely dye-free) \\
+Ionizing Radiation & None (0 mSv) \\
+\bottomrule
+\end{tabularx}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+\begin{itemize}
+    \item \textbf{Checking Bowel Blood Supply During Surgery:} Helping surgeons see oxygen and blood flow in the bowel, stomach, or esophagus without dye so they can reconnect healthy, well-nourished tissue and lower the risk of leaks.
+    \item \textbf{Organ Transplants and Liver Surgery:} Checking blood flow and oxygen recovery in newly transplanted kidneys or livers, and clearly outlining low-blood-flow areas during liver or pancreas operations.
+    \item \textbf{Monitoring Reconstructive Tissue Flaps:} Watching skin and muscle flaps during and after reconstructive surgery to catch blocked blood inflow or backed-up vein drainage before the skin even changes color.
+    \item \textbf{Diabetic Foot and Chronic Wound Checks:} Mapping skin oxygen and blood supply around diabetic foot ulcers, poor leg circulation, and burns to predict healing and guide wound care.
+\end{itemize}
+
+\subsection{Secondary Usages}
+\begin{itemize}
+    \item \textbf{Spotting Cancer Margins (Investigational):} Research using light signatures and computer learning to help tell tumor tissue apart from healthy tissue during brain, head and neck, breast, or digestive cancer surgery.
+    \item \textbf{Identifying Delicate Structures:} Helping surgeons tell critical structures---such as parathyroid glands, urine tubes (ureters), bile ducts, or nerves---apart from nearby tissue without dye.
+    \item \textbf{Skin Spot Checks (Investigational):} Translational research measuring pigment and blood light patterns to assist noninvasive checks of melanoma and other skin cancers.
+    \item \textbf{Keyhole and Robotic Surgery Integration:} Emerging tools that build hyperspectral cameras directly into laparoscopic, endoscopic, and robotic surgical systems for live guidance.
+\end{itemize}
+
+\section{Advantages}
+\begin{itemize}
+    \item \textbf{Completely Dye-Free and Touch-Free:} Measures oxygen, blood flow, hemoglobin, and water using natural tissue properties---no needles, no dye allergies, no kidney risk, and unlimited repeat checks.
+    \item \textbf{Zero Radiation and Very Safe:} Uses gentle visible and near-infrared light with virtually no heat or biological risk to patients or staff.
+    \item \textbf{Objective, Clear Blood-Flow Maps:} Gives surgeons and wound teams concrete color-coded oxygen numbers that are far more reliable than judging tissue color by eye alone.
+    \item \textbf{Fast and Smooth Workflow:} Captures a wide view in seconds from a sterile distance, fitting easily into open surgery, keyhole surgery, and outpatient wound clinics.
+\end{itemize}
+
+\section{Disadvantages}
+\begin{itemize}
+    \item \textbf{Very Shallow Depth:} Light only reaches a few millimeters beneath the surface, so HSI cannot check blood flow deep inside solid organs or beneath thick fat.
+    \item \textbf{Sensitive to Glare, Blood, and Room Lights:} Overhead operating lamps, shiny reflections on wet tissue, pooled blood on the surface, or breathing movement can throw off the color maps.
+    \item \textbf{Complex Data Processing:} Large multi-band color datasets need careful calibration, strong computers, and often specialized software to turn raw light into useful maps.
+    \item \textbf{Cutoff Values Still Evolving:} Exact healthy-versus-unhealthy oxygen cutoffs vary between camera brands and organs, and large multicenter studies are still ongoing for many uses.
+    \item \textbf{Specialized Emerging Status:} Expensive equipment, limited regulatory approvals beyond specific surgical blood-flow checks, and availability mostly at academic or specialized surgical centers.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+\begin{itemize}
+    \item \textbf{None:} Because HSI is touch-free, dye-free, and uses only gentle light, there are no strict medical reasons that forbid it---even for patients with severe kidney disease, pregnancy, or contrast allergies.
+\end{itemize}
+
+\subsection{Relative}
+\begin{itemize}
+    \item \textbf{Protecting the Eyes:} Patients and staff should avoid staring directly into the bright halogen or LED camera lamp, following standard eye-safety rules.
+    \item \textbf{Depth and Research Limits:} HSI should not be relied on to check deep organs beyond a few millimeters of depth, and unvalidated cancer-margin uses should only be done inside approved research studies.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+\begin{itemize}
+    \item \textbf{Safe Light Levels and Distance:} Teams keep the light within medical eye- and skin-safety limits, hold the camera at the recommended distance, and avoid shining bright light continuously on exposed organs or eyes to prevent warming or drying.
+    \item \textbf{Keeping Surgery Sterile:} During operations, staff use approved sterile camera covers, sterilized keyhole sheaths, or touch-free positioning, and follow strict cleaning rules for reusable parts.
+    \item \textbf{Calibrating and Controlling Room Light:} Performing white and dark reference checks, dimming overhead surgical lights, and gently blotting surface blood prevent false color maps that could mislead care decisions.
+    \item \textbf{Approved Uses and Clinical Judgment:} Routine clinical use is limited to cleared blood-flow checks; research uses (like tumor edges) require ethics board (IRB) approval and patient consent, and HSI never replaces standard surgical judgment or lab pathology.
+\end{itemize}
+
+\section{Prerequisite Tests}
+\begin{itemize}
+    \item \textbf{No Special Lab Tests Needed:} Because HSI is touch-free and uses no dye or radiation, it requires no extra blood work, kidney checks, or allergy screening beyond your normal surgical or clinic care.
+    \item \textbf{Baseline Circulation Checks (For Wounds or Flaps):} For diabetic foot ulcers or reconstructive flaps, doctors review routine circulation tests (like ankle-brachial blood pressure ratios or leg artery ultrasound) to interpret the oxygen maps accurately.
+    \item \textbf{Standard Pre-Surgery Scans and Vitals:} For surgical uses, teams review routine CT or MRI scans along with your blood pressure, blood oxygen level, and blood-pressure medications, which directly affect tissue oxygen readings.
+    \item \textbf{Camera Calibration and Consent:} Staff run quick optical calibration checks before scanning, and obtain formal research consent if HSI is being used as part of an investigational study.
+\end{itemize}
+
+\section{Preparing for the Scan}
+\begin{itemize}
+    \item \textbf{Reference Light Calibration:} Before taking pictures, the team warms up the lamp and takes quick white and dark calibration frames so the camera reads colors accurately.
+    \item \textbf{Dimming Competing Lights:} Overhead operating lamps, headlamps, and bright window light are briefly dimmed or redirected during the short capture so outside light does not wash out the readings.
+    \item \textbf{Clearing the Tissue Surface:} Clinicians gently blot pooled blood, move surgical sponges or shiny metal tools out of view, and position the skin, wound, or organ cleanly facing the camera to avoid glare or shadows.
+    \item \textbf{Sterile Covers and Distance Guides:} For surgery, sterile covers are applied and built-in guide lights help place the camera at the exact right distance (usually 30--50 cm).
+    \item \textbf{Staying Still and Recording Vitals:} Awake clinic patients simply hold the limb or wound still for a few seconds; during surgery, the anesthesiologist may pause the ventilator briefly while noting blood pressure and oxygen levels.
+\end{itemize}
+
+\section{During Scan}
+\begin{itemize}
+    \item \textbf{Comfortable, Touch-Free Positioning:} In an outpatient wound or flap clinic, you sit or lie comfortably with the skin area uncovered beneath a camera hovering 30--50 cm away. During surgery, you are asleep under anesthesia while the camera hovers above the surgical field or works through a keyhole scope.
+    \item \textbf{Holding Still Briefly:} If you are awake, breathe calmly and keep the examined area still for a few seconds while the camera scans. During open abdominal or chest surgery, the anesthesia team may pause breathing for a few seconds to keep organs steady.
+    \item \textbf{What You Will Notice:} HSI is completely touch-free, dye-free, and painless. Awake patients simply see the room lights dim briefly and a bright, harmless white light shine over the skin for several seconds with little or no warmth.
+    \item \textbf{When to Speak Up:} During an awake clinic exam, let the clinician know if holding your arm or leg still gets tiring, if the bright light shines near your eyes (avoid looking directly at the lamp), or if a sensitive wound feels warm or uncomfortable.
+    \item \textbf{Quick Capture:} Each picture takes only 5 to 15 seconds, and an entire bedside or clinic check---including setup and any repeat views---usually finishes in 5 to 15 minutes.
+\end{itemize}
+
+\section{Normal Appearance}
+\begin{itemize}
+    \item \textbf{Healthy Organ and Flap Blood Flow:} Well-nourished bowel, organs, and surgical flaps show smooth, warm colors on the oxygen map (usually 65--85 percent oxygen saturation) and healthy near-infrared blood-flow readings with no sharp drop-off lines.
+    \item \textbf{Balanced Blood and Water:} Hemoglobin and tissue water maps look even across the area, with no dark pools of backed-up blood or heavy fluid swelling.
+    \item \textbf{Healthy Skin Circulation:} Normal skin and healthy wound edges show even oxygen levels that match nearby healthy skin or the opposite limb.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+\begin{itemize}
+    \item \textbf{Low Blood Supply (Arterial Ischemia):} A sharp drop from warm colors to cool blue colors on the oxygen and blood-flow maps clearly marks where blood supply falls off---helping surgeons choose a safe spot to reconnect bowel or catch a struggling skin flap before it turns pale or blue to the naked eye.
+    \item \textbf{Backed-Up Veins vs. Blocked Arteries:} High hemoglobin combined with low oxygen and rising water points to backed-up vein drainage (venous congestion), whereas low hemoglobin and low oxygen together point to blocked artery inflow---helping surgeons pick the right fix quickly.
+    \item \textbf{Poor Wound Healing and Swelling:} Persistently low oxygen around a diabetic foot ulcer or poor leg circulation signals trouble healing on its own, while high water readings highlight swelling or fluid buildup.
+    \item \textbf{Tumor Light Signatures (Investigational):} In research studies, cancer tissue often shows different light patterns because of abnormal blood vessels and low oxygen zones compared with nearby normal tissue.
+    \item \textbf{False Color Zones From Glare or Blood:} Shiny reflections on wet tissue, pooled blood on the surface, deep shadows, overhead lights, or breathing motion can create false ``low-oxygen'' spots unless the area is blotted, shaded from room light, and held still.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+\begin{itemize}
+    \item \textbf{Shallow Surface View Only:} Because light only reaches a few millimeters deep, HSI cannot detect low blood flow deep inside an organ or beneath thick layers of fat.
+    \item \textbf{Glare, Blood, and Room-Light Interference:} Wet reflections, surface blood, deep shadows, or unshielded operating room lamps can distort the color maps.
+    \item \textbf{Whole-Body Effects and Varying Cutoffs:} Exact cutoff numbers differ across camera brands. Low blood pressure or strong blood-pressure medicines can also lower oxygen readings everywhere, and inflamed healthy tissue can sometimes mimic cancer in research studies.
+    \item \textbf{Quick Retake and Adjustments:} If a map looks noisy or does not match what the doctor sees by eye, the team re-checks calibration, dims room lights, gently blots surface blood, adjusts camera angle to cut glare, and takes a fresh 10-second picture.
+    \item \textbf{Double-Checking With Trusted Tools:} Doctors always pair unclear HSI maps with direct visual checks, blood pressure readings, other blood-flow tests (like fluorescent ICG dye or handheld Doppler ultrasound), and standard lab pathology for any tissue margins.
+\end{itemize}
+
+\section{Augmenting Methods}
+\begin{itemize}
+    \item \textbf{Fluorescent Dye Imaging (ICG):} Often paired with HSI in surgery---ICG dye shows live blood rushing into arteries, while HSI adds repeatable, dye-free oxygen and water maps without dye fading or buildup.
+    \item \textbf{Leg Circulation Tests and Doppler Ultrasound:} For diabetic foot ulcers and flaps, handheld Doppler, artery ultrasound, blood pressure ratios (ABI), and skin oxygen patches check deeper blood vessels beyond HSI's shallow reach.
+    \item \textbf{Pre-Surgery CT and MRI Scans:} Map deep blood vessels and full tumor size before surgery, providing the deep 3D roadmap that surface HSI cannot see.
+    \item \textbf{Smart Software and Surgical Overlays:} Computer learning programs help remove glare, highlight tissue boundaries, and project live oxygen maps onto keyhole or robotic surgery screens.
+    \item \textbf{Lab Pathology (Biopsy/Frozen Section):} Remains the required gold standard for confirming cancer-free edges whenever HSI is tested in tumor surgery.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+\begin{itemize}
+    \item \textbf{Compared With Fluorescent ICG Dye Imaging:} ICG shows live artery inflow video but needs an IV dye injection, cannot be repeated endlessly due to leftover dye glow, and does not measure exact oxygen numbers. HSI is dye-free, repeatable, and measures oxygen and vein backup directly.
+    \item \textbf{Compared With Ultrasound and CT Angiograms:} Ultrasound and CT check deep major blood vessels, whereas HSI maps tiny surface blood vessels and tissue oxygen across an entire surgical field or wound at once.
+    \item \textbf{Compared With Looking by Eye Alone:} Judging bowel or flap health by color alone can miss early blood-flow trouble; HSI gives clear oxygen maps before visible color changes appear.
+\end{itemize}
+
+\section{Follow-up Steps}
+\begin{itemize}
+    \item \textbf{Immediate Surgical Adjustments:} Surgeons can use the live oxygen maps right away to trim back poorly nourished bowel, adjust a flap's blood vessels, and take a quick second picture to confirm healthy blood flow before finishing the operation.
+    \item \textbf{Confirming With Vitals and Pathology:} Teams always interpret HSI alongside direct visual inspection, blood pressure and oxygen levels, and final lab pathology (especially in any cancer research study).
+    \item \textbf{Repeat Checks After Surgery or Wound Care:} Because HSI is touch-free and dye-free, clinicians can easily repeat scans in the days or weeks afterward to watch high-risk flaps, transplanted organs, or healing diabetic foot ulcers.
+    \item \textbf{Saving Maps for Comparison:} Calibrated color maps are saved in the medical or study record alongside blood-pressure notes so doctors can track healing progress over time.
+\end{itemize}
+
+\section{What You Should Know About Hyperspectral Imaging (HSI)?}
+\begin{itemize}
+    \item \textbf{Completely Touch-Free and Painless:} HSI never touches your skin and needs no needles or contrast dye. A special camera simply shines a bright, harmless light over the area for several seconds to measure oxygen and blood flow.
+    \item \textbf{Zero Radiation and Dye-Free Safety:} Using only gentle visible and near-infrared light, HSI has zero X-ray radiation and no allergy or kidney risk, making it safe for unlimited repeat checks in clinics or operating rooms.
+    \item \textbf{Takes Seconds With Instant Maps:} Each capture takes just 5--15 seconds (about 5--15 minutes for a full clinic check), and your care team sees color-coded oxygen maps right away.
+    \item \textbf{Why Your Doctor Uses It:} HSI is a specialized, emerging light-based camera used at select surgical and wound centers to measure tissue oxygen objectively---helping surgeons check bowel or flap blood flow and helping wound teams track diabetic foot healing.
+    \item \textbf{What to Tell Your Care Team:} During an awake wound or flap check, avoid looking directly into the bright lamp, speak up if holding your limb still is uncomfortable, and feel free to ask whether HSI is part of routine care or a research study.
+\end{itemize}
+
+\section{Key References}
+\begin{itemize}
+    \item Lu G, Fei B. Medical Hyperspectral Imaging: A Review. \textit{Journal of Biomedical Optics}. 2014;19(1):010901.
+    \item Jansen-Winkeln B, Holfert N, Kohler H, et al. Determination of the Transection Margin During Colorectal Resection with Hyperspectral Imaging (HSI). \textit{International Journal of Colorectal Disease}. 2019;34(4):731--739.
+    \item Shapey J, Xie Y, Nabavi E, et al. Intraoperative Multispectral and Hyperspectral Label-Free Imaging: A Systematic Review of In Vivo Clinical Studies. \textit{Journal of Biophotonics}. 2019;12(9):e201800455.
+    \item Dietrich M, Marx S, von der Forst M, et al. Hyperspectral Imaging for Perioperative Monitoring of Microcirculatory Tissue Oxygenation and Tissue Water Content in Pancreatic Surgery. \textit{Perioperative Medicine}. 2021;10(1):42.
+\end{itemize}

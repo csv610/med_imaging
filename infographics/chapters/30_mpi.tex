@@ -1,2 +1,211 @@
 \infographicchapter{Magnetic Particle Imaging (MPI)}{mpi.png}
 \label{ch:infographic-mpi}
+
+\section{Overview}
+
+Magnetic particle imaging (MPI) is a new, experimental scanning method that creates three-dimensional images by tracking tiny magnetic iron oxide nanoparticles injected into the bloodstream. Unlike a regular MRI---which listens to signals from water inside your body---MPI detects only the injected iron particles. Because normal body tissues give off zero MPI signal, the iron tracer shines brightly against a completely dark, clutter-free background.
+
+It is important to know that MPI is currently an investigational research technology and is not yet approved for routine medical diagnosis in hospitals or clinics. So far, scientists have tested MPI mainly in laboratory studies and early human research trials. In these studies, it shows exciting promise for fast, radiation-free blood vessel imaging, tracking stem cells or immune cells over days or weeks, finding hidden internal bleeding, locating lymph nodes, and even gently heating iron particles inside tumors.
+
+MPI's biggest strengths are zero X-ray radiation, high sensitivity that is not blocked by bone or air, very fast image capture, and non-radioactive tracers that do not decay quickly. However, major hurdles still remain before routine hospital use: MPI does not show normal body anatomy on its own (so it must be paired with an MRI or CT scan), very few human-approved iron tracers exist, and building full human-sized scanners is technically challenging and expensive. In research studies, safety focuses on preventing mild nerve tingling or tissue warmth from changing magnetic fields, following strict MRI-style metal screening, and ensuring the iron particles are safe and cleared properly by the body.
+
+\section{Underlying Physical Principles}
+
+\begin{itemize}
+    \item \textbf{Creating a Magnetic ``Sweet Spot'':} Strong magnets arranged opposite each other create a shaped magnetic field with a tiny zero-field spot (or line) in the middle. Iron nanoparticles outside this spot are locked in place magnetically, while particles inside the spot remain free to respond.
+    \item \textbf{Flipping the Iron Particles:} A gentle, rapidly switching magnetic field (called the drive field) flips the magnetic direction of the free iron particles inside that central spot back and forth thousands of times per second. Normal body tissues do not respond to this flipping at all, leaving a completely clean background.
+    \item \textbf{Picking Up the Unique Signal:} As the iron particles flip, they produce distinctive electrical ripples (harmonics) that sensitive wire coils pick up. By sweeping the magnetic sweet spot rapidly across the body, the scanner pinpoints exactly where the particles are located.
+    \item \textbf{Measuring Exact Amounts:} The strength of the signal matches the exact amount of iron particles in each spot and passes straight through bone and air without weakening. A computer turns these signals into clear, 3D maps showing how much tracer is present at every point.
+\end{itemize}
+
+\section{Imaging Mechanism}
+
+\begin{enumerate}
+    \item \textbf{Scanner Positioning and Tracer Delivery:} In an approved research study, the participant lies inside the experimental MPI scanner (often paired with an MRI or CT scanner for anatomical reference), and a carefully measured dose of safe iron oxide nanoparticles is given through an arm IV or inside pre-labeled cells.
+    \item \textbf{Sweeping the Magnetic Sweet Spot:} Strong coils create the shaped magnetic field with its central zero-field spot, while oscillating drive coils rapidly sweep that spot across the area being studied.
+    \item \textbf{Listening for Particle Signals:} Sensitive receiver coils pick up the faint electrical signals created as the iron particles flip. Electronic filters remove background drive noise and convert the clean particle signals into digital data.
+    \item \textbf{Building the 3D Tracer Map:} Reconstruction software translates the digital signals into a 3D map showing the exact concentration of iron particles in real time.
+    \item \textbf{Overlaying on Anatomy:} Because MPI shows only the iron tracer and no surrounding organs, the bright color-coded MPI map is lined up and layered on top of a matching MRI or CT scan so researchers can see exactly where the tracer sits in the body.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+
+\noindent\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Detects the magnetic flipping signal of injected iron oxide nanoparticles as a zero-field magnetic spot sweeps through the body \\
+Energy / Signal Source & Strong static magnetic gradient field paired with rapidly oscillating magnetic drive fields \\
+Typical Frequency / Energy & Oscillating magnetic fields at 1--25 kilohertz (kHz); no X-rays or radioisotopes \\
+Spatial Resolution & About 0.5--2.0 mm in preclinical research scanners (depends on magnet strength and particle design) \\
+Typical Scan Duration & Seconds to a few minutes per MPI scan (30--60 minutes for a full research visit with paired MRI or CT) \\
+Contrast Agent & Required iron oxide nanoparticle tracer (given by IV or attached to tracked cells) \\
+Ionizing Radiation & None (zero X-ray or radioactive exposure) \\
+\bottomrule
+\end{tabularx}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+
+\begin{itemize}
+    \item \textbf{Blood Vessel Imaging (Investigational):} MPI is not yet approved for routine medical care. One of its top research goals is fast, radiation-free 3D imaging of blood vessels and narrowed arteries using iron particles circulating in the bloodstream.
+    \item \textbf{Brain and Heart Blood Flow (Investigational):} Preclinical studies are testing MPI to spot sudden stroke, reduced brain blood flow, or heart blood-flow problems very quickly, without the skull or ribs blocking the signal.
+    \item \textbf{Tracking Therapeutic Cells (Investigational):} Researchers use MPI to follow iron-labeled stem cells, CAR-T cancer-fighting cells, and immune cells inside the body over days or weeks without using radioactive tracers that fade away.
+    \item \textbf{Spotting Internal Bleeding and Lung Clots (Investigational):} Early lab studies show high sensitivity for catching active stomach or intestinal bleeding (as tracer leaks out of a vessel) and blood-flow gaps in the lungs without X-ray radiation.
+\end{itemize}
+
+\subsection{Secondary Usages}
+
+\begin{itemize}
+    \item \textbf{Lymph Node and Tumor Research:} Preclinical studies explore using MPI to locate sentinel lymph nodes and see how iron particles collect inside solid tumors.
+    \item \textbf{Targeted Tumor Heating (Theranostics):} Scientists are studying whether the same magnetic sweet spot used for imaging can also gently heat iron particles right inside a tumor to destroy cancer cells while sparing healthy nearby tissue.
+    \item \textbf{Tracking Medical Wires and Catheters:} Research teams are testing iron-coated guidewires and catheters so doctors could one day steer vascular tools in real time without X-ray exposure.
+    \item \textbf{Hybrid Research Scans (MPI/MRI and MPI/CT):} Combining MPI with MRI or CT in research scanners pairs exact iron-tracer measurements with detailed maps of body organs.
+\end{itemize}
+
+\section{Advantages}
+
+\begin{itemize}
+    \item \textbf{Zero Radiation and Clean Background:} Uses magnetic fields and iron particles instead of X-rays or radioactivity, producing crisp, glowing 3D tracer images with zero distracting signal from normal tissues.
+    \item \textbf{Exact Measurement at Any Depth:} The brightness of the image directly matches the amount of iron tracer present and is not blocked by thick bone, air-filled lungs, or deep tissue.
+    \item \textbf{High Sensitivity and Real-Time Speed:} Detects tiny amounts of iron nanoparticles and captures images in fractions of a second, making it promising for fast blood-flow and moving-device studies.
+    \item \textbf{Long-Lasting, Non-Radioactive Tracers:} Unlike nuclear medicine tracers that decay within hours, iron oxide nanoparticles stay stable on the shelf and allow cell tracking over days or weeks.
+    \item \textbf{Combined Imaging and Treatment Potential:} In research settings, the same scanner hardware can both locate iron particles and gently heat them at a precise target spot.
+\end{itemize}
+
+\section{Disadvantages}
+
+\begin{itemize}
+    \item \textbf{Experimental Status Only:} MPI is still in preclinical and early human research stages and is not approved by regulators for routine clinical diagnosis.
+    \item \textbf{Shows No Normal Anatomy on Its Own:} Because normal organs give off no signal, an MPI scan cannot show bones or soft tissues by itself and must be paired with an MRI or CT scan.
+    \item \textbf{Hard to Scale to Full Human Size:} Achieving sharp resolution requires very strong magnetic gradients, making human-sized scanners complex, power-hungry, and costly to build.
+    \item \textbf{Very Few Approved Tracers:} Most available iron nanoparticle agents were designed for MRI rather than MPI, and new MPI-specific tracers still need thorough safety testing for allergy risk and iron clearance.
+    \item \textbf{Nerve Tingling, Heating, and Magnet Limits:} Rapidly switching magnetic fields can cause mild nerve tingling or tissue warming if pushed too high, and strong magnets bring the same strict metallic implant rules as MRI.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+
+\begin{itemize}
+    \item \textbf{Outside Approved Research, Unsafe Metal Implants, or Severe Allergy:} MPI must not be used for routine clinical care outside approved research protocols (IRB and FDA Investigational Device Exemption). Standard MRI-style metal bans apply---including non-conditional pacemakers or defibrillators, magnetic brain aneurysm clips, and metal fragments in the eyes---as well as any severe past allergy to iron oxide nanoparticle agents.
+\end{itemize}
+
+\subsection{Relative}
+
+\begin{itemize}
+    \item \textbf{Iron Overload, Liver Disease, Asthma, and Pregnancy:} Conditions with too much iron in the body (such as hemochromatosis), severe liver disease (which slows clearance of iron particles), severe uncontrolled asthma, and pregnancy or breastfeeding are generally excluded from human MPI research trials.
+    \item \textbf{Comfort Limits:} Severe claustrophobia or low tolerance for mild tingling or muscle twitches from switching magnetic fields.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+
+\begin{itemize}
+    \item \textbf{Strict Research Oversight:} Because MPI is investigational, any human scan must take place under an Institutional Review Board (IRB)-approved study with regulatory oversight (such as an FDA Investigational Device Exemption) and full informed consent.
+    \item \textbf{Preventing Nerve Tingling and Tissue Heating:} Scanners are programmed to stay within strict magnetic-field and heating limits so switching fields do not cause painful nerve stimulation (tingling or muscle twitches) or excess warmth.
+    \item \textbf{Safe Iron Tracer Handling:} Only carefully tested iron nanoparticle tracers are given slowly under close medical watch. Staff screen for iron allergies, asthma, and iron-overload conditions, and keep emergency allergy medicines ready.
+    \item \textbf{MRI-Style Metal Screening:} Strict magnet safety zones and screening checklists keep loose metal objects out of the room and protect anyone with pacemakers, clips, or other metal implants.
+    \item \textbf{Close Monitoring and Anatomical Pairing:} Research teams monitor vital signs continuously, keep quick-exit procedures ready, and always pair MPI data with standard MRI or CT scans before drawing any research conclusions.
+\end{itemize}
+
+\section{Prerequisite Tests}
+
+\begin{itemize}
+    \item \textbf{Research Eligibility and Informed Consent:} Because MPI is experimental, participants must meet specific study criteria and review and sign detailed IRB-approved consent forms before any scan.
+    \item \textbf{Matching Anatomical MRI or CT Scan:} Because MPI shows only the iron tracer, a companion MRI or CT scan is needed to map normal body structures and line up the tracer images accurately.
+    \item \textbf{Baseline Safety Blood Work:} Research protocols typically check routine blood counts, liver and kidney function, and iron levels (such as ferritin) beforehand, along with an allergy review, to rule out iron overload or other safety concerns.
+    \item \textbf{Metal Implant and Pregnancy Screening:} Participants complete a thorough MRI-style safety checklist for metal implants or foreign bodies, and people who could be pregnant receive a pregnancy test per study rules.
+\end{itemize}
+
+\section{Preparing for the Scan}
+
+\begin{itemize}
+    \item \textbf{Reviewing Study Consent and Instructions:} Go over the research consent form carefully, ask any questions about the study, and follow any specific eating or drinking instructions provided by the research team.
+    \item \textbf{MRI-Style Metal Check:} Fill out the metal safety form honestly, list every implant or medical device, and remove jewelry, watches, credit cards, hearing aids, and clothing with metal fasteners before entering the magnet room.
+    \item \textbf{IV Access and Allergy Check:} Wear loose, comfortable short-sleeved clothing so a nurse can place a standard arm IV for the iron tracer, and tell the team right away about any history of iron allergies, asthma, or high iron levels.
+    \item \textbf{Getting Comfortable for Paired Scans:} Use the restroom beforehand, expect a companion MRI or CT scan for anatomy, and learn how to use the intercom and call button if you feel any tingling or discomfort.
+\end{itemize}
+
+\section{During Scan}
+
+\begin{itemize}
+    \item \textbf{Lying Inside the Scanner:} You will lie comfortably on a padded bed that slides into the experimental MPI tunnel (and an MRI or CT scanner if paired). Cushions help you stay still so the tracer map lines up cleanly with your anatomy scan.
+    \item \textbf{Tracer Infusion and Breathing:} The study team gives the iron nanoparticle tracer gently through your arm IV while watching your vital signs. You will breathe calmly and follow any short breath-hold instructions if requested.
+    \item \textbf{Sounds and Sensations:} The switching magnetic fields make audible humming or buzzing noises (earplugs or headphones are provided). Some people notice mild, harmless tingling, tiny muscle twitches, or gentle warmth.
+    \item \textbf{Communication and Safety Alerts:} You will have a two-way intercom and a hand-held call button the whole time. Speak up right away if you feel uncomfortable tingling, twitching, skin warmth, dizziness, itching, shortness of breath, or claustrophobia so the team can pause or adjust the settings immediately.
+    \item \textbf{How Long It Takes:} Each MPI scan itself is very fast---often just seconds to a few minutes---while the full research visit (including IV setup, tracer infusion, paired MRI or CT, and monitoring) typically takes 30 to 60 minutes.
+\end{itemize}
+
+\section{Normal Appearance}
+
+\begin{itemize}
+    \item \textbf{Completely Dark Background Before Dye:} Before iron nanoparticles are injected, normal body tissues give off virtually no MPI signal, leaving a completely dark, clean background with no bone or air clutter.
+    \item \textbf{Bright Blood-Vessel Phase:} Right after IV injection, the circulating iron particles light up the heart chambers and blood vessels brightly and evenly, with signal strength matching the exact amount of tracer.
+    \item \textbf{Natural Liver and Spleen Uptake:} Over minutes to hours, the body naturally clears the iron nanoparticles through immune cells in the liver and spleen, so those two organs glow brightly as expected.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+
+\begin{itemize}
+    \item \textbf{Narrowed Vessels and Blood-Flow Gaps (Research Findings):} In lab studies of narrowed arteries, stroke, or lung clots, a sudden pinching of the bright blood-vessel line points to narrowing, while a sharp dark gap shows blocked blood flow---clearly visible even through the skull or ribs.
+    \item \textbf{Active Internal Bleeding:} In preclinical bleeding studies, a bright glowing spot appearing outside a blood vessel and slowly growing over time pinpoints active internal bleeding with very high sensitivity.
+    \item \textbf{Cell Tracking and Tumor Uptake:} Glowing hotspots that linger hours or days later show where iron-labeled stem cells or immune cells have traveled, or where particles have settled inside inflamed areas, lymph nodes, or tumors.
+    \item \textbf{Normal Liver and Spleen Glow:} Because the liver and spleen normally collect iron particles as they clear them from the blood, bright signal there is expected and can sometimes hide nearby upper-belly targets unless carefully lined up with MRI or CT.
+    \item \textbf{Technical Look-Alikes:} Slight alignment shifts between MPI and MRI/CT can make a glowing spot look like it sits in a neighboring organ. Clumping of nanoparticles can blur the image slightly, and the very bright liver signal can overshadow fainter signals nearby.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+
+\begin{itemize}
+    \item \textbf{Not Yet Standardized for Medical Decisions:} Because MPI is still experimental, scanning settings and interpretation rules are not yet standardized for routine patient care, so MPI results alone are never used to make clinical treatment decisions.
+    \item \textbf{Alignment and Background Challenges:} Because MPI does not show organs directly, even a tiny shift when overlaying it on MRI or CT---or bright normal uptake in the liver and spleen---can make exact localization tricky.
+    \item \textbf{Particle Behavior Variations:} If nanoparticles clump together or clear at different speeds, the signal can blur slightly or become harder to measure accurately.
+    \item \textbf{Confirming with Approved Tests:} Research teams double-check MPI scans using calibration phantoms and careful MRI/CT alignment, and any suspected health issue found during a study is always confirmed with approved standard tests like CT, MRI, ultrasound, or biopsy.
+\end{itemize}
+
+\section{Augmenting Methods}
+
+\begin{itemize}
+    \item \textbf{Paired MRI and CT Scans:} Lining up MPI with high-detail MRI or CT is essential so researchers can see exactly which organs and blood vessels hold the glowing iron tracer.
+    \item \textbf{Standard Vascular and Nuclear Scans:} Established clinical tests like CT angiography, MR angiography, Doppler ultrasound, and PET or SPECT serve as trusted benchmarks to validate investigational MPI results.
+    \item \textbf{``Multi-Color'' MPI Processing:} Advanced research software can analyze subtle differences in how fast nanoparticles relax, helping separate free-flowing particles from bound ones or even estimate local temperature during experimental heating studies.
+    \item \textbf{Lab Checks and Tissue Validation:} In research studies, iron blood tests, liver and kidney panels, and microscopic tissue checks verify how safely and completely the nanoparticles are cleared.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+
+\begin{itemize}
+    \item \textbf{Compared with MRI:} MRI is proven worldwide and shows rich anatomical detail of soft tissues. MPI cannot show normal anatomy on its own, but it tracks iron nanoparticles with much higher sensitivity, exact measurement, and no dark distortion artifacts.
+    \item \textbf{Compared with PET and SPECT:} Nuclear scans like PET and SPECT are clinically proven for molecular imaging but use ionizing radiation and short-lived radioactive tracers. MPI aims for similar sensitivity using shelf-stable, non-radioactive iron particles at much faster speeds.
+    \item \textbf{Compared with CT Angiography:} CT angiography is the fast, widely available standard for checking blood vessels today. Investigational MPI aims to eventually offer radiation-free, iodine-free, real-time 3D blood-vessel imaging that is not blocked by bone.
+\end{itemize}
+
+\section{Follow-up Steps}
+
+\begin{itemize}
+    \item \textbf{Post-Scan Safety Check:} Research staff observe participants briefly after the iron tracer infusion for any delayed allergy symptoms or discomfort, and log all safety details strictly under IRB and FDA study rules.
+    \item \textbf{Image Alignment and Calibration:} Researchers line up the 3D MPI tracer maps with matching MRI or CT scans, check calibration accuracy, and account for normal iron uptake in the liver and spleen.
+    \item \textbf{Standard Medical Confirmation:} Clinical diagnosis or treatment is never based on an experimental MPI scan alone. Any suspected blockage, bleeding, or other health finding is confirmed using approved standard medical tests.
+    \item \textbf{Study Follow-Up Visits:} Participants complete any scheduled research follow-ups---such as follow-up safety blood work or repeat tracking scans---and any unexpected health findings are shared promptly with the participant's regular doctor per study policy.
+\end{itemize}
+
+
+\section{What You Should Know About Magnetic Particle Imaging (MPI)?}
+
+\begin{itemize}
+    \item \textbf{Still in Research---Not Routine Care:} MPI is an emerging, experimental technology and is not yet approved for everyday medical diagnosis. Human scans happen only inside specialized, IRB-approved research studies, while routine care relies on MRI, CT, or ultrasound.
+    \item \textbf{What the Scan Feels Like:} Lying in an experimental MPI scanner feels much like an MRI---painless aside from a routine arm IV for the iron tracer, with humming noises and occasional mild tingling or muscle twitches from the magnetic fields.
+    \item \textbf{Zero X-Rays or Radioactivity:} MPI uses magnetic fields and non-radioactive iron oxide nanoparticles rather than X-rays or radioactive dyes, though strict MRI-style metal checks and allergy or iron-level screening are required.
+    \item \textbf{Visit Length and How Results Are Used:} An individual MPI scan takes only seconds to minutes, while a full research session (including consent, IV setup, paired MRI or CT, and monitoring) lasts about 30 to 60 minutes. Research images are not used on their own to guide medical treatment.
+    \item \textbf{What to Tell the Research Team:} Always report any metal implants, pacemakers, iron allergies, asthma, high-iron conditions, or possible pregnancy beforehand, and speak up immediately during the scan if you feel tingling, warmth, itching, or discomfort.
+\end{itemize}
+
+\section{Key References}
+
+\begin{itemize}
+    \item Gleich B, Weizenecker J. Tomographic Imaging Using the Nonlinear Response of Magnetic Particles. \textit{Nature}, 2005;435(7046):1214--1217.
+    \item Saritas EU, Goodwill PW, Croft LR, et al. Magnetic Particle Imaging (MPI) for NMR and MRI Researchers. \textit{Journal of Magnetic Resonance}, 2013;229:116--126.
+    \item Billings C, Langley M, Warrington G, Mashali F, Johnson JA. Magnetic Particle Imaging: Current and Future Applications, Magnetic Nanoparticle Synthesis Methods and Safety Measures. \textit{International Journal of Molecular Sciences}, 2021;22(14):7651.
+    \item Graeser M, Thieben F, Szwargulski P, et al. Human-Sized Magnetic Particle Imaging for Brain Applications. \textit{Nature Communications}, 2019;10:1936.
+\end{itemize}

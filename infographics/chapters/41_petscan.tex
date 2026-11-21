@@ -1,2 +1,220 @@
 \infographicchapter{Positron Emission Tomography}{petscan.png}
 \label{ch:infographic-petscan}
+
+\section{Overview}
+
+Positron Emission Tomography (PET) is an advanced imaging scan that shows how active your cells and organs are, rather than just showing their size and shape. Before the scan, you receive a tiny injection of a safe radioactive tracer---most commonly a sugar-like tracer called F-18 FDG. Cells that are working very hard, such as many cancer cells, absorb more of this sugar tracer than surrounding healthy cells. As the tracer naturally breaks down, it produces paired gamma rays that travel in exact opposite directions. A ring of detectors around the scanner catches these matching pairs to build detailed 3D pictures of cell activity. Today, PET is almost always combined with CT (PET/CT) or MRI (PET/MRI) in a single machine so doctors can see both cell activity and crisp body anatomy together.
+
+Because PET highlights active biochemical changes across the whole body, doctors rely on it in three major areas: cancer care (finding where cancer has spread, checking whether treatment is working, and telling returning cancer apart from harmless scar tissue), brain care (evaluating memory disorders like Alzheimer's disease, pinpointing seizure sources before epilepsy surgery, and studying movement disorders), and heart care (checking whether damaged heart muscle is still alive and able to recover, measuring heart blood flow, and spotting heart inflammation such as sarcoidosis).
+
+PET's biggest strengths are catching cellular changes early before structural lumps appear, checking the entire body in one visit, and giving clear activity scores (called SUVs). Its limits include softer detail than diagnostic CT or MRI, false alarms from everyday inflammation or normal organ activity, missed detection of very small or slow-growing tumors, strict fasting and blood-sugar preparation rules, and higher cost. Because PET/CT uses ionizing radiation from the tracer and CT scan, doctors order it thoughtfully, avoid it during pregnancy whenever possible, and provide simple breastfeeding and hydration instructions.
+
+\section{Underlying Physical Principles}
+
+\begin{itemize}
+    \item \textbf{Paired Gamma Rays from Positron Decay:} Special short-lived radioactive atoms (such as fluorine-18, gallium-68, or rubidium-82) release tiny positively charged particles called positrons. Within a millimeter or two, each positron meets a nearby electron and turns into two equal 511~keV gamma rays shooting out in exact opposite directions (180~degrees apart).
+    \item \textbf{Tracking Active Cell Chemistry:} The tracer follows natural body pathways. For instance, F-18 FDG acts like blood sugar---active cells pull it in and trap it, making fast-growing tumors or inflamed areas glow brightly. Other targeted tracers attach directly to specific proteins, such as PSMA on prostate cancer cells.
+    \item \textbf{Matching Opposite Signals (Coincidence Detection):} A full ring of sensitive detector crystals surrounds the patient and looks for two gamma rays arriving at opposite sides at almost the exact same billionth of a second. Knowing they came from the same straight line eliminates heavy lead filters, and modern ``time-of-flight'' scanners measure tiny arrival differences to pinpoint the exact spot along that line.
+    \item \textbf{Cleaning Up Scatter and Tissue Shadows:} The scanner's software removes stray scattered or random signals, while the paired CT or MRI scan maps body density so signals coming from deep inside the body are measured just as accurately as those near the skin.
+    \item \textbf{Building 3D Activity Maps (SUVs):} Powerful reconstruction software converts the detected signals into 3D activity maps and calculates Standardized Uptake Values (SUVs)---a simple number showing how strongly an area absorbed the tracer compared with your body size and dose.
+\end{itemize}
+
+\section{Imaging Mechanism}
+
+\begin{enumerate}
+    \item \textbf{Giving the Tracer and Resting Quietly:} A technologist injects the small dose of tracer through a vein in your arm. After a quiet 45--60~minute rest so the tracer settles into your tissues, you lie comfortably on your back on a padded table centered inside the open PET/CT or PET/MRI ring.
+    \item \textbf{Quick Anatomy Scan and Multi-Step PET Capture:} The machine first takes a quick, low-dose CT (or MRI) scan to map your anatomy. Next, the motorized table glides smoothly through the stationary PET detector ring step by step (or continuously) to scan from head to mid-thigh or the full body.
+    \item \textbf{Catching Paired Gamma Rays:} Sensitive crystal blocks and light sensors around the ring turn incoming 511~keV gamma rays into digital timestamps and locations, keeping only true opposite pairs.
+    \item \textbf{Refining and Reconstructing 3D Slices:} Specialized computer servers adjust for tissue absorption, scattered rays, and tiny timing differences to build sharp, calibrated 3D radioactivity volumes.
+    \item \textbf{Color-Fused Display for Your Doctor:} The software turns the PET volume into SUV activity maps and overlays them in bright color right onto the black-and-white CT or MRI anatomy slices for a nuclear medicine specialist to interpret.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Detecting paired opposite 511~keV gamma rays created when a positron-emitting tracer breaks down inside the body \\
+Energy / Signal Source & Intravenous positron-emitting tracers (most often F-18 FDG, Ga-68 PSMA, Ga-68 DOTATATE, or Rb-82) \\
+Typical Frequency / Energy & Paired 511~keV gamma rays traveling 180~degrees apart \\
+Spatial Resolution & About 4--6~mm for standard whole-body PET/CT \\
+Typical Scan Duration & 20--45~minutes on the scanner table (plus 45--60~minutes of quiet tracer uptake rest) \\
+Contrast Agent & Radiotracer required; optional IV CT contrast dye or MRI gadolinium for full diagnostic hybrid scans \\
+Ionizing Radiation & Yes (typically 5--7~mSv from the PET tracer; 7--25~mSv total with PET/CT depending on the CT protocol) \\
+\bottomrule
+\end{tabularx}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+
+\begin{itemize}
+    \item \textbf{Finding and Staging Cancer:} Checks lymph nodes and distant organs for many sugar-hungry cancers---including lymphoma, lung, colon, esophageal, head and neck, and melanoma---as well as specialized PSMA PET for prostate cancer and DOTATATE PET for neuroendocrine tumors.
+    \item \textbf{Checking Cancer Treatment and Recurrence:} Measures how well chemotherapy, immunotherapy, or radiation is working (using standardized scales like Deauville scoring in lymphoma) and helps tell living cancer apart from harmless post-treatment scar tissue.
+    \item \textbf{Evaluating Memory Disorders:} Helps distinguish Alzheimer's disease, frontotemporal dementia, and Lewy body dementia by showing characteristic brain-activity patterns, alongside amyloid and tau PET scans that detect Alzheimer's proteins directly.
+    \item \textbf{Pinpointing Epilepsy Sources:} Locates quieter-than-normal areas of the brain between seizures to help guide surgery for drug-resistant epilepsy when standard MRI looks normal.
+    \item \textbf{Checking Living Heart Muscle and Blood Flow:} Identifies ``hibernating'' heart muscle that could recover after bypass or stenting (using F-18 FDG) and measures exact heart blood flow (using rubidium-82 or N-13 ammonia).
+\end{itemize}
+
+\subsection{Secondary Usages}
+
+\begin{itemize}
+    \item \textbf{Heart and Blood-Vessel Inflammation:} Detects active inflammation in cardiac sarcoidosis, infected artificial heart valves, infected pacemakers or defibrillators, and large-artery inflammation (vasculitis).
+    \item \textbf{Unexplained Fevers and Hidden Infections:} Tracks down stubborn hidden infections---such as spine infections, infected blood-vessel grafts, or deep abscesses---when standard scans are unclear.
+    \item \textbf{Guiding Radiation Therapy and Biopsies:} Helps radiation oncologists aim treatment precisely at active tumor areas and guides doctors to biopsy the most active part of a complex mass.
+    \item \textbf{Brain Tumors and Movement Disorders:} Uses specialized amino acid tracers (such as F-18 FET or F-18 FDOPA) to tell returning brain tumors apart from radiation scar tissue and to check dopamine pathways in movement disorders.
+\end{itemize}
+
+\section{Advantages}
+
+\begin{itemize}
+    \item \textbf{Spots Cell Changes Early:} Detects abnormal sugar metabolism, Alzheimer's proteins, or viable heart muscle often well before structural lumps or shrinkage appear on CT or MRI.
+    \item \textbf{Whole-Body Check in One Visit:} Surveys nearly the entire body in a single session, catching hidden lymph-node or distant cancer spread that a regional scan might miss.
+    \item \textbf{Clear Activity Numbers:} Provides reliable measurements (like SUV and active tumor volume) so doctors can objectively judge whether a treatment is working.
+    \item \textbf{Exact Location with Hybrid Fusion:} Combining PET with CT (PET/CT) or MRI (PET/MRI) lines up glowing hotspots directly onto crisp anatomy, improving accuracy for biopsies and radiation planning.
+    \item \textbf{Custom Tracers for Specific Diseases:} Beyond sugar-based FDG, targeted tracers (like PSMA, DOTATATE, amyloid, and amino acid tracers) can be matched to specific cancers, brain diseases, and heart conditions.
+\end{itemize}
+
+\section{Disadvantages}
+
+\begin{itemize}
+    \item \textbf{Uses Ionizing Radiation:} Combines internal radiation from the PET tracer with external X-rays from the paired CT scan, requiring clear medical need, avoidance during pregnancy, and short breastfeeding precautions.
+    \item \textbf{False Alarms and Missed Small Spots:} Active infections, healing inflammation, normal bowel activity, or cold-activated ``brown fat'' can glow like cancer (false positives). Conversely, tiny spots under 4--6~mm or slow-growing tumors that use little sugar may not light up (false negatives).
+    \item \textbf{Strict Preparation Rules:} Accurate F-18 FDG scans require fasting, avoiding exercise, and well-controlled blood sugar. High blood sugar or recent insulin pushes the tracer into muscles instead of tumors, washing out the image.
+    \item \textbf{Breathing Motion and Metal Glitches:} Normal breathing near the diaphragm, shifting on the table, or metal implants (like hip replacements or dental work) can misalign the PET and CT layers or create false bright spots.
+    \item \textbf{Higher Cost and Limited Access:} Because PET tracers fade quickly and require specialized production facilities (cyclotrons), PET scans cost more and are less widely available than CT or ultrasound.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+
+\begin{itemize}
+    \item \textbf{None (Standard PET/CT):} There is no universal absolute medical contraindication to a standard PET/CT scan.
+    \item \textbf{Unsafe Metal Implants (Hybrid PET/MRI Only):} Hybrid PET/MRI cannot be performed if you have non-MRI-safe metal implants, metal fragments in the eye, or incompatible pacemakers or defibrillators.
+\end{itemize}
+
+\subsection{Relative}
+
+\begin{itemize}
+    \item \textbf{Pregnancy and Breastfeeding:} Elective PET scans are avoided during pregnancy to protect the developing baby from radiation unless the benefit clearly outweighs the risk. Nursing parents follow brief, tracer-specific safety steps.
+    \item \textbf{High Blood Sugar, Recent Insulin, or Discomfort Lying Flat:} Very high blood sugar (usually over 200~mg/dL) or recent fast-acting insulin before an FDG scan ruins image clarity and usually means rescheduling. Trouble lying flat or severe claustrophobia may also require extra support.
+    \item \textbf{CT Contrast Dye Risks:} If a full diagnostic IV contrast CT is planned alongside PET, a severe past contrast allergy or acute kidney injury means using a non-contrast low-dose CT instead.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+
+\begin{itemize}
+    \item \textbf{Fasting and Blood-Sugar Checks:} Before an F-18 FDG scan, staff verify a 4--6~hour fast (plain water is fine), 24~hours without heavy exercise, and a finger-stick blood sugar check (typically below 150--200~mg/dL) so the scan is accurate the first time without repeat radiation.
+    \item \textbf{Lowest Effective Dose (ALARA):} Staff calculate the smallest weight-based tracer dose needed, use low-dose CT settings when CT is only needed for localization, and check that your IV flows smoothly to avoid leaking under the skin.
+    \item \textbf{Pregnancy and Breastfeeding Protections:} Anyone who could be pregnant is screened before tracer injection. For F-18 FDG, nursing parents do not need to discard breast milk---they can pump and have someone else bottle-feed while limiting close chest-to-baby contact for about 4--12~hours.
+    \item \textbf{Hydration and Simple Radiation Hygiene:} Drinking plenty of water and emptying your bladder often after the scan flushes the tracer out quickly and lowers bladder dose. Staff will also advise keeping a short distance from pregnant people and young children for several hours.
+    \item \textbf{Extra Checks for Hybrid Scans:} If diagnostic IV CT dye is added, staff check kidney health and dye allergies. For hybrid PET/MRI, staff complete full MRI magnet and implant safety screening.
+\end{itemize}
+
+\section{Prerequisite Tests}
+
+\begin{itemize}
+    \item \textbf{Finger-Stick Blood Sugar Check:} Required right before an F-18 FDG injection (typically under 150--200~mg/dL after a 4--6~hour fast) so the sugar tracer distributes properly.
+    \item \textbf{Pregnancy Test:} A urine or blood pregnancy test for anyone who could be pregnant when pregnancy cannot be ruled out by history.
+    \item \textbf{Kidney Blood Test (Only If IV CT Dye Is Added):} A recent creatinine/eGFR kidney check and allergy review if a contrast-enhanced diagnostic CT is planned alongside PET.
+    \item \textbf{Review of Prior Scans and Treatments:} Your team reviews past CT or MRI scans, biopsy results, and dates of recent surgery, chemo, radiation, or bone-marrow-boosting shots so healing inflammation is not mistaken for cancer.
+    \item \textbf{MRI Safety Screening (For Hybrid PET/MRI):} A standard MRI implant and metal safety checklist---and occasional X-rays if hidden metal fragments are suspected---before entering a PET/MRI room.
+\end{itemize}
+
+\section{Preparing for the Scan}
+
+\begin{itemize}
+    \item \textbf{Fast for 4--6~Hours, Drink Plain Water:} Before an F-18 FDG scan, avoid all food, sweet drinks, coffee with cream, gum, and candy for 4--6~hours. Drink plenty of plain, unflavored water to stay well hydrated.
+    \item \textbf{Skip Heavy Exercise and Stay Warm:} Avoid strenuous workouts and heavy lifting for 24~hours beforehand so tired muscles do not soak up the tracer. Dress warmly in comfortable, metal-free clothes---getting chilly activates ``brown fat'' in the neck and shoulders that can glow on the scan.
+    \item \textbf{Coordinate Diabetes Medicines:} Check with the nuclear medicine team ahead of time about insulin and diabetes pills (fast-acting insulin is usually paused for at least 4~hours before injection). Most other regular medicines can be taken with plain water. For heart sarcoidosis scans, follow the special high-fat, low-carb diet for 24--48~hours.
+    \item \textbf{Relax Quietly During Uptake:} After the IV injection, you will rest in a warm, quiet, dimly lit room for 45--60~minutes. Avoid talking, chewing, reading, or scrolling on your phone so your vocal cords, jaw muscles, and brain stay calm and neutral.
+    \item \textbf{Empty Your Bladder and Remove Metal:} Use the restroom right before stepping into the scanner to clear the bladder, and take off jewelry, belts, coins, and metal items (and all magnetic items for PET/MRI).
+\end{itemize}
+
+\section{During Scan}
+
+\begin{itemize}
+    \item \textbf{Lying Comfortably and Holding Still:} You will lie on your back on a padded table---often with your arms resting above your head on cushioned supports for body scans, or at your sides for brain scans. Staying completely still keeps the PET and CT layers lined up cleanly.
+    \item \textbf{Easy, Gentle Breathing:} Breathe softly and evenly without deep sighs, coughing, or talking so your lungs and diaphragm stay steady. You may only be asked for a brief breath-hold if a diagnostic CT pass is included.
+    \item \textbf{What It Feels and Sounds Like:} The tracer injection feels like a quick routine IV stick with no warm flush or side effects. During the scan, the table glides smoothly through a short, open ring with only a soft mechanical hum (hybrid PET/MRI makes louder rhythmic knocking sounds).
+    \item \textbf{Constant Monitoring and Intercom:} Although the technologist sits in the next room behind a window, they watch you on camera and can hear you clearly through a two-way speaker. Press the call button or speak up right away if you feel cold, anxious, dizzy, or uncomfortable.
+    \item \textbf{Total Time:} Plan on 20--45~minutes on the scanner table after your 45--60~minute quiet rest period, with the bed pausing briefly at each section of your body.
+\end{itemize}
+
+\section{Normal Appearance}
+
+\begin{itemize}
+    \item \textbf{Bright Brain and Urinary Tract:} On a healthy F-18 FDG scan, the brain naturally glows brightly because it uses lots of sugar, and the kidneys, ureters, and bladder glow brightly as the tracer leaves the body in urine.
+    \item \textbf{Even Liver and Chest Reference Glow:} The liver shows a smooth, mild-to-moderate glow and the blood in the center of the chest shows a faint glow. Doctors use these two normal areas as built-in yardsticks when scoring lymphoma and other tumors.
+    \item \textbf{Normal Variable Areas:} Mild, balanced activity in the tonsils, salivary glands, vocal cords, digestive tract, and heart muscle is completely normal and varies with fasting and insulin levels.
+    \item \textbf{Quiet Background Tissues:} Healthy resting muscles, lungs, body fat, and bone marrow show low, even background activity without uneven bright spots.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+
+\begin{itemize}
+    \item \textbf{Bright Cancer Hotspots:} A sharp, intensely glowing spot (higher than the liver or chest blood pool, with an elevated SUV) inside a lump, lymph node, or bone strongly suggests active cancer or cancer spread.
+    \item \textbf{Quieter Brain Regions:} Reduced sugar activity in specific brain lobes helps identify memory disorders---such as both sides of the upper-back brain in Alzheimer's disease or the front lobes in frontotemporal dementia---as well as seizure sources between attacks.
+    \item \textbf{Heart Muscle Viability and Inflammation:} Heart muscle with low blood flow that still takes up sugar tracer is alive (``hibernating'') and may improve after opening a blocked artery, whereas areas showing neither blood flow nor sugar uptake are scar tissue. Patchy bright heart spots point to active cardiac sarcoidosis.
+    \item \textbf{Inflammation and Infection Patterns:} Bright glowing walls along major arteries suggest large-vessel inflammation (vasculitis), while bright spots hugging an artificial valve or pacemaker signal infection. Evenly bright bone marrow or spleen is often a harmless bounce-back after chemo or marrow-boosting medicines.
+    \item \textbf{Harmless Look-Alikes:} Chilly ``brown fat'' around the neck and spine, normal bowel motion, healing surgical scars, metal-implant shadows, or breathing shifts near the liver dome can mimic cancer. Doctors always cross-check with the fused CT scan and uncorrected PET views.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+
+\begin{itemize}
+    \item \textbf{Prep Issues and Very Small Spots:} High blood sugar, recent insulin, or heavy exercise pulls FDG into muscles and dims tumor contrast. Very tiny lesions (around 4--6~mm or smaller) can also look fainter than they really are.
+    \item \textbf{Inflammation Mimicking Cancer:} Infections, recent surgery or radiation, sarcoidosis, and brown fat soak up FDG eagerly and can look just like cancer on the PET screen.
+    \item \textbf{Breathing Shifts and Metal Artifacts:} Breathing across the diaphragm or metal implants (like hip prostheses, dental work, or pacemakers) can misplace a hotspot or create false bright streaks. Doctors check uncorrected PET images to confirm whether a spot is real.
+    \item \textbf{Low-Sugar-Activity Cancers:} Some slow-growing or specific cancers---such as certain kidney, prostate, mucinous, neuroendocrine, or low-grade lymphomas---do not absorb much FDG and can look faint or normal.
+    \item \textbf{How Doctors Clarify Unclear Spots:} Care teams review unclear scans together alongside diagnostic CT or MRI, switch to targeted non-FDG tracers (like PSMA, DOTATATE, or amino acid PET), wait for post-treatment inflammation to settle, or recommend a targeted biopsy before changing treatment.
+\end{itemize}
+
+\section{Augmenting Methods}
+
+\begin{itemize}
+    \item \textbf{Diagnostic Contrast CT and Hybrid PET/MRI:} Pairing PET with full-strength contrast CT or MRI provides razor-sharp anatomy, helps tell normal bowel or urine activity apart from true masses, and improves views of the brain, liver, pelvis, and bone marrow.
+    \item \textbf{Targeted Non-FDG Tracers:} Specialized tracers---such as PSMA for prostate cancer, DOTATATE for neuroendocrine tumors, amino acid tracers for brain tumors, and amyloid or tau tracers for Alzheimer's---boost accuracy when FDG is not ideal.
+    \item \textbf{Breathing-Synced (4D) and Delayed Scans:} Syncing PET with your breathing sharpens spots near the lungs and liver, while taking a second delayed picture can sometimes tell persistent cancer apart from fading inflammation.
+    \item \textbf{Guided Biopsies and Blood Markers:} Using PET hotspots to guide a needle biopsy ensures doctors sample the most active part of a lump, while blood markers (such as PSA, CEA, or circulating tumor DNA) add another layer of clarity.
+    \item \textbf{Smart Quantification and AI Tools:} Automated software measures total active tumor volume and improves response scoring, while AI denoising keeps images crisp at lower radiation doses.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+
+\begin{itemize}
+    \item \textbf{Versus Contrast CT:} Diagnostic CT is faster, less expensive, and gives sharper anatomical pictures for emergencies and routine checks. PET/CT adds cell-activity insight to catch hidden spread and tell living cancer from scar tissue.
+    \item \textbf{Versus MRI:} MRI offers unmatched soft-tissue detail with zero radiation for the brain, spine, liver, and pelvis. PET shines for whole-body cancer staging and treatment-response tracking, or both can be combined in hybrid PET/MRI.
+    \item \textbf{Versus SPECT/CT:} SPECT/CT is more widely available and less expensive using longer-lived tracers. PET offers sharper detail, higher sensitivity, and more exact activity measurements (SUVs) for oncology, dementia, and heart blood flow.
+\end{itemize}
+
+\section{Follow-up Steps}
+
+\begin{itemize}
+    \item \textbf{Hydrate and Resume Normal Life:} Drink plenty of water and empty your bladder often for several hours after the scan to flush out the tracer. Limit prolonged close contact with pregnant people and young children for a few hours as advised, and return to your normal meals and diabetes medicines.
+    \item \textbf{Team Review of Results:} Your specialist reviews the PET findings alongside CT or MRI scans, recent treatments, and standardized response scores (such as Deauville or Lugano criteria in lymphoma) to plan the best next step.
+    \item \textbf{Confirming New or Unclear Spots:} A newly discovered or uncertain hotspot is often checked with a targeted biopsy, MRI, or CT before making major treatment changes, especially if infection or harmless inflammation is possible.
+    \item \textbf{Smart Timing for Repeat Scans:} Follow-up PET/CT scans are timed carefully---often 2--4~weeks after chemotherapy and 8--12~weeks after radiation therapy---so healing inflammation fades before checking for remission.
+\end{itemize}
+
+\section{What You Should Know About Positron Emission Tomography?}
+
+\begin{itemize}
+    \item \textbf{Painless and Quiet:} Aside from a quick IV stick for the tracer, a PET scan does not hurt and causes no warm flush. You simply rest quietly while the tracer settles, then lie still as the table glides through an open ring.
+    \item \textbf{Carefully Controlled Radiation That Clears Fast:} The scan uses a small, carefully measured radiation dose from the tracer (and accompanying CT) that fades quickly on its own---drinking plenty of water and using the restroom helps clear it even faster.
+    \item \textbf{Plan for About 2~Hours:} Expect roughly 45--60~minutes of quiet resting time plus 20--45~minutes on the scanner table. A nuclear medicine doctor typically sends the formal report to your doctor within 1--3~business days.
+    \item \textbf{Why Your Doctor Orders It:} Instead of showing only organ shape, PET reveals how active cells are---helping spot cancer early, check if treatment is working, evaluate brain or heart conditions, and avoid unnecessary surgery.
+    \item \textbf{Most Important Things to Share:} Always tell your team if you have diabetes (so insulin and fasting can be timed safely), could be pregnant or are breastfeeding, or recently had surgery, an infection, chemotherapy, or radiation therapy.
+\end{itemize}
+
+\section{Key References}
+
+\begin{itemize}
+    \item Boellaard R, Delgado-Bolton R, Oyen WJ, et al. FDG PET/CT: EANM procedure guidelines for tumour imaging: version 2.0. \textit{European Journal of Nuclear Medicine and Molecular Imaging}. 2015;42(2):328--354.
+    \item Society of Nuclear Medicine and Molecular Imaging (SNMMI) and European Association of Nuclear Medicine (EANM). Procedure Standards for Oncologic, Neurologic, and Cardiac PET/CT Imaging.
+    \item American College of Radiology (ACR). \textit{ACR Appropriateness Criteria} and \textit{ACR--SPR Practice Parameter for Performing FDG-PET/CT in Oncology}.
+    \item Kapoor M, Kasi A. PET Scanning. \textit{StatPearls}. Treasure Island, FL: StatPearls Publishing.
+\end{itemize}

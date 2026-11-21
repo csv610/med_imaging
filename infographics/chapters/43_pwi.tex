@@ -1,2 +1,215 @@
 \infographicchapter{Perfusion-Weighted Imaging}{pwi.png}
 \label{ch:infographic-pwi}
+
+\section{Overview}
+
+Perfusion-Weighted Imaging (PWI) is a specialized MRI scan that measures how blood flows through the tiny blood vessels of an organ, most commonly the brain. Doctors use three main PWI techniques. The first two use an IV contrast dye called gadolinium: dynamic susceptibility contrast (DSC) watches the dye sweep quickly through brain blood vessels on its first pass, while dynamic contrast-enhanced (DCE) measures how much dye leaks slowly through weakened vessel walls. The third method, called arterial spin labeling (ASL), needs no dye at all---it gently tags your own incoming arterial blood with harmless radio waves in the neck and tracks it into the brain.
+
+From these scans, computers build color-coded blood-flow maps showing how much blood fills the tiny vessels (cerebral blood volume, or CBV), how fast blood flows through them (cerebral blood flow, or CBF), how long blood takes to pass through (mean transit time and time-to-peak), and how leaky the vessel walls are. Doctors rely on PWI in acute stroke to spot brain tissue that is starving for blood but can still be saved, and in brain tumor care to estimate tumor aggressiveness and tell returning cancer apart from harmless post-radiation scar tissue. It also helps evaluate blood--brain barrier leaks, seizures, narrowed brain arteries, and memory disorders.
+
+PWI is radiation-free and runs right alongside standard structural brain MRI. Its contrast-free ASL option is especially helpful for children, pregnant patients, and people with severe kidney disease. Limits include image distortion near the skull base or old bleeding, lower signal strength in ASL, and sensitivity to head movement. Standard MRI magnet safety rules apply for metal implants, and contrast-based DSC/DCE scans carry standard gadolinium precautions in people with severe kidney failure.
+
+\section{Underlying Physical Principles}
+
+\begin{itemize}
+    \item \textbf{Fast Dynamic MRI Snapshots:} Inside a strong MRI magnet (1.5 or 3.0~Tesla), gentle radio waves interact with natural hydrogen atoms in your body's water. High-speed MRI sequences snap rapid whole-brain pictures every 1 to 2~seconds so blood flow can be watched like a movie.
+    \item \textbf{Watching Dye Sweep Through (DSC):} In dynamic susceptibility contrast (DSC) MRI, a quick IV pulse of gadolinium contrast passes through the brain's tiny capillaries. As it passes, it briefly dims the MRI signal in proportion to how much blood is flowing through each spot.
+    \item \textbf{Measuring Vessel Leakiness (DCE):} In dynamic contrast-enhanced (DCE) MRI, when the protective blood--brain barrier is damaged, gadolinium slowly seeps out of blood vessels and brightens the surrounding tissue over time, letting software estimate capillary leakiness (called K-trans).
+    \item \textbf{Dye-Free Blood Tagging (ASL):} Arterial spin labeling (ASL) skips IV contrast altogether. Radio waves briefly magnetize water in blood flowing up your neck arteries; a moment later, the scanner compares a ``tagged'' brain picture with a normal one to map natural blood flow directly.
+    \item \textbf{Turning Curves into Color Maps:} Perfusion software analyzes how fast and how strongly the signal rises and falls in every tiny spot of the brain, adjusting for any dye leakage, to create easy-to-read color maps of blood volume (CBV), blood flow (CBF), and arrival delay (MTT and Tmax).
+\end{itemize}
+
+\section{Imaging Mechanism}
+
+\begin{enumerate}
+    \item \textbf{Coil Setup and IV Preparation:} You lie flat on your back with your head resting comfortably inside a cushioned MRI head coil. If contrast-based DSC or DCE imaging is planned, a nurse places a sturdy IV line in your arm connected to an MRI-safe power injector holding gadolinium contrast and a saline flush.
+    \item \textbf{Launching the Dynamic Sequence:} For DSC or DCE, the scanner begins snapping rapid whole-brain pictures every 1--2~seconds in sync with the contrast injection. For dye-free ASL, the scanner simply alternates blood-tagging and control radio pulses over a few minutes.
+    \item \textbf{Receiving Faint Radio Signals:} The head coil picks up faint radio echoes returning from relaxing water atoms in your brain and converts them into raw digital data for every time frame.
+    \item \textbf{Building and Calculating Blood-Flow Maps:} Fast computers reconstruct the time-series brain slices, correct for tiny head movements and contrast leakage, and calculate blood volume, blood flow, and timing delays across the entire brain.
+    \item \textbf{Color-Coded Review:} The final rainbow-colored perfusion maps are lined up next to standard structural and stroke (diffusion) MRI slices so radiologists, stroke teams, or neuro-oncologists can review them immediately.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Fast MRI tracking of an IV gadolinium pulse (DSC), vessel leakiness (DCE), or dye-free magnetically tagged arterial blood (ASL) \\
+Energy / Signal Source & Strong static magnetic field, harmless radiofrequency (RF) pulses, and fast magnetic gradients \\
+Typical Frequency / Energy & 1.5~Tesla (64~MHz) or 3.0~Tesla (128~MHz) MRI scanners \\
+Spatial Resolution & About 1.5--3.0~mm in-plane (3--5~mm slice thickness) \\
+Typical Scan Duration & 2--6~minutes for the PWI part (25--45~minutes for a full brain MRI) \\
+Contrast Agent & IV gadolinium contrast for DSC/DCE; none needed for ASL \\
+Ionizing Radiation & None (0~mSv) \\
+\bottomrule
+\end{tabularx}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+
+\begin{itemize}
+    \item \textbf{Emergency Stroke Care:} Spots brain tissue that is low on blood flow but not yet permanently damaged (by comparing perfusion with diffusion MRI), helping stroke teams decide whether clot-busting medicine or clot removal can still help even hours after symptoms began.
+    \item \textbf{Brain Tumor Grading and Biopsy Planning:} Measures extra blood-vessel growth inside brain tumors (elevated relative cerebral blood volume, or rCBV) to help estimate how aggressive a glioma is and guide surgeons to biopsy the most active spot.
+    \item \textbf{Tumor Return Versus Radiation Scar:} Helps tell true returning brain tumors (which show rich new blood supply) apart from harmless radiation scar tissue or temporary treatment swelling (which show low blood volume) after radiation and chemotherapy.
+    \item \textbf{Telling Brain Masses Apart:} Helps distinguish high-grade tumors and cancer spread from look-alike conditions such as brain lymphoma, inflammatory demyelination, or brain abscesses.
+    \item \textbf{Checking Narrowed Brain Arteries:} Evaluates how well backup circulation compensates for narrowed neck or brain arteries (such as carotid stenosis or moyamoya disease), often using dye-free ASL.
+\end{itemize}
+
+\subsection{Secondary Usages}
+
+\begin{itemize}
+    \item \textbf{Seizure and Epilepsy Checks:} Spots areas of extra blood flow during active seizures or lower blood flow between seizures to help locate seizure sources, especially with dye-free ASL.
+    \item \textbf{Watching for Vessel Spasm After Brain Bleeding:} Detects areas of reduced blood flow caused by irritated, narrowed arteries (vasospasm) following a brain aneurysm bleed.
+    \item \textbf{Memory and Dementia Checks:} Uses radiation-free, dye-free ASL to map reduced blood flow in specific brain regions in Alzheimer's disease and frontotemporal dementia.
+    \item \textbf{Measuring Vessel Leakiness:} Uses DCE MRI to measure blood--brain barrier breakdown (K-trans), helping track anti-vessel-growth therapies and brain inflammation.
+\end{itemize}
+
+\section{Advantages}
+
+\begin{itemize}
+    \item \textbf{Shows How Blood Flows Through Tiny Vessels:} Measures blood volume, blood flow speed, transit delay, and vessel leakiness---giving vital functional insight that standard black-and-white MRI cannot show alone.
+    \item \textbf{Zero Radiation in One Convenient Visit:} Runs right inside the same session as standard structural and stroke MRI without any X-rays, streamlining emergency stroke care and tumor follow-up.
+    \item \textbf{Dye-Free Option with ASL:} Arterial spin labeling measures brain blood flow safely without IV gadolinium, making it ideal for children, pregnant patients, and people with severe kidney disease.
+    \item \textbf{High Impact in Stroke and Brain Tumors:} Clearly identifies salvageable brain tissue in stroke and helps avoid unnecessary surgery by telling returning tumors apart from radiation scar tissue.
+\end{itemize}
+
+\section{Disadvantages}
+
+\begin{itemize}
+    \item \textbf{Distortion Near Bone, Air, or Blood:} DSC scans can look warped or darkened near the sinuses, skull base, old bleeding, or metal surgical clips. Dye-free ASL has softer signal strength and can be tricked by very slow backup blood flow.
+    \item \textbf{Gadolinium Dye Precautions:} Contrast-based DSC and DCE scans require a brisk IV injection of gadolinium, carrying a small risk of allergic-like reactions, trace gadolinium retention, and a rare condition called nephrogenic systemic fibrosis (NSF) in severe kidney failure.
+    \item \textbf{Numbers Vary Across Machines:} Because different MRI brands and software models calculate perfusion slightly differently, keeping follow-up scans on the same type of scanner is helpful.
+    \item \textbf{Standard MRI Limits and Motion Sensitivity:} Cannot be used with unsafe metal implants or incompatible pacemakers. Moving your head during the quick contrast pass blurs the maps, and MRI takes longer than CT for unstable emergency patients.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+
+\begin{itemize}
+    \item \textbf{Unsafe Metal Implants (MRI Magnet Safety):} Older magnetic brain aneurysm clips, non-MRI-safe pacemakers or defibrillators, certain cochlear implants, neurostimulators, and metal fragments in the eyes strictly prohibit MRI scanning.
+\end{itemize}
+
+\subsection{Relative}
+
+\begin{itemize}
+    \item \textbf{Gadolinium Dye Precautions (DSC and DCE):} Severe kidney failure (eGFR below 30), sudden kidney injury, prior severe gadolinium allergy, or pregnancy are reasons to avoid IV gadolinium; doctors usually choose dye-free ASL instead.
+    \item \textbf{Medical Stability, IV Access, and Claustrophobia:} Unstable vital signs in an acute stroke, difficulty placing a sturdy IV for a fast contrast injection, or severe claustrophobia may delay or limit the scan.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+
+\begin{itemize}
+    \item \textbf{Strict Metal and Implant Screening:} Following American College of Radiology (ACR) MRI safety rules, staff screen everyone entering the magnet room for metal fragments, aneurysm clips, pacemakers, and implants, verifying MRI-safe settings beforehand.
+    \item \textbf{Safe Gadolinium Use and Dye-Free Choices:} When contrast is needed, clinics use modern, safer macrocyclic gadolinium agents (ACR Group~II) at the lowest helpful dose, check allergy and kidney history, and opt for dye-free ASL in pregnancy, children, or severe kidney disease whenever appropriate.
+    \item \textbf{Checking the IV Line First:} Before a fast DSC contrast injection, staff confirm a well-placed IV (usually 18--20~gauge) with a gentle saline flush so dye does not leak into surrounding arm tissue.
+    \item \textbf{Hearing Protection and Comfort:} Staff keep radio-wave warmth within strict limits, use foam padding so your skin never touches the magnet walls, avoid looping coil wires, and provide earplugs or headphones plus a hand-held squeeze-ball call button.
+    \item \textbf{Fast-Track Stroke Monitoring:} During emergency stroke MRI, teams use MRI-safe vital-sign monitors and streamlined scan protocols so imaging never delays urgent clot-busting or clot-removal treatment.
+\end{itemize}
+
+\section{Prerequisite Tests}
+
+\begin{itemize}
+    \item \textbf{MRI Safety Checklist:} Everyone completes a detailed implant and metal safety questionnaire before entering the magnet room; occasionally a quick X-ray is taken if past metal exposure near the eyes is possible.
+    \item \textbf{Kidney Blood Test (Only for Contrast DSC/DCE):} Patients with kidney disease or kidney risk factors get a recent creatinine/eGFR blood test before receiving gadolinium. Dye-free ASL needs no kidney lab test.
+    \item \textbf{Baseline Brain Scans:} In acute stroke, a quick non-contrast CT or bleed-sensitive MRI rules out brain bleeding while diffusion MRI runs alongside PWI. For brain tumors, prior MRI scans help track changes over time.
+    \item \textbf{Pregnancy Check:} Anyone who could be pregnant is asked about pregnancy status before contrast-based PWI, since gadolinium is generally avoided during pregnancy in favor of dye-free ASL.
+\end{itemize}
+
+\section{Preparing for the Scan}
+
+\begin{itemize}
+    \item \textbf{Remove All Metal and Dress MRI-Safe:} Change into a metal-free hospital gown and take off jewelry, watches, hairpins, hearing aids, removable dentures, metal-backed skin patches, and wallet cards before entering the MRI room.
+    \item \textbf{Hydrate for Smooth IV Placement:} If contrast-based DSC or DCE PWI is planned, drink plenty of water beforehand (if allowed) to make placing a smooth IV line easier.
+    \item \textbf{Food, Medicines, and Caffeine:} You usually do not need to fast unless sedation is planned, and you can take regular medicines as usual. For dye-free ASL blood-flow scans, you may be asked to skip caffeine, nicotine, and stimulants for a few hours beforehand so your baseline brain blood flow is natural.
+    \item \textbf{Bring Implant Cards and Mention Claustrophobia:} Bring ID cards for any pacemakers, stents, clips, or implants so staff can verify safe settings early. Let your doctor know ahead of time if tight spaces make you anxious so calming support or mild medicine can be arranged.
+    \item \textbf{Use the Restroom and Get Cozy:} Empty your bladder before the scan, wear the earplugs or headphones provided, and settle comfortably into the head cushions so you can stay completely still during the quick perfusion pass.
+\end{itemize}
+
+\section{During Scan}
+
+\begin{itemize}
+    \item \textbf{Lying Still Inside the Scanner:} You will lie flat on your back on a padded table with your head cradled in a cushioned frame. Keeping your head completely still---especially during the brief 2--6~minute perfusion pass---keeps the blood-flow maps sharp.
+    \item \textbf{Calm, Natural Breathing:} Breathe quietly and evenly through your nose or mouth without heavy swallowing, coughing, or shifting your shoulders.
+    \item \textbf{Sounds and Contrast Feelings:} Expect loud rhythmic knocking, thumping, and buzzing noises from the MRI magnet, softened by your earplugs or headphones. If gadolinium contrast is injected, you may feel a brief cool rush up your arm or a faint metallic taste for a few seconds.
+    \item \textbf{Squeeze-Ball Alert and Intercom:} You will hold a soft rubber squeeze ball at all times and can talk with the technologist via intercom. Squeeze the ball or speak up right away if you feel anxious, warm against the scanner wall, burning or swelling at your IV site, itchy, or short of breath.
+    \item \textbf{How Long It Takes:} The perfusion sequence itself adds just 2--6~minutes to a standard 25--45~minute brain MRI, with brief quiet pauses between sets while the technologist checks in on you.
+\end{itemize}
+
+\section{Normal Appearance}
+
+\begin{itemize}
+    \item \textbf{Balanced Left-and-Right Maps:} Healthy color maps of blood volume (CBV), blood flow (CBF), and timing delays look like clean mirror images between the left and right sides of the brain, with no delayed or darkened zones.
+    \item \textbf{Richer Flow in Brain Cortex:} The outer brain layer (gray matter) naturally uses more energy and shows about 2 to 3~times higher blood flow than the deeper white-matter wiring underneath (typically 50--70 versus 20--25~mL per 100~g per minute).
+    \item \textbf{Clean Contrast Return:} On a healthy DSC scan, the contrast wave causes a quick, smooth dip in signal that bounces right back to baseline, showing that the protective blood--brain barrier is intact and not leaking.
+    \item \textbf{Smooth ASL Cortex Glow:} On healthy dye-free ASL, the folded surface of both brain hemispheres glows evenly without bright trapped-blood streaks inside larger arteries.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+
+\begin{itemize}
+    \item \textbf{Salvageable Brain Tissue in Stroke (Mismatch):} A large area showing slow blood arrival (Tmax over 6~seconds) and low blood flow surrounding a much smaller core of permanently injured tissue tells stroke doctors that significant brain tissue can still be saved with rapid treatment.
+    \item \textbf{High Blood Volume in Aggressive Brain Tumors:} Bright ``hot'' colors (high rCBV) inside a brain mass point to dense, rapidly growing abnormal blood vessels typical of high-grade gliomas or hypervascular cancer spread, setting them apart from low-grade tumors or scar tissue.
+    \item \textbf{Telltale Dye-Leakage Curves:} High-grade tumors and metastases often show incomplete signal recovery because dye leaks out of fragile vessels, whereas brain lymphoma typically shows lower blood volume with a distinctive ``overshoot'' curve above baseline.
+    \item \textbf{Low Blood Volume in Scar Tissue and Tumor Mimics:} Low rCBV inside a growing, bright-on-MRI post-treatment area points toward harmless radiation scar tissue or temporary treatment swelling (pseudoprogression) rather than returning cancer. Brain abscesses and demyelinating plaques also usually show low rCBV.
+    \item \textbf{Harmless Look-Alikes (Artifacts):} Old blood, calcium, surgical clips, and skull-base air spaces can cause dark dropouts on DSC maps that falsely lower blood-volume readings. On ASL, slow backup circulation can trap bright signal inside arteries (``arterial transit artifact'') and mimic extra blood flow.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+
+\begin{itemize}
+    \item \textbf{Skull-Base Shadows and IV Issues:} Air-filled sinuses, bleeding, calcium, or metal clips near a lesion can distort DSC blood-volume readings, and a sluggish IV injection can blur timing curves.
+    \item \textbf{Contrast Leakage Effects:} When the blood--brain barrier is leaky, dye seeping out can push readings artificially up or down unless consistent pre-dosing and software leakage corrections are used on every visit.
+    \item \textbf{Slow-Flow Delays in ASL:} In people with severely narrowed neck arteries, tagged blood takes longer to arrive in the brain, which can create bright artery streaks or make healthy brain tissue look falsely low on flow.
+    \item \textbf{Overlapping Tumor Readings:} Sometimes a mix of returning tumor and radiation scar tissue---or naturally blood-rich low-grade tumors like oligodendroglioma---gives middle-ground readings that overlap.
+    \item \textbf{Getting a Definite Answer:} Radiologists inspect the raw time curves alongside structural and diffusion MRI, keep follow-up protocols consistent, and when needed, pair PWI with MR spectroscopy, amino acid PET, a short-interval repeat MRI in 2--3~months, or a targeted needle biopsy.
+\end{itemize}
+
+\section{Augmenting Methods}
+
+\begin{itemize}
+    \item \textbf{Diffusion and Standard Brain MRI:} Pairing PWI with diffusion MRI (DWI) is the gold standard for identifying salvageable stroke tissue, while standard structural sequences anchor every color map to exact brain anatomy.
+    \item \textbf{Blood-Vessel Scans (MRA and CTA):} MR or CT angiography directly shows the blocked or narrowed artery causing a perfusion delay in stroke, carotid narrowing, or aneurysm vasospasm.
+    \item \textbf{MR Spectroscopy and Amino Acid PET:} Checking tissue chemistry with MR spectroscopy or specialized amino acid PET scans provides an independent second check when tumor recurrence and radiation scar overlap on PWI.
+    \item \textbf{Targeted Biopsy and Genetic Testing:} Aiming a surgical biopsy right at the highest-blood-volume spot improves accuracy in complex brain tumors and allows full microscopic and genetic profiling (such as IDH and MGMT status).
+    \item \textbf{Automated Perfusion Software:} Validated stroke-triage software automatically calculates core and salvageable tissue volumes within minutes, while modern leakage-correction and multi-delay ASL tools make results more consistent.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+
+\begin{itemize}
+    \item \textbf{Versus CT Perfusion (CTP):} CT perfusion is faster, widely available in emergency rooms, and works for patients with MRI-unsafe implants. MRI PWI uses zero X-ray radiation, pairs directly with gold-standard diffusion MRI for stroke core, and offers dye-free ASL.
+    \item \textbf{Versus Standard Contrast MRI:} Routine contrast MRI shows where the blood--brain barrier is leaky, but it often cannot tell radiation scar apart from returning high-grade tumor. PWI adds crucial blood-volume and blood-flow clues.
+    \item \textbf{Versus Amino Acid PET and MR Spectroscopy:} PET and spectroscopy measure cell chemistry rather than blood flow and are less bothered by skull-base distortion, making them great partners when PWI results are borderline.
+\end{itemize}
+
+\section{Follow-up Steps}
+
+\begin{itemize}
+    \item \textbf{After Your Scan:} If you received gadolinium contrast, staff watch you briefly to make sure you feel fine and your IV site looks good. Drink normal fluids and head right back to your day unless you received calming medicine.
+    \item \textbf{Fast Team Communication:} Urgent stroke mismatch results go straight to the stroke team within minutes to guide clot treatment, while brain tumor maps are reviewed jointly by radiologists, neurosurgeons, and radiation oncologists.
+    \item \textbf{Clarifying Borderline Findings:} If a post-treatment spot looks uncertain, your team may add MR spectroscopy, amino acid PET, or a targeted biopsy aimed at the most blood-rich spot.
+    \item \textbf{Consistent Follow-Up Timing:} When watching an uncertain post-treatment spot or narrowed brain arteries, doctors often repeat PWI in 2--3~months using the same scanner settings (or dye-free ASL for children or kidney patients) for a fair side-by-side comparison.
+\end{itemize}
+
+\section{What You Should Know About Perfusion-Weighted Imaging?}
+
+\begin{itemize}
+    \item \textbf{Noisy but Completely Painless:} PWI feels just like a regular brain MRI---you lie still wearing earplugs or headphones to soften loud knocking sounds, with only a brief cool sensation in your arm if gadolinium contrast is used.
+    \item \textbf{Zero X-Ray Radiation and Dye-Free Options:} PWI uses magnets and radio waves instead of X-rays. While some exams use a small dose of safe macrocyclic gadolinium contrast, a completely dye-free option (ASL) is available for children, pregnant patients, and people with kidney disease.
+    \item \textbf{Short Add-On Sequence:} The perfusion portion adds only 2--6~minutes to a 25--45~minute brain MRI. Emergency stroke results are shared within minutes, while routine clinic reports usually reach your doctor within 1--3~business days.
+    \item \textbf{Why Your Doctor Orders It:} By mapping blood flow inside tiny brain vessels, PWI helps stroke teams spot brain tissue that can still be saved and helps brain-tumor specialists tell returning cancer apart from harmless radiation scar tissue.
+    \item \textbf{Most Important Things to Share:} Always tell your team about any metal or electronic implants (pacemakers, aneurysm clips, cochlear implants, or metal fragments), kidney disease, prior contrast reactions, pregnancy, or claustrophobia before entering the MRI room.
+\end{itemize}
+
+\section{Key References}
+
+\begin{itemize}
+    \item Boxerman JL, Quarles CC, Hu LS, et al. Consensus recommendations for a dynamic susceptibility contrast MRI protocol for use in high-grade gliomas. \textit{Neuro-Oncology}. 2020;22(9):1262--1275.
+    \item Alsop DC, Detre JA, Golay X, et al. Recommended implementation of arterial spin-labeled perfusion MRI for clinical applications (ISMRM Perfusion Study Group consensus). \textit{Magnetic Resonance in Medicine}. 2015;73(1):102--116.
+    \item American College of Radiology (ACR). \textit{ACR Manual on MR Safety} and \textit{ACR Manual on Contrast Media}.
+    \item Powers WJ, Rabinstein AA, Ackerson T, et al. Guidelines for the Early Management of Patients With Acute Ischemic Stroke. \textit{Stroke}. 2019;50(12):e344--e418.
+\end{itemize}

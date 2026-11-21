@@ -1,2 +1,199 @@
 \infographicchapter{Nuclear Medicine Imaging Overview}{nuclear_cls.png}
 \label{ch:infographic-nuclear-imaging-overview}
+
+\section{Overview}
+
+Nuclear medicine imaging is a group of medical scans that show how organs and cells are working inside the body, rather than just what they look like. Before the scan, you receive a tiny, carefully measured amount of a mildly radioactive substance called a radiotracer (or radiopharmaceutical). Depending on the test, it may be given through an IV, swallowed as a pill or liquid, or breathed in as a gentle mist. The tracer is designed to travel to a specific organ, metabolic pathway, or cell target. Unlike X-rays, which pass through you from the outside, nuclear scans detect faint energy signals coming out from inside your body, often spotting disease changes long before they show up as a lump or structural change.
+
+The main nuclear medicine scans are planar scintigraphy (flat 2D pictures), SPECT (single-photon emission computed tomography), and PET (positron emission tomography). SPECT uses tracers like technetium-99m or iodine-123 to check heart blood flow, bones, kidneys, thyroid function, and certain brain conditions. PET uses tracers such as FDG (a sugar-like tracer) or specialized prostate and neuroendocrine tracers to produce sharper, more sensitive 3D pictures of cell activity across the whole body.
+
+Today, most SPECT and PET scanners are combined with a CT or MRI scanner (known as SPECT/CT, PET/CT, or PET/MRI). Blending these two scans lets doctors see both the exact biological activity and the exact body landmark at the same time. Nuclear medicine plays a vital role in cancer care, heart disease, brain disorders, thyroid conditions, and targeted radionuclide treatments (theranostics) that pair a diagnostic scan with a matching therapy.
+
+\section{Underlying Physical Principles}
+\begin{itemize}
+  \item \textbf{Signals Coming from Inside the Body:} Tiny amounts of mildly radioactive atoms are attached to natural body-friendly molecules. As they settle in the target organ, they release faint gamma rays (used in planar scans and SPECT) or pairs of energy rays traveling in opposite directions (used in PET).
+  \item \textbf{Showing Function Instead of Shape:} Bright areas on the scan reflect how active the cells are---such as how fast cancer cells use sugar (FDG), how well blood reaches the heart muscle, or whether specific receptors are present---rather than simply showing tissue density.
+  \item \textbf{Special Cameras and Detector Rings:} SPECT cameras use thin metal filters (collimators) in front of special crystals to pinpoint where single gamma rays come from. PET scanners surround the body with a full ring of ultra-fast detectors that catch paired rays arriving at almost the exact same instant, giving much higher sensitivity and detail.
+  \item \textbf{Correcting for Body Thickness:} Some signals lose strength or bounce slightly as they travel out of the body. The paired CT or MRI scan helps the computer measure body thickness and correct those losses so the brightness readings stay accurate.
+  \item \textbf{3D Image Building and Activity Scores:} Computers combine signals from many angles to build 3D maps of tracer activity. On PET scans, doctors often measure a standardized uptake value (SUV), which is a simple number showing how strongly a spot absorbed the tracer.
+\end{itemize}
+
+\section{Imaging Mechanism}
+\begin{enumerate}
+  \item \textbf{Giving the Tracer and Waiting for Uptake:} A carefully measured dose of radiotracer is given through an IV, by mouth, or by breathing it in. You then rest quietly for a set waiting period so the tracer has time to reach the target organs.
+  \item \textbf{Scanning with the Camera or Ring:} You lie on a padded table. For SPECT, open camera heads slowly rotate around your body. For PET/CT or PET/MRI, the table glides smoothly through an open ring scanner that collects both the tracer signals and a companion CT or MRI map.
+  \item \textbf{Detecting and Recording the Signals:} Sensitive crystals or solid-state detectors catch the faint gamma rays leaving your body, check their energy and exact arrival time, and turn them into digital counts.
+  \item \textbf{Cleaning Up and Building the 3D Picture:} Software uses the CT or MRI scan to correct for tissue thickness, filters out stray background rays, and builds clear 3D slices of tracer activity.
+  \item \textbf{Fusing the Images for Review:} The computer lays the color-coded nuclear scan directly on top of the grayscale CT or MRI image, giving doctors both a full-body view and precise activity measurements.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Faint energy rays emitted from a small radiotracer inside the body are detected by external gamma cameras (SPECT) or detector rings (PET) \\
+Energy / Signal Source & Medical radiotracers such as Tc-99m, I-123, F-18 (FDG), Ga-68, or Rb-82 measured by specialized nuclear cameras \\
+Typical Frequency / Energy & Gamma rays from 140~keV (SPECT) to 511~keV paired rays (PET); typical radiation dose is about 2--20~mSv depending on the tracer and paired CT \\
+Spatial Resolution & About 3--5~mm for modern PET scanners; 7--12~mm for SPECT and planar scans \\
+Typical Scan Duration & 15--45~minutes under the camera (plus a 30-minute to 4-hour waiting period beforehand for the tracer to settle) \\
+Contrast Agent & Radiotracer is always required (IV, oral, or inhaled); standard IV CT contrast dye is optional in hybrid PET/CT or SPECT/CT \\
+Ionizing Radiation & Yes (small internal dose from the radiotracer, plus external X-ray dose if combined with CT) \\
+\bottomrule
+\end{tabularx}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+\begin{itemize}
+  \item \textbf{Cancer Staging and Treatment Tracking:} Whole-body FDG PET/CT and targeted scans (such as PSMA PET for prostate cancer or DOTATATE PET for neuroendocrine tumors) help find where cancer is located, check if it has returned, and see how well treatment is working.
+  \item \textbf{Heart Blood Flow and Muscle Health:} Heart SPECT and PET scans check whether the heart muscle gets enough blood during rest and stress, identify living versus scarred heart tissue, and detect heart inflammation (such as sarcoidosis or amyloidosis).
+  \item \textbf{Bone Scans:} Technetium-99m bone scans and PET bone scans detect cancer that has spread to bone, hidden stress fractures, loose joint replacements, and deep bone infections.
+  \item \textbf{Brain and Memory Conditions:} Specialized brain PET scans (FDG, amyloid, and tau) and dopamine SPECT scans (DaTscan) help evaluate Alzheimer's disease, Parkinson's disease, and hard-to-treat epilepsy.
+  \item \textbf{Thyroid, Kidney, and Lung Function:} Radioiodine thyroid scans, parathyroid scans, lung ventilation-perfusion (V/Q) scans for blood clots, and kidney function scans are everyday clinical tools.
+\end{itemize}
+
+\subsection{Secondary Usages}
+\begin{itemize}
+  \item \textbf{Matching Patients to Targeted Radiation Therapies (Theranostics):} Diagnostic nuclear scans confirm that cancer cells carry the right target before doctors give matching radioligand treatments, such as lutetium-177 PSMA or DOTATATE.
+  \item \textbf{Finding Sentinel Lymph Nodes:} Gentle tracer injections help surgeons pinpoint the first draining lymph nodes during surgery for breast cancer, melanoma, or head-and-neck tumors.
+  \item \textbf{Tracking Hidden Infections:} FDG PET/CT and labeled white-blood-cell scans help locate hard-to-find infections around artificial heart valves, blood-vessel grafts, or unexplained fevers.
+  \item \textbf{Digestive and Gallbladder Function:} Gastric emptying scans check how fast food leaves the stomach, HIDA scans check for gallbladder blockage or bile leaks, and tagged red-blood-cell scans help find intermittent intestinal bleeding.
+\end{itemize}
+
+\section{Advantages}
+\begin{itemize}
+  \item \textbf{Spots Disease Early at the Cellular Level:} Nuclear tracers detect changes in cell metabolism, blood flow, and receptors often well before a lump or structural change appears on CT or MRI.
+  \item \textbf{Whole-Body Check in One Visit:} A single PET or bone scan can survey the entire body to look for cancer spread, hidden infection, or multiple affected areas at once.
+  \item \textbf{Clear Numbers to Track Progress:} Activity measurements (such as SUV) help doctors measure how active a tumor is and see early on whether chemotherapy or radiation is working.
+  \item \textbf{Best of Both Worlds with Hybrid Scans:} Combining PET or SPECT with CT or MRI gives both exact anatomical landmarks and deep biological insight in one appointment.
+  \item \textbf{Direct Link to Targeted Therapy:} The same targeting molecule used to find a tumor on a scan can often be loaded with a stronger therapeutic isotope to treat it directly.
+\end{itemize}
+
+\section{Disadvantages}
+\begin{itemize}
+  \item \textbf{Ionizing Radiation Exposure:} Radiotracers---and any paired CT scan---deliver a small dose of ionizing radiation, so exams must be medically justified and require special care during pregnancy and breastfeeding.
+  \item \textbf{Less Sharp Anatomical Detail:} Nuclear scans are naturally less sharp than CT or MRI, so very small lesions (under a centimeter) can sometimes blur into the background.
+  \item \textbf{Non-Cancerous Spots Can Light Up:} Normal organ activity, infections, and healing inflammation after surgery can absorb sugar tracers like FDG and sometimes mimic cancer.
+  \item \textbf{Complex Scheduling and Higher Cost:} Because medical isotopes fade away quickly, they must be made fresh in nearby facilities and timed tightly to your appointment, which raises cost and limits last-minute availability.
+  \item \textbf{Longer Prep and Waiting Times:} Many exams require fasting, careful blood-sugar control, and a waiting period before scanning, and moving during the scan can blur the overlap with CT or MRI.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+\begin{itemize}
+  \item \textbf{High-Dose Radioiodine Therapy in Pregnancy or Nursing:} While true absolute bans on diagnostic nuclear scans are rare, high-dose therapeutic radioiodine (I-131) must never be given during pregnancy or active breastfeeding.
+  \item \textbf{Unstable Heart or Breathing Conditions (Stress Tests):} A recent heart attack, unstable chest pain, or severe active wheezing/asthma (for certain stress medications) prevents safe cardiac stress perfusion testing.
+\end{itemize}
+
+\subsection{Relative}
+\begin{itemize}
+  \item \textbf{Pregnancy and Breastfeeding (Diagnostic Scans):} Elective diagnostic PET, SPECT, or nuclear scans are generally avoided during pregnancy to protect the developing baby. Nursing mothers may need to pause breastfeeding or pump and discard milk for a short, tracer-specific time per medical guidelines.
+  \item \textbf{Very High Blood Sugar (FDG PET):} Blood sugar above about 200~mg/dL makes the sugar-based FDG tracer go into muscles instead of target areas, often requiring the scan to be rescheduled once blood sugar is controlled.
+  \item \textbf{Paired CT Dye or MRI Limits:} If your scan includes IV CT contrast dye or a hybrid PET/MRI, standard dye allergy, kidney function, or MRI metal-implant rules apply.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+\begin{itemize}
+  \item \textbf{Keeping Radiation as Low as Possible (ALARA):} Nuclear medicine teams confirm every scan is needed, use the smallest tracer dose that gives a clear picture, adjust doses carefully by weight for children, and use low-dose CT settings whenever possible.
+  \item \textbf{Pregnancy and Nursing Checks:} Staff check for possible pregnancy before giving any radiotracer and give nursing mothers clear, written instructions on whether and how long to pause breastfeeding.
+  \item \textbf{Careful Tracer Handling:} Technologists double-check your identity, the exact tracer, and the measured dose before injection, use shielded syringes, and watch the IV site so the tracer flows smoothly into the vein.
+  \item \textbf{Simple Hygiene After the Scan:} Drinking plenty of water and using the bathroom often helps flush the tracer out quickly. Thorough handwashing and flushing the toilet keep hygiene simple, and staff will give written distancing tips around babies or pregnant family members if a higher-dose or therapeutic isotope is used.
+  \item \textbf{Prep Checks and Hybrid Safety:} Checking fasting and blood sugar before FDG PET prevents wasted or repeat radiation doses, and standard CT-dye or MRI-magnet safety checks protect you during hybrid scans.
+\end{itemize}
+
+\section{Prerequisite Tests}
+\begin{itemize}
+  \item \textbf{Pregnancy Check When Needed:} Patients who could be pregnant are asked about pregnancy status and may need a quick urine or blood pregnancy test before receiving a radiotracer.
+  \item \textbf{Finger-Stick Blood Sugar for FDG PET:} Right before an FDG PET injection, staff check your fasting blood sugar (ideally under 150--200~mg/dL) so the scan will be clear and accurate.
+  \item \textbf{Targeted Blood Tests for Certain Scans:} Most bone or lung scans need no blood tests. However, thyroid scans often check thyroid hormones (TSH and free T4), parathyroid scans check calcium and PTH, and hybrid scans with IV CT contrast dye may check kidney function (creatinine/eGFR).
+  \item \textbf{Prior Scans and Medication Check:} Staff review prior CT, MRI, or ultrasound images along with medications or habits that can affect results---such as thyroid pills, recent CT dye, beta-blockers, or caffeine before a heart stress scan.
+\end{itemize}
+
+\section{Preparing for the Scan}
+\begin{itemize}
+  \item \textbf{Exam-Specific Diet and Fasting Rules:} Follow your clinic's exact instructions. For FDG PET, this usually means fasting for 4 to 6~hours, eating a low-carb, higher-protein meal the day before, and skipping hard workouts for 24~hours. For heart stress scans, avoid caffeine for 12 to 24~hours; for thyroid scans, you may need a short low-iodine diet.
+  \item \textbf{Medications and Blood Sugar:} Ask the nuclear medicine team ahead of time if you should pause any medicines (like thyroid pills, beta-blockers, or insulin right before an FDG PET) and keep blood sugar steady.
+  \item \textbf{Hydration, Bathroom Trips, and Clothing:} Drink plain water before most scans (like bone scans and FDG PET) unless told otherwise, empty your bladder right before getting on the table, and wear comfortable, metal-free clothes with jewelry left at home.
+  \item \textbf{Pregnancy, Nursing, and IV Setup:} Tell the technologist before receiving any tracer if you might be pregnant or are breastfeeding, and allow a few minutes for a small IV line to be placed if needed.
+  \item \textbf{Quiet Waiting Time:} Plan for a calm, warm waiting period after the tracer is given---often 45 to 60~minutes for FDG PET or 2 to 4~hours for bone scans. Resting quietly without talking, chewing gum, or getting cold keeps the tracer from going to normal muscles or brown fat.
+\end{itemize}
+
+\section{During Scan}
+\begin{itemize}
+  \item \textbf{Lying Comfortably on the Table:} Once the waiting period is over, you lie flat on a narrow padded table. For SPECT, open camera panels slowly move close around you; for PET/CT, the table glides smoothly through an open ring. Pillows and gentle straps help you stay comfortable and still.
+  \item \textbf{Normal, Gentle Breathing:} For most nuclear scans, you simply breathe calmly and shallowly so your chest moves as little as possible. You may be asked to hold your breath briefly only if a diagnostic CT scan is taken alongside it.
+  \item \textbf{What It Feels and Sounds Like:} You will not feel the radiotracer moving through your body. The scanners are generally quiet, making only soft mechanical whirring sounds as the table or camera moves. If IV CT contrast dye is added, you may feel a brief, harmless warm flush.
+  \item \textbf{Staying in Touch with Staff:} The technologist watches you continuously through a window and video monitor and can hear you over an intercom. Speak up or press the call button right away if you feel anxious, nauseous, short of breath, or feel pain or swelling at your IV site.
+  \item \textbf{How Long the Scan Lasts:} Actual camera time is usually 15 to 45~minutes (whole-body PET/CT often takes 20 to 30~minutes), in addition to the earlier waiting period.
+\end{itemize}
+
+\section{Normal Appearance}
+\begin{itemize}
+  \item \textbf{Expected FDG PET Pattern:} On a healthy FDG PET scan, the brain naturally glows very brightly because it uses lots of sugar, the heart and tonsils vary, the liver looks mildly and evenly lit, and the kidneys and bladder show bright tracer as it exits in the urine.
+  \item \textbf{Even Heart and Lung Blood Flow:} Healthy heart scans show smooth, even tracer uptake across all heart walls at rest and stress. Healthy lung V/Q scans show even air and blood flow throughout both lungs.
+  \item \textbf{Balanced Bones and Thyroid:} A normal bone scan shows even, matched shading on both sides of the skeleton with mild normal brightness in weight-bearing joints. A normal thyroid scan shows even uptake across both lobes of the gland.
+  \item \textbf{Smooth Organ Drainage:} Normal gallbladder (HIDA) and kidney scans show the tracer entering the organ promptly and draining smoothly into the bowel or bladder without backup.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+\begin{itemize}
+  \item \textbf{Bright ``Hot Spots'':} Areas that soak up much more tracer than nearby normal tissue---such as high sugar uptake on FDG PET, targeted prostate tracer uptake, or bright spots on a bone scan---can point to cancer, active infection, inflammation, or healing bone.
+  \item \textbf{Dark ``Cold Spots'':} Areas with little or no tracer uptake point to blocked blood flow or non-working tissue---such as reduced heart blood flow from clogged arteries, wedge-shaped blood-flow gaps in lung clots, or non-functioning ``cold'' thyroid nodules.
+  \item \textbf{Brain Activity Changes:} Specific patterns of lower brain activity help diagnose memory and movement disorders, such as reduced sugar use in certain brain regions in Alzheimer's disease or reduced dopamine uptake on a DaTscan in Parkinson's disease.
+  \item \textbf{Slow Drainage or Blockage:} On timed dynamic scans, tracer that fails to enter the gallbladder can confirm acute gallbladder inflammation (cholecystitis), while slow emptying from the kidneys or stomach points to a blockage or slow digestion.
+  \item \textbf{Harmless Look-Alikes and Technical Glitches:} Active brown fat (from feeling cold), normal bowel activity, recent surgery healing, leaked tracer at the IV site, or breathing motion between the PET and CT passes can create misleading bright or dark spots.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+\begin{itemize}
+  \item \textbf{Inflammation Can Mimic Cancer:} Active infections, healing scars after surgery or radiation, brown fat, and normal digestive or urinary activity can light up brightly on PET and look very similar to tumors.
+  \item \textbf{Tiny Spots Can Be Hard to See:} Because nuclear cameras are less sharp than CT or MRI, very small lesions or slow-growing tumors may appear faint or be missed.
+  \item \textbf{Motion and IV-Site Glitches:} Breathing shifts between the nuclear scan and paired CT, nearby metal implants, high blood sugar, or tracer leaking outside the vein can distort brightness readings or create fake defects.
+  \item \textbf{Careful Technical Checks:} Nuclear medicine doctors check both corrected and uncorrected images, review blood sugar and injection-site photos, use breath-tracking software or delayed pictures when helpful, and repeat a scan only when truly needed.
+  \item \textbf{Confirming with Other Scans or Biopsy:} Uncertain hot or cold spots are clarified using targeted CT, MRI, or ultrasound, team discussions between specialists, follow-up scans after inflammation calms down, or a biopsy before major treatment changes.
+\end{itemize}
+
+\section{Augmenting Methods}
+\begin{itemize}
+  \item \textbf{Dedicated CT and MRI:} High-resolution CT and MRI provide crisp anatomical borders and detect tiny nodules that nuclear scans cannot resolve alone.
+  \item \textbf{Ultrasound and Heart Echo:} Neck ultrasound guides biopsies of ``cold'' thyroid nodules and helps locate parathyroid glands, while heart ultrasound (echocardiography) pairs with nuclear heart scans to show valve motion and pumping strength.
+  \item \textbf{Blood Tests and Markers:} Lab markers---such as PSA for prostate PET, thyroglobulin and TSH for thyroid scans, or heart enzymes---help doctors interpret what the scan means and track progress.
+  \item \textbf{Tissue Biopsy:} Taking a small biopsy sample confirms whether a bright spot is truly cancer or harmless inflammation and verifies whether targeted radionuclide therapy is a good fit.
+  \item \textbf{Modern Software and AI Tools:} Fast time-of-flight PET detectors, breathing-motion tracking, standardized activity measurements, and automated tumor-volume software make scans clearer and help personalize treatment doses.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+\begin{itemize}
+  \item \textbf{Versus CT:} Nuclear medicine spots cellular and metabolic changes much earlier than CT, while CT is faster in emergencies and shows much sharper fine anatomy.
+  \item \textbf{Versus MRI:} PET and SPECT can check the whole body's cell activity in one visit and guide targeted radionuclide therapies, while MRI gives unmatched local soft-tissue detail with zero ionizing radiation.
+  \item \textbf{Versus Ultrasound:} Ultrasound is portable, radiation-free, and great for quick first-line anatomy and blood-flow checks, while nuclear medicine uniquely measures whole-organ function like stomach emptying or split kidney function.
+  \item \textbf{PET Versus SPECT:} PET offers higher sensitivity, sharper detail (3--5~mm), and routine numeric activity scores, while SPECT is more widely available, costs less, and works with longer-lasting tracers like Tc-99m.
+\end{itemize}
+
+\section{Follow-up Steps}
+\begin{itemize}
+  \item \textbf{Flushing Out the Tracer and Hygiene:} After your scan, drink extra fluids and use the bathroom often to clear the tracer faster, wash your hands well after toileting, and follow any written breastfeeding or distancing tips given by your care team.
+  \item \textbf{Team Review of Results:} Nuclear medicine doctors match the scan findings with the paired CT or MRI and standard scoring scales, then share the report with your oncologist, cardiologist, endocrinologist, or primary doctor.
+  \item \textbf{Next-Step Tests if Needed:} Unclear bright spots, cold thyroid nodules, or suspected tumor sites are usually checked with targeted ultrasound, CT, MRI, or a biopsy to rule out simple inflammation. Abnormal heart scans may lead to medication adjustments or a heart blood-vessel check (angiography).
+  \item \textbf{Tracking Treatment Over Time:} Repeat PET/CT or SPECT/CT scans are scheduled at standard treatment checkpoints---waiting long enough after surgery or radiation so normal healing does not cause false alarms---or used to plan targeted radionuclide therapy.
+\end{itemize}
+
+\section{What You Should Know About Nuclear Medicine Imaging Overview?}
+\begin{itemize}
+  \item \textbf{Simple and Painless, with a Waiting Period:} Most nuclear scans involve only a routine IV injection (or swallowing or breathing a tiny tracer), followed by a quiet wait of 30~minutes to a few hours before lying still under an open camera or ring scanner for 15 to 45~minutes.
+  \item \textbf{Small, Controlled Radiation Dose:} You will not feel the tracer inside your body. The radiation dose is kept as low as reasonably possible and leaves naturally through your urine and normal decay within hours to a couple of days, with extra precautions if you are pregnant or breastfeeding.
+  \item \textbf{Widely Used Clinical Care:} Bone scans, heart blood-flow scans, thyroid scans, and PET/CT are established tests at most hospitals, though appointments are scheduled carefully around fresh tracer deliveries.
+  \item \textbf{Why Doctors Order These Scans:} While CT and MRI show what organs look like, nuclear medicine shows how they are working---helping stage cancer, check heart circulation, evaluate thyroid or kidney function, and match patients to targeted therapies.
+  \item \textbf{What to Ask Your Care Team:} Confirm your exact fasting, caffeine, exercise, and medication rules ahead of time (especially if you have diabetes before an FDG PET), tell staff if you might be pregnant or are nursing, and ask about simple hydration or hygiene steps afterward.
+\end{itemize}
+
+\section{Key References}
+\begin{itemize}
+  \item Boellaard R, Delgado-Bolton R, Oyen WJG, et al. FDG PET/CT: EANM procedure guidelines for tumour imaging: version 2.0. \emph{European Journal of Nuclear Medicine and Molecular Imaging}. 2015;42(2):328--354.
+  \item Society of Nuclear Medicine and Molecular Imaging (SNMMI). \emph{SNMMI Procedure Standards for Nuclear Medicine and Molecular Imaging}. Reston, VA: SNMMI, 2024.
+  \item International Commission on Radiological Protection (ICRP). \emph{Radiation Dose to Patients from Radiopharmaceuticals: A Compendium of Current Information Related to Frequently Used Substances (ICRP Publication 128)}. Thousand Oaks, CA: SAGE, 2015.
+  \item Cherry SR, Sorenson JA, Phelps ME. \emph{Physics in Nuclear Medicine}. 4th ed. Philadelphia, PA: Elsevier Saunders, 2012.
+\end{itemize}

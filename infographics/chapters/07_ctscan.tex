@@ -1,2 +1,197 @@
 \infographicchapter{Computed Tomography}{ctscan.png}
 \label{ch:infographic-ctscan}
+
+\section{Overview}
+
+Computed tomography---commonly called a CT or CAT scan---is a fast, painless X-ray imaging test that creates detailed cross-sectional ``slices'' and three-dimensional pictures of the inside of your body. You lie comfortably on a padded table that glides through a wide, open doughnut-shaped ring. Inside that ring, an X-ray tube spins smoothly around you while sensitive detectors on the opposite side measure how much of the X-ray beam passes through your body from hundreds of angles. A computer combines those readings into crisp black-and-white images calibrated on the Hounsfield unit (HU) scale---a standard density ruler where water is set to 0~HU and air is $-1,000$~HU---allowing doctors to clearly tell air, fat, fluid, blood, soft organs, and bone apart.
+
+Because CT scans show bones, lungs, organs, soft tissues, and blood vessels in high detail within seconds, they are one of the most important tools in modern medicine. Doctors rely on CT in emergencies and accidents (spotting brain bleeds, internal organ injuries, and complex fractures), rapid stroke evaluation, finding and tracking cancer, diagnosing sudden belly or chest problems (such as appendicitis, kidney stones, bowel blockages, and pneumonia), and guiding precise needle biopsies or fluid drainages.
+
+Its biggest advantages are speed, 24/7 availability, sharp 3D views from any angle, and safety for people who have pacemakers or metal implants that cannot go into an MRI. Its main limits are that MRI shows finer detail in certain soft tissues (like the brain, spinal cord, and ligaments), and metal implants or movement can cause streaks or blur. Because CT uses ionizing X-ray radiation at a higher dose than a plain X-ray, clinics follow the ALARA principle (``as low as reasonably achievable'') using modern dose-saving technology, and screen carefully for contrast-dye allergies and kidney health whenever intravenous (IV) contrast is used.
+
+\section{Underlying Physical Principles}
+\begin{itemize}
+    \item \textbf{Spinning X-Ray Beam:} Inside the open ring, an X-ray tube running at 80--140 kVp spins continuously around you, sending a thin, carefully shaped fan of X-rays through your body.
+    \item \textbf{How Different Tissues Block X-Rays:} Dense tissues like bone absorb a lot of X-rays and appear bright white, soft organs and muscles absorb moderate amounts and appear medium gray, fat looks dark gray, and air in the lungs or bowel lets almost all X-rays pass through and looks black. Adding IV iodine contrast dye temporarily makes blood vessels and rich organs absorb more X-rays so they light up brightly.
+    \item \textbf{Spiral (Helical) Scanning:} Across from the X-ray tube sits a curved bank of 64--320+ digital detector rows. As the padded table glides smoothly through the ring while the tube spins, the scanner traces a continuous spiral path, capturing an entire body region in seconds.
+    \item \textbf{Computer Slice Reconstruction:} Powerful software takes thousands of angled X-ray readings and reconstructs them into thin cross-sectional slices. Modern iterative reconstruction software cleans up graininess automatically, letting scanners produce sharp images at much lower radiation doses.
+    \item \textbf{Standard Density Ruler (Hounsfield Units):} Every tiny block (voxel) in a CT image is assigned a calibrated density number compared with water (0~HU) and air ($-1,000$~HU), helping radiologists objectively tell fluid cysts, fat, fresh blood, calcium, and solid tissue apart.
+\end{itemize}
+
+\section{Imaging Mechanism}
+\begin{enumerate}
+    \item \textbf{Positioning and Quick Preview Scan:} You lie on your back on the padded motorized table while soft alignment lights center the area being scanned. The machine first takes a quick, very low-dose preview picture (scout view) to map the exact start and stop points and tailor the X-ray dose to your body size.
+    \item \textbf{Smooth Spiral Sweep:} The table slides gently through the open ring while the X-ray tube spins around you every fraction of a second (with timed IV or drinking contrast dye if your doctor ordered it).
+    \item \textbf{Digital Signal Capture:} Rows of solid-state detectors across from the X-ray tube measure the X-rays passing through your body from thousands of angles and convert them into digital data.
+    \item \textbf{Building Thin Slices:} The scanner corrects for hardware and bone-shadow effects, then builds crisp cross-sectional slices tailored separately for soft organs, lungs, and bones.
+    \item \textbf{Multi-Angle and 3D Viewing:} Radiologists review the thin slices on specialized monitors, adjusting brightness and contrast and flipping smoothly between top-down, front-to-back, side, and 3D views.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Spinning X-ray fan beam and digital detectors build calibrated cross-sectional slices \\
+Energy / Signal Source & Rotating X-ray tube paired with 64--320+ solid-state detector rows \\
+Typical Frequency / Energy & 80--140 kVp (commonly 100--120 kVp) with automatic size-adjusted dose control \\
+Spatial Resolution & Submillimeter 3D detail (typically 0.5--0.625 mm thin slices) \\
+Typical Scan Duration & Just seconds of actual X-ray scanning (10--20 minutes total in the room) \\
+Contrast Agent & None, or IV iodine contrast (plus optional oral or rectal contrast for some belly scans) \\
+Ionizing Radiation & Yes (typically 1--2 mSv head CT; 5--10 mSv chest or belly CT; 1--1.5 mSv low-dose lung CT) \\
+\bottomrule
+\end{tabularx}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+\begin{itemize}
+    \item \textbf{Accidents and Emergency Injuries:} Rapidly checks the head, spine, chest, belly, or pelvis for internal bleeding, torn organs, collapsed lungs, and complex bone fractures.
+    \item \textbf{Sudden Stroke and Brain Emergencies:} A fast noncontrast head CT is the first test in suspected stroke to immediately rule out brain bleeding before giving clot-busting medicine, and to check for swelling or pressure.
+    \item \textbf{Cancer Detection and Tracking:} Finds primary tumors, checks whether cancer has spread (staging), and tracks how well chemotherapy, radiation, or surgery is working over time.
+    \item \textbf{Sudden Belly and Pelvic Pain:} Accurately diagnoses appendicitis, diverticulitis, bowel blockages, holes in the digestive tract, pancreatitis complications, and kidney stones.
+    \item \textbf{Chest and Lung Conditions:} Evaluates lung infections, lung scarring, lung nodules, annual low-dose lung cancer screening for eligible adults, and fluid or masses in the chest.
+\end{itemize}
+
+\subsection{Secondary Usages}
+\begin{itemize}
+    \item \textbf{Guiding Needle Procedures:} Helps radiologists steer tiny needles safely for tissue biopsies, draining fluid pockets or abscesses, heat-treating tumors, and targeted pain injections.
+    \item \textbf{Planning Surgery and Radiation Therapy:} Provides exact 3D bone models for orthopedic surgery and supplies density maps that help cancer teams aim radiation therapy precisely.
+    \item \textbf{Bone and Joint Problem-Solving:} Clarifies complex joint fractures, bone tumors, and metal surgical hardware when plain X-rays are unclear or MRI cannot be used.
+    \item \textbf{Specialty and Dual-Energy Scans:} Performs ``virtual colonoscopy'' (CT colonography) to screen for colon polyps, and dual-energy CT to identify kidney stone types or gout crystals in joints.
+\end{itemize}
+
+\section{Advantages}
+\begin{itemize}
+    \item \textbf{Ultra-Fast Answers:} Scans an entire body region---or the whole body after a major accident---in seconds, making it vital for sick or injured emergency patients.
+    \item \textbf{Crystal-Clear Bone, Lung, Stone, and Bleed Views:} Excels at showing broken bones, fine lung tissue, calcium deposits, kidney stones, and fresh internal bleeding.
+    \item \textbf{Exact Density Numbers and 3D Views:} Standard Hounsfield numbers help identify tissue types objectively, and thin slices can be viewed smoothly in any direction or in 3D.
+    \item \textbf{Always Available and Implant-Friendly:} Available 24/7 in almost every emergency room and safe for people with pacemakers, cochlear implants, or metal fragments that cannot enter an MRI.
+    \item \textbf{Guides Minimally Invasive Procedures:} Lets doctors accurately place needles for biopsies, drains, and targeted treatments without open surgery.
+\end{itemize}
+
+\section{Disadvantages}
+\begin{itemize}
+    \item \textbf{Uses X-Ray Radiation:} Delivers more ionizing radiation than plain X-rays, carrying a small cumulative lifetime risk; doctors therefore justify every scan carefully and keep doses as low as possible, especially in children and pregnant patients.
+    \item \textbf{Less Soft-Tissue Detail Than MRI:} Shows less fine contrast than MRI for brain tissue, spinal cord, bone marrow, ligaments, and certain liver or pelvic spots.
+    \item \textbf{Possible IV Contrast Side Effects:} Iodine contrast dye carries small risks of allergic-like reactions, temporary kidney stress in people with severe kidney disease, skin irritation if dye leaks outside the vein, and rare thyroid flare-ups.
+    \item \textbf{Metal Streaks and Movement Blur:} Metal joint replacements, spine rods, and dense bone can cast dark bands or bright streaks, and breathing or shifting during the scan causes blur.
+    \item \textbf{Table Weight and Ring Size Limits:} Very large body sizes can exceed scanner table weight or ring opening limits and add graininess to the image.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+\begin{itemize}
+    \item \textbf{None for Urgent Noncontrast CT:} When a noncontrast CT scan is medically urgent, there are no absolute medical contraindications (other than physical table weight or ring size limits).
+\end{itemize}
+
+\subsection{Relative}
+\begin{itemize}
+    \item \textbf{Pregnancy:} Non-urgent belly or pelvic CT scans are usually avoided during pregnancy in favor of radiation-free ultrasound or MRI, unless an urgent health problem in the mother outweighs the small radiation risk to the baby.
+    \item \textbf{Severe Iodine Contrast Allergy:} A past severe allergic reaction (such as trouble breathing, throat swelling, or anaphylaxis) to CT contrast dye is a strong reason to use a noncontrast CT or MRI instead---or, if contrast CT is essential, to give protective steroid and antihistamine pills beforehand with emergency support ready.
+    \item \textbf{Severe Kidney Disease:} Acute kidney injury or severe chronic kidney disease (eGFR below 30 mL/min/1.73 m$^2$) raises the risk of kidney stress from IV dye, so doctors weigh benefits carefully, give protective IV fluids, or choose a noncontrast CT or MRI.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+\begin{itemize}
+    \item \textbf{Keeping Radiation as Low as Possible (ALARA):} Following ACR, ICRP, and FDA standards, teams verify every CT is needed, limit scanning strictly to the target area, and use automatic size-tailored dose controls, noise-reducing reconstruction, and dedicated low-dose child settings.
+    \item \textbf{Pregnancy and Child Protections:} Staff check for pregnancy before belly, pelvic, or higher-dose scans, and prefer ultrasound or MRI whenever they give the same medical answer in children or pregnant patients.
+    \item \textbf{Contrast Allergy Screening:} Following the ACR Manual on Contrast Media, staff ask about past dye reactions, prescribe steroid and antihistamine premedication or switch to a noncontrast scan when needed, and keep emergency rescue supplies immediately at hand.
+    \item \textbf{Kidney and Metformin Safety:} Doctors check kidney function (eGFR) in patients with kidney risk factors, give protective IV saline if eGFR is below 30 mL/min/1.73 m$^2$ and contrast is needed, and advise temporarily pausing the diabetes pill metformin for 48 hours if you have acute kidney injury or an eGFR below 30 mL/min/1.73 m$^2$.
+    \item \textbf{Safe IV Line Checks:} Before power-injecting contrast dye, the technologist tests the arm IV with saline to make sure it flows smoothly and watches the site closely so dye does not leak under the skin.
+\end{itemize}
+
+\section{Prerequisite Tests}
+\begin{itemize}
+    \item \textbf{Kidney Blood Test (Creatinine and eGFR) When Needed:} Per ACR contrast guidelines, blood work is not needed for noncontrast CT or for every healthy adult getting contrast, but a recent kidney blood test is checked before IV contrast if you have known kidney disease, recent acute kidney injury, prior kidney surgery or transplant, or a history of kidney cancer.
+    \item \textbf{Pregnancy Check:} Patients who could be pregnant are asked about pregnancy (or given a quick urine or blood test per clinic policy) before belly, pelvic, or higher-dose CT scans, unless a life-saving emergency cannot wait.
+    \item \textbf{Allergy and Medicine Review:} Staff ask about prior CT contrast reactions, asthma, and metformin use (which is paused for 48 hours after contrast only if eGFR is below 30 mL/min/1.73 m$^2$ or acute kidney injury is present).
+    \item \textbf{Blood-Clotting Tests (Needle Procedures Only):} If you are having a CT-guided biopsy, drain, or tumor ablation, clotting blood tests (INR/PT, aPTT, and platelet count) and a review of blood thinners are required beforehand.
+\end{itemize}
+
+\section{Preparing for the Scan}
+\begin{itemize}
+    \item \textbf{Eating, Drinking, and Staying Hydrated:} Noncontrast CT usually requires no fasting. If your scan uses IV or oral contrast, clinics commonly ask you not to eat solid food for 3--4 hours beforehand, while continuing to drink plain water (unless you are on fluid limits) to help your kidneys clear the dye easily.
+    \item \textbf{Drinking Contrast and Taking Medicines:} Arrive early (often 45--90 minutes ahead) if your belly scan requires drinking oral contrast. Take essential daily pills with small sips of water, finish any allergy premedication prescribed for a past dye reaction, and confirm metformin instructions if your eGFR is below 30 mL/min/1.73 m$^2$.
+    \item \textbf{Clothing and Metal:} Wear loose, comfortable clothes without metal zippers, snaps, or underwire bras, or change into a soft hospital gown. Remove jewelry, glasses, hairpins, hearing aids, and removable dentures in the scanned area so they do not cast streaks.
+    \item \textbf{Arm IV and Short Breath-Holds:} If IV contrast is ordered, a nurse places a small IV line in your arm beforehand (expect a brief, normal warm flush and metallic taste when it flows). Plan to lie still and hold your breath gently for 5--15 seconds when prompted.
+    \item \textbf{Driving Home:} Routine diagnostic CT requires no sedation, so you can drive yourself home afterward---unless you took an anxiety pill, sedative, or drowsy antihistamine allergy premedication.
+\end{itemize}
+
+\section{During Scan}
+\begin{itemize}
+    \item \textbf{Comfortable Table Position:} You lie on your back (or occasionally on your side or stomach) on a cushioned table that slides smoothly through the open, doughnut-shaped ring. Soft pads or straps help support your arms (often raised comfortably above your head for chest or belly scans) so you can stay still effortlessly.
+    \item \textbf{Short Breath-Holds:} For chest, belly, or pelvic scans, a friendly recorded voice asks you to take a gentle breath in and hold still for 5--15 seconds so breathing does not blur the pictures. Head and limb scans require only quiet, relaxed breathing.
+    \item \textbf{What You Will Hear and Feel:} You will hear gentle whirring and clicking inside the ring and feel the table glide smoothly. If IV contrast dye is given, expect a brief, normal wave of warmth through your body, a slight metallic taste, or a fleeting feeling like you need to urinate---all completely normal and gone within 1--2 minutes.
+    \item \textbf{Two-Way Intercom:} You can talk with the technologist at any moment through a built-in speaker while they watch you through the window. Speak up right away if you feel pain, burning, or swelling at your IV site, or notice itching, hives, throat tightness, nausea, or shortness of breath.
+    \item \textbf{How Long It Takes:} The actual X-ray pictures take only seconds to a couple of minutes; total time in the scan room is typically 10--20 minutes.
+\end{itemize}
+
+\section{Normal Appearance}
+\begin{itemize}
+    \item \textbf{Expected Brightness Scale:} Air looks black (about $-1,000$~HU), fat looks dark gray ($-100$ to $-50$~HU), water is 0~HU, solid organs and muscle look medium gray (+30 to +70~HU), and dense outer bone looks bright white (+400 to +1,000+~HU).
+    \item \textbf{Healthy Brain:} Both sides of the brain look symmetrical with a clear border between outer gray matter and inner white matter, a centered midline, normal fluid spaces (ventricles), and no bright fresh blood or abnormal fluid pockets.
+    \item \textbf{Healthy Chest and Lungs:} Evenly dark, air-filled lungs with smooth branching blood vessels, clear spaces around the lungs, a normal-sized heart, and intact ribs and spine.
+    \item \textbf{Healthy Belly and Pelvis:} Smooth, even contrast brightening of the liver, spleen, pancreas, and kidneys, normal thin-walled bowel loops, clean fat layers around organs, and no stray air or free fluid.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+\begin{itemize}
+    \item \textbf{Fresh Brain Bleeding and Swelling:} Fresh blood inside the skull shines bright white (50--80~HU) on a noncontrast CT---forming a lens-shaped pocket in an epidural bleed, a crescent shape in a subdural bleed, or bright streaks in the brain grooves in a subarachnoid bleed---sometimes pushing nearby brain structures off-center.
+    \item \textbf{Early Clot-Related Stroke Signs:} Subtle blurring of the crisp border between gray and white brain tissue, flattening of surface grooves, or a bright white blood vessel signaling a fresh clot are key early clues to an ischemic stroke.
+    \item \textbf{Lung and Chest Patterns:} Solid white patches in the lung point to pneumonia, hazy ``ground-glass'' clouds indicate inflammation or fluid, lacy scarring near the lung edges suggests chronic lung fibrosis, pooled fluid outside the lung signals pleural effusion, and dark trapped air outside the lung marks a collapsed lung (pneumothorax).
+    \item \textbf{Sudden Belly Emergencies:} Stray black pockets of air outside the bowel signal a hole (perforation) in the stomach or intestine; swollen, fluid-filled bowel loops ending at a sudden pinch point indicate a blockage; hazy surrounding fat, thickened bowel walls, and bright white stones pinpoint appendicitis, diverticulitis, or kidney stones.
+    \item \textbf{Harmless Scan Artifacts:} Very thick skull bone at the base of the brain and metal implants can cast dark bands or bright streaks that look like bleeding or a stroke, while breathing or heartbeat movement can blur borders and imitate cracks or small nodules.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+\begin{itemize}
+    \item \textbf{Streaks, Blur, and Edge Blending:} Thick bone, metal hardware, breathing motion, or two neighboring tissues sharing a single thin slice can create streaks or soft edges that mimic fractures, bleeds, or small spots.
+    \item \textbf{Contrast Timing and Soft-Tissue Overlap:} If contrast dye arrives slightly early or late (for example, in slow heart pumping), or because CT shows softer organ contrast than MRI, harmless cysts, patchy fat, or old scars can sometimes look similar to tumors.
+    \item \textbf{Tiny Unexpected Spots (Incidentalomas):} Very small lung nodules, adrenal spots, or tiny kidney or thyroid findings are common on CT and often too small to label definitely benign or concerning from one scan alone.
+    \item \textbf{Fine-Tuning and Comparing Old Scans:} Radiologists clear up many questions by scrolling through ultra-thin slices from multiple angles, tweaking brightness settings, using dual-energy material analysis when available, and comparing against older scans to see if a spot has been unchanged for years.
+    \item \textbf{Guideline-Backed Next Steps:} Truly uncertain findings follow proven medical pathways---such as a targeted MRI, ultrasound, or PET/CT for clearer tissue detail, scheduled follow-up scans (like Fleischner Society timelines for small lung nodules), or a CT-guided needle biopsy for a definite answer.
+\end{itemize}
+
+\section{Augmenting Methods}
+\begin{itemize}
+    \item \textbf{Dual-Energy (Spectral) CT:} Scans at two X-ray energy levels at once to identify materials---telling uric acid kidney stones apart from calcium stones, spotting gout crystals, and creating iodine blood-flow maps.
+    \item \textbf{MRI:} Offers sharper soft-tissue contrast without X-rays to clarify uncertain spots in the liver, pancreas, adrenal glands, pelvis, brain, spine, or joints.
+    \item \textbf{Ultrasound:} Radiation-free, live imaging that excels at checking the gallbladder, kidney cysts, thyroid nodules, and blood flow, and guiding superficial biopsies.
+    \item \textbf{PET/CT:} Combines a metabolic sugar scan with CT anatomy to stage cancers, check whether a lung nodule is active, and tell living tumor apart from harmless scar tissue.
+    \item \textbf{Needle Biopsy, Lab Markers, and AI Triage:} CT-guided biopsies and blood tests give final answers, while cleared AI triage tools help flag brain bleeds, lung nodules, and spine fractures quickly for emergency teams.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+\begin{itemize}
+    \item \textbf{Versus MRI:} CT is much faster, more widely available, safe with most metal implants, and better for fresh bleeding, lungs, broken bones, and kidney stones. MRI uses no X-rays and gives far sharper soft-tissue detail for the brain, spine, liver, pelvis, and joints.
+    \item \textbf{Versus Ultrasound:} Ultrasound uses no radiation and comes first for gallbladder, pregnancy, children, and surface lumps. CT sees cleanly past bowel gas and bone to give a full, panoramic view of the entire chest or abdomen.
+    \item \textbf{Versus Plain X-Rays:} Plain X-rays use a tiny fraction of the radiation for simple bone or chest checks, while CT removes overlapping shadows, measures exact tissue density, and builds 3D models.
+\end{itemize}
+
+\section{Follow-up Steps}
+\begin{itemize}
+    \item \textbf{After IV Contrast:} Staff watch you briefly for any immediate dye reaction, remove your arm IV once bleeding stops, and encourage you to drink plenty of water. If your eGFR is below 30 mL/min/1.73 m$^2$ or you have acute kidney injury, hold metformin for 48 hours until your doctor rechecks your kidneys.
+    \item \textbf{Immediate Action for Emergencies:} Serious findings---such as brain bleeding, a collapsed lung, major artery injury, or a perforated bowel---are called directly to your doctor right away for urgent care.
+    \item \textbf{Extra Tests When Needed:} Uncertain soft-tissue, liver, brain, or joint spots may be followed up with a focused MRI, ultrasound, PET/CT, or needle biopsy.
+    \item \textbf{Smart Follow-Up Schedules:} Small incidental findings follow established guidelines (such as Fleischner criteria for lung nodules or Lung-RADS for lung screening) so doctors catch problems early without ordering unnecessary extra scans.
+\end{itemize}
+
+\section{What You Should Know About Computed Tomography?}
+\begin{itemize}
+    \item \textbf{Painless, Open-Ring Design:} You lie comfortably on a padded table that glides through a wide, open doughnut-shaped ring (much less enclosed than an MRI); if IV contrast dye is used, expect a brief, normal warm flush and metallic taste for 1--2 minutes.
+    \item \textbf{Managed X-Ray Dose and Contrast Safety:} CT uses ionizing X-rays, and modern scanners automatically tailor the radiation dose as low as possible for your body size; IV iodinated contrast is very safe for most people when screened for allergies and kidney health.
+    \item \textbf{Fast Scan and Turnaround:} The actual X-ray pictures take only seconds (about 10--20 minutes total in the room); emergency results are ready within minutes to an hour, while routine outpatient reports typically reach your doctor within 1--2 business days.
+    \item \textbf{Why Your Doctor Orders It:} CT rapidly produces crisp cross-sectional and 3D views of bones, lungs, organs, and blood vessels to pinpoint fractures, infections, stones, internal bleeding, or tumors with high accuracy.
+    \item \textbf{What to Tell Your Care Team:} Always tell the staff beforehand if you might be pregnant, have kidney disease, take metformin for diabetes, or have ever had an allergic reaction to CT contrast dye; during the scan, speak up immediately over the intercom if you feel IV pain, itching, or shortness of breath.
+\end{itemize}
+
+\section{Key References}
+\begin{itemize}
+    \item American College of Radiology (ACR). \textit{ACR Manual on Contrast Media} and \textit{ACR Appropriateness Criteria}.
+    \item Radiological Society of North America (RSNA) and ACR. \textit{RadiologyInfo.org: Computed Tomography (CT) Patient and Clinical Standards}.
+    \item MacMahon H, Naidich DP, Goo JM, et al. \textit{Guidelines for Management of Incidental Pulmonary Nodules Detected on CT Images: From the Fleischner Society}. Radiology.
+    \item International Commission on Radiological Protection (ICRP). \textit{Managing Patient Dose in Multi-Detector Computed Tomography (MDCT)}, ICRP Publication 102.
+\end{itemize}

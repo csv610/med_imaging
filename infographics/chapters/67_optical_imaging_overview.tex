@@ -1,2 +1,199 @@
 \infographicchapter{Optical Imaging Modalities}{optics_cls.png}
 \label{ch:infographic-optical-imaging-overview}
+
+\section{Overview}
+
+Optical imaging uses safe, non-ionizing light---from ultraviolet to visible and near-infrared---to examine tissue structure, blood flow, and chemical makeup. When light meets the body, it can be absorbed, bounced back, scattered, or even cause certain molecules to glow softly (fluorescence). Because light waves are tiny, optical scans can show microscopic details down to the level of individual cells without any ionizing radiation. The main trade-off is depth: because body tissues scatter and absorb light quickly, high-detail optical imaging mostly sees surfaces or the top few millimeters, although gentle near-infrared oxygen sensors can peek a few centimeters deep with less sharpness.
+
+This family includes both everyday hospital staples and exciting newer tools. In routine care, doctors use lighted scopes (endoscopy) to inspect the lining of the stomach, colon, lungs, and bladder. Eye doctors rely daily on optical coherence tomography (OCT)---a quick, painless light scan of the retina---and cardiologists use tiny fiber-optic OCT catheters inside heart arteries. Surgeons use near-infrared glowing dyes like indocyanine green (ICG) to check blood flow and find lymph nodes during operations, while skin doctors use magnifying dermoscopes and confocal microscopes to check moles without cutting.
+
+Overall, optical imaging shines wherever doctors need safe, portable, real-time microscopic detail---such as eye clinics, skin offices, endoscopy suites, and operating rooms. Smaller probes and smart pairing with other scans continue to expand what light can show.
+
+\section{Underlying Physical Principles}
+\begin{itemize}
+  \item \textbf{Safe, Non-Ionizing Light Sources:} Special lamps, LEDs, and carefully controlled lasers shine ultraviolet, visible, or near-infrared light onto tissue without harming DNA.
+  \item \textbf{Absorption, Scattering, and Glow (Fluorescence):} Natural substances like blood hemoglobin and skin melanin absorb light, cell structures scatter it, and certain natural molecules or added medical dyes (such as indocyanine green, fluorescein, or 5-ALA) absorb one color and glow back in another.
+  \item \textbf{Measuring Light Echoes (OCT):} Optical coherence tomography works like an ``ultrasound made of light.'' It measures how long near-infrared light takes to bounce back from microscopic layers inside the eye or an artery wall, achieving sharpness down to a few thousandths of a millimeter.
+  \item \textbf{Optical Slicing and Oxygen Sensing:} Confocal microscopes use a tiny pinhole filter to block blurry stray light and show crisp cell layers right near the surface. Near-infrared spectroscopy (NIRS) measures how deeply scattered light changes color to estimate blood oxygen levels a few centimeters beneath the skin.
+  \item \textbf{High-Speed Digital Cameras:} Sensitive digital sensors and computer processors turn returning light immediately into live video, layered retinal maps, or real-time oxygen charts.
+\end{itemize}
+
+\section{Imaging Mechanism}
+\begin{enumerate}
+  \item \textbf{Bringing Light to the Target:} Depending on the exam, light shines gently through the pupil (eye OCT), onto clean skin (dermoscopy, confocal microscopy, or bedside oxygen sensors), or inside the body through a flexible endoscope, a tiny heart catheter, or an operating-room camera.
+  \item \textbf{Scanning or Switching Light:} OCT sweeps a gentle near-infrared beam across the back of the eye or spins a tiny fiber inside a coronary artery. Confocal devices scan a focused spot across skin cells, while fluorescence cameras switch color filters to make dyes glow.
+  \item \textbf{Capturing Returning Light:} Returning reflections or glowing fluorescence pass through optical filters onto sensitive digital cameras or light sensors.
+  \item \textbf{Real-Time Image Building:} High-speed software converts the light signals into layered cross-sections (OCT), tracks tiny eye movements so images stay sharp, maps blood flow, or calculates tissue oxygen levels (NIRS).
+  \item \textbf{Immediate Bedside or Surgical Display:} Doctors see crisp retinal thickness maps, live high-definition scope video, bright green surgical blood-flow overlays, or close-up heart stent views right on the screen.
+\end{enumerate}
+
+\section{Key Technical Parameters}
+\noindent
+\begin{tabularx}{\textwidth}{@{}l X@{}}
+\toprule
+\textbf{Parameter} & \textbf{Typical Value / Description} \\
+\midrule
+Physical Principle & Light absorption, scattering, light-echo mapping (OCT), surface microscopy, and natural or dye-assisted glowing (fluorescence) \\
+Energy / Signal Source & Superluminescent diodes (OCT), endoscope lamps, near-infrared LEDs (NIRS), or controlled medical lasers \\
+Typical Frequency / Energy & Ultraviolet to near-infrared light (about 350--1,350~nm), kept within ANSI/IEC safety limits \\
+Spatial Resolution & 1--15~micrometers (OCT and confocal microscopy) to millimeter scale (wide-field fluorescence and NIRS) \\
+Typical Scan Duration & 5--15~minutes (eye OCT, skin checks) to 15--45~minutes (endoscopic, heart catheter, or surgical procedures) \\
+Contrast Agent & Optional safe glowing dyes or light-activated agents (indocyanine green, fluorescein, 5-ALA); none for OCT, dermoscopy, or NIRS \\
+Ionizing Radiation & None (uses non-ionizing light only) \\
+\bottomrule
+\end{tabularx}
+
+\section{Clinical Usages}
+
+\subsection{Primary Usages}
+\begin{itemize}
+  \item \textbf{Eye and Retina Care:} Optical coherence tomography (OCT) and OCT angiography are everyday gold standards for spotting and tracking macular degeneration, diabetic eye swelling, and glaucoma.
+  \item \textbf{Endoscopy for Early Cancer Detection:} High-definition white-light and narrow-band scopes let doctors inspect the lining of the esophagus, stomach, colon, airways, and bladder to spot and biopsy early precancerous changes.
+  \item \textbf{Surgical Blood-Flow and Lymph-Node Guidance:} Glowing indocyanine green (ICG) fluorescence helps surgeons verify healthy blood flow in reconnected bowel or skin flaps, map bile ducts safely, and find sentinel lymph nodes.
+  \item \textbf{Heart Artery Plaque and Stent Checks:} Intravascular OCT uses a hair-thin light probe inside heart arteries during catheter procedures to inspect fragile plaques and make sure stents fit snugly.
+  \item \textbf{Skin Mole and Cancer Checks:} Dermoscopy and reflectance confocal microscopy help dermatologists check suspicious moles, basal cell carcinoma, and melanoma without cutting, reducing unnecessary biopsies.
+\end{itemize}
+
+\subsection{Secondary Usages}
+\begin{itemize}
+  \item \textbf{``Optical Biopsy'' and Surgical Margins:} Confocal endomicroscopy and research tools like Raman or fluorescence imaging help doctors inspect microscopic tissue patterns in real time during esophagus, bladder, or brain tumor procedures.
+  \item \textbf{Bedside Oxygen Monitoring:} Near-infrared spectroscopy (NIRS) pads rest gently on the forehead or body to track brain and tissue oxygen continuously in newborn ICUs, heart surgery, and critical care.
+  \item \textbf{Light-Guided Tumor Surgery and Skin Therapy:} Light-activated agents like 5-aminolevulinic acid (5-ALA) make certain brain tumors glow pink under blue surgical light so surgeons can remove them more completely, and also support light-based skin treatments.
+  \item \textbf{Preclinical Lab Discovery:} Glowing bioluminescence and fluorescence microscopy are foundational tools for studying cell behavior and new drugs in laboratory models.
+\end{itemize}
+
+\section{Advantages}
+\begin{itemize}
+  \item \textbf{Zero Ionizing Radiation:} Light does not carry X-ray radiation, making optical scans safe to repeat often in eye care, skin checks, children, and surgery.
+  \item \textbf{Microscopic Sharpness:} Tools like OCT and confocal microscopy show tiny cell and tissue layers far sharper than CT, MRI, or ultrasound can.
+  \item \textbf{Shows Both Structure and Function:} Light reveals blood flow, oxygen, natural tissue glow, and targeted dyes in real time.
+  \item \textbf{Works Right at the Bedside or Operating Table:} Compact cameras, scopes, and stick-on sensors deliver instant answers without moving the patient to a giant scanner.
+  \item \textbf{Portable and Lower Cost:} Most everyday optical devices cost much less and take up far less space than MRI or nuclear medicine suites.
+\end{itemize}
+
+\section{Disadvantages}
+\begin{itemize}
+  \item \textbf{Very Shallow Depth:} Because body tissues scatter and absorb light quickly, high-resolution optical scans only see a tiny fraction of a millimeter to a few millimeters deep.
+  \item \textbf{Needs Direct Access for Deep Organs:} To image inside the stomach, heart arteries, or brain, doctors must bring the light inside through an endoscope, catheter, or surgical opening.
+  \item \textbf{Easily Blocked by Cloudiness or Blood:} Bleeding, mucus, dense cataracts, cloudy eye fluid, or bright room lights can block or wash out optical signals.
+  \item \textbf{Tiny Viewing Area:} Microscopic ``optical biopsy'' probes look at one tiny spot at a time, which takes longer and risks missing a small abnormal patch nearby.
+  \item \textbf{Rare Dye Reactions and Research Limits:} Injected dyes like ICG carry a small risk of allergic reaction, and newer molecular optical tools are still under study and not yet routine everywhere.
+\end{itemize}
+
+\section{Contraindications}
+
+\subsection{Absolute}
+\begin{itemize}
+  \item \textbf{None for Routine Surface Scans:} Everyday eye OCT, skin dermoscopy, confocal skin checks, and bedside NIRS pads have no absolute medical bans.
+  \item \textbf{Dye Allergies, Porphyria, and Laser Safety:} A prior severe allergy to indocyanine green or fluorescein rules out repeat dye injection. Systemic 5-ALA must not be used in people with porphyria or severe porphyrin allergy. Higher-power medical lasers must never be used without proper protective goggles or safely managed oxygen in the operating room.
+  \item \textbf{Unsafe Conditions for Invasive Scopes:} Suspected stomach or bowel perforation or unstable vital signs rule out elective endoscopy or bronchoscopy.
+\end{itemize}
+
+\subsection{Relative}
+\begin{itemize}
+  \item \textbf{Cloudy Eye Media or Trouble Holding Still:} Dense cataracts, bleeding inside the eye, corneal scars, or difficulty focusing on a target can make eye OCT harder to capture clearly.
+  \item \textbf{Bleeding Risk or Contrast Flush Limits:} Severe bleeding disorders or inability to tolerate brief contrast flushes during heart-artery OCT require careful individual planning by your doctor.
+\end{itemize}
+
+\section{Patient Safety Guidelines}
+\begin{itemize}
+  \item \textbf{Safe Light and Laser Limits:} Devices keep brightness, wavelength, and exposure time strictly within ANSI~Z136 and IEC~60825 limits to protect the eyes, skin, and inner linings from heat or light injury.
+  \item \textbf{Laser Goggles and Fire Safety:} When higher-power lasers (Class~3B or Class~4) are used, everyone wears matching protective eyewear, reflections are controlled, and surgical teams follow fire-safety rules around oxygen and drapes.
+  \item \textbf{Strict Cleaning and Sterile Gear:} Endoscopes undergo high-level disinfection, heart OCT catheters are sterile and single-use, and surface probes use clean or sterile barriers between patients.
+  \item \textbf{Dye and Light-Sensitivity Care:} Staff check for dye allergies before giving ICG or fluorescein. After systemic light-activated drugs like 5-ALA, patients follow strict instructions to avoid bright sunlight and strong indoor lights for a set time to prevent skin or eye burns.
+  \item \textbf{Oversight for Newer Optical Tools:} Investigational optical biopsy tools are used under ethics-approved (IRB) studies, and critical cancer or margin decisions are always confirmed by standard lab pathology.
+\end{itemize}
+
+\section{Prerequisite Tests}
+\begin{itemize}
+  \item \textbf{No Lab Tests for Surface Scans:} Routine eye OCT, skin dermoscopy, confocal microscopy, and bedside NIRS oxygen monitoring need no blood or urine tests.
+  \item \textbf{Standard Specialist Checkups First:} Eye OCT usually follows a basic vision check and eye exam, while skin microscopy follows a dermatologist's visual and dermoscopic check of the mole.
+  \item \textbf{Pre-Procedure Checks for Scopes and Catheters:} Endoscopy, bronchoscopy, and heart-artery OCT follow standard procedure prep, including fasting checks, heart-lung review, and blood-clotting labs (INR, platelets) if a biopsy or heart intervention is planned.
+  \item \textbf{Dye and Research Screening:} Procedures using ICG, fluorescein, or 5-ALA review allergies, medications, and liver or kidney health as needed. Research optical biopsy trials include IRB screening and standard pathology comparison.
+\end{itemize}
+
+\section{Preparing for the Scan}
+\begin{itemize}
+  \item \textbf{Eating and Medicine Rules by Test:} Surface exams (eye OCT, skin checks, NIRS) require no fasting. Endoscopy, bronchoscopy, and heart-artery OCT require fasting for 6 to 8~hours, bowel prep for colonoscopy, and doctor-guided pauses of blood thinners if needed.
+  \item \textbf{Eye and Skin Prep:} For eye OCT, remove contact lenses if asked and allow time for pupil-dilating drops if ordered (bring sunglasses and a driver if your vision will be blurry). For skin exams, keep the area free of makeup, sunscreen, lotions, or nail polish.
+  \item \textbf{Laser Goggles and Dimmed Lights:} For higher-power laser probes or fluorescence cameras, staff provide protective eyewear, dim overhead lights to cut glare, and double-check operating-room safety.
+  \item \textbf{Dye or Light-Agent Setup:} If ICG, fluorescein, or 5-ALA is planned, staff place an IV line or give oral 5-ALA a few hours before surgery, confirm allergy checks, and review after-care light protection.
+  \item \textbf{Consent and Ride Home:} Complete your procedure or research consent form, and arrange a ride home if sedation will be used for endoscopy or a heart catheter exam.
+\end{itemize}
+
+\section{During Scan}
+\begin{itemize}
+  \item \textbf{Easy Positioning for Each Test:} For eye OCT, you sit upright and rest your chin and forehead on a small support. For skin microscopy, you sit or lie comfortably while a tiny probe touches the skin lightly. For endoscopy or heart-artery OCT, you lie on a procedure table with numbing spray or comfortable sedation.
+  \item \textbf{Simple Focus and Breathing Cues:} During eye OCT, look steadily at a small colored target light and try not to blink for a few seconds. During skin scans or NIRS monitoring, just breathe normally and hold the area still.
+  \item \textbf{What It Feels and Sounds Like:} Surface optical scans are quiet and completely painless---eye OCT never touches your eye, and skin probes use only light touch or cool gel. Endoscopic or catheter exams involve normal procedural pressure or sedation rather than discomfort from the light itself.
+  \item \textbf{Letting Staff Know:} A clinician stays right beside you. Speak up right away if your eyes get tired, if a laser probe feels warm or stings, if you feel lightheaded, or if you notice itching, a rash, or trouble breathing after a dye injection.
+  \item \textbf{How Long It Takes:} Eye OCT and skin dermoscopy take just 5 to 15~minutes. Confocal skin mapping, endoscopic optical biopsy, or surgical fluorescence typically takes 15 to 45~minutes depending on the procedure.
+\end{itemize}
+
+\section{Normal Appearance}
+\begin{itemize}
+  \item \textbf{Neat Eye Layers (Retinal OCT):} A healthy macula shows a smooth central dip and clean, unbroken horizontal layers at the back of the eye with no fluid pockets or swelling.
+  \item \textbf{Smooth Inner Linings (Endoscopy):} Healthy stomach, colon, or airway linings look smooth and pale pink with neat, regular surface patterns and delicate blood vessels.
+  \item \textbf{Bright, Even Surgical Blood Flow (ICG):} Healthy reconnected bowel or surgical skin flaps light up quickly and evenly in bright green seconds after IV indocyanine green is given.
+  \item \textbf{Clean Three-Layer Heart Artery (Coronary OCT):} A healthy heart artery wall shows three crisp, smooth layers surrounding a wide, open blood channel free of fatty plaque or clots.
+\end{itemize}
+
+\section{Observing for Abnormal Patterns}
+\begin{itemize}
+  \item \textbf{Swollen or Broken Eye Layers (OCT):} Eye OCT easily spots tiny fluid pockets under or inside the retina, lifted pigment layers, broken light-sensing layers, or thinning nerve fibers seen in macular degeneration, diabetic eye disease, and glaucoma.
+  \item \textbf{Irregular Surface Vessels (Endoscopy):} On narrow-band endoscopy, scrambled surface patterns, twisted tiny capillaries, or dark patches on autofluorescence warn of precancerous changes or early surface cancer.
+  \item \textbf{Poor Blood Flow or Glowing Tumors in Surgery:} During ICG fluorescence, a sharp dark cutoff shows where tissue is not getting enough blood, helping surgeons adjust on the spot. After 5-ALA, high-grade brain tumors glow bright pink under special blue light.
+  \item \textbf{Fragile Plaques and Loose Stents (Heart OCT):} Intravascular OCT spots soft, fatty plaques sitting beneath a paper-thin cap, blood clots, small artery tears, or stent wires not pressed tightly against the wall.
+  \item \textbf{Blocking and Motion Artifacts:} Blood, mucus, hard calcium deposits, cataracts, stray room light, quick eye blinks, or folded tissue can create dark shadows or glare that mimic a real defect.
+\end{itemize}
+
+\section{Dealing with Uncertainties}
+\begin{itemize}
+  \item \textbf{Shallow Depth and Cloudiness:} Because light only penetrates millimeters, deep problems stay hidden, and blood, mucus, cataracts, or bright glare can block the view.
+  \item \textbf{Small Viewing Window:} Microscopic optical biopsy probes inspect tiny patches, so they can miss an abnormal spot just a few millimeters away.
+  \item \textbf{Movement and Interpretation Skill:} Tiny eye twitches during OCT, pressing too hard with a scope, or differences in clinician experience can make borderline patterns harder to judge.
+  \item \textbf{Quick Fixes During the Exam:} Doctors clear away blood or mucus, dim room lights, refocus probes, use automatic eye-tracking on OCT, or adjust camera brightness to get a cleaner view.
+  \item \textbf{Confirming with Biopsy and Deeper Scans:} Because surface light cannot measure deep tumor spread, any suspicious lining change, mole, or surgical edge is confirmed with a standard lab biopsy, followed by CT, MRI, or PET staging if cancer is found.
+\end{itemize}
+
+\section{Augmenting Methods}
+\begin{itemize}
+  \item \textbf{CT, MRI, and PET Scans:} Once a surface optical test spots a problem, whole-body CT, MRI, or PET scans check how deep it goes and whether nearby lymph nodes or distant organs are involved.
+  \item \textbf{Endoscopic and Intravascular Ultrasound:} Specialized ultrasound probes (EUS and IVUS) pair with scopes and heart catheters to see deeper wall layers and nearby lymph nodes beyond light's reach.
+  \item \textbf{Dye Angiography:} Eye dye angiography (fluorescein or ICG) and surgical fluorescence pair with structural OCT and standard scopes to show leaky vessels and real-time blood flow.
+  \item \textbf{Standard Lab Biopsy:} Examining biopsy tissue under a microscope (H\&E pathology) and running molecular tests remain essential to confirm precancer, melanoma depth, or clean surgical borders.
+  \item \textbf{AI Detection Tools:} Real-time computer-aided detection helps endoscopists spot subtle colon polyps, automatically measures eye OCT layers, and assists skin doctors in sorting moles.
+\end{itemize}
+
+\section{Comparison with Alternative Modalities}
+\begin{itemize}
+  \item \textbf{Versus Ultrasound:} Optical scans like OCT are about 10 times sharper than ultrasound at the surface, while ultrasound sees much deeper through tissue and blood without needing blood-clearing flushes inside heart arteries.
+  \item \textbf{Versus CT and MRI:} Optical scans are portable, radiation-free, less expensive, and show microscopic cell layers live, while CT and MRI see through the entire body to stage deep disease.
+  \item \textbf{Versus Nuclear Medicine (PET/SPECT):} Surgical fluorescence gives crisp, real-time visual guidance with no radioactivity, while PET and SPECT detect deep molecular targets anywhere in the body.
+  \item \textbf{Versus Standard Lab Pathology:} Optical biopsy tools give fast, non-destructive feedback right on living tissue, while lab pathology on removed tissue remains the definitive gold standard for final diagnosis.
+\end{itemize}
+
+\section{Follow-up Steps}
+\begin{itemize}
+  \item \textbf{After-Exam Care:} Surface eye OCT, skin checks, and NIRS need no recovery (just temporary blurry vision and light sensitivity if dilating drops were used). Endoscopy and heart catheter patients follow routine sedation or puncture-site recovery, and patients given 5-ALA follow strict light-avoidance rules to prevent sunburn-like reactions.
+  \item \textbf{Immediate Clinical Action:} Eye doctors, endoscopists, dermatologists, and surgeons often act right away---adjusting a surgical connection if ICG shows low blood flow, or expanding a heart stent better based on OCT.
+  \item \textbf{Biopsy Confirmation and Staging:} Suspicious spots seen on endoscopy, skin microscopy, or research optical biopsies are confirmed with standard lab pathology, followed by CT, MRI, or PET if invasive cancer is found.
+  \item \textbf{Safe Repeat Monitoring:} Because light uses no ionizing radiation, doctors can safely repeat eye OCT every 1 to 6~months for macular degeneration or glaucoma, or schedule routine endoscopic checkups as needed.
+\end{itemize}
+
+\section{What You Should Know About Optical Imaging Modalities?}
+\begin{itemize}
+  \item \textbf{Comfort Depends on the Exam:} Surface scans like eye OCT, skin dermoscopy, and bedside oxygen pads are completely painless and take 5 to 15~minutes. Endoscopic or heart catheter optical exams happen during standard sedated procedures.
+  \item \textbf{No X-Ray Radiation:} Optical tests use safe light instead of X-rays. When medical lasers or light-activated agents (like 5-ALA) are used, protective goggles or short-term sun avoidance keep your eyes and skin safe.
+  \item \textbf{Everyday Tools Plus Emerging Helpers:} Eye OCT, endoscopy, dermoscopy, and surgical ICG fluorescence are routine worldwide, while newer ``optical biopsy'' tools remain specialized helpers that do not replace standard tissue biopsies.
+  \item \textbf{Why Doctors Love Optical Imaging:} Light reveals microscopic detail far sharper than CT or MRI---helping eye doctors save vision, dermatologists check moles gently, and surgeons verify healthy blood flow live.
+  \item \textbf{What to Ask Your Care Team:} Ask whether eye-dilating drops or sedation mean you will need a ride home, mention any past dye allergies (fluorescein or ICG), and check whether fasting or temporary sun protection applies to your exam.
+\end{itemize}
+
+\section{Key References}
+\begin{itemize}
+  \item Fujimoto J, Swanson E. The development, commercialization, and impact of optical coherence tomography. \emph{Investigative Ophthalmology \& Visual Science}. 2016;57(9):OCT1--OCT13.
+  \item American Academy of Ophthalmology (AAO) Retina/Vitreous Panel. \emph{Preferred Practice Pattern Guidelines: Age-Related Macular Degeneration and Diabetic Retinopathy}. San Francisco, CA: AAO, 2024.
+  \item ASGE Technology Committee. Narrow-band imaging and confocal laser endomicroscopy in gastrointestinal endoscopy. \emph{Gastrointestinal Endoscopy}. 2015;81(5):1065--1086.
+  \item International Electrotechnical Commission. \emph{IEC 60825-1: Safety of Laser Products --- Part 1: Equipment Classification and Requirements}. Geneva: IEC, 2014.
+\end{itemize}
