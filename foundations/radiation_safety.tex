@@ -1,74 +1,61 @@
-\chapter{Radiation Dose Considerations}
+\chapter{Radiation Safety and Dose Optimization}
+\label{ch:radiation_safety}
 
-\section*{Alternative Names}
-Radiation exposure, medical radiation dose, imaging radiation risk, ionizing radiation safety, dose optimization
+Diagnostic imaging modalities that use X-rays (radiography, fluoroscopy, computed tomography [CT], mammography) or radiopharmaceuticals (nuclear medicine, single-photon emission computed tomography [SPECT], positron emission tomography [PET]) expose patients and staff to ionizing radiation. Ultrasound and magnetic resonance imaging (MRI) do not use ionizing radiation. Safe practice rests on two International Atomic Energy Agency (IAEA) and International Commission on Radiological Protection (ICRP) pillars: \textbf{justification} (ensuring the expected clinical benefit outweighs the small radiation risk) and \textbf{optimization} (keeping exposure As Low As Reasonably Achievable, or \textbf{ALARA}, while preserving diagnostic image quality).
 
-
-\section*{Principle}
-Radiation dose is measured by effective dose in sieverts (Sv). CT dose is quantified by CTDIvol and DLP. The ALARA principle guides imaging choices: MRI and ultrasound use no ionizing radiation. For CT, dose reduction strategies include automated tube current modulation, iterative reconstruction, and reduced scan range.
-
-\section*{History}
-The concept of tracking radiation exposure from medical imaging emerged in the 1980s as CT usage increased. The Image Gently and Image Wisely campaigns, launched in the 2000s, promoted dose optimization in pediatric and adult imaging.
-
-\section*{Why This Test Is Ordered}
-Read to understand safe limits of medical radiation exposure and the risk-benefit ratio of diagnostic imaging.
-
-\section*{Is This a Primary or Secondary Test}
-Informational guideline.
-
-\section*{How This Test Is Performed}
-Through calculation of effective dose in millisieverts (mSv) using medical physics models.
-
-\section*{What Preparation Is Needed}
-Reviewing patient's imaging history and prior cumulative dose estimates.
-
-\section*{Contraindications and Precautions}
-Pregnancy is not an automatic contraindication; the examination should be justified and optimized, and alternatives considered when appropriate. For contrast-enhanced studies, review the indication, prior severe reactions, and renal function according to local protocol.
-
-\section*{Risks}
-Risks associated with X-ray imaging include:
+\section{Dose Quantities and Metrics}
+Different quantities describe radiation energy deposition, biological effect, and scanner output:
 \begin{itemize}
-    \item \textbf{Radiation exposure}: Exposure to low levels of ionizing radiation, with cumulative lifetime dose optimization guided by the ALARA (As Low As Reasonably Achievable) principle.
-    \item \textbf{Contrast reaction}: Allergic reactions can occur, including rare severe reactions. Kidney injury after iodinated contrast is uncommon and risk depends on baseline kidney function, illness, and the clinical context.
+    \item \textbf{Absorbed dose (gray, Gy):} Energy deposited per unit mass of tissue ($1\text{ Gy} = 1\text{ J/kg}$). Relevant to tissue-level thresholds such as skin injury in prolonged fluoroscopy.
+    \item \textbf{Equivalent dose (sievert, Sv):} Absorbed dose weighted by a radiation weighting factor ($w_R = 1$ for diagnostic X-rays, gamma rays, and beta particles).
+    \item \textbf{Effective dose (millisievert, mSv):} Whole-body weighted sum of organ equivalent doses using tissue weighting factors ($w_T$). Effective dose allows rough population-level comparisons across examinations (for example, against average annual natural background radiation of $\approx 3\text{ mSv}$), but it is \emph{not} a patient-specific risk metric.
+    \item \textbf{CT scanner output metrics:} Volumetric CT dose index ($\text{CTDI}_{\text{vol}}$, in mGy) reflects average radiation output per slice within a standard phantom, and dose--length product ($\text{DLP} = \text{CTDI}_{\text{vol}} \times \text{scan length}$, in $\text{mGy}\cdot\text{cm}$) reflects total exam output.
 \end{itemize}
 
+\section{Biological Effects: Deterministic vs.\ Stochastic}
+\begin{itemize}
+    \item \textbf{Deterministic (tissue reaction) effects:} Occur only above a threshold dose, with severity increasing with dose (e.g., erythema, epilation, dermal necrosis, or cataract formation). In diagnostic imaging, deterministic skin injury is primarily a concern during prolonged, complex fluoroscopically guided interventions.
+    \item \textbf{Stochastic effects:} Probabilistic effects (chiefly radiation-induced carcinogenesis and, theoretically, heritable effects) whose probability increases with dose without an established threshold, while severity does not depend on dose. Regulatory frameworks conservatively apply the linear no-threshold (LNT) model for radiation protection at low doses.
+\end{itemize}
 
-Dose is documented in the patient's medical record; no physical recovery is needed.
+\section{Dose Optimization and Clinical Context}
+For CT, optimization strategies include automated tube current modulation, size-adapted tube potential (kVp), iterative or deep-learning-assisted reconstruction, limiting scan length to the clinical region of interest, and avoiding unnecessary multiphase acquisitions. Campaigns such as \emph{Image Gently} (pediatrics) and \emph{Image Wisely} (adults) promote protocol standardization.
 
-\section*{Understanding Results}
-Compare estimated dose to annual background radiation (~3 mSv) and clinical guidelines.
+\begin{itemize}
+    \item \textbf{Pregnancy and children:} Clinically justified imaging must not be withheld solely because of pregnancy or young age. When diagnostically suitable, prefer non-ionizing alternatives (ultrasound or MRI). When ionizing imaging is required, optimize the protocol; most diagnostic examinations outside direct pelvic/abdominal CT or prolonged pelvic fluoroscopy deliver fetal doses well below deterministic thresholds.
+    \item \textbf{Radiation vs.\ contrast risk:} Iodinated contrast reactions and post-contrast acute kidney injury are pharmacological/physiological risks of contrast media, distinct from ionizing radiation risk, and are managed separately (see Chapter~\ref{ch:ch06_contrast_agents}).
+\end{itemize}
 
-\section*{Normal Results}
-Cumulative diagnostic dose kept as low as reasonably achievable (ALARA).
-
-\section*{Follow-up Tests}
-Dose tracking in subsequent imaging studies.
-
-\section*{What Is This Test?}
-All imaging tests that use X-rays or radioactive material expose you to radiation. While the risk from a single test is very low, radiation exposure accumulates over your lifetime. Understanding the relative doses helps you and your doctor make informed decisions.
+\section{Representative Effective Doses}
+Table~\ref{tab:radiation_doses} lists typical adult effective-dose ranges for common diagnostic examinations; actual patient doses vary substantially with body habitus, equipment, and protocol.
 
 \begin{longtable}{@{}ll@{}}
+\caption{Typical adult effective dose ranges for selected diagnostic imaging examinations.}
+\label{tab:radiation_doses} \\
 \toprule
-\textbf{Imaging Study} & \textbf{Approximate Radiation Dose} \\
+\textbf{Imaging Study} & \textbf{Approximate Effective Dose (mSv)} \\
 \midrule
-Bone scan & Moderate (4--6 mSv) \\
-Chest X-ray & Very low (0.02--0.1 mSv) \\
-CT abdomen and pelvis & Moderate to high (10 mSv) \\
-CT chest & Moderate (7 mSv) \\
-CT coronary angiography & Moderate (3--12 mSv) \\
-CT coronary calcium & Low (1--3 mSv) \\
-CT head & Low (2 mSv) \\
-Extremity X-ray & Negligible (0.001--0.01 mSv) \\
-Nuclear cardiac stress test & Moderate (9--12 mSv) \\
-PET/CT & High (14--25 mSv) \\
-V/Q scan & Low (2 mSv) \\
+\endfirsthead
+\toprule
+\textbf{Imaging Study} & \textbf{Approximate Effective Dose (mSv)} \\
+\midrule
+\endhead
+Extremity radiograph & 0.001--0.01 \\
+Chest radiograph & 0.02--0.1 \\
+CT head & 1.5--2.5 \\
+Ventilation/perfusion (V/Q) scan & 1.5--2.5 \\
+CT coronary calcium scoring & 1--3 \\
+Bone scintigraphy & 4--6 \\
+CT chest & 5--8 \\
+CT coronary angiography & 3--12 \\
+CT abdomen and pelvis & 7--12 \\
+Nuclear myocardial perfusion & 9--12 \\
+PET/CT (whole-body FDG) & 14--25 \\
 \bottomrule
 \end{longtable}
 
-The goal is always to use the lowest radiation dose that provides the diagnostic information needed. MRI and ultrasound use no ionizing radiation and are preferred when they can answer the clinical question. For pregnant women, every effort is made to avoid or minimize radiation exposure, particularly during the first trimester.
-
 \section*{References}
 \begin{enumerate}
-  \item MedlinePlus. Radiation Dose Considerations. U.S. National Library of Medicine; 2025.
-  \item Current Medical Diagnosis and Treatment. McGraw-Hill; 2025.
+  \item International Atomic Energy Agency (IAEA). \textit{Radiation Protection of Patients (RPOP)}. \url{https://www.iaea.org/resources/rpop}
+  \item American College of Radiology (ACR). \textit{ACR Appropriateness Criteria} and \textit{Image Wisely / Image Gently}. \url{https://www.acr.org}
 \end{enumerate}

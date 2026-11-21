@@ -8,7 +8,7 @@ Foundation models are large-scale pre-trained models that learn transferable rep
 \label{ch:ch87_foundation_models}
 
 \section{What Is a Foundation Model?}
-A foundation model is a neural network trained on a very large and diverse dataset---often millions of images and/or text documents---in a self-supervised or weakly supervised manner. The key idea is that by learning general features from vast data, the model can be efficiently adapted (fine-tuned) to many specific tasks with relatively little task-specific labelled data.
+A foundation model is a neural network trained on a very large and diverse dataset---often millions of images and/or text documents---in a self-supervised or weakly supervised manner. The key idea is that by learning general features from vast data, the model can be efficiently adapted (fine-tuned) to many specific tasks with relatively little task-specific labeled data.
 
 \begin{table}[h]
 \centering
@@ -19,7 +19,7 @@ A foundation model is a neural network trained on a very large and diverse datas
 \hline
 Adaptation & Fine-tuned or prompted for specific tasks \\
 \hline
-Data efficiency & Can learn from few labelled examples \\
+Data efficiency & Can learn from few labeled examples \\
 \hline
 Scope & Multiple tasks from one model \\
 \hline
@@ -39,20 +39,20 @@ Foundation models learn through self-supervised objectives that do not require h
     \item \textbf{Next-token prediction} (for text components)---predicting the next word in a radiology report teaches the model structured medical language.
 \end{itemize}
 
-After pre-training, the model's weights encode general visual and linguistic features. A small amount of task-specific labelled data is then used to fine-tune the model for a clinical application.
+After pre-training, the model's weights encode general visual and linguistic features. A small amount of task-specific labeled data is then used to fine-tune the model for a clinical application.
 
 \section{Transfer Learning in Practice}
 Transfer learning is the process of taking a pre-trained foundation model and adapting it to a new, specific task. The lower layers of the network, which capture general features (edges, textures, anatomy), are typically kept frozen, while the upper layers are retrained on the target task.
 
 \begin{pearlbox}[Data efficiency]
-A foundation model fine-tuned with 500 labelled chest X-rays can match the performance of a model trained from scratch on 10{,}000 images. This dramatically lowers the barrier to developing new AI tools for rare conditions.
+A foundation model fine-tuned with 500 labeled chest X-rays can match the performance of a model trained from scratch on 10{,}000 images. This dramatically lowers the barrier to developing new AI tools for rare conditions.
 \end{pearlbox}
 
 \section{Potential Applications in Radiology}
 \begin{enumerate}
     \item \textbf{Report generation}---foundation models can draft preliminary structured reports from images and clinical context, reducing radiologist keystroke burden.
     \item \textbf{Image--text retrieval}---find past studies with similar appearances or matching reports to aid diagnosis.
-    \item \textbf{Few-shot classification}---classify rare findings (e.g., rare interstitial lung disease patterns) from as few as 10--20 labelled examples.
+    \item \textbf{Few-shot classification}---classify rare findings (e.g., rare interstitial lung disease patterns) from as few as 10--20 labeled examples.
     \item \textbf{Multimodal reasoning}---combine imaging, laboratory values, and clinical notes to suggest differential diagnoses.
     \item \textbf{Quality assurance}---detect modality mismatches, protocol errors, or corrupted images before radiologist review.
 \end{enumerate}
@@ -85,7 +85,7 @@ Deploying foundation models in clinical settings requires:
 \begin{table}[h]
 \centering
 \caption{Governance checklist for foundation models}
-\begin{tabular}{|l|l|}
+\begin{tabular}{|p{0.32\textwidth}|p{0.56\textwidth}|}
 \hline
 \textbf{Requirement} & \textbf{Details} \\
 \hline

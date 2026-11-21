@@ -20,13 +20,13 @@ Every radiology report should contain the following elements:
 \toprule
 \textbf{Element} & \textbf{Content} \\
 \midrule
-Comparison & Prior studies available for comparison, with dates \\
-Findings & Systematic description of all relevant normal and abnormal observations \\
-Impression & Ranked summary of the most clinically important findings, with calibrated confidence \\
 Indication & The clinical question or reason for the examination; brief relevant history \\
-Limitations & Technical factors that reduce diagnostic confidence \\
-Recommendations & Specific next steps when appropriate \\
+Comparison & Prior studies available for comparison, with dates \\
 Technique & Modality, protocol, contrast agent and dose, reconstruction parameters \\
+Findings & Systematic description of all relevant normal and abnormal observations \\
+Limitations & Technical factors that reduce diagnostic confidence \\
+Impression & Ranked summary of the most clinically important findings, with calibrated confidence \\
+Recommendations & Specific next steps when appropriate \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -35,13 +35,13 @@ Technique & Modality, protocol, contrast agent and dose, reconstruction paramete
 Use a consistent template for each examination type. Below are representative structures (abbreviated for space):
 
 \subsection{Chest CT}
-Indication, comparison, technique (contrast yes/no, phase). Findings organised by: lungs and airways, pleura, mediastinum and hila, heart and pericardium, upper abdomen, bones and soft tissues. Impression with ranked findings. Recommendation.
+Indication, comparison, technique (contrast yes/no, phase). Findings organized by: lungs and airways, pleura, mediastinum and hila, heart and pericardium, upper abdomen, bones and soft tissues. Impression with ranked findings. Recommendation.
 
 \subsection{Abdominal CT}
-Indication, comparison, technique, contrast details. Findings organised by organ: liver, biliary system, pancreas, spleen, kidneys and adrenals, GI tract, mesentery, vascular, bones and soft tissues. Impression. Recommendation.
+Indication, comparison, technique, contrast details. Findings organized by organ: liver, biliary system, pancreas, spleen, kidneys and adrenals, GI tract, mesentery, vascular, bones and soft tissues. Impression. Recommendation.
 
 \subsection{MRI Brain}
-Indication, comparison, technique (sequences: T1, T2, FLAIR, DWI, SWI, post-gadolinium). Findings organised by: grey--white differentiation, ventricles and sulci, midline structures, brainstem and cerebellum, extra-axial spaces, orbits. Impression. Recommendation.
+Indication, comparison, technique (sequences: T1, T2, FLAIR, DWI, SWI, post-gadolinium). Findings organized by: grey--white differentiation, ventricles and sulci, midline structures, brainstem and cerebellum, extra-axial spaces, orbits. Impression. Recommendation.
 
 \section{RADS Lexicons}
 Standardised lexicons improve communication and guide management. They should be used only within their intended scope.
@@ -54,12 +54,12 @@ Standardised lexicons improve communication and guide management. They should be
 \toprule
 \textbf{Lexicon} & \textbf{Organ / Modality} & \textbf{Score Range} & \textbf{Key Threshold} \\
 \midrule
-BI-RADS & Breast (mammography, US, MRI) & 0--6 & BI-RADS 4 requires tissue sampling; BI-RADS 5 highly suggestive \\
-Bosniak & Renal cysts (CT/MRI) & I--IVF & Bosniak III--IV requires surgical consideration \\
-LI-RADS & Liver (HCC surveillance in cirrhosis) & LR-1 to LR-5 & LR-5 = definite HCC; LR-M = non-HCC malignancy \\
-Lung-RADS & Lung cancer screening CT & 1--4B & Category 4B or higher triggers diagnostic workup \\
-PI-RADS & Prostate (mpMRI) & 1--5 & PI-RADS 5 warrants targeted biopsy \\
-TI-RADS & Thyroid (US) & TR1--TR5 & Points-based; determines FNA threshold \\
+BI-RADS & Breast (mammography, ultrasound [US], MRI) & 0--6 & BI-RADS 4 requires tissue sampling; BI-RADS 5 highly suggestive \\
+Bosniak & Renal cysts (CT/MRI) & I, II, IIF, III, IV & Bosniak III--IV requires surgical or urological consideration \\
+LI-RADS & Liver (hepatocellular carcinoma [HCC] surveillance in cirrhosis) & LR-1 to LR-5 & LR-5 = definite HCC; LR-M = non-HCC malignancy \\
+Lung-RADS & Lung cancer screening CT & 0, 1, 2, 3, 4A, 4B, 4X & Category 4A/4B/4X triggers diagnostic workup \\
+PI-RADS & Prostate (multiparametric MRI [mpMRI]) & 1--5 & PI-RADS 4 and 5 warrant targeted biopsy \\
+TI-RADS & Thyroid (US) & TR1--TR5 & Points-based; determines fine-needle aspiration (FNA) threshold \\
 \bottomrule
 \end{tabular}
 \end{table}

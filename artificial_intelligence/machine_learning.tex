@@ -4,26 +4,30 @@
 
 Machine Learning (ML) is a subset of Artificial Intelligence (AI) that enables computer systems to learn patterns from data and make predictions without being explicitly programmed. In medical imaging, machine learning algorithms are utilized for computer-aided detection (CADe), disease classification, segmentation, and quantitative radiomic analysis.
 
----
 
 \section*{1. Machine Learning Paradigms in Radiology}
 Machine learning workflows in medical imaging are categorized into three main paradigms:
 
 \subsection*{Supervised Learning}
 The algorithm is trained on a labeled dataset where each image has a known ground truth (e.g., a dataset of mammograms labeled as "benign" or "malignant"). The model learns mapping functions between the input images and target labels.
-\textbullet \textbf{Classification}: Categorizing an image (e.g., normal chest X-ray vs. pneumonia).
-\textbullet \textbf{Regression}: Predicting a continuous numerical value (e.g., predicting skeletal bone age on a pediatric hand radiograph).
+\begin{itemize}
+    \item \textbf{Classification}: Categorizing an image (e.g., normal chest X-ray vs. pneumonia).
+    \item \textbf{Regression}: Predicting a continuous numerical value (e.g., predicting skeletal bone age on a pediatric hand radiograph).
+\end{itemize}
 
 \subsection*{Unsupervised Learning}
 The algorithm analyzes unlabeled data to discover hidden structures or clusters without human intervention.
-\textbullet \textbf{Clustering}: Grouping similar pixel intensities to automatically segment brain tissues (CSF, grey matter, white matter) on MRI.
-\textbullet \textbf{Anomaly Detection}: Identifying outliers that deviate significantly from a database of normal imaging templates.
+\begin{itemize}
+    \item \textbf{Clustering}: Grouping similar pixel intensities to automatically segment brain tissues (CSF, grey matter, white matter) on MRI.
+    \item \textbf{Anomaly Detection}: Identifying outliers that deviate significantly from a database of normal imaging templates.
+\end{itemize}
 
 \subsection*{Reinforcement Learning}
 An agent learns to make decisions by performing actions in an environment to maximize a cumulative reward.
-\textbullet \textbf{Clinical Application}: Automated scan plane prescription during acquisition (e.g., the MRI scanner automatically adjusting itself to align with the anatomical axes of the patient's heart).
+\begin{itemize}
+    \item \textbf{Clinical Application}: Automated scan plane prescription during acquisition (e.g., the MRI scanner automatically adjusting itself to align with the anatomical axes of the patient's heart).
+\end{itemize}
 
----
 
 \section*{2. The Radiomics Pipeline: Handcrafted Feature Extraction}
 Traditional machine learning relies on \textbf{Feature Engineering}—converting raw pixel data into quantitative features that represent shape, intensity, and texture. This process is known as \textbf{Radiomics}:
@@ -41,7 +45,6 @@ Traditional machine learning relies on \textbf{Feature Engineering}—converting
     \item \textbf{Model Training and Classification}: Feeding the selected features into an ML classifier to predict clinical endpoints (e.g., benign vs. malignant, or response to chemotherapy).
 \end{enumerate}
 
----
 
 \section*{3. Core Machine Learning Algorithms}
 Several traditional ML classifiers are used in radiomic pipelines:
@@ -52,11 +55,12 @@ Several traditional ML classifiers are used in radiomic pipelines:
     \item \textbf{Logistic Regression}: Establishes a probabilistic relationship between independent features and a binary outcome, widely used in clinical scoring models.
 \end{itemize}
 
----
 
 \section*{4. Critical Challenges in Clinical Deployment}
-\textbullet \textbf{Overfitting}: The model memorizes training data noise instead of learning generalizable patterns, resulting in excellent training performance but poor performance on new clinical datasets. Prevented via cross-validation, regularization, and feature reduction.
-\textbullet \textbf{Generalizability \& Domain Shift}: A model trained on scans from a single hospital often fails when deployed at another hospital due to differences in scanner manufacturers (e.g., GE vs. Siemens), imaging protocols, slice thicknesses, and patient demographics.
-\textbullet \textbf{Interpretability (The "Black Box" Problem)}: Understanding *why* a classifier predicted a specific lesion is malignant is vital for clinician trust. Radiomic features (like GLCM entropy) are more interpretable than deep learning nodes, but still require clinical validation.
+\begin{itemize}
+    \item \textbf{Overfitting}: The model memorizes training data noise instead of learning generalizable patterns, resulting in excellent training performance but poor performance on new clinical datasets. Prevented via cross-validation, regularization, and feature reduction.
+    \item \textbf{Generalizability \& Domain Shift}: A model trained on scans from a single hospital often fails when deployed at another hospital due to differences in scanner manufacturers (e.g., GE vs. Siemens), imaging protocols, slice thicknesses, and patient demographics.
+    \item \textbf{Interpretability (The "Black Box" Problem)}: Understanding \textit{why} a classifier predicted a specific lesion is malignant is vital for clinician trust. Radiomic features (like GLCM entropy) are more interpretable than deep learning nodes, but still require clinical validation.
+\end{itemize}
 
 \clearpage

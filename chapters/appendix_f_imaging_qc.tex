@@ -1,0 +1,29 @@
+\chapter{Medical Imaging Quality Assurance and Quality Control}
+\label{app:imaging_qc}
+
+Reliable diagnostic imaging depends on continuous quality assurance (QA) and quality control (QC) across acquisition hardware, display workstations, radiation dosimetry, and PACS/DICOM workflows.
+
+\section{Modality-Specific Quality Control}
+
+\begin{longtable}{@{}p{0.20\textwidth}p{0.34\textwidth}p{0.38\textwidth}@{}}
+\caption{Core quality control checks across major imaging modalities.}
+\label{tab:app_imaging_qc} \\
+\toprule
+\textbf{Domain} & \textbf{Routine QC Checks} & \textbf{Purpose} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Domain} & \textbf{Routine QC Checks} & \textbf{Purpose} \\
+\midrule
+\endhead
+Radiography / Fluoroscopy & Tube kVp accuracy, half-value layer, AEC reproducibility, exposure index tracking, fluoroscopy dose-rate limits & Maintain image contrast while preventing excessive patient or staff dose \\
+Computed Tomography & Daily water phantom CT number (0 HU) and noise check; periodic $\text{CTDI}_{\text{vol}}$ and spatial-resolution verification & Ensure accurate Hounsfield units and consistent low-contrast detectability \\
+MRI & Daily SNR, center frequency, geometric linearity, and coil checks; Zone III/IV safety and quench-vent inspection & Prevent image distortion, signal dropout, and ferromagnetic/thermal incidents \\
+Ultrasound & Transducer element dropout, dead-zone, axial/lateral resolution, and depth-calibration phantom checks & Detect probe damage and preserve Doppler/grayscale accuracy \\
+Nuclear Medicine / PET & Daily gamma-camera uniformity, energy peaking, dose-calibrator constancy, and PET SUV cross-calibration & Ensure accurate quantitative uptake (SUV) and artifact-free scintigraphy \\
+Diagnostic Displays & Luminance calibration to DICOM Grayscale Standard Display Function (GSDF) and ambient-light control & Preserve subtle contrast differences across reading workstations \\
+\bottomrule
+\end{longtable}
+
+\section{Accreditation and Dose Registries}
+Programs such as ACR accreditation, IAEA radiation-protection audits, and institutional dose-tracking registries benchmark facility protocols against diagnostic reference levels (DRLs) and ensure ongoing medical-physics oversight.

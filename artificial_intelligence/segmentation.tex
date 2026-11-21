@@ -1,14 +1,14 @@
 \chapter{Automated Segmentation}
 
 \section*{Patient focus}
-Imagine you have a CT scan of your abdomen. A radiologist can look at it and estimate how large your liver is, or whether a tumour has grown since the last scan. But what if a computer could draw a precise outline around every organ and lesion, measuring volumes down to the millilitre? That is what automated segmentation does. It helps your doctor get faster, more consistent measurements, which can be especially important when planning surgery or monitoring treatment response. Segmentation is not a diagnosis---it is a measurement tool that supports your doctor's clinical decisions.
+Imagine you have a CT scan of your abdomen. A radiologist can look at it and estimate how large your liver is, or whether a tumor has grown since the last scan. But what if a computer could draw a precise outline around every organ and lesion, measuring volumes down to the millilitre? That is what automated segmentation does. It helps your doctor get faster, more consistent measurements, which can be especially important when planning surgery or monitoring treatment response. Segmentation is not a diagnosis---it is a measurement tool that supports your doctor's clinical decisions.
 
 \section*{Imaging focus}
 Segmentation is the voxel-wise classification of an image into anatomical or pathological regions of interest. It underpins volumetry, radiotherapy planning, radiomics, image registration, and surgical navigation. Understanding the principles, performance metrics, and failure modes of segmentation algorithms is essential for safe clinical adoption.
 \label{ch:ch86_segmentation}
 
 \section{What Is Segmentation?}
-In imaging, every picture is made up of tiny dots called pixels (in 2D) or voxels (in 3D). Segmentation is the process of labelling each pixel or voxel as belonging to a particular structure---an organ, a tumour, a blood vessel, or background tissue. The result is a defined boundary, or mask, that outlines the structure of interest.
+In imaging, every picture is made up of tiny dots called pixels (in 2D) or voxels (in 3D). Segmentation is the process of labelling each pixel or voxel as belonging to a particular structure---an organ, a tumor, a blood vessel, or background tissue. The result is a defined boundary, or mask, that outlines the structure of interest.
 
 Think of it like tracing around organs on a colouring page. Instead of a human hand doing the tracing, an algorithm assigns labels to each voxel based on its intensity and surrounding context.
 
@@ -50,8 +50,8 @@ These models learn from thousands of examples where an expert has already provid
 \begin{itemize}
     \item \textbf{Liver volumetry}---pre-operative volume estimation before hepatectomy; remnant liver volume $<25\%$ predicts post-hepatic failure
     \item \textbf{Cardiac function}---automated ejection fraction, wall motion analysis, and myocardial mass quantification from cine MRI
-    \item \textbf{Brain tumour delineation}---glioma segmentation for radiotherapy planning (BraTS challenge datasets)
-    \item \textbf{Kidney and tumour volume}---monitoring angiomyolipoma size to guide embolisation thresholds
+    \item \textbf{Brain tumor delineation}---glioma segmentation for radiotherapy planning (BraTS challenge datasets)
+    \item \textbf{Kidney and tumor volume}---monitoring angiomyolipoma size to guide embolization thresholds
     \item \textbf{Radiotherapy contouring}---organ-at-risk delineation to reduce inter-observer variability in planning
 \end{itemize}
 
@@ -60,7 +60,7 @@ Overlap between predicted and ground-truth segmentation is commonly quantified u
 \begin{table}[h]
 \centering
 \caption{Common segmentation metrics}
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|p{0.28\textwidth}|p{0.26\textwidth}|p{0.31\textwidth}|}
 \hline
 \textbf{Metric} & \textbf{Range} & \textbf{Interpretation} \\
 \hline

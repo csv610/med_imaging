@@ -1,0 +1,2385 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,left=14mm,right=14mm,top=18mm,bottom=15mm,headheight=19pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[scaled=0.94]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{hyperref}
+
+% Clinical Color Palette
+\definecolor{Navy}{HTML}{16324F}
+\definecolor{Teal}{HTML}{0E7490}
+\definecolor{SlateBg}{HTML}{F3F6FA}
+\definecolor{WarnBg}{HTML}{FFFBEB}
+\definecolor{WarnBorder}{HTML}{D97706}
+\definecolor{FieldBg}{HTML}{F8FAFC}
+\definecolor{BorderGray}{HTML}{B6C2CF}
+\definecolor{Muted}{HTML}{475569}
+\definecolor{RuleGray}{HTML}{CBD5E1}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=Teal,
+  linkcolor=Navy,
+  pdftitle={Imaging Referral and Reporting Workbook — Fillable Forms},
+  pdfauthor={Medical Imaging Workbook}
+}
+
+% Header & Footer
+\newcommand{\currentscenario}{Workbook Overview}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\fontsize{8}{10}\selectfont\bfseries\color{Navy} IMAGING REFERRAL AND REPORTING WORKBOOK}
+\fancyhead[R]{\fontsize{8}{10}\selectfont\color{Muted} \currentscenario}
+\fancyfoot[L]{\fontsize{7.5}{9}\selectfont\color{Muted} De-identified clinical \& educational workbook}
+\fancyfoot[R]{\fontsize{7.5}{9}\selectfont\color{Muted} Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{RuleGray}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{RuleGray}\leaders\hrule height \footrulewidth\hfill}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+
+% Interactive Form Field Helpers
+\newcommand{\FormLabel}[1]{{\fontsize{7.8}{9.5}\selectfont\bfseries\color{Navy}#1}}
+\newcommand{\SubNote}[1]{{\fontsize{7.5}{9}\selectfont\color{Muted}#1}}
+
+% Single-line text field filling width
+\newcommand{\FText}[3][15pt]{%
+  \TextField[name=#2, width=#3, height=#1, bordercolor=BorderGray, backgroundcolor=FieldBg, charsize=8.5pt, borderwidth=0.6pt]{}%
+}
+
+% Multi-line text field
+\newcommand{\FMText}[3][30pt]{%
+  \TextField[name=#2, width=#3, height=#1, multiline=true, bordercolor=BorderGray, backgroundcolor=FieldBg, charsize=8.5pt, borderwidth=0.6pt]{}%
+}
+
+% Styled CheckBox with label
+\newcommand{\FCheck}[2]{%
+  \CheckBox[name=#1, width=9pt, height=9pt, bordercolor=Navy, backgroundcolor=FieldBg, borderwidth=0.7pt]{}~{\fontsize{8}{10}\selectfont #2}%
+}
+
+% Labeled full-width single-line field
+\newcommand{\FieldRow}[2]{%
+  \FormLabel{#1}\par\vspace{1pt}%
+  \FText[15.5pt]{#2}{\linewidth}\par\vspace{3.5pt}%
+}
+
+% Labeled full-width multi-line field
+\newcommand{\MFieldRow}[3][28pt]{%
+  \FormLabel{#2}\par\vspace{1pt}%
+  \FMText[#1]{#3}{\linewidth}\par\vspace{3.5pt}%
+}
+
+% Scenario Page Banner
+\newcommand{\PageBanner}[3]{%
+  \noindent\begin{tcolorbox}[
+    enhanced,
+    colback=Navy,
+    colframe=Navy,
+    arc=2pt,
+    boxrule=0pt,
+    left=7pt,right=7pt,top=4.5pt,bottom=4.5pt,
+    after skip=4pt
+  ]
+    {\fontsize{11.5}{14}\selectfont\bfseries\color{white}#1}
+    \hfill
+    \tcbox[on line, arc=2pt, colback=Teal, colframe=Teal, boxrule=0pt, left=5pt, right=5pt, top=1.5pt, bottom=1.5pt]{%
+      \fontsize{7.5}{9}\selectfont\bfseries\color{white}#2%
+    }
+    \quad
+    {\fontsize{8.5}{10}\selectfont\color{white!85!Navy} #3}
+  \end{tcolorbox}%
+}
+
+% Clinical Question Box
+\newcommand{\ClinicalQuestionBox}[1]{%
+  \noindent\begin{tcolorbox}[
+    enhanced,
+    colback=SlateBg,
+    colframe=RuleGray,
+    borderline west={3pt}{0pt}{Teal},
+    arc=1.5pt,
+    boxrule=0.5pt,
+    left=7pt,right=7pt,top=4pt,bottom=4pt,
+    after skip=4pt
+  ]
+    {\fontsize{7.5}{9}\selectfont\bfseries\color{Teal} CLINICAL QUESTION}\par\vspace{1pt}
+    {\fontsize{9.5}{11.5}\selectfont\bfseries\color{Navy} #1}
+  \end{tcolorbox}%
+}
+
+% Guidance / Info Box
+\newtcolorbox{GuidanceBox}[1][]{
+  enhanced,
+  colback=SlateBg,
+  colframe=RuleGray,
+  arc=1.5pt,
+  boxrule=0.5pt,
+  left=6pt,right=6pt,top=4pt,bottom=4pt,
+  after skip=5pt,
+  #1
+}
+
+% Reference Footer Bar
+\newcommand{\RefBar}[1]{%
+  \vfill
+  \noindent\begin{tcolorbox}[
+    enhanced,
+    colback=SlateBg,
+    colframe=RuleGray,
+    arc=1.5pt,
+    boxrule=0.4pt,
+    left=6pt,right=6pt,top=3pt,bottom=3pt,
+    after skip=0pt
+  ]
+    {\fontsize{7.5}{9.5}\selectfont\bfseries\color{Muted} References:\quad #1}
+  \end{tcolorbox}%
+}
+
+\begin{document}
+\begin{Form}
+
+
+\thispagestyle{empty}
+\begin{tcolorbox}[enhanced,colback=Navy,colframe=Navy,arc=3pt,boxrule=0pt,left=12pt,right=12pt,top=14pt,bottom=14pt]
+{\fontsize{18}{22}\selectfont\bfseries\color{white} IMAGING REFERRAL AND REPORTING WORKBOOK}\\[4pt]
+{\fontsize{10.5}{13}\selectfont\color{white!85!Navy} Interactive Fillable Clinical Forms: Pre-Scan Referral, Scan-Specific Reporting, Image Interpretation, and Evidence Review}
+\end{tcolorbox}
+\vspace{4pt}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.5}{11}\selectfont\textbf{How to use this workbook:} Each of the 16 clinical scenarios has four structured, interactive pages: \textbf{(1) Before the scan}, \textbf{(2) The scan-specific report}, \textbf{(3) What the image shows and means}, and \textbf{(4) Find similar cases and check the evidence}. All text fields and checkboxes are independently fillable in PDF viewers (Adobe Acrobat, macOS Preview, Chrome, Edge) and formatted for clean A4 printing. Do not enter real patient identifiers into public web searches.}
+\end{GuidanceBox}
+\vspace{2pt}
+{\fontsize{10}{12}\selectfont\bfseries\color{Navy} Scenario Index (Click any scenario to jump)}\par\vspace{3pt}
+\renewcommand{\arraystretch}{1.28}
+\noindent\begin{tabularx}{\linewidth}{@{}c >{\bfseries\color{Navy}}p{4.6cm} X@{}}
+\toprule
+\textbf{\#} & \textbf{Modality / Scenario} & \textbf{Clinical Question} \\
+\midrule
+1 & \hyperlink{scen1}{Plain wrist X-ray} & {\fontsize{8.3}{10}\selectfont Is a wrist bone broken after the fall, and has it shifted?} \\
+2 & \hyperlink{scen2}{Head CT} & {\fontsize{8.3}{10}\selectfont Is there bleeding inside the skull after a mild head injury?} \\
+3 & \hyperlink{scen3}{Knee MRI} & {\fontsize{8.3}{10}\selectfont What is causing persistent knee pain after initial evaluation?} \\
+4 & \hyperlink{scen4}{Swallowing fluoroscopy} & {\fontsize{8.3}{10}\selectfont Does food or liquid enter the airway during swallowing?} \\
+5 & \hyperlink{scen5}{Leg vein ultrasound} & {\fontsize{8.3}{10}\selectfont Is there a deep vein clot in a symptomatic leg?} \\
+6 & \hyperlink{scen6}{Retinal OCT} & {\fontsize{8.3}{10}\selectfont Is there fluid or thickening in the macula?} \\
+7 & \hyperlink{scen7}{FDG PET CT} & {\fontsize{8.3}{10}\selectfont Where is biopsy-confirmed Hodgkin lymphoma present before treatment?} \\
+8 & \hyperlink{scen8}{Cardiac stress SPECT} & {\fontsize{8.3}{10}\selectfont Is there reduced blood flow to part of the heart muscle on stress?} \\
+9 & \hyperlink{scen9}{Mammography and tomosynthesis} & {\fontsize{8.3}{10}\selectfont Is screening due, and is there a finding that requires recall?} \\
+10 & \hyperlink{scen10}{DXA bone density} & {\fontsize{8.3}{10}\selectfont Would measuring bone density inform osteoporosis assessment?} \\
+11 & \hyperlink{scen11}{HIDA gallbladder scan} & {\fontsize{8.3}{10}\selectfont Does persistent suspicion after ultrasound warrant testing gallbladder filling?} \\
+12 & \hyperlink{scen12}{Diuretic renal scintigraphy} & {\fontsize{8.3}{10}\selectfont Is the dilated kidney obstructed, and how much function does it contribute?} \\
+13 & \hyperlink{scen13}{Upper endoscopy} & {\fontsize{8.3}{10}\selectfont Does persistent indigestion warrant direct inspection of the upper digestive tract?} \\
+14 & \hyperlink{scen14}{Endoscopic ultrasound} & {\fontsize{8.3}{10}\selectfont Does a solid pancreatic lesion require closer characterisation or tissue sampling?} \\
+15 & \hyperlink{scen15}{Fundus photography} & {\fontsize{8.3}{10}\selectfont Are there visible signs of diabetic retinopathy on screening?} \\
+16 & \hyperlink{scen16}{Fluorescein angiography} & {\fontsize{8.3}{10}\selectfont Which retinal vessels are leaking or failing to fill normally?} \\
+\bottomrule
+\end{tabularx}
+\vfill
+{\fontsize{8}{10}\selectfont\color{Muted} Total: 16 scenarios $\times$ 4 pages = 64 fillable clinical form pages.}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 1 of 16 $\bullet$ Plain wrist X-ray}
+\hypertarget{scen1}{}
+\PageBanner{Plain wrist X-ray}{1. BEFORE THE SCAN}{1 of 16}
+\ClinicalQuestionBox{Is a wrist bone broken after the fall, and has it shifted?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} Record the mechanism, time since injury, focal bone tenderness, swelling, deformity, finger movement, sensation and circulation.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} When the assessment suggests fracture, wrist radiographs are usually the first imaging. If clinical suspicion is low, document the basis for deferral and the reassessment plan.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Use a child-sized technique for children. In pregnancy, review the indication and body region. A needed extremity X-ray can proceed when justified.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s01_p1_pid}{\linewidth} & \FText[15pt]{s01_p1_date}{\linewidth} & \FText[15pt]{s01_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s01_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s01_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s01_p1_guide}{\linewidth} & \FText[15.5pt]{s01_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s01_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s01_p1_ord}{Order}\quad \FCheck{s01_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s01_p1_urout}{Routine}\quad \FCheck{s01_p1_uurg}{Urgent}\quad \FCheck{s01_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s01_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s01_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s01_p1_bclin}{Supported clinical use}\quad
+\FCheck{s01_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s01_p1_bres}{Research}\quad
+\FCheck{s01_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s01_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://www.radiologyinfo.org/en/info/acs-acute-hand-and-wrist-trauma}{Clinical reference for this scenario} \quad|\quad \href{https://pubmed.ncbi.nlm.nih.gov/28937575/}{Pregnancy and lactation} \quad|\quad \href{https://www.fda.gov/radiation-emitting-products/medical-imaging/pediatric-x-ray-imaging}{Pediatric X-ray imaging}}
+\newpage
+\PageBanner{Plain wrist X-ray}{2. SCAN-SPECIFIC REPORT}{1 of 16}
+\ClinicalQuestionBox{Is a wrist bone broken after the fall, and has it shifted?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} State side and views, adequacy, fracture site, joint involvement, tilt, displacement and shortening.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s01_p2_pid}{\linewidth} & \FText[15pt]{s01_p2_date}{\linewidth} & \FText[15pt]{s01_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s01_p2_exam}{\linewidth} & \FText[15.5pt]{s01_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s01_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s01_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s01_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s01_p2_qans}{Answered}\qquad
+\FCheck{s01_p2_qpart}{Partly answered}\qquad
+\FCheck{s01_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s01_p2_fu}{\linewidth} & \FText[15.5pt]{s01_p2_resp}{\linewidth} & \FText[15.5pt]{s01_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s01_p2_uwho}{\linewidth} & \FText[15.5pt]{s01_p2_utime}{\linewidth} & \FText[15.5pt]{s01_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://www.radiologyinfo.org/en/info/acs-acute-hand-and-wrist-trauma}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Plain wrist X-ray}{3. WHAT THE IMAGE SHOWS \& MEANS}{1 of 16}
+\ClinicalQuestionBox{Is a wrist bone broken after the fall, and has it shifted?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Interrupted bone cortex & Visible fracture \\
+Fragment tilt in degrees or shift in millimetres & Altered alignment \\
+Fracture line reaching the joint & Joint surface involvement \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} If radiographs are normal but suspicion persists, repeat radiographs, CT or MRI may be appropriate.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Interrupted bone cortex. Interpretation: visible fracture. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Show lateral examples with and without a break. Label the radius and mark the tilt with guide lines.\par\vspace{2pt}\textbf{\color{Navy}Other plain X-ray examples:} Chest: assess an opacity when pneumonia is suspected. Joint: assess joint-space narrowing in arthritis. Tube check: identify the tube tip and assess its position.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s01_p3_find}{\linewidth} & \FText[15.5pt]{s01_p3_loc}{\linewidth} & \FText[15.5pt]{s01_p3_meas}{\linewidth} & \FText[15.5pt]{s01_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s01_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s01_p3_hless}{Makes it less likely}\qquad
+\FCheck{s01_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s01_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s01_p3_arev}{\linewidth} & \FText[15pt]{s01_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s01_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s01_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://www.radiologyinfo.org/en/info/acs-acute-hand-and-wrist-trauma}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Plain wrist X-ray}{4. SIMILAR CASES \& EVIDENCE}{1 of 16}
+\ClinicalQuestionBox{Is a wrist bone broken after the fall, and has it shifted?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{fall on outstretched hand focal wrist tenderness initial radiography guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{wrist radiograph distal radius fracture dorsal angulation teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s01_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s01_p4_src}{\linewidth} & \FText[15.5pt]{s01_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s01_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s01_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s01_p4_adds}
+\RefBar{\href{https://www.radiologyinfo.org/en/info/acs-acute-hand-and-wrist-trauma}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 2 of 16 $\bullet$ Head CT}
+\hypertarget{scen2}{}
+\PageBanner{Head CT}{1. BEFORE THE SCAN}{2 of 16}
+\ClinicalQuestionBox{Is there bleeding inside the skull after a mild head injury?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} Record mechanism, alertness, neurological findings, vomiting or amnesia, and relevant medicines. Identify whether a validated decision rule applies.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} Use noncontrast CT when indicated by the applicable rule or urgent clinical findings. A qualifying low-risk assessment can support deferral.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Use a pediatric decision rule and size-adjusted technique for children. In pregnancy, justify exposure with the imaging team. For contrast CT, review kidney function when indicated and any prior reaction to iodinated contrast.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s02_p1_pid}{\linewidth} & \FText[15pt]{s02_p1_date}{\linewidth} & \FText[15pt]{s02_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s02_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s02_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s02_p1_guide}{\linewidth} & \FText[15.5pt]{s02_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s02_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s02_p1_ord}{Order}\quad \FCheck{s02_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s02_p1_urout}{Routine}\quad \FCheck{s02_p1_uurg}{Urgent}\quad \FCheck{s02_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s02_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s02_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s02_p1_bclin}{Supported clinical use}\quad
+\FCheck{s02_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s02_p1_bres}{Research}\quad
+\FCheck{s02_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s02_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://acsearch.acr.org/docs/69481/Narrative}{Clinical reference for this scenario} \quad|\quad \href{https://pubmed.ncbi.nlm.nih.gov/28937575/}{Pregnancy and lactation} \quad|\quad \href{https://www.fda.gov/radiation-emitting-products/medical-imaging/pediatric-x-ray-imaging}{Pediatric X-ray imaging} \quad|\quad \href{https://www.acr.org/clinical-resources/clinical-tools-and-reference/contrast-manual}{Contrast safety}}
+\newpage
+\PageBanner{Head CT}{2. SCAN-SPECIFIC REPORT}{2 of 16}
+\ClinicalQuestionBox{Is there bleeding inside the skull after a mild head injury?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} Record protocol, image quality, bleeding location and type, mass effect, midline shift and skull injury if seen.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s02_p2_pid}{\linewidth} & \FText[15pt]{s02_p2_date}{\linewidth} & \FText[15pt]{s02_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s02_p2_exam}{\linewidth} & \FText[15.5pt]{s02_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s02_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s02_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s02_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s02_p2_qans}{Answered}\qquad
+\FCheck{s02_p2_qpart}{Partly answered}\qquad
+\FCheck{s02_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s02_p2_fu}{\linewidth} & \FText[15.5pt]{s02_p2_resp}{\linewidth} & \FText[15.5pt]{s02_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s02_p2_uwho}{\linewidth} & \FText[15.5pt]{s02_p2_utime}{\linewidth} & \FText[15.5pt]{s02_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://acsearch.acr.org/docs/69481/Narrative}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Head CT}{3. WHAT THE IMAGE SHOWS \& MEANS}{2 of 16}
+\ClinicalQuestionBox{Is there bleeding inside the skull after a mild head injury?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Bright collection outside the brain & May indicate acute extra-axial blood \\
+Bright focus in brain tissue & May indicate contusion or haemorrhage \\
+Midline displacement in millimetres & Mass effect \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} A normal CT can coexist with concussion. Document any limitation and answer the acute bleeding question explicitly.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Bright collection outside the brain. Interpretation: may indicate acute extra-axial blood. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Label an illustrative axial slice and use an arrow to identify the collection and a line to mark the midline.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s02_p3_find}{\linewidth} & \FText[15.5pt]{s02_p3_loc}{\linewidth} & \FText[15.5pt]{s02_p3_meas}{\linewidth} & \FText[15.5pt]{s02_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s02_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s02_p3_hless}{Makes it less likely}\qquad
+\FCheck{s02_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s02_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s02_p3_arev}{\linewidth} & \FText[15pt]{s02_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s02_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s02_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://acsearch.acr.org/docs/69481/Narrative}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Head CT}{4. SIMILAR CASES \& EVIDENCE}{2 of 16}
+\ClinicalQuestionBox{Is there bleeding inside the skull after a mild head injury?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{adult mild head injury validated decision rule noncontrast CT guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{noncontrast head CT acute subdural hematoma midline shift teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s02_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s02_p4_src}{\linewidth} & \FText[15.5pt]{s02_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s02_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s02_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s02_p4_adds}
+\RefBar{\href{https://acsearch.acr.org/docs/69481/Narrative}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 3 of 16 $\bullet$ Knee MRI}
+\hypertarget{scen3}{}
+\PageBanner{Knee MRI}{1. BEFORE THE SCAN}{3 of 16}
+\ClinicalQuestionBox{What is causing persistent knee pain after initial evaluation?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} Examine the knee, document the location of pain and functional limitation, and review plain radiographs.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} If radiographs answer the management question, consider deferral. If they are negative or show an effusion and the cause remains unclear, MRI without contrast is usually appropriate in that scenario.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Verify implants and suspected metallic foreign bodies before entering the scanner. Follow device-specific conditions or choose an alternative if safety cannot be established. For gadolinium, review pregnancy, kidney disease and prior reactions.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s03_p1_pid}{\linewidth} & \FText[15pt]{s03_p1_date}{\linewidth} & \FText[15pt]{s03_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s03_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s03_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s03_p1_guide}{\linewidth} & \FText[15.5pt]{s03_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s03_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s03_p1_ord}{Order}\quad \FCheck{s03_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s03_p1_urout}{Routine}\quad \FCheck{s03_p1_uurg}{Urgent}\quad \FCheck{s03_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s03_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s03_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s03_p1_bclin}{Supported clinical use}\quad
+\FCheck{s03_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s03_p1_bres}{Research}\quad
+\FCheck{s03_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s03_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://acsearch.acr.org/docs/69432/Narrative}{Clinical reference for this scenario} \quad|\quad \href{https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/radiology-safety/mr-safety}{MRI safety} \quad|\quad \href{https://www.acr.org/clinical-resources/clinical-tools-and-reference/contrast-manual}{Contrast safety} \quad|\quad \href{https://pubmed.ncbi.nlm.nih.gov/28937575/}{Pregnancy and lactation}}
+\newpage
+\PageBanner{Knee MRI}{2. SCAN-SPECIFIC REPORT}{3 of 16}
+\ClinicalQuestionBox{What is causing persistent knee pain after initial evaluation?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} Record side, sequences, menisci, ligaments, cartilage, marrow and joint fluid. Identify pertinent abnormalities and limitations.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s03_p2_pid}{\linewidth} & \FText[15pt]{s03_p2_date}{\linewidth} & \FText[15pt]{s03_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s03_p2_exam}{\linewidth} & \FText[15.5pt]{s03_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s03_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s03_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s03_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s03_p2_qans}{Answered}\qquad
+\FCheck{s03_p2_qpart}{Partly answered}\qquad
+\FCheck{s03_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s03_p2_fu}{\linewidth} & \FText[15.5pt]{s03_p2_resp}{\linewidth} & \FText[15.5pt]{s03_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s03_p2_uwho}{\linewidth} & \FText[15.5pt]{s03_p2_utime}{\linewidth} & \FText[15.5pt]{s03_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://acsearch.acr.org/docs/69432/Narrative}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Knee MRI}{3. WHAT THE IMAGE SHOWS \& MEANS}{3 of 16}
+\ClinicalQuestionBox{What is causing persistent knee pain after initial evaluation?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Meniscal signal reaching an articular surface & Supports a tear \\
+Marrow signal change & Can reflect injury or other causes \\
+Cartilage loss location and extent & Helps localise joint damage \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} Imaging abnormalities can be incidental. Relate findings to the location and pattern of symptoms.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Meniscal signal reaching an articular surface. Interpretation: supports a tear. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Show a labelled sagittal schematic with an inset marking a meniscal tear and a separate area of cartilage loss.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s03_p3_find}{\linewidth} & \FText[15.5pt]{s03_p3_loc}{\linewidth} & \FText[15.5pt]{s03_p3_meas}{\linewidth} & \FText[15.5pt]{s03_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s03_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s03_p3_hless}{Makes it less likely}\qquad
+\FCheck{s03_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s03_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s03_p3_arev}{\linewidth} & \FText[15pt]{s03_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s03_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s03_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://acsearch.acr.org/docs/69432/Narrative}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Knee MRI}{4. SIMILAR CASES \& EVIDENCE}{3 of 16}
+\ClinicalQuestionBox{What is causing persistent knee pain after initial evaluation?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{adult chronic knee pain negative radiographs MRI appropriateness guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{knee MRI meniscal tear articular surface teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s03_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s03_p4_src}{\linewidth} & \FText[15.5pt]{s03_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s03_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s03_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s03_p4_adds}
+\RefBar{\href{https://acsearch.acr.org/docs/69432/Narrative}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 4 of 16 $\bullet$ Swallowing fluoroscopy}
+\hypertarget{scen4}{}
+\PageBanner{Swallowing fluoroscopy}{1. BEFORE THE SCAN}{4 of 16}
+\ClinicalQuestionBox{Does food or liquid enter the airway during swallowing?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} Identify whether the difficulty is initiating a swallow or a sensation of food sticking lower down. Review a clinical swallowing assessment when available.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} A modified barium swallow is appropriate for selected oropharyngeal swallowing problems. Choose the examination that matches the suspected site and question.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Review pregnancy and tailor radiation exposure for children. If the patient is unstable or cannot safely participate, review timing and swallowing assessment options with the team.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s04_p1_pid}{\linewidth} & \FText[15pt]{s04_p1_date}{\linewidth} & \FText[15pt]{s04_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s04_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s04_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s04_p1_guide}{\linewidth} & \FText[15.5pt]{s04_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s04_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s04_p1_ord}{Order}\quad \FCheck{s04_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s04_p1_urout}{Routine}\quad \FCheck{s04_p1_uurg}{Urgent}\quad \FCheck{s04_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s04_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s04_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s04_p1_bclin}{Supported clinical use}\quad
+\FCheck{s04_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s04_p1_bres}{Research}\quad
+\FCheck{s04_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s04_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://acsearch.acr.org/docs/69471/Narrative}{Clinical reference for this scenario} \quad|\quad \href{https://pubmed.ncbi.nlm.nih.gov/28937575/}{Pregnancy and lactation} \quad|\quad \href{https://www.fda.gov/radiation-emitting-products/medical-imaging/pediatric-x-ray-imaging}{Pediatric X-ray imaging}}
+\newpage
+\PageBanner{Swallowing fluoroscopy}{2. SCAN-SPECIFIC REPORT}{4 of 16}
+\ClinicalQuestionBox{Does food or liquid enter the airway during swallowing?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} Record consistencies, views, airway entry, residue, timing and effect of tested strategies.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s04_p2_pid}{\linewidth} & \FText[15pt]{s04_p2_date}{\linewidth} & \FText[15pt]{s04_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s04_p2_exam}{\linewidth} & \FText[15.5pt]{s04_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s04_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s04_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s04_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s04_p2_qans}{Answered}\qquad
+\FCheck{s04_p2_qpart}{Partly answered}\qquad
+\FCheck{s04_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s04_p2_fu}{\linewidth} & \FText[15.5pt]{s04_p2_resp}{\linewidth} & \FText[15.5pt]{s04_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s04_p2_uwho}{\linewidth} & \FText[15.5pt]{s04_p2_utime}{\linewidth} & \FText[15.5pt]{s04_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://acsearch.acr.org/docs/69471/Narrative}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Swallowing fluoroscopy}{3. WHAT THE IMAGE SHOWS \& MEANS}{4 of 16}
+\ClinicalQuestionBox{Does food or liquid enter the airway during swallowing?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Contrast below vocal folds & Aspiration \\
+Contrast entering airway above vocal folds & Penetration \\
+Residue after swallow & Incomplete clearance \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} The study samples particular swallows. State which consistencies or strategies could be assessed.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Contrast below vocal folds. Interpretation: aspiration. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Use three frames showing bolus passage and label the airway, vocal folds and oesophagus.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s04_p3_find}{\linewidth} & \FText[15.5pt]{s04_p3_loc}{\linewidth} & \FText[15.5pt]{s04_p3_meas}{\linewidth} & \FText[15.5pt]{s04_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s04_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s04_p3_hless}{Makes it less likely}\qquad
+\FCheck{s04_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s04_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s04_p3_arev}{\linewidth} & \FText[15pt]{s04_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s04_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s04_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://acsearch.acr.org/docs/69471/Narrative}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Swallowing fluoroscopy}{4. SIMILAR CASES \& EVIDENCE}{4 of 16}
+\ClinicalQuestionBox{Does food or liquid enter the airway during swallowing?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{suspected oropharyngeal dysphagia modified barium swallow appropriateness guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{videofluoroscopic swallowing study contrast below vocal folds aspiration teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s04_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s04_p4_src}{\linewidth} & \FText[15.5pt]{s04_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s04_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s04_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s04_p4_adds}
+\RefBar{\href{https://acsearch.acr.org/docs/69471/Narrative}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 5 of 16 $\bullet$ Leg vein ultrasound}
+\hypertarget{scen5}{}
+\PageBanner{Leg vein ultrasound}{1. BEFORE THE SCAN}{5 of 16}
+\ClinicalQuestionBox{Is there a deep vein clot in a symptomatic leg?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} In the NICE two-level pathway, score clot likelihood. Use D-dimer first in the unlikely group.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} Negative D-dimer in the unlikely group generally avoids ultrasound. Positive D-dimer or a likely score leads to ultrasound via the applicable pathway.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Adapt positioning for frailty, pain or wounds. Use a pregnancy-specific or pediatric clot pathway when applicable. If views are incomplete, document the limitation and decide how to complete the assessment.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s05_p1_pid}{\linewidth} & \FText[15pt]{s05_p1_date}{\linewidth} & \FText[15pt]{s05_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s05_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s05_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s05_p1_guide}{\linewidth} & \FText[15.5pt]{s05_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s05_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s05_p1_ord}{Order}\quad \FCheck{s05_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s05_p1_urout}{Routine}\quad \FCheck{s05_p1_uurg}{Urgent}\quad \FCheck{s05_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s05_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s05_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s05_p1_bclin}{Supported clinical use}\quad
+\FCheck{s05_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s05_p1_bres}{Research}\quad
+\FCheck{s05_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s05_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://www.nice.org.uk/guidance/ng158/chapter/Recommendations}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Leg vein ultrasound}{2. SCAN-SPECIFIC REPORT}{5 of 16}
+\ClinicalQuestionBox{Is there a deep vein clot in a symptomatic leg?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} List side, venous segments examined, compressibility, Doppler findings and technical limitations. Specify whether the protocol examined proximal veins or the whole leg.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s05_p2_pid}{\linewidth} & \FText[15pt]{s05_p2_date}{\linewidth} & \FText[15pt]{s05_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s05_p2_exam}{\linewidth} & \FText[15.5pt]{s05_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s05_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s05_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s05_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s05_p2_qans}{Answered}\qquad
+\FCheck{s05_p2_qpart}{Partly answered}\qquad
+\FCheck{s05_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s05_p2_fu}{\linewidth} & \FText[15.5pt]{s05_p2_resp}{\linewidth} & \FText[15.5pt]{s05_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s05_p2_uwho}{\linewidth} & \FText[15.5pt]{s05_p2_utime}{\linewidth} & \FText[15.5pt]{s05_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://www.nice.org.uk/guidance/ng158/chapter/Recommendations}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Leg vein ultrasound}{3. WHAT THE IMAGE SHOWS \& MEANS}{5 of 16}
+\ClinicalQuestionBox{Is there a deep vein clot in a symptomatic leg?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Vein fails to compress & Key sign supporting thrombosis \\
+Visible intraluminal material & Helps localise thrombus \\
+Abnormal flow & May support obstruction in context \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} The meaning of a negative result depends on scan coverage and pretest probability. Some negative proximal scans require repeat imaging under the pathway.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Vein fails to compress. Interpretation: key sign supporting thrombosis. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Show paired compression views of a patent and a thrombosed vein.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s05_p3_find}{\linewidth} & \FText[15.5pt]{s05_p3_loc}{\linewidth} & \FText[15.5pt]{s05_p3_meas}{\linewidth} & \FText[15.5pt]{s05_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s05_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s05_p3_hless}{Makes it less likely}\qquad
+\FCheck{s05_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s05_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s05_p3_arev}{\linewidth} & \FText[15pt]{s05_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s05_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s05_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://www.nice.org.uk/guidance/ng158/chapter/Recommendations}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Leg vein ultrasound}{4. SIMILAR CASES \& EVIDENCE}{5 of 16}
+\ClinicalQuestionBox{Is there a deep vein clot in a symptomatic leg?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{suspected leg DVT Wells D-dimer ultrasound referral guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{compression ultrasound noncompressible femoral vein deep vein thrombosis teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s05_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s05_p4_src}{\linewidth} & \FText[15.5pt]{s05_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s05_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s05_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s05_p4_adds}
+\RefBar{\href{https://www.nice.org.uk/guidance/ng158/chapter/Recommendations}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 6 of 16 $\bullet$ Retinal OCT}
+\hypertarget{scen6}{}
+\PageBanner{Retinal OCT}{1. BEFORE THE SCAN}{6 of 16}
+\ClinicalQuestionBox{Is there fluid or thickening in the macula?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} Review vision symptoms, acuity, retinal examination and previous OCT when available.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} Use OCT when suspected macular swelling or change would affect management. Review recent adequate images before ordering a duplicate.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Adapt fixation and positioning for children, frailty or limited mobility. If image quality is inadequate, repeat with adaptations or record which measurements cannot be interpreted.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s06_p1_pid}{\linewidth} & \FText[15pt]{s06_p1_date}{\linewidth} & \FText[15pt]{s06_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s06_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s06_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s06_p1_guide}{\linewidth} & \FText[15.5pt]{s06_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s06_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s06_p1_ord}{Order}\quad \FCheck{s06_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s06_p1_urout}{Routine}\quad \FCheck{s06_p1_uurg}{Urgent}\quad \FCheck{s06_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s06_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s06_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s06_p1_bclin}{Supported clinical use}\quad
+\FCheck{s06_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s06_p1_bres}{Research}\quad
+\FCheck{s06_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s06_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://www.aaojournal.org/article/S0161-6420(19)32902-5/fulltext/}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Retinal OCT}{2. SCAN-SPECIFIC REPORT}{6 of 16}
+\ClinicalQuestionBox{Is there fluid or thickening in the macula?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} Record eye, scan quality, macular thickness when reliable, fluid location, and change from baseline.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s06_p2_pid}{\linewidth} & \FText[15pt]{s06_p2_date}{\linewidth} & \FText[15pt]{s06_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s06_p2_exam}{\linewidth} & \FText[15.5pt]{s06_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s06_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s06_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s06_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s06_p2_qans}{Answered}\qquad
+\FCheck{s06_p2_qpart}{Partly answered}\qquad
+\FCheck{s06_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s06_p2_fu}{\linewidth} & \FText[15.5pt]{s06_p2_resp}{\linewidth} & \FText[15.5pt]{s06_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s06_p2_uwho}{\linewidth} & \FText[15.5pt]{s06_p2_utime}{\linewidth} & \FText[15.5pt]{s06_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://www.aaojournal.org/article/S0161-6420(19)32902-5/fulltext/}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Retinal OCT}{3. WHAT THE IMAGE SHOWS \& MEANS}{6 of 16}
+\ClinicalQuestionBox{Is there fluid or thickening in the macula?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Dark pockets within the retina & Intraretinal fluid \\
+Dark space beneath the retina & Subretinal fluid \\
+Central thickness in micrometres & Tracking measure when comparable \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} Thickness alone does not establish the cause. Motion and segmentation errors can affect measurements.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Dark pockets within the retina. Interpretation: intraretinal fluid. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Label retinal layers and outline a fluid pocket on a comparison schematic.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s06_p3_find}{\linewidth} & \FText[15.5pt]{s06_p3_loc}{\linewidth} & \FText[15.5pt]{s06_p3_meas}{\linewidth} & \FText[15.5pt]{s06_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s06_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s06_p3_hless}{Makes it less likely}\qquad
+\FCheck{s06_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s06_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s06_p3_arev}{\linewidth} & \FText[15pt]{s06_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s06_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s06_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://www.aaojournal.org/article/S0161-6420(19)32902-5/fulltext/}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Retinal OCT}{4. SIMILAR CASES \& EVIDENCE}{6 of 16}
+\ClinicalQuestionBox{Is there fluid or thickening in the macula?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{suspected diabetic macular edema OCT evaluation guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{retinal OCT diabetic macular edema intraretinal fluid teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s06_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s06_p4_src}{\linewidth} & \FText[15.5pt]{s06_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s06_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s06_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s06_p4_adds}
+\RefBar{\href{https://www.aaojournal.org/article/S0161-6420(19)32902-5/fulltext/}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 7 of 16 $\bullet$ FDG PET CT}
+\hypertarget{scen7}{}
+\PageBanner{FDG PET CT}{1. BEFORE THE SCAN}{7 of 16}
+\ClinicalQuestionBox{Where is biopsy-confirmed Hodgkin lymphoma present before treatment?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} Confirm pathology and the staging question. Review relevant prior imaging and record factors affecting tracer uptake or interpretation.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} Use FDG PET/CT for initial staging of confirmed Hodgkin lymphoma. Lack of symptoms does not remove the staging indication.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Review pregnancy and breastfeeding with nuclear medicine before tracer administration. Tailor administered activity for children. Check glucose and preparation against the local FDG protocol.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s07_p1_pid}{\linewidth} & \FText[15pt]{s07_p1_date}{\linewidth} & \FText[15pt]{s07_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s07_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s07_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s07_p1_guide}{\linewidth} & \FText[15.5pt]{s07_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s07_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s07_p1_ord}{Order}\quad \FCheck{s07_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s07_p1_urout}{Routine}\quad \FCheck{s07_p1_uurg}{Urgent}\quad \FCheck{s07_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s07_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s07_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s07_p1_bclin}{Supported clinical use}\quad
+\FCheck{s07_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s07_p1_bres}{Research}\quad
+\FCheck{s07_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s07_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://pmc.ncbi.nlm.nih.gov/articles/12165998/}{Clinical reference for this scenario} \quad|\quad \href{https://pubmed.ncbi.nlm.nih.gov/28937575/}{Pregnancy and lactation}}
+\newpage
+\PageBanner{FDG PET CT}{2. SCAN-SPECIFIC REPORT}{7 of 16}
+\ClinicalQuestionBox{Where is biopsy-confirmed Hodgkin lymphoma present before treatment?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} Record tracer, scan coverage, relevant node groups and organ sites, CT correlates and limits. Distinguish suspicious from indeterminate uptake.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s07_p2_pid}{\linewidth} & \FText[15pt]{s07_p2_date}{\linewidth} & \FText[15pt]{s07_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s07_p2_exam}{\linewidth} & \FText[15.5pt]{s07_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s07_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s07_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s07_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s07_p2_qans}{Answered}\qquad
+\FCheck{s07_p2_qpart}{Partly answered}\qquad
+\FCheck{s07_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s07_p2_fu}{\linewidth} & \FText[15.5pt]{s07_p2_resp}{\linewidth} & \FText[15.5pt]{s07_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s07_p2_uwho}{\linewidth} & \FText[15.5pt]{s07_p2_utime}{\linewidth} & \FText[15.5pt]{s07_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://pmc.ncbi.nlm.nih.gov/articles/12165998/}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{FDG PET CT}{3. WHAT THE IMAGE SHOWS \& MEANS}{7 of 16}
+\ClinicalQuestionBox{Where is biopsy-confirmed Hodgkin lymphoma present before treatment?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Focal FDG uptake mapped to a node & May indicate lymphoma involvement \\
+Nodal sites above and below the diaphragm & Contributes to staging \\
+Uptake in an organ & Requires pattern and anatomic correlation \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} Infection and inflammation can also increase tracer uptake. Correlate atypical findings with the clinical context.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Focal FDG uptake mapped to a node. Interpretation: may indicate lymphoma involvement. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Show paired PET and fused PET/CT schematics with the same nodal site marked.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s07_p3_find}{\linewidth} & \FText[15.5pt]{s07_p3_loc}{\linewidth} & \FText[15.5pt]{s07_p3_meas}{\linewidth} & \FText[15.5pt]{s07_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s07_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s07_p3_hless}{Makes it less likely}\qquad
+\FCheck{s07_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s07_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s07_p3_arev}{\linewidth} & \FText[15pt]{s07_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s07_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s07_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://pmc.ncbi.nlm.nih.gov/articles/12165998/}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{FDG PET CT}{4. SIMILAR CASES \& EVIDENCE}{7 of 16}
+\ClinicalQuestionBox{Where is biopsy-confirmed Hodgkin lymphoma present before treatment?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{biopsy confirmed Hodgkin lymphoma initial staging FDG PET CT guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{Hodgkin lymphoma baseline FDG PET CT nodal involvement teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s07_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s07_p4_src}{\linewidth} & \FText[15.5pt]{s07_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s07_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s07_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s07_p4_adds}
+\RefBar{\href{https://pmc.ncbi.nlm.nih.gov/articles/12165998/}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 8 of 16 $\bullet$ Cardiac stress SPECT}
+\hypertarget{scen8}{}
+\PageBanner{Cardiac stress SPECT}{1. BEFORE THE SCAN}{8 of 16}
+\ClinicalQuestionBox{Is there reduced blood flow to part of the heart muscle on stress?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} For stable symptoms, estimate coronary disease likelihood and review resting ECG, exercise capacity and known coronary disease.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} Low-risk stable presentations may defer testing. When stress imaging is indicated, document why SPECT fits. Acute symptoms follow a different pathway.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Review pregnancy and breastfeeding before tracer administration. Assess contraindications to the chosen exercise or pharmacologic stress method. Active or unstable symptoms require a separate clinical pathway.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s08_p1_pid}{\linewidth} & \FText[15pt]{s08_p1_date}{\linewidth} & \FText[15pt]{s08_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s08_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s08_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s08_p1_guide}{\linewidth} & \FText[15.5pt]{s08_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s08_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s08_p1_ord}{Order}\quad \FCheck{s08_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s08_p1_urout}{Routine}\quad \FCheck{s08_p1_uurg}{Urgent}\quad \FCheck{s08_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s08_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s08_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s08_p1_bclin}{Supported clinical use}\quad
+\FCheck{s08_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s08_p1_bres}{Research}\quad
+\FCheck{s08_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s08_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://www.jacc.org/doi/10.1016/j.jacc.2021.07.053}{Clinical reference for this scenario} \quad|\quad \href{https://pubmed.ncbi.nlm.nih.gov/28937575/}{Pregnancy and lactation}}
+\newpage
+\PageBanner{Cardiac stress SPECT}{2. SCAN-SPECIFIC REPORT}{8 of 16}
+\ClinicalQuestionBox{Is there reduced blood flow to part of the heart muscle on stress?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} Record stress method and adequacy, tracer, location and extent of defects, reversibility, ventricular function if measured, and artefacts.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s08_p2_pid}{\linewidth} & \FText[15pt]{s08_p2_date}{\linewidth} & \FText[15pt]{s08_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s08_p2_exam}{\linewidth} & \FText[15.5pt]{s08_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s08_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s08_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s08_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s08_p2_qans}{Answered}\qquad
+\FCheck{s08_p2_qpart}{Partly answered}\qquad
+\FCheck{s08_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s08_p2_fu}{\linewidth} & \FText[15.5pt]{s08_p2_resp}{\linewidth} & \FText[15.5pt]{s08_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s08_p2_uwho}{\linewidth} & \FText[15.5pt]{s08_p2_utime}{\linewidth} & \FText[15.5pt]{s08_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://www.jacc.org/doi/10.1016/j.jacc.2021.07.053}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Cardiac stress SPECT}{3. WHAT THE IMAGE SHOWS \& MEANS}{8 of 16}
+\ClinicalQuestionBox{Is there reduced blood flow to part of the heart muscle on stress?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Stress defect improving at rest & Supports inducible ischaemia \\
+Defect on both studies & May reflect scar or artefact \\
+Ejection fraction & Describes pumping function when measured \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} Attenuation and motion can mimic defects. A normal study does not exclude every cause of chest symptoms.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Stress defect improving at rest. Interpretation: supports inducible ischaemia. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Place corresponding stress and rest maps side by side with a matched colour scale.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s08_p3_find}{\linewidth} & \FText[15.5pt]{s08_p3_loc}{\linewidth} & \FText[15.5pt]{s08_p3_meas}{\linewidth} & \FText[15.5pt]{s08_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s08_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s08_p3_hless}{Makes it less likely}\qquad
+\FCheck{s08_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s08_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s08_p3_arev}{\linewidth} & \FText[15pt]{s08_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s08_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s08_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://www.jacc.org/doi/10.1016/j.jacc.2021.07.053}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Cardiac stress SPECT}{4. SIMILAR CASES \& EVIDENCE}{8 of 16}
+\ClinicalQuestionBox{Is there reduced blood flow to part of the heart muscle on stress?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{stable chest pain intermediate risk stress myocardial perfusion imaging guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{stress rest SPECT reversible perfusion defect teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s08_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s08_p4_src}{\linewidth} & \FText[15.5pt]{s08_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s08_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s08_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s08_p4_adds}
+\RefBar{\href{https://www.jacc.org/doi/10.1016/j.jacc.2021.07.053}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 9 of 16 $\bullet$ Mammography and tomosynthesis}
+\hypertarget{scen9}{}
+\PageBanner{Mammography and tomosynthesis}{1. BEFORE THE SCAN}{9 of 16}
+\ClinicalQuestionBox{Is screening due, and is there a finding that requires recall?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} Confirm screening eligibility, interval, risk and prior studies. Ask about focal symptoms and check whether a diagnostic pathway applies.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} Screen when due under the named guideline even in an asymptomatic patient. Use the diagnostic pathway for a new focal breast concern.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Review new symptoms and pregnancy or breastfeeding with breast imaging. Routine screening eligibility and urgent diagnostic assessment are separate decisions.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s09_p1_pid}{\linewidth} & \FText[15pt]{s09_p1_date}{\linewidth} & \FText[15pt]{s09_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s09_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s09_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s09_p1_guide}{\linewidth} & \FText[15.5pt]{s09_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s09_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s09_p1_ord}{Order}\quad \FCheck{s09_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s09_p1_urout}{Routine}\quad \FCheck{s09_p1_uurg}{Urgent}\quad \FCheck{s09_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s09_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s09_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s09_p1_bclin}{Supported clinical use}\quad
+\FCheck{s09_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s09_p1_bres}{Research}\quad
+\FCheck{s09_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s09_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening}{Clinical reference for this scenario} \quad|\quad \href{https://pubmed.ncbi.nlm.nih.gov/28937575/}{Pregnancy and lactation}}
+\newpage
+\PageBanner{Mammography and tomosynthesis}{2. SCAN-SPECIFIC REPORT}{9 of 16}
+\ClinicalQuestionBox{Is screening due, and is there a finding that requires recall?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} Record technique, comparison, breast density, lesion descriptors, BI-RADS assessment and next action.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s09_p2_pid}{\linewidth} & \FText[15pt]{s09_p2_date}{\linewidth} & \FText[15pt]{s09_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s09_p2_exam}{\linewidth} & \FText[15.5pt]{s09_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s09_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s09_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s09_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s09_p2_qans}{Answered}\qquad
+\FCheck{s09_p2_qpart}{Partly answered}\qquad
+\FCheck{s09_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s09_p2_fu}{\linewidth} & \FText[15.5pt]{s09_p2_resp}{\linewidth} & \FText[15.5pt]{s09_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s09_p2_uwho}{\linewidth} & \FText[15.5pt]{s09_p2_utime}{\linewidth} & \FText[15.5pt]{s09_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Mammography and tomosynthesis}{3. WHAT THE IMAGE SHOWS \& MEANS}{9 of 16}
+\ClinicalQuestionBox{Is screening due, and is there a finding that requires recall?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Grouped calcifications & Morphology and distribution guide assessment \\
+Mass shape and margins & Inform concern \\
+Architectural distortion & May warrant further evaluation \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} A screening recall is a request for further assessment. Persistent focal symptoms need clinical follow-up even after negative screening.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Grouped calcifications. Interpretation: morphology and distribution guide assessment. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Show schematic examples of a mass, calcifications and distortion with separate labels.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s09_p3_find}{\linewidth} & \FText[15.5pt]{s09_p3_loc}{\linewidth} & \FText[15.5pt]{s09_p3_meas}{\linewidth} & \FText[15.5pt]{s09_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s09_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s09_p3_hless}{Makes it less likely}\qquad
+\FCheck{s09_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s09_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s09_p3_arev}{\linewidth} & \FText[15pt]{s09_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s09_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s09_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Mammography and tomosynthesis}{4. SIMILAR CASES \& EVIDENCE}{9 of 16}
+\ClinicalQuestionBox{Is screening due, and is there a finding that requires recall?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{asymptomatic average risk breast screening mammography tomosynthesis guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{mammography grouped calcifications morphology teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s09_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s09_p4_src}{\linewidth} & \FText[15.5pt]{s09_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s09_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s09_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s09_p4_adds}
+\RefBar{\href{https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 10 of 16 $\bullet$ DXA bone density}
+\hypertarget{scen10}{}
+\PageBanner{DXA bone density}{1. BEFORE THE SCAN}{10 of 16}
+\ClinicalQuestionBox{Would measuring bone density inform osteoporosis assessment?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} Review age, fracture history, medicines, risk factors and previous DXA. Identify the screening criteria that apply.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} Proceed when the applicable screening criteria are met or the diagnostic result could change care. For repeat scans, document timing and expected benefit.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Check pregnancy before elective DXA and review whether it should be deferred. In children, use pediatric reporting standards. Consider positioning, prior implants and artefacts in older adults.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s10_p1_pid}{\linewidth} & \FText[15pt]{s10_p1_date}{\linewidth} & \FText[15pt]{s10_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s10_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s10_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s10_p1_guide}{\linewidth} & \FText[15.5pt]{s10_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s10_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s10_p1_ord}{Order}\quad \FCheck{s10_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s10_p1_urout}{Routine}\quad \FCheck{s10_p1_uurg}{Urgent}\quad \FCheck{s10_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s10_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s10_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s10_p1_bclin}{Supported clinical use}\quad
+\FCheck{s10_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s10_p1_bres}{Research}\quad
+\FCheck{s10_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s10_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/osteoporosis-screening}{Clinical reference for this scenario} \quad|\quad \href{https://pubmed.ncbi.nlm.nih.gov/28937575/}{Pregnancy and lactation}}
+\newpage
+\PageBanner{DXA bone density}{2. SCAN-SPECIFIC REPORT}{10 of 16}
+\ClinicalQuestionBox{Would measuring bone density inform osteoporosis assessment?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} Record measured sites, bone mineral density, applicable scores and limitations. Compare only with a technically suitable prior study.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s10_p2_pid}{\linewidth} & \FText[15pt]{s10_p2_date}{\linewidth} & \FText[15pt]{s10_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s10_p2_exam}{\linewidth} & \FText[15.5pt]{s10_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s10_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s10_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s10_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s10_p2_qans}{Answered}\qquad
+\FCheck{s10_p2_qpart}{Partly answered}\qquad
+\FCheck{s10_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s10_p2_fu}{\linewidth} & \FText[15.5pt]{s10_p2_resp}{\linewidth} & \FText[15.5pt]{s10_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s10_p2_uwho}{\linewidth} & \FText[15.5pt]{s10_p2_utime}{\linewidth} & \FText[15.5pt]{s10_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/osteoporosis-screening}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{DXA bone density}{3. WHAT THE IMAGE SHOWS \& MEANS}{10 of 16}
+\ClinicalQuestionBox{Would measuring bone density inform osteoporosis assessment?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Bone mineral density in g/cm$^2$ & Mineral per projected area \\
+T-score at a valid site & Supports classification in applicable adults \\
+Change beyond measurement variability & May indicate a real interval change \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} Positioning, arthritis and other artefacts may distort values. Fracture risk also depends on factors beyond density.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Bone mineral density in g/cm$^2$. Interpretation: mineral per projected area. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Show hip and spine regions of interest and label where the measurement is taken.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s10_p3_find}{\linewidth} & \FText[15.5pt]{s10_p3_loc}{\linewidth} & \FText[15.5pt]{s10_p3_meas}{\linewidth} & \FText[15.5pt]{s10_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s10_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s10_p3_hless}{Makes it less likely}\qquad
+\FCheck{s10_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s10_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s10_p3_arev}{\linewidth} & \FText[15pt]{s10_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s10_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s10_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/osteoporosis-screening}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{DXA bone density}{4. SIMILAR CASES \& EVIDENCE}{10 of 16}
+\ClinicalQuestionBox{Would measuring bone density inform osteoporosis assessment?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{osteoporosis risk screening eligibility DXA guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{hip spine DXA T-score positioning artifact teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s10_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s10_p4_src}{\linewidth} & \FText[15.5pt]{s10_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s10_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s10_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s10_p4_adds}
+\RefBar{\href{https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/osteoporosis-screening}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 11 of 16 $\bullet$ HIDA gallbladder scan}
+\hypertarget{scen11}{}
+\PageBanner{HIDA gallbladder scan}{1. BEFORE THE SCAN}{11 of 16}
+\ClinicalQuestionBox{Does persistent suspicion after ultrasound warrant testing gallbladder filling?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} Review symptoms, exam, ultrasound and relevant labs. Record preparation and medicines that can influence tracer transit.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} Ultrasound usually comes first. If it answers the question, defer HIDA. If acute cholecystitis remains suspected after equivocal ultrasound, HIDA is one option.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Review pregnancy, breastfeeding and child-specific activity with nuclear medicine. Check fasting duration and medicines that can alter gallbladder filling.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s11_p1_pid}{\linewidth} & \FText[15pt]{s11_p1_date}{\linewidth} & \FText[15pt]{s11_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s11_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s11_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s11_p1_guide}{\linewidth} & \FText[15.5pt]{s11_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s11_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s11_p1_ord}{Order}\quad \FCheck{s11_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s11_p1_urout}{Routine}\quad \FCheck{s11_p1_uurg}{Urgent}\quad \FCheck{s11_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s11_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s11_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s11_p1_bclin}{Supported clinical use}\quad
+\FCheck{s11_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s11_p1_bres}{Research}\quad
+\FCheck{s11_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s11_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://www.radiologyinfo.org/en/info/acs-right-upper-quadrant-pain}{Clinical reference for this scenario} \quad|\quad \href{https://pubmed.ncbi.nlm.nih.gov/28937575/}{Pregnancy and lactation}}
+\newpage
+\PageBanner{HIDA gallbladder scan}{2. SCAN-SPECIFIC REPORT}{11 of 16}
+\ClinicalQuestionBox{Does persistent suspicion after ultrasound warrant testing gallbladder filling?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} Record tracer, timing of liver uptake and biliary transit, gallbladder visualisation, delayed images or interventions and limitations.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s11_p2_pid}{\linewidth} & \FText[15pt]{s11_p2_date}{\linewidth} & \FText[15pt]{s11_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s11_p2_exam}{\linewidth} & \FText[15.5pt]{s11_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s11_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s11_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s11_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s11_p2_qans}{Answered}\qquad
+\FCheck{s11_p2_qpart}{Partly answered}\qquad
+\FCheck{s11_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s11_p2_fu}{\linewidth} & \FText[15.5pt]{s11_p2_resp}{\linewidth} & \FText[15.5pt]{s11_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s11_p2_uwho}{\linewidth} & \FText[15.5pt]{s11_p2_utime}{\linewidth} & \FText[15.5pt]{s11_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://www.radiologyinfo.org/en/info/acs-right-upper-quadrant-pain}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{HIDA gallbladder scan}{3. WHAT THE IMAGE SHOWS \& MEANS}{11 of 16}
+\ClinicalQuestionBox{Does persistent suspicion after ultrasound warrant testing gallbladder filling?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Gallbladder appears & Supports a patent cystic duct \\
+Persistent nonvisualisation under an adequate protocol & Supports cystic duct obstruction in the appropriate setting \\
+Bowel activity & Documents tracer transit into intestine \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} Fasting, medicines or severe illness can affect the study. Interpret nonvisualisation in clinical context.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Gallbladder appears. Interpretation: supports a patent cystic duct. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Draw a timed sequence of liver, ducts, gallbladder and bowel with clear labels.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s11_p3_find}{\linewidth} & \FText[15.5pt]{s11_p3_loc}{\linewidth} & \FText[15.5pt]{s11_p3_meas}{\linewidth} & \FText[15.5pt]{s11_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s11_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s11_p3_hless}{Makes it less likely}\qquad
+\FCheck{s11_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s11_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s11_p3_arev}{\linewidth} & \FText[15pt]{s11_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s11_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s11_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://www.radiologyinfo.org/en/info/acs-right-upper-quadrant-pain}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{HIDA gallbladder scan}{4. SIMILAR CASES \& EVIDENCE}{11 of 16}
+\ClinicalQuestionBox{Does persistent suspicion after ultrasound warrant testing gallbladder filling?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{suspected acute cholecystitis equivocal ultrasound HIDA appropriateness guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{HIDA gallbladder nonvisualization acute cholecystitis teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s11_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s11_p4_src}{\linewidth} & \FText[15.5pt]{s11_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s11_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s11_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s11_p4_adds}
+\RefBar{\href{https://www.radiologyinfo.org/en/info/acs-right-upper-quadrant-pain}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 12 of 16 $\bullet$ Diuretic renal scintigraphy}
+\hypertarget{scen12}{}
+\PageBanner{Diuretic renal scintigraphy}{1. BEFORE THE SCAN}{12 of 16}
+\ClinicalQuestionBox{Is the dilated kidney obstructed, and how much function does it contribute?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} Review ultrasound or other anatomic imaging, creatinine, prior surgery and drainage history.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} Use when dilation leaves a functional question and measuring drainage or relative function could change care.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Review pregnancy, breastfeeding, hydration, kidney function and child-specific activity. Confirm whether the patient can void or needs an adapted drainage protocol.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s12_p1_pid}{\linewidth} & \FText[15pt]{s12_p1_date}{\linewidth} & \FText[15pt]{s12_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s12_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s12_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s12_p1_guide}{\linewidth} & \FText[15.5pt]{s12_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s12_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s12_p1_ord}{Order}\quad \FCheck{s12_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s12_p1_urout}{Routine}\quad \FCheck{s12_p1_uurg}{Urgent}\quad \FCheck{s12_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s12_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s12_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s12_p1_bclin}{Supported clinical use}\quad
+\FCheck{s12_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s12_p1_bres}{Research}\quad
+\FCheck{s12_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s12_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://snmmi.org/Web/Web/Clinical-Practice/Procedure-Standards/Standards/Diuretic-Renal-Scintigraphy-in-Adults-With-Suspected-Upper-Urinary-Tract-Obstruction-1-0.aspx}{Clinical reference for this scenario} \quad|\quad \href{https://pubmed.ncbi.nlm.nih.gov/28937575/}{Pregnancy and lactation}}
+\newpage
+\PageBanner{Diuretic renal scintigraphy}{2. SCAN-SPECIFIC REPORT}{12 of 16}
+\ClinicalQuestionBox{Is the dilated kidney obstructed, and how much function does it contribute?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} Record tracer, hydration, diuretic timing, relative function, curves, post-void images when relevant and overall interpretation.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s12_p2_pid}{\linewidth} & \FText[15pt]{s12_p2_date}{\linewidth} & \FText[15pt]{s12_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s12_p2_exam}{\linewidth} & \FText[15.5pt]{s12_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s12_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s12_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s12_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s12_p2_qans}{Answered}\qquad
+\FCheck{s12_p2_qpart}{Partly answered}\qquad
+\FCheck{s12_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s12_p2_fu}{\linewidth} & \FText[15.5pt]{s12_p2_resp}{\linewidth} & \FText[15.5pt]{s12_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s12_p2_uwho}{\linewidth} & \FText[15.5pt]{s12_p2_utime}{\linewidth} & \FText[15.5pt]{s12_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://snmmi.org/Web/Web/Clinical-Practice/Procedure-Standards/Standards/Diuretic-Renal-Scintigraphy-in-Adults-With-Suspected-Upper-Urinary-Tract-Obstruction-1-0.aspx}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Diuretic renal scintigraphy}{3. WHAT THE IMAGE SHOWS \& MEANS}{12 of 16}
+\ClinicalQuestionBox{Is the dilated kidney obstructed, and how much function does it contribute?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Relative uptake percentage & Estimates each kidney's contribution \\
+Tracer washes out after diuretic & Supports drainage \\
+Retained tracer with supporting findings & May support impaired drainage \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} Slow washout alone is insufficient. Function, bladder fullness and technique can affect interpretation.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Relative uptake percentage. Interpretation: estimates each kidney's contribution. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Pair the images with labelled time-activity curves for contrasting drainage patterns.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s12_p3_find}{\linewidth} & \FText[15.5pt]{s12_p3_loc}{\linewidth} & \FText[15.5pt]{s12_p3_meas}{\linewidth} & \FText[15.5pt]{s12_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s12_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s12_p3_hless}{Makes it less likely}\qquad
+\FCheck{s12_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s12_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s12_p3_arev}{\linewidth} & \FText[15pt]{s12_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s12_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s12_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://snmmi.org/Web/Web/Clinical-Practice/Procedure-Standards/Standards/Diuretic-Renal-Scintigraphy-in-Adults-With-Suspected-Upper-Urinary-Tract-Obstruction-1-0.aspx}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Diuretic renal scintigraphy}{4. SIMILAR CASES \& EVIDENCE}{12 of 16}
+\ClinicalQuestionBox{Is the dilated kidney obstructed, and how much function does it contribute?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{hydronephrosis suspected urinary obstruction diuretic renal scintigraphy guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{MAG3 diuretic renogram delayed washout teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s12_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s12_p4_src}{\linewidth} & \FText[15.5pt]{s12_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s12_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s12_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s12_p4_adds}
+\RefBar{\href{https://snmmi.org/Web/Web/Clinical-Practice/Procedure-Standards/Standards/Diuretic-Renal-Scintigraphy-in-Adults-With-Suspected-Upper-Urinary-Tract-Obstruction-1-0.aspx}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 13 of 16 $\bullet$ Upper endoscopy}
+\hypertarget{scen13}{}
+\PageBanner{Upper endoscopy}{1. BEFORE THE SCAN}{13 of 16}
+\ClinicalQuestionBox{Does persistent indigestion warrant direct inspection of the upper digestive tract?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} Review symptoms, age, cancer risk and earlier treatment. In many lower-risk adults under 60, noninvasive H. pylori testing precedes endoscopy under ACG/CAG guidance.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} Initial testing and treatment can precede endoscopy in suitable patients. Age, risk and concerning findings may change the pathway.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Assess cardiopulmonary stability, aspiration risk, fasting, and sedation needs. In pregnancy or frailty, discuss timing and sedation options with the procedural team.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s13_p1_pid}{\linewidth} & \FText[15pt]{s13_p1_date}{\linewidth} & \FText[15pt]{s13_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s13_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s13_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s13_p1_guide}{\linewidth} & \FText[15.5pt]{s13_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s13_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s13_p1_ord}{Order}\quad \FCheck{s13_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s13_p1_urout}{Routine}\quad \FCheck{s13_p1_uurg}{Urgent}\quad \FCheck{s13_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s13_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s13_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s13_p1_bclin}{Supported clinical use}\quad
+\FCheck{s13_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s13_p1_bres}{Research}\quad
+\FCheck{s13_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s13_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://gi.org/guideline/management-of-dyspepsia}{Clinical reference for this scenario} \quad|\quad \href{https://pmc.ncbi.nlm.nih.gov/articles/PMC10850688/}{Endoscopy sedation}}
+\newpage
+\PageBanner{Upper endoscopy}{2. SCAN-SPECIFIC REPORT}{13 of 16}
+\ClinicalQuestionBox{Does persistent indigestion warrant direct inspection of the upper digestive tract?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} Record extent of examination, views and limitations, lesion site and size, biopsy sites and pending pathology.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s13_p2_pid}{\linewidth} & \FText[15pt]{s13_p2_date}{\linewidth} & \FText[15pt]{s13_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s13_p2_exam}{\linewidth} & \FText[15.5pt]{s13_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s13_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s13_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s13_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s13_p2_qans}{Answered}\qquad
+\FCheck{s13_p2_qpart}{Partly answered}\qquad
+\FCheck{s13_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s13_p2_fu}{\linewidth} & \FText[15.5pt]{s13_p2_resp}{\linewidth} & \FText[15.5pt]{s13_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s13_p2_uwho}{\linewidth} & \FText[15.5pt]{s13_p2_utime}{\linewidth} & \FText[15.5pt]{s13_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://gi.org/guideline/management-of-dyspepsia}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Upper endoscopy}{3. WHAT THE IMAGE SHOWS \& MEANS}{13 of 16}
+\ClinicalQuestionBox{Does persistent indigestion warrant direct inspection of the upper digestive tract?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Mucosal crater & Visually consistent with an ulcer \\
+Bleeding or visible vessel & Characterises bleeding features \\
+Irregular lesion & May require tissue diagnosis \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} A visually normal lining can coexist with microscopic disease. Keep visual findings and pathology results distinct.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Mucosal crater. Interpretation: visually consistent with an ulcer. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Show a mucosal view and label an ulcer edge, base and biopsy location conceptually.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s13_p3_find}{\linewidth} & \FText[15.5pt]{s13_p3_loc}{\linewidth} & \FText[15.5pt]{s13_p3_meas}{\linewidth} & \FText[15.5pt]{s13_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s13_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s13_p3_hless}{Makes it less likely}\qquad
+\FCheck{s13_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s13_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s13_p3_arev}{\linewidth} & \FText[15pt]{s13_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s13_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s13_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://gi.org/guideline/management-of-dyspepsia}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Upper endoscopy}{4. SIMILAR CASES \& EVIDENCE}{13 of 16}
+\ClinicalQuestionBox{Does persistent indigestion warrant direct inspection of the upper digestive tract?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{adult persistent dyspepsia H pylori initial evaluation endoscopy guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{upper endoscopy gastric ulcer mucosal crater teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s13_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s13_p4_src}{\linewidth} & \FText[15.5pt]{s13_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s13_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s13_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s13_p4_adds}
+\RefBar{\href{https://gi.org/guideline/management-of-dyspepsia}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 14 of 16 $\bullet$ Endoscopic ultrasound}
+\hypertarget{scen14}{}
+\PageBanner{Endoscopic ultrasound}{1. BEFORE THE SCAN}{14 of 16}
+\ClinicalQuestionBox{Does a solid pancreatic lesion require closer characterisation or tissue sampling?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} Review dedicated CT or MRI when available. Specify what remains unresolved and whether tissue would affect management.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} Proceed when EUS adds clinically relevant information or tissue acquisition is indicated. Review whether earlier tests have already answered the management question.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Assess aspiration risk, cardiopulmonary stability and sedation. If sampling is planned, review bleeding risk and antithrombotic medicines with the procedural team.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s14_p1_pid}{\linewidth} & \FText[15pt]{s14_p1_date}{\linewidth} & \FText[15pt]{s14_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s14_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s14_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s14_p1_guide}{\linewidth} & \FText[15.5pt]{s14_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s14_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s14_p1_ord}{Order}\quad \FCheck{s14_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s14_p1_urout}{Routine}\quad \FCheck{s14_p1_uurg}{Urgent}\quad \FCheck{s14_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s14_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s14_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s14_p1_bclin}{Supported clinical use}\quad
+\FCheck{s14_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s14_p1_bres}{Research}\quad
+\FCheck{s14_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s14_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://pubmed.ncbi.nlm.nih.gov/39387777/}{Clinical reference for this scenario} \quad|\quad \href{https://pmc.ncbi.nlm.nih.gov/articles/PMC10850688/}{Endoscopy sedation}}
+\newpage
+\PageBanner{Endoscopic ultrasound}{2. SCAN-SPECIFIC REPORT}{14 of 16}
+\ClinicalQuestionBox{Does a solid pancreatic lesion require closer characterisation or tissue sampling?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} Record lesion site and dimensions, visible duct and vessel relationships, sampling method and pending pathology.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s14_p2_pid}{\linewidth} & \FText[15pt]{s14_p2_date}{\linewidth} & \FText[15pt]{s14_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s14_p2_exam}{\linewidth} & \FText[15.5pt]{s14_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s14_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s14_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s14_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s14_p2_qans}{Answered}\qquad
+\FCheck{s14_p2_qpart}{Partly answered}\qquad
+\FCheck{s14_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s14_p2_fu}{\linewidth} & \FText[15.5pt]{s14_p2_resp}{\linewidth} & \FText[15.5pt]{s14_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s14_p2_uwho}{\linewidth} & \FText[15.5pt]{s14_p2_utime}{\linewidth} & \FText[15.5pt]{s14_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://pubmed.ncbi.nlm.nih.gov/39387777/}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Endoscopic ultrasound}{3. WHAT THE IMAGE SHOWS \& MEANS}{14 of 16}
+\ClinicalQuestionBox{Does a solid pancreatic lesion require closer characterisation or tissue sampling?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Measured lesion dimensions & Characterises size \\
+Duct dilation or interruption & May reflect obstruction \\
+Sample result & Can establish tissue diagnosis when adequate \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} The ultrasound appearance alone may not identify the lesion type. An inadequate sample leaves the question open.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Measured lesion dimensions. Interpretation: characterises size. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Draw the probe beside the pancreas and show a magnified inset with the lesion and biopsy path.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s14_p3_find}{\linewidth} & \FText[15.5pt]{s14_p3_loc}{\linewidth} & \FText[15.5pt]{s14_p3_meas}{\linewidth} & \FText[15.5pt]{s14_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s14_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s14_p3_hless}{Makes it less likely}\qquad
+\FCheck{s14_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s14_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s14_p3_arev}{\linewidth} & \FText[15pt]{s14_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s14_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s14_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://pubmed.ncbi.nlm.nih.gov/39387777/}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Endoscopic ultrasound}{4. SIMILAR CASES \& EVIDENCE}{14 of 16}
+\ClinicalQuestionBox{Does a solid pancreatic lesion require closer characterisation or tissue sampling?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{solid pancreatic lesion on CT endoscopic ultrasound tissue acquisition guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{endoscopic ultrasound solid pancreatic mass duct obstruction teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s14_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s14_p4_src}{\linewidth} & \FText[15.5pt]{s14_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s14_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s14_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s14_p4_adds}
+\RefBar{\href{https://pubmed.ncbi.nlm.nih.gov/39387777/}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 15 of 16 $\bullet$ Fundus photography}
+\hypertarget{scen15}{}
+\PageBanner{Fundus photography}{1. BEFORE THE SCAN}{15 of 16}
+\ClinicalQuestionBox{Are there visible signs of diabetic retinopathy on screening?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} Check diabetes history, previous screening, new symptoms and the screening programme's eligibility and interval.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} Take photographs when screening is due in a photography-based programme. New symptoms may need a diagnostic eye assessment.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Adjust for child cooperation or limited mobility. If drops are planned, review dilation precautions, including suspected narrow angles, with the eye team.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s15_p1_pid}{\linewidth} & \FText[15pt]{s15_p1_date}{\linewidth} & \FText[15pt]{s15_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s15_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s15_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s15_p1_guide}{\linewidth} & \FText[15.5pt]{s15_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s15_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s15_p1_ord}{Order}\quad \FCheck{s15_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s15_p1_urout}{Routine}\quad \FCheck{s15_p1_uurg}{Urgent}\quad \FCheck{s15_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s15_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s15_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s15_p1_bclin}{Supported clinical use}\quad
+\FCheck{s15_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s15_p1_bres}{Research}\quad
+\FCheck{s15_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s15_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://www.aaojournal.org/article/S0161-6420(19)32902-5/fulltext/}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Fundus photography}{2. SCAN-SPECIFIC REPORT}{15 of 16}
+\ClinicalQuestionBox{Are there visible signs of diabetic retinopathy on screening?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} Record eye, photographed fields, image quality, visible lesions, screening grade and recommended referral or recall.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s15_p2_pid}{\linewidth} & \FText[15pt]{s15_p2_date}{\linewidth} & \FText[15pt]{s15_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s15_p2_exam}{\linewidth} & \FText[15.5pt]{s15_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s15_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s15_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s15_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s15_p2_qans}{Answered}\qquad
+\FCheck{s15_p2_qpart}{Partly answered}\qquad
+\FCheck{s15_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s15_p2_fu}{\linewidth} & \FText[15.5pt]{s15_p2_resp}{\linewidth} & \FText[15.5pt]{s15_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s15_p2_uwho}{\linewidth} & \FText[15.5pt]{s15_p2_utime}{\linewidth} & \FText[15.5pt]{s15_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://www.aaojournal.org/article/S0161-6420(19)32902-5/fulltext/}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Fundus photography}{3. WHAT THE IMAGE SHOWS \& MEANS}{15 of 16}
+\ClinicalQuestionBox{Are there visible signs of diabetic retinopathy on screening?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Microaneurysms & May be early diabetic retinal changes \\
+Retinal haemorrhages & Contribute to severity grading \\
+Abnormal new vessels & Suggest proliferative disease \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} A poor-quality photo cannot be graded reliably. Photography has limits for assessing retinal thickening.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Microaneurysms. Interpretation: may be early diabetic retinal changes. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Show a labelled fundus view with an inset for small lesions. Label the optic disc and macula.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s15_p3_find}{\linewidth} & \FText[15.5pt]{s15_p3_loc}{\linewidth} & \FText[15.5pt]{s15_p3_meas}{\linewidth} & \FText[15.5pt]{s15_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s15_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s15_p3_hless}{Makes it less likely}\qquad
+\FCheck{s15_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s15_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s15_p3_arev}{\linewidth} & \FText[15pt]{s15_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s15_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s15_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://www.aaojournal.org/article/S0161-6420(19)32902-5/fulltext/}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Fundus photography}{4. SIMILAR CASES \& EVIDENCE}{15 of 16}
+\ClinicalQuestionBox{Are there visible signs of diabetic retinopathy on screening?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{diabetic retinopathy retinal photography screening referral guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{fundus photograph diabetic retinopathy microaneurysms teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s15_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s15_p4_src}{\linewidth} & \FText[15.5pt]{s15_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s15_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s15_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s15_p4_adds}
+\RefBar{\href{https://www.aaojournal.org/article/S0161-6420(19)32902-5/fulltext/}{Clinical reference for this scenario}}
+\newpage
+
+\renewcommand{\currentscenario}{Scenario 16 of 16 $\bullet$ Fluorescein angiography}
+\hypertarget{scen16}{}
+\PageBanner{Fluorescein angiography}{1. BEFORE THE SCAN}{16 of 16}
+\ClinicalQuestionBox{Which retinal vessels are leaking or failing to fill normally?}
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont
+\textbf{\color{Navy}What to check first:} Review retinal exam, fundus images and OCT. Specify the remaining vascular question and whether the answer would affect care.\par\vspace{2pt}
+\textbf{\color{Navy}When to proceed or defer:} Use when timed dye imaging can clarify a meaningful question. Defer if existing examination and imaging already answer it adequately.\par\vspace{2pt}
+\textbf{\color{Navy}When to defer or adapt:} Review prior fluorescein reactions and pregnancy with the eye team. For a previous severe reaction, obtain specialist review before re-exposure and assess alternatives.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{s16_p1_pid}{\linewidth} & \FText[15pt]{s16_p1_date}{\linewidth} & \FText[15pt]{s16_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{History received (exact account, source \& relationship, recipient, date \& time)}{s16_p1_hist}
+\MFieldRow[26pt]{Clinician assessment and prior tests (with dates and results)}{s16_p1_assess}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15.5pt]{s16_p1_guide}{\linewidth} & \FText[15.5pt]{s16_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\FieldRow{Patient-specific reason for an exception (if applicable)}{s16_p1_excep}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Decision \& Urgency:}\quad
+\FCheck{s16_p1_ord}{Order}\quad \FCheck{s16_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{s16_p1_urout}{Routine}\quad \FCheck{s16_p1_uurg}{Urgent}\quad \FCheck{s16_p1_uem}{Emergent}\par\vspace{3pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[15pt]{s16_p1_change}{\linewidth}
+\end{tcolorbox}
+\MFieldRow[26pt]{Safety decision and plain-language explanation for the patient}{s16_p1_safety}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{s16_p1_bclin}{Supported clinical use}\quad
+\FCheck{s16_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{s16_p1_bres}{Research}\quad
+\FCheck{s16_p1_bclar}{Awaiting clarification}\par\vspace{3pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[15pt]{s16_p1_resref}{\linewidth}
+\end{tcolorbox}
+\RefBar{\href{https://www.aaojournal.org/article/S0161-6420(19)32902-5/fulltext/}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Fluorescein angiography}{2. SCAN-SPECIFIC REPORT}{16 of 16}
+\ClinicalQuestionBox{Which retinal vessels are leaking or failing to fill normally?}
+\begin{GuidanceBox}
+{\fontsize{8.3}{10.5}\selectfont\textbf{\color{Navy}What this report should record:} Record eye, imaging phases, location and extent of leakage or nonfilling, image quality and relevant limitations.}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.0cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{s16_p2_pid}{\linewidth} & \FText[15pt]{s16_p2_date}{\linewidth} & \FText[15pt]{s16_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Exam performed \& technique} & \FormLabel{Side / site and comparisons} \\
+\FText[15.5pt]{s16_p2_exam}{\linewidth} & \FText[15.5pt]{s16_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\MFieldRow[68pt]{Findings and relevant measurements}{s16_p2_find}
+\MFieldRow[34pt]{Image quality, coverage, or other limitations}{s16_p2_qual}
+\MFieldRow[48pt]{Impression (answering the clinical question)}{s16_p2_imp}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Question status:}\qquad
+\FCheck{s16_p2_qans}{Answered}\qquad
+\FCheck{s16_p2_qpart}{Partly answered}\qquad
+\FCheck{s16_p2_qinc}{Inconclusive}
+\end{tcolorbox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{3.0cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{s16_p2_fu}{\linewidth} & \FText[15.5pt]{s16_p2_resp}{\linewidth} & \FText[15.5pt]{s16_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Time} & \FormLabel{Method} \\
+\FText[15.5pt]{s16_p2_uwho}{\linewidth} & \FText[15.5pt]{s16_p2_utime}{\linewidth} & \FText[15.5pt]{s16_p2_umeth}{\linewidth} \\
+\end{tabularx}
+\RefBar{\href{https://www.aaojournal.org/article/S0161-6420(19)32902-5/fulltext/}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Fluorescein angiography}{3. WHAT THE IMAGE SHOWS \& MEANS}{16 of 16}
+\ClinicalQuestionBox{Which retinal vessels are leaking or failing to fill normally?}
+\renewcommand{\arraystretch}{1.22}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{6.8cm} X@{}}
+\toprule
+\textbf{Key Imaging Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Increasing spread of dye over time & Supports leakage \\
+Persistent capillary nonfilling & May indicate poor perfusion \\
+Late hyperfluorescence & Compare phases to distinguish leakage from staining \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What the image leaves unanswered:} Blood can block the visible signal. A dark area therefore needs comparison with other images before being called nonperfusion.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Increasing spread of dye over time. Interpretation: supports leakage. If this finding is absent, use the limitations above to decide whether the original question remains open.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Pair early and late frames of the same area and mark the changing dye pattern.
+}
+\end{GuidanceBox}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Finding} & \FormLabel{Location} & \FormLabel{Measurement} & \FormLabel{Unit} \\
+\FText[15.5pt]{s16_p3_find}{\linewidth} & \FText[15.5pt]{s16_p3_loc}{\linewidth} & \FText[15.5pt]{s16_p3_meas}{\linewidth} & \FText[15.5pt]{s16_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{4pt}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=4pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{s16_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{s16_p3_hless}{Makes it less likely}\qquad
+\FCheck{s16_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+\MFieldRow[36pt]{Plain-language explanation}{s16_p3_plain}
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=3pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{s16_p3_arev}{\linewidth} & \FText[15pt]{s16_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+\MFieldRow[26pt]{Supporting evidence}{s16_p3_aevid}
+\MFieldRow[26pt]{Response or resolution}{s16_p3_ares}
+\end{tcolorbox}
+\RefBar{\href{https://www.aaojournal.org/article/S0161-6420(19)32902-5/fulltext/}{Clinical reference for this scenario}}
+\newpage
+\PageBanner{Fluorescein angiography}{4. SIMILAR CASES \& EVIDENCE}{16 of 16}
+\ClinicalQuestionBox{Which retinal vessels are leaking or failing to fill normally?}
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms. Keep names, identifiers, reports and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information:} \texttt{suspected retinal vascular leakage fluorescein angiography indication guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings:} \texttt{fluorescein angiography retinal capillary nonperfusion late leakage teaching case}
+}
+\end{GuidanceBox}
+\FieldRow{Actual search terms used}{s16_p4_terms}
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{s16_p4_src}{\linewidth} & \FText[15.5pt]{s16_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+\MFieldRow[58pt]{What matches and what differs}{s16_p4_match}
+\MFieldRow[58pt]{How the diagnosis was established (or whether confirmation was unclear)}{s16_p4_diag}
+\MFieldRow[58pt]{What the source adds and what remains uncertain}{s16_p4_adds}
+\RefBar{\href{https://www.aaojournal.org/article/S0161-6420(19)32902-5/fulltext/}{Clinical reference for this scenario}}
+\newpage
+
+\end{Form}
+
+\end{document}

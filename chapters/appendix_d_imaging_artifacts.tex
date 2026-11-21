@@ -1,0 +1,28 @@
+\chapter{Common Imaging Artifacts Across Modalities}
+\label{app:imaging_artifacts}
+
+Imaging artifacts are features appearing in an image that do not correspond to true anatomy or pathology. Recognizing artifacts prevents misdiagnosis and guides corrective acquisition steps.
+
+\begin{longtable}{@{}p{0.16\textwidth}p{0.22\textwidth}p{0.28\textwidth}p{0.26\textwidth}@{}}
+\caption{Selected artifacts by modality, physical cause, and mitigation.}
+\label{tab:app_artifacts} \\
+\toprule
+\textbf{Modality} & \textbf{Artifact} & \textbf{Cause / Appearance} & \textbf{Recognition / Mitigation} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Modality} & \textbf{Artifact} & \textbf{Cause / Appearance} & \textbf{Recognition / Mitigation} \\
+\midrule
+\endhead
+CT & Beam hardening & Preferential low-energy photon absorption through dense bone/metal causing dark bands or streaks & Inspect soft-tissue/bone windows; use iterative metal artifact reduction (MAR) \\
+CT & Partial volume averaging & Voxel averages high- and low-attenuation structures, blurring small lesions & Reconstruct thinner slices \\
+CT & Motion / stair-step & Patient breathing or cardiac motion during acquisition & Breath-hold coaching, faster pitch, ECG gating \\
+MRI & Susceptibility & Local $B_0$ distortion near air, blood products, or metal causing signal void and geometric warping & Use spin-echo rather than gradient-echo; increase receiver bandwidth \\
+MRI & Chemical shift & Fat--water frequency difference causing dark/bright rim along frequency-encoding axis & Increase bandwidth or use fat suppression \\
+MRI & Aliasing (wrap-around) & Anatomy outside field of view folds into opposite side of image & Oversample phase encoding or enlarge FOV \\
+Ultrasound & Posterior acoustic shadowing & High attenuation (stone, bone, gas) blocks distal sound, leaving anechoic shadow & Helps confirm calculi; change probe angle to bypass gas/ribs \\
+Ultrasound & Posterior acoustic enhancement & Low attenuation through fluid (cyst, bladder) increases brightness distally & Confirms simple fluid-filled structures \\
+Ultrasound & Reverberation / comet-tail & Repeated reflection between strong parallel interfaces (pleura, metallic clips) & Adjust angle; recognize A-lines/B-lines in lung US \\
+PET / CT & Attenuation / respiratory misregistration & Mismatch between CT attenuation map and PET emission data near diaphragm & Inspect non-attenuation-corrected (NAC) PET images \\
+\bottomrule
+\end{longtable}

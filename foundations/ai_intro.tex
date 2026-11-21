@@ -4,14 +4,13 @@
 
 Artificial intelligence (AI) is rapidly entering clinical radiology. It is not a single technology but a family of methods that can assist with image acquisition, detection, segmentation, reporting, and workflow management. This chapter explains what AI is, how it works, what it can and cannot do, and how it fits into clinical practice.
 
----
 
 \section*{1. Will AI Replace My Radiologist?}
 If you are a patient, the short answer is: \textbf{no}. AI in radiology is designed to assist radiologists, not replace them. Here is what AI can do:
 \begin{itemize}
-    \item \textbf{Triage}: Flag potentially critical findings (e.g., pneumothorax, intracranial haemorrhage) so that a radiologist sees them first.
+    \item \textbf{Triage}: Flag potentially critical findings (e.g., pneumothorax, intracranial hemorrhage) so that a radiologist sees them first.
     \item \textbf{Detection}: Highlight areas of concern that a radiologist should examine more closely.
-    \item \textbf{Measurement}: Automatically measure structures (tumour size, heart volume, bone density) faster and more reproducibly than manual measurement.
+    \item \textbf{Measurement}: Automatically measure structures (tumor size, heart volume, bone density) faster and more reproducibly than manual measurement.
     \item \textbf{Quality assurance}: Identify when an image is suboptimal and needs to be repeated.
 \end{itemize}
 
@@ -21,7 +20,6 @@ AI does not understand clinical context, patient history, or the nuances of indi
 Think of AI as a very fast, very thorough assistant that highlights things you should look at. It does not make decisions; it helps you make better, faster decisions. The radiologist remains the clinician of record.
 \end{pearlbox}
 
----
 
 \section*{2. What Do AI, ML, and DL Mean?}
 
@@ -29,7 +27,7 @@ Think of AI as a very fast, very thorough assistant that highlights things you s
 AI is the broadest term: any system that performs tasks that normally require human intelligence, such as image recognition, language understanding, or decision-making. In radiology, AI includes rule-based expert systems (e.g., CAD algorithms from the 1990s) as well as modern machine learning approaches.
 
 \subsection*{Machine Learning (ML)}
-ML is a subset of AI in which a system learns patterns from data rather than being explicitly programmed with rules. In radiology, ML algorithms learn to associate image features with clinical outcomes by training on large datasets of labelled images.
+ML is a subset of AI in which a system learns patterns from data rather than being explicitly programmed with rules. In radiology, ML algorithms learn to associate image features with clinical outcomes by training on large datasets of labeled images.
 
 \subsection*{Deep Learning (DL)}
 DL is a subset of ML that uses artificial neural networks with many layers (hence ``deep''). Convolutional neural networks (CNNs) are the dominant architecture for image analysis. DL can learn features directly from raw pixel data, eliminating the need for manual feature engineering.
@@ -54,18 +52,17 @@ Natural Language Processing (NLP) & AI that understands and generates human lang
 \end{tabular}
 \end{table}
 
----
 
 \section*{3. How AI Tools Are Built}
 
 \subsection*{Supervised Learning}
-The most common approach in medical imaging. The algorithm is trained on a large dataset of images that have been labelled by experts (e.g., ``pneumothorax present'' / ``no pneumothorax''). The model learns to predict the label from the image. After training, it is tested on a separate dataset it has never seen before to evaluate performance.
+The most common approach in medical imaging. The algorithm is trained on a large dataset of images that have been labeled by experts (e.g., ``pneumothorax present'' / ``no pneumothorax''). The model learns to predict the label from the image. After training, it is tested on a separate dataset it has never seen before to evaluate performance.
 
 \subsection*{Unsupervised Learning}
 The algorithm finds patterns in unlabelled data. For example, clustering algorithms might group CT images into subtypes of lung disease without being told what the diseases are. Useful for discovering new imaging biomarkers.
 
 \subsection*{Semi-Supervised and Self-Supervised Learning}
-Hybrid approaches that combine small amounts of labelled data with large amounts of unlabelled data, which is particularly relevant in medical imaging where expert labelling is expensive and time-consuming.
+Hybrid approaches that combine small amounts of labeled data with large amounts of unlabelled data, which is particularly relevant in medical imaging where expert labelling is expensive and time-consuming.
 
 \subsection*{Training, Validation, and Test Sets}
 \begin{itemize}
@@ -106,7 +103,6 @@ Specificity & Proportion of true negatives correctly identified. High specificit
 In medical imaging, the prevalence of disease matters. A model that says ``no disease'' for every image will have 98\% accuracy if the disease prevalence is 2\%, but it will miss every case. Always look at sensitivity, specificity, and AUC, not just accuracy.
 \end{pearlbox}
 
----
 
 \section*{4. FDA Clearance and Regulatory Pathways}
 
@@ -124,7 +120,6 @@ In the EU, AI tools are regulated under the Medical Device Regulation (MDR) 2017
 FDA clearance means the device is safe and reasonably effective for its intended use in the studied population. It does not guarantee performance in your specific clinical setting, patient population, or scanner type. Always evaluate external validation data and local performance.
 \end{warnbox}
 
----
 
 \section*{5. Clinical Applications of AI in Radiology}
 
@@ -145,7 +140,7 @@ Lung nodule detection (CT) & Detects and measures pulmonary nodules; assists wit
 \hline
 Mammography CAD & Highlights areas of microcalcification and architectural distortion. & High false-positive rate; now used as a concurrent reader rather than standalone. \\
 \hline
-Stroke CT triage & Detects intracranial haemorrhage, large vessel occlusion, and CT perfusion mismatch. & Performance varies with infarct age and stroke mimics. \\
+Stroke CT triage & Detects intracranial hemorrhage, large vessel occlusion, and CT perfusion mismatch. & Performance varies with infarct age and stroke mimics. \\
 \hline
 \end{tabular}
 \end{table}
@@ -154,11 +149,11 @@ Stroke CT triage & Detects intracranial haemorrhage, large vessel occlusion, and
 AI tools can automatically review incoming studies and flag those with potentially critical findings, placing them at the top of the radiologist's worklist. This is particularly valuable in emergency settings where turnaround time is critical.
 
 \subsection*{Automated Segmentation and Measurement}
-AI can outline organs, tumours, and structures on CT and MRI in seconds---tasks that would take a radiologist minutes of manual tracing. Applications include:
+AI can outline organs, tumors, and structures on CT and MRI in seconds---tasks that would take a radiologist minutes of manual tracing. Applications include:
 \begin{itemize}
     \item Liver volumetry for surgical planning.
     \item Cardiac function analysis (ejection fraction, myocardial mass).
-    \item Brain tumour segmentation for radiotherapy planning.
+    \item Brain tumor segmentation for radiotherapy planning.
     \item Coronary artery calcium scoring.
 \end{itemize}
 
@@ -184,7 +179,6 @@ AI can automate routine tasks such as:
     \item Prior comparison matching.
 \end{itemize}
 
----
 
 \section*{6. Limitations and Sources of Bias}
 
@@ -216,7 +210,6 @@ Training data bias & If the training set underrepresents certain demographics (a
 A deep learning model will always produce an output, even for an image that is nothing like its training data (e.g., an X-ray of a hand submitted to a chest X-ray triage tool). It may produce a confident but completely wrong prediction. Human oversight is essential.
 \end{pearlbox}
 
----
 
 \section*{7. Safe Deployment Principles}
 
@@ -235,7 +228,7 @@ A deep learning model will always produce an output, even for an image that is n
 \end{testbox}
 
 \begin{pearlbox}[The future is augmented intelligence]
-The most effective use of AI in radiology is not replacement but augmentation: combining the speed and consistency of algorithms with the judgement, context, and adaptability of human clinicians. The goal is to make the radiologist better, faster, and more accurate---not redundant.
+The most effective use of AI in radiology is not replacement but augmentation: combining the speed and consistency of algorithms with the judgment, context, and adaptability of human clinicians. The goal is to make the radiologist better, faster, and more accurate---not redundant.
 \end{pearlbox}
 
 \clearpage

@@ -1,0 +1,351 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,left=14mm,right=14mm,top=18mm,bottom=15mm,headheight=19pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[scaled=0.94]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{hyperref}
+
+% Clinical Color Palette
+\definecolor{Navy}{HTML}{16324F}
+\definecolor{Teal}{HTML}{0E7490}
+\definecolor{SlateBg}{HTML}{F3F6FA}
+\definecolor{WarnBg}{HTML}{FFFBEB}
+\definecolor{WarnBorder}{HTML}{D97706}
+\definecolor{FieldBg}{HTML}{F8FAFC}
+\definecolor{BorderGray}{HTML}{B6C2CF}
+\definecolor{Muted}{HTML}{475569}
+\definecolor{RuleGray}{HTML}{CBD5E1}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=Teal,
+  linkcolor=Navy,
+  pdftitle={SPECT & SPECT/CT Imaging Forms — Fillable Clinical Workbook},
+  pdfauthor={Medical Imaging Workbook}
+}
+
+% Header & Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\fontsize{8}{10}\selectfont\bfseries\color{Navy} SPECT \& SPECT/CT IMAGING FORMS}
+\fancyhead[R]{\fontsize{8}{10}\selectfont\color{Muted} Single-Photon Emission Computed Tomography Workflow}
+\fancyfoot[L]{\fontsize{7.5}{9}\selectfont\color{Muted} De-identified clinical \& educational use}
+\fancyfoot[R]{\fontsize{7.5}{9}\selectfont\color{Muted} Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{RuleGray}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{RuleGray}\leaders\hrule height \footrulewidth\hfill}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+
+% Interactive Form Field Helpers
+\newcommand{\FormLabel}[1]{{\fontsize{7.8}{9.5}\selectfont\bfseries\color{Navy}#1}}
+
+\newcommand{\FText}[3][15pt]{%
+  \TextField[name=#2, width=#3, height=#1, bordercolor=BorderGray, backgroundcolor=FieldBg, charsize=8.5pt, borderwidth=0.6pt]{}%
+}
+
+\newcommand{\FMText}[3][30pt]{%
+  \TextField[name=#2, width=#3, height=#1, multiline=true, bordercolor=BorderGray, backgroundcolor=FieldBg, charsize=8.5pt, borderwidth=0.6pt]{}%
+}
+
+\newcommand{\FCheck}[2]{%
+  \CheckBox[name=#1, width=9pt, height=9pt, bordercolor=Navy, backgroundcolor=FieldBg, borderwidth=0.7pt]{}~{\fontsize{8}{10}\selectfont #2}%
+}
+
+\newcommand{\FieldRow}[2]{%
+  \FormLabel{#1}\par\vspace{1pt}%
+  \FText[15.5pt]{#2}{\linewidth}\par\vspace{3.5pt}%
+}
+
+\newcommand{\MFieldRow}[3][28pt]{%
+  \FormLabel{#2}\par\vspace{1pt}%
+  \FMText[#1]{#3}{\linewidth}\par\vspace{3.5pt}%
+}
+
+\newcommand{\PageBanner}[3]{%
+  \noindent\begin{tcolorbox}[
+    enhanced,
+    colback=Navy,
+    colframe=Navy,
+    arc=2pt,
+    boxrule=0pt,
+    left=7pt,right=7pt,top=4.5pt,bottom=4.5pt,
+    after skip=4pt
+  ]
+    {\fontsize{11.5}{14}\selectfont\bfseries\color{white}#1}
+    \hfill
+    \tcbox[on line, arc=2pt, colback=Teal, colframe=Teal, boxrule=0pt, left=5pt, right=5pt, top=1.5pt, bottom=1.5pt]{%
+      \fontsize{7.5}{9}\selectfont\bfseries\color{white}#2%
+    }
+    \quad
+    {\fontsize{8.5}{10}\selectfont\color{white!85!Navy} #3}
+  \end{tcolorbox}%
+}
+
+\newtcolorbox{GuidanceBox}[1][]{
+  enhanced,
+  colback=SlateBg,
+  colframe=RuleGray,
+  arc=1.5pt,
+  boxrule=0.5pt,
+  left=6pt,right=6pt,top=4pt,bottom=4pt,
+  after skip=4pt,
+  #1
+}
+
+\newcommand{\RefBar}[1]{%
+  \vfill
+  \noindent\begin{tcolorbox}[
+    enhanced,
+    colback=SlateBg,
+    colframe=RuleGray,
+    arc=1.5pt,
+    boxrule=0.4pt,
+    left=6pt,right=6pt,top=3pt,bottom=3pt,
+    after skip=0pt
+  ]
+    {\fontsize{7.5}{9.5}\selectfont\bfseries\color{Muted} References:\quad #1}
+  \end{tcolorbox}%
+}
+
+\begin{document}
+\begin{Form}
+
+% ============================================================================
+% PAGE 1: SPECT REFERRAL, STRESS/INTERVENTION & TRACER SAFETY
+% ============================================================================
+\PageBanner{SPECT \& SPECT/CT}{1. BEFORE THE SCAN}{Form 1 of 4}
+
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What to check first:} Confirm clinical question, resting ECG/echo/prior imaging, and whether exercise/pharmacologic stress or hybrid CT localisation is needed.\par\vspace{1.5pt}
+\textbf{\color{Navy}When to proceed or defer:} Low-risk stable presentations may defer cardiac stress testing; active or unstable symptoms require an acute pathway.\par\vspace{1.5pt}
+\textbf{\color{Navy}Stress \& tracer safety:} Assess contraindications to pharmacologic stress (e.g., bronchospasm, AV block, caffeine intake). Review pregnancy, breastfeeding, and pediatric weight-based dosing.}
+\end{GuidanceBox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{2.8cm}@{\hspace{6pt}}p{2.4cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Age / Weight (kg)} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{sp_p1_pid}{\linewidth} & \FText[15pt]{sp_p1_wt}{\linewidth} & \FText[15pt]{sp_p1_date}{\linewidth} & \FText[15pt]{sp_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{5.4cm}@{}}
+\FormLabel{SPECT / SPECT-CT protocol \& radiotracer requested} & \FormLabel{Prep (caffeine/med hold/fasting) \& resting ECG} \\
+\FText[15pt]{sp_p1_region}{\linewidth} & \FText[15pt]{sp_p1_prep}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Domain:}\quad
+\FCheck{sp_p1_dcard}{Cardiac perfusion}\quad \FCheck{sp_p1_dbone}{Bone/MSK}\quad \FCheck{sp_p1_dpara}{Parathyroid/Thyroid}\quad \FCheck{sp_p1_dbrain}{Brain}\quad \FCheck{sp_p1_dvq}{Lung V/Q / Other}\par\vspace{2.5pt}
+\FormLabel{Acquisition:}\quad
+\FCheck{sp_p1_aspec}{SPECT only}\quad \FCheck{sp_p1_act}{SPECT/CT}\quad \FCheck{sp_p1_agat}{Gated (LVEF)}\qquad
+\FormLabel{Stress:}\quad
+\FCheck{sp_p1_sno}{N/A}\quad \FCheck{sp_p1_sex}{Exercise}\quad \FCheck{sp_p1_spharm}{Vasodilator}\quad \FCheck{sp_p1_sdob}{Dobutamine}\par\vspace{2.5pt}
+\FormLabel{Pregnancy:}\quad
+\FCheck{sp_p1_pna}{N/A}\quad \FCheck{sp_p1_pneg}{Excluded}\quad \FCheck{sp_p1_ppos}{Pregnant}\quad
+\FormLabel{Lactation:}\ \FCheck{sp_p1_lno}{No}\ \FCheck{sp_p1_lyes}{Yes (plan)}\quad
+\FormLabel{Pediatric:}\ \FCheck{sp_p1_ped}{Weight-adjusted}
+\end{tcolorbox}
+
+\FieldRow{Clinical question to be answered}{sp_p1_cquest}
+
+\MFieldRow[22pt]{History received (exact account, source \& relationship, recipient, date \& time)}{sp_p1_hist}
+
+\MFieldRow[22pt]{Clinician assessment, resting ECG / echo \& prior tests (with dates and results)}{sp_p1_assess}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15pt]{sp_p1_guide}{\linewidth} & \FText[15pt]{sp_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Decision:}\quad
+\FCheck{sp_p1_ord}{Order}\quad \FCheck{sp_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{sp_p1_urout}{Routine}\quad \FCheck{sp_p1_uurg}{Urgent}\quad \FCheck{sp_p1_ustat}{Stat / Emergent}\par\vspace{2.5pt}
+\FormLabel{What the result would change (or patient-specific exception)}\par\vspace{1pt}
+\FText[14.5pt]{sp_p1_change}{\linewidth}
+\end{tcolorbox}
+
+\MFieldRow[21pt]{Safety / stress / breastfeeding decision and plain-language explanation for the patient}{sp_p1_safety}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=2pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{sp_p1_bclin}{Supported clinical use}\quad
+\FCheck{sp_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{sp_p1_bres}{Research}\quad
+\FCheck{sp_p1_bclar}{Awaiting clarification}\par\vspace{2.5pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[14.5pt]{sp_p1_resref}{\linewidth}
+\end{tcolorbox}
+
+\RefBar{\href{https://www.jacc.org/doi/10.1016/j.jacc.2021.07.053}{AHA/ACC Chest Pain Guideline} \quad|\quad \href{https://snmmi.org/Web/Clinical-Practice/Procedure-Standards/Procedure-Standards}{SNMMI Procedure Standards} \quad|\quad \href{https://pubmed.ncbi.nlm.nih.gov/28937575/}{Pregnancy \& lactation}}
+
+\newpage
+
+% ============================================================================
+% PAGE 2: SPECT SCAN-SPECIFIC REPORT
+% ============================================================================
+\PageBanner{SPECT \& SPECT/CT}{2. SCAN-SPECIFIC REPORT}{Form 2 of 4}
+
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont\textbf{\color{Navy}What this report should record:} Record radiotracer, administered activity (MBq/mCi), stress method \& adequacy (or imaging timing), location/extent/reversibility of defects, gated ventricular function (LVEF) if measured, CT correlates if SPECT/CT, and artefacts.}
+\end{GuidanceBox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{2.8cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Exam date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{sp_p2_pid}{\linewidth} & \FText[15pt]{sp_p2_date}{\linewidth} & \FText[15pt]{sp_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Radiotracer, activity (MBq / mCi) \& SPECT/CT protocol} & \FormLabel{Stress method \& adequacy (or timing) \& comparisons} \\
+\FText[15.5pt]{sp_p2_exam}{\linewidth} & \FText[15.5pt]{sp_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\FieldRow{Clinical indication / question}{sp_p2_ind}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Technical adequacy:}\quad
+\FCheck{sp_p2_tadeq}{Adequate}\quad
+\FCheck{sp_p2_tsub}{Suboptimal}\quad
+\FCheck{sp_p2_trep}{Repeat needed}\qquad
+\FormLabel{Attenuation corr.:}\quad
+\FCheck{sp_p2_ac}{CT-AC}\quad \FCheck{sp_p2_aprone}{Prone/supine}\quad \FCheck{sp_p2_ano}{None}\par\vspace{2.5pt}
+\FormLabel{Artefacts (motion, breast/diaphragmatic attenuation, subdiaphragmatic uptake, CT misregistration)}\par\vspace{1pt}
+\FText[15pt]{sp_p2_qual}{\linewidth}
+\end{tcolorbox}
+
+\MFieldRow[82pt]{Findings \& measurements (defect territories, severity, reversibility, SSS/SRS/SDS, gated LVEF \%, or focal uptake + CT correlates)}{sp_p2_find}
+
+\MFieldRow[50pt]{Impression (direct answer to the clinical question)}{sp_p2_imp}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Question status:}\qquad
+\FCheck{sp_p2_qans}{Answered}\qquad
+\FCheck{sp_p2_qpart}{Partly answered}\qquad
+\FCheck{sp_p2_qinc}{Inconclusive}\par\vspace{2.5pt}
+\FormLabel{Recommended next step:}\quad
+\FCheck{sp_p2_nnone}{None}\quad
+\FCheck{sp_p2_nrep}{Repeat/Prone}\quad
+\FCheck{sp_p2_nang}{Coronary CTA/Angio}\quad
+\FCheck{sp_p2_nct}{Dedicated CT}\quad
+\FCheck{sp_p2_nmri}{MRI}\quad
+\FCheck{sp_p2_nclin}{Clinical corr.}
+\end{tcolorbox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{2.8cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{sp_p2_fu}{\linewidth} & \FText[15.5pt]{sp_p2_resp}{\linewidth} & \FText[15.5pt]{sp_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Date \& time} & \FormLabel{Method} \\
+\FText[15.5pt]{sp_p2_uwho}{\linewidth} & \FText[15.5pt]{sp_p2_utime}{\linewidth} & \FText[15.5pt]{sp_p2_umeth}{\linewidth} \\
+\end{tabularx}
+
+\RefBar{\href{https://www.jacc.org/doi/10.1016/j.jacc.2021.07.053}{AHA/ACC Chest Pain Guideline} \quad|\quad \href{https://snmmi.org/Web/Clinical-Practice/Procedure-Standards/Procedure-Standards}{SNMMI Procedure Standards}}
+
+\newpage
+
+% ============================================================================
+% PAGE 3: WHAT THE IMAGE SHOWS AND MEANS
+% ============================================================================
+\PageBanner{SPECT \& SPECT/CT}{3. WHAT THE IMAGE SHOWS \& MEANS}{Form 3 of 4}
+
+\renewcommand{\arraystretch}{1.2}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{3.0cm} >{\color{Navy}}p{5.4cm} X@{}}
+\toprule
+\textbf{Context} & \textbf{Key SPECT Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Cardiac Ischaemia & Stress perfusion defect improving at rest & Supports inducible myocardial ischaemia \\
+Cardiac Fixed & Matched defect on stress and rest & May reflect myocardial scar or attenuation artefact \\
+Gated Function & Left ventricular ejection fraction (LVEF \%) & Describes pumping function and post-stress stunning \\
+Bone / MSK & Focal uptake localised to bone/joint on CT & Supports fracture, arthritis, loosening, or tumour \\
+Parathyroid / V/Q & Persistent focal retention; mismatched defect & Supports parathyroid adenoma; pulmonary embolism \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What SPECT leaves unanswered:} Attenuation (breast, diaphragm), patient motion, and subdiaphragmatic tracer activity can mimic defects. A normal myocardial perfusion scan does not exclude every cause of chest symptoms or non-obstructive coronary plaque.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Stress defect improving at rest. Interpretation: supports inducible ischaemia. If absent, verify stress adequacy and artefact limits.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Place corresponding stress and rest maps (or SPECT and fused SPECT/CT slices) side by side with a matched colour scale.}
+\end{GuidanceBox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Primary finding} & \FormLabel{Territory / Site} & \FormLabel{Measurement} & \FormLabel{Unit (\%, SSS, LVEF)} \\
+\FText[15.5pt]{sp_p3_find}{\linewidth} & \FText[15.5pt]{sp_p3_loc}{\linewidth} & \FText[15.5pt]{sp_p3_meas}{\linewidth} & \FText[15.5pt]{sp_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Secondary finding (if any)} & \FormLabel{Territory / Site} & \FormLabel{Measurement} & \FormLabel{Unit (\%, SSS, LVEF)} \\
+\FText[15.5pt]{sp_p3_find2}{\linewidth} & \FText[15.5pt]{sp_p3_loc2}{\linewidth} & \FText[15.5pt]{sp_p3_meas2}{\linewidth} & \FText[15.5pt]{sp_p3_unit2}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{sp_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{sp_p3_hless}{Makes it less likely}\qquad
+\FCheck{sp_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+
+\MFieldRow[36pt]{Plain-language explanation for patient / care team}{sp_p3_plain}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=2pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{sp_p3_arev}{\linewidth} & \FText[15pt]{sp_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{2.5pt}
+\MFieldRow[24pt]{Supporting evidence}{sp_p3_aevid}
+\MFieldRow[24pt]{Response or resolution}{sp_p3_ares}
+\end{tcolorbox}
+
+\RefBar{\href{https://www.jacc.org/doi/10.1016/j.jacc.2021.07.053}{AHA/ACC Chest Pain Guideline} \quad|\quad \href{https://www.radiologyinfo.org/en/info/gennuc}{RadiologyInfo: Nuclear Medicine}}
+
+\newpage
+
+% ============================================================================
+% PAGE 4: FIND SIMILAR CASES AND CHECK THE EVIDENCE
+% ============================================================================
+\PageBanner{SPECT \& SPECT/CT}{4. SIMILAR CASES \& EVIDENCE}{Form 4 of 4}
+
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms only. Keep patient names, identifiers, reports, and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information (example templates):}\par
+\texttt{<clinical presentation> <risk level> SPECT myocardial perfusion guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings (example templates):}\par
+\texttt{<stress rest SPECT / SPECT CT> <reversible defect / focal uptake> teaching case}}
+\end{GuidanceBox}
+
+\FieldRow{Actual search terms used}{sp_p4_terms}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{sp_p4_src}{\linewidth} & \FText[15.5pt]{sp_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+
+\MFieldRow[62pt]{What matches and what differs}{sp_p4_match}
+
+\MFieldRow[62pt]{How the diagnosis was established (or whether confirmation was unclear)}{sp_p4_diag}
+
+\MFieldRow[62pt]{What the source adds and what remains uncertain}{sp_p4_adds}
+
+\RefBar{\href{https://snmmi.org/Web/Clinical-Practice/Procedure-Standards/Procedure-Standards}{SNMMI Procedure Standards} \quad|\quad \href{https://radiopaedia.org/}{Radiopaedia (SPECT Teaching Cases)}}
+
+\end{Form}
+\end{document}

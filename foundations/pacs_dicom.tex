@@ -4,7 +4,6 @@
 
 Every medical image you view is stored, transmitted, and displayed using a sophisticated digital infrastructure. PACS (Picture Archiving and Communication System) and DICOM (Digital Imaging and Communications in Medicine) are the backbone of modern radiology. Understanding these systems is essential for any clinician who works with images.
 
----
 
 \section*{1. Why Are Images Digital? --- A Patient's Perspective}
 In the past, X-ray images were printed on large sheets of film that had to be stored in physical folders and viewed on light boxes. This system had serious limitations:
@@ -23,7 +22,6 @@ Today, all medical images are born digital. They are stored electronically on se
     \item Images are backed up and cannot be ``lost'' in the way that physical films could be.
 \end{itemize}
 
----
 
 \section*{2. DICOM --- The Language of Medical Images}
 
@@ -35,7 +33,7 @@ Think of DICOM as the ``language'' that all medical imaging devices speak. Witho
 \subsection*{What Is in a DICOM File?}
 A DICOM file contains two components:
 \begin{enumerate}
-    \item \textbf{Pixel data}: The actual image (the greyscale or colour information that you see on screen).
+    \item \textbf{Pixel data}: The actual image (the greyscale or color information that you see on screen).
     \item \textbf{Metadata (header)}: A rich set of tags describing the image, including:
     \begin{itemize}
         \item Patient name, date of birth, hospital ID.
@@ -107,7 +105,6 @@ Before interpreting any image, verify the patient name, date of birth, and study
 \end{tabular}
 \end{table}
 
----
 
 \section*{3. PACS --- The Infrastructure}
 
@@ -156,7 +153,6 @@ Many institutions are migrating to cloud-based PACS, where images are stored on 
 \end{itemize}
 Challenges include bandwidth requirements, data sovereignty, latency, and compliance with local data protection regulations.
 
----
 
 \section*{4. RIS and HIS Integration}
 
@@ -184,7 +180,6 @@ The HIS is the broader hospital IT infrastructure that includes patient registra
 If the RIS worklist is not reconciled with the patient in front of you, you may image the wrong patient or attach images to the wrong record. Always verify the patient name, date of birth, and hospital number on the worklist against the patient and their wristband before beginning any examination.
 \end{pearlbox}
 
----
 
 \section*{5. Hanging Protocols}
 
@@ -205,11 +200,10 @@ DICOM images contain more grey levels than the human eye can perceive at once. W
     \item \textbf{Lung window}: Width ~1500 HU, Level ~-600 HU (visualises lung parenchyma and airways).
     \item \textbf{Soft-tissue window}: Width ~350 HU, Level ~40 HU (visualises organs, muscles, and fat).
     \item \textbf{Bone window}: Width ~2000 HU, Level ~300 HU (visualises cortical and trabecular bone).
-    \item \textbf{Brain window}: Width ~80 HU, Level ~30 HU (visualises grey-white differentiation and haemorrhage).
+    \item \textbf{Brain window}: Width ~80 HU, Level ~30 HU (visualises grey-white differentiation and hemorrhage).
     \item \textbf{Mediastinal window}: Width ~400 HU, Level ~50 HU (visualises mediastinal structures).
 \end{itemize}
 
----
 
 \section*{6. Prior Comparison}
 
@@ -217,7 +211,7 @@ One of the most powerful features of PACS is the ability to instantly retrieve a
 \begin{itemize}
     \item Determines whether a lesion is new, stable, or resolving.
     \item Avoids false-positive reports of findings that are long-standing and benign.
-    \item Enables measurement of growth rates (critical for lung nodule follow-up, tumour response assessment).
+    \item Enables measurement of growth rates (critical for lung nodule follow-up, tumor response assessment).
     \item Provides context (e.g., post-surgical changes vs new recurrence).
 \end{itemize}
 
@@ -225,7 +219,6 @@ One of the most powerful features of PACS is the ability to instantly retrieve a
 A ``new'' 5 mm lung nodule on today's CT may have been present on a chest X-ray from 2 years ago. Without comparison, you may subject a patient to unnecessary invasive investigation. Always check for prior imaging before reporting a finding as new.
 \end{warnbox}
 
----
 
 \section*{7. Image Sharing and Second Opinions}
 
@@ -249,7 +242,6 @@ When sharing images for a second opinion, always include:
 Before sharing images for research, education, or external second opinions, DICOM metadata must be reviewed and de-identified. Patient name, date of birth, hospital ID, and referring physician details should be removed unless clinically necessary. Automated de-identification tools exist but must be validated---some tags (e.g., in private creator fields) may not be caught by standard tools.
 \end{pearlbox}
 
----
 
 \section*{8. Security, Governance, and Data Protection}
 

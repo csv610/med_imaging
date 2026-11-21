@@ -1,0 +1,348 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,left=14mm,right=14mm,top=18mm,bottom=15mm,headheight=19pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[scaled=0.94]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{hyperref}
+
+% Clinical Color Palette
+\definecolor{Navy}{HTML}{16324F}
+\definecolor{Teal}{HTML}{0E7490}
+\definecolor{SlateBg}{HTML}{F3F6FA}
+\definecolor{WarnBg}{HTML}{FFFBEB}
+\definecolor{WarnBorder}{HTML}{D97706}
+\definecolor{FieldBg}{HTML}{F8FAFC}
+\definecolor{BorderGray}{HTML}{B6C2CF}
+\definecolor{Muted}{HTML}{475569}
+\definecolor{RuleGray}{HTML}{CBD5E1}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=Teal,
+  linkcolor=Navy,
+  pdftitle={Nuclear Medicine Imaging Forms — Fillable Clinical Workbook},
+  pdfauthor={Medical Imaging Workbook}
+}
+
+% Header & Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\fontsize{8}{10}\selectfont\bfseries\color{Navy} NUCLEAR MEDICINE IMAGING FORMS}
+\fancyhead[R]{\fontsize{8}{10}\selectfont\color{Muted} Scintigraphy, SPECT/CT \& PET/CT Workflow}
+\fancyfoot[L]{\fontsize{7.5}{9}\selectfont\color{Muted} De-identified clinical \& educational use}
+\fancyfoot[R]{\fontsize{7.5}{9}\selectfont\color{Muted} Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{RuleGray}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{RuleGray}\leaders\hrule height \footrulewidth\hfill}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+
+% Interactive Form Field Helpers
+\newcommand{\FormLabel}[1]{{\fontsize{7.8}{9.5}\selectfont\bfseries\color{Navy}#1}}
+
+\newcommand{\FText}[3][15pt]{%
+  \TextField[name=#2, width=#3, height=#1, bordercolor=BorderGray, backgroundcolor=FieldBg, charsize=8.5pt, borderwidth=0.6pt]{}%
+}
+
+\newcommand{\FMText}[3][30pt]{%
+  \TextField[name=#2, width=#3, height=#1, multiline=true, bordercolor=BorderGray, backgroundcolor=FieldBg, charsize=8.5pt, borderwidth=0.6pt]{}%
+}
+
+\newcommand{\FCheck}[2]{%
+  \CheckBox[name=#1, width=9pt, height=9pt, bordercolor=Navy, backgroundcolor=FieldBg, borderwidth=0.7pt]{}~{\fontsize{8}{10}\selectfont #2}%
+}
+
+\newcommand{\FieldRow}[2]{%
+  \FormLabel{#1}\par\vspace{1pt}%
+  \FText[15.5pt]{#2}{\linewidth}\par\vspace{3.5pt}%
+}
+
+\newcommand{\MFieldRow}[3][28pt]{%
+  \FormLabel{#2}\par\vspace{1pt}%
+  \FMText[#1]{#3}{\linewidth}\par\vspace{3.5pt}%
+}
+
+\newcommand{\PageBanner}[3]{%
+  \noindent\begin{tcolorbox}[
+    enhanced,
+    colback=Navy,
+    colframe=Navy,
+    arc=2pt,
+    boxrule=0pt,
+    left=7pt,right=7pt,top=4.5pt,bottom=4.5pt,
+    after skip=4pt
+  ]
+    {\fontsize{11.5}{14}\selectfont\bfseries\color{white}#1}
+    \hfill
+    \tcbox[on line, arc=2pt, colback=Teal, colframe=Teal, boxrule=0pt, left=5pt, right=5pt, top=1.5pt, bottom=1.5pt]{%
+      \fontsize{7.5}{9}\selectfont\bfseries\color{white}#2%
+    }
+    \quad
+    {\fontsize{8.5}{10}\selectfont\color{white!85!Navy} #3}
+  \end{tcolorbox}%
+}
+
+\newtcolorbox{GuidanceBox}[1][]{
+  enhanced,
+  colback=SlateBg,
+  colframe=RuleGray,
+  arc=1.5pt,
+  boxrule=0.5pt,
+  left=6pt,right=6pt,top=4pt,bottom=4pt,
+  after skip=4pt,
+  #1
+}
+
+\newcommand{\RefBar}[1]{%
+  \vfill
+  \noindent\begin{tcolorbox}[
+    enhanced,
+    colback=SlateBg,
+    colframe=RuleGray,
+    arc=1.5pt,
+    boxrule=0.4pt,
+    left=6pt,right=6pt,top=3pt,bottom=3pt,
+    after skip=0pt
+  ]
+    {\fontsize{7.5}{9.5}\selectfont\bfseries\color{Muted} References:\quad #1}
+  \end{tcolorbox}%
+}
+
+\begin{document}
+\begin{Form}
+
+% ============================================================================
+% PAGE 1: NUCLEAR MEDICINE REFERRAL & RADIOPHARMACEUTICAL SAFETY
+% ============================================================================
+\PageBanner{Nuclear Medicine (Scintigraphy, SPECT \& PET)}{1. BEFORE THE SCAN}{Form 1 of 4}
+
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What to check first:} Confirm the functional/staging question, pathology, and prior anatomic imaging (US/CT/MRI).\par\vspace{1.5pt}
+\textbf{\color{Navy}When to proceed or defer:} Proceed when functional/molecular imaging adds information that changes management. Defer if prior anatomic imaging already answers the question.\par\vspace{1.5pt}
+\textbf{\color{Navy}Tracer \& patient safety:} Review pregnancy and breastfeeding before tracer administration; tailor activity for children. Check fasting, blood glucose (FDG), hydration, and interfering medicines against local protocol.}
+\end{GuidanceBox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{2.8cm}@{\hspace{6pt}}p{2.4cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Age / Weight (kg)} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{nm_p1_pid}{\linewidth} & \FText[15pt]{nm_p1_wt}{\linewidth} & \FText[15pt]{nm_p1_date}{\linewidth} & \FText[15pt]{nm_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{5.4cm}@{}}
+\FormLabel{Study \& radiopharmaceutical requested} & \FormLabel{Prep / fasting / glucose / interfering meds} \\
+\FText[15pt]{nm_p1_region}{\linewidth} & \FText[15pt]{nm_p1_prep}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Modality:}\quad
+\FCheck{nm_p1_mplan}{Planar}\quad \FCheck{nm_p1_mspect}{SPECT / SPECT-CT}\quad \FCheck{nm_p1_mpet}{PET / PET-CT}\quad \FCheck{nm_p1_mdyn}{Dynamic / Renogram}\par\vspace{2.5pt}
+\FormLabel{Intervention:}\quad
+\FCheck{nm_p1_ino}{None}\quad \FCheck{nm_p1_istr}{Stress (Ex/Pharm)}\quad \FCheck{nm_p1_idiur}{Diuretic}\quad \FCheck{nm_p1_icck}{CCK / Morphine}\par\vspace{2.5pt}
+\FormLabel{Pregnancy:}\quad
+\FCheck{nm_p1_pna}{N/A}\quad \FCheck{nm_p1_pneg}{Excluded}\quad \FCheck{nm_p1_ppos}{Pregnant}\quad
+\FormLabel{Lactation:}\ \FCheck{nm_p1_lno}{No}\ \FCheck{nm_p1_lyes}{Yes (plan)}\quad
+\FormLabel{Pediatric:}\ \FCheck{nm_p1_ped}{Weight-adjusted}
+\end{tcolorbox}
+
+\FieldRow{Clinical question to be answered}{nm_p1_cquest}
+
+\MFieldRow[22pt]{History received (exact account, source \& relationship, recipient, date \& time)}{nm_p1_hist}
+
+\MFieldRow[22pt]{Clinician assessment, pathology \& prior anatomic imaging (with dates and results)}{nm_p1_assess}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15pt]{nm_p1_guide}{\linewidth} & \FText[15pt]{nm_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Decision:}\quad
+\FCheck{nm_p1_ord}{Order}\quad \FCheck{nm_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{nm_p1_urout}{Routine}\quad \FCheck{nm_p1_uurg}{Urgent}\quad \FCheck{nm_p1_ustat}{Stat / Emergent}\par\vspace{2.5pt}
+\FormLabel{What the result would change (or patient-specific exception)}\par\vspace{1pt}
+\FText[14.5pt]{nm_p1_change}{\linewidth}
+\end{tcolorbox}
+
+\MFieldRow[21pt]{Safety / radiation / breastfeeding decision and plain-language explanation for the patient}{nm_p1_safety}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=2pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{nm_p1_bclin}{Supported clinical use}\quad
+\FCheck{nm_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{nm_p1_bres}{Research}\quad
+\FCheck{nm_p1_bclar}{Awaiting clarification}\par\vspace{2.5pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[14.5pt]{nm_p1_resref}{\linewidth}
+\end{tcolorbox}
+
+\RefBar{\href{https://snmmi.org/Web/Clinical-Practice/Procedure-Standards/Procedure-Standards}{SNMMI Procedure Standards} \quad|\quad \href{https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria}{ACR Appropriateness Criteria} \quad|\quad \href{https://pubmed.ncbi.nlm.nih.gov/28937575/}{Pregnancy \& lactation}}
+
+\newpage
+
+% ============================================================================
+% PAGE 2: NUCLEAR MEDICINE SCAN-SPECIFIC REPORT
+% ============================================================================
+\PageBanner{Nuclear Medicine (Scintigraphy, SPECT \& PET)}{2. SCAN-SPECIFIC REPORT}{Form 2 of 4}
+
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont\textbf{\color{Navy}What this report should record:} Record radiopharmaceutical, administered activity (MBq/mCi), route, uptake/imaging timing, coverage, interventions (stress, diuretic, delayed views), CT correlation if hybrid, quantitative values (SUV, split function \%, $T_{1/2}$), and limitations.}
+\end{GuidanceBox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{2.8cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Exam date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{nm_p2_pid}{\linewidth} & \FText[15pt]{nm_p2_date}{\linewidth} & \FText[15pt]{nm_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Radiopharmaceutical, activity (MBq / mCi) \& route} & \FormLabel{Uptake time, coverage, interventions \& comparisons} \\
+\FText[15.5pt]{nm_p2_exam}{\linewidth} & \FText[15.5pt]{nm_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\FieldRow{Clinical indication / question}{nm_p2_ind}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Technical adequacy:}\quad
+\FCheck{nm_p2_tadeq}{Adequate}\quad
+\FCheck{nm_p2_tsub}{Suboptimal}\quad
+\FCheck{nm_p2_trep}{Delayed / Repeat needed}\qquad
+\FormLabel{Pre-scan glucose (if FDG):}\ \FText[13.5pt]{nm_p2_gluc}{2.8cm}\par\vspace{2.5pt}
+\FormLabel{Limitations (motion, extravasation, attenuation/bladder/fasting artefacts, CT misregistration)}\par\vspace{1pt}
+\FText[15pt]{nm_p2_qual}{\linewidth}
+\end{tcolorbox}
+
+\MFieldRow[82pt]{Findings \& quantitative measurements (tracer distribution, focal uptake/SUV, defect reversibility, split function \%, washout, CT correlates)}{nm_p2_find}
+
+\MFieldRow[50pt]{Impression (direct answer to the clinical question; distinguish suspicious from indeterminate uptake)}{nm_p2_imp}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Question status:}\qquad
+\FCheck{nm_p2_qans}{Answered}\qquad
+\FCheck{nm_p2_qpart}{Partly answered}\qquad
+\FCheck{nm_p2_qinc}{Inconclusive}\par\vspace{2.5pt}
+\FormLabel{Recommended next step:}\quad
+\FCheck{nm_p2_nnone}{None}\quad
+\FCheck{nm_p2_ndel}{Delayed/Repeat NM}\quad
+\FCheck{nm_p2_nct}{Dedicated CT}\quad
+\FCheck{nm_p2_nmri}{MRI}\quad
+\FCheck{nm_p2_nus}{Ultrasound}\quad
+\FCheck{nm_p2_nbx}{Biopsy / Clinical corr.}
+\end{tcolorbox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{2.8cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{nm_p2_fu}{\linewidth} & \FText[15.5pt]{nm_p2_resp}{\linewidth} & \FText[15.5pt]{nm_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Date \& time} & \FormLabel{Method} \\
+\FText[15.5pt]{nm_p2_uwho}{\linewidth} & \FText[15.5pt]{nm_p2_utime}{\linewidth} & \FText[15.5pt]{nm_p2_umeth}{\linewidth} \\
+\end{tabularx}
+
+\RefBar{\href{https://snmmi.org/Web/Clinical-Practice/Procedure-Standards/Procedure-Standards}{SNMMI Procedure Standards} \quad|\quad \href{https://www.rsna.org/practice-tools/data-tools-and-standards/radreport-reporting-templates}{RSNA RadReport Templates}}
+
+\newpage
+
+% ============================================================================
+% PAGE 3: WHAT THE IMAGE SHOWS AND MEANS
+% ============================================================================
+\PageBanner{Nuclear Medicine (Scintigraphy, SPECT \& PET)}{3. WHAT THE IMAGE SHOWS \& MEANS}{Form 3 of 4}
+
+\renewcommand{\arraystretch}{1.2}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{3.0cm} >{\color{Navy}}p{5.4cm} X@{}}
+\toprule
+\textbf{Study Type} & \textbf{Key Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+FDG PET/CT & Focal uptake mapped to node or organ & Active metabolic disease (correlate with inflammation) \\
+Cardiac SPECT & Stress defect improving at rest & Supports inducible ischaemia (vs. fixed scar/artefact) \\
+HIDA Scan & Persistent gallbladder nonvisualisation & Supports cystic duct obstruction in context \\
+Diuretic Renogram & Split uptake \%; washout vs. retention & Estimates relative function; assesses drainage \\
+Bone Scan & Focal increased osteoblastic uptake & Fracture, metastasis, infection, or arthritis \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What nuclear medicine leaves unanswered:} Tracer uptake is functional rather than tissue-specific; infection, inflammation, or physiologic activity can mimic disease. Attenuation, motion, fasting/glucose, or poor hydration/bladder fullness can distort quantitative metrics.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Stress defect improving at rest. Interpretation: supports inducible ischaemia. If absent, review stress adequacy and attenuation limits.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Pair functional and fused/anatomic views (e.g., PET + fused PET/CT, stress + rest maps, or renogram + time-activity curves) with matched colour scales.}
+\end{GuidanceBox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Primary finding} & \FormLabel{Site / Node / Organ} & \FormLabel{Measurement} & \FormLabel{Unit (SUV, \%, min)} \\
+\FText[15.5pt]{nm_p3_find}{\linewidth} & \FText[15.5pt]{nm_p3_loc}{\linewidth} & \FText[15.5pt]{nm_p3_meas}{\linewidth} & \FText[15.5pt]{nm_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Secondary finding (if any)} & \FormLabel{Site / Node / Organ} & \FormLabel{Measurement} & \FormLabel{Unit (SUV, \%, min)} \\
+\FText[15.5pt]{nm_p3_find2}{\linewidth} & \FText[15.5pt]{nm_p3_loc2}{\linewidth} & \FText[15.5pt]{nm_p3_meas2}{\linewidth} & \FText[15.5pt]{nm_p3_unit2}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{nm_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{nm_p3_hless}{Makes it less likely}\qquad
+\FCheck{nm_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+
+\MFieldRow[36pt]{Plain-language explanation for patient / care team}{nm_p3_plain}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=2pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{nm_p3_arev}{\linewidth} & \FText[15pt]{nm_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{2.5pt}
+\MFieldRow[24pt]{Supporting evidence}{nm_p3_aevid}
+\MFieldRow[24pt]{Response or resolution}{nm_p3_ares}
+\end{tcolorbox}
+
+\RefBar{\href{https://www.radiologyinfo.org/en/info/gennuc}{RadiologyInfo: General Nuclear Medicine} \quad|\quad \href{https://www.radiologyinfo.org/en/info/pet}{RadiologyInfo: PET/CT}}
+
+\newpage
+
+% ============================================================================
+% PAGE 4: FIND SIMILAR CASES AND CHECK THE EVIDENCE
+% ============================================================================
+\PageBanner{Nuclear Medicine (Scintigraphy, SPECT \& PET)}{4. SIMILAR CASES \& EVIDENCE}{Form 4 of 4}
+
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms only. Keep patient names, identifiers, reports, and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information (example templates):}\par
+\texttt{<clinical indication> <radiopharmaceutical / modality> appropriateness guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings (example templates):}\par
+\texttt{<tracer / study> <key uptake or washout pattern> teaching case}}
+\end{GuidanceBox}
+
+\FieldRow{Actual search terms used}{nm_p4_terms}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{nm_p4_src}{\linewidth} & \FText[15.5pt]{nm_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+
+\MFieldRow[62pt]{What matches and what differs}{nm_p4_match}
+
+\MFieldRow[62pt]{How the diagnosis was established (or whether confirmation was unclear)}{nm_p4_diag}
+
+\MFieldRow[62pt]{What the source adds and what remains uncertain}{nm_p4_adds}
+
+\RefBar{\href{https://snmmi.org/Web/Clinical-Practice/Procedure-Standards/Procedure-Standards}{SNMMI Procedure Standards} \quad|\quad \href{https://radiopaedia.org/}{Radiopaedia (Nuclear Medicine Cases)}}
+
+\end{Form}
+\end{document}

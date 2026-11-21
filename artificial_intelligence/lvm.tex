@@ -1,7 +1,7 @@
 \chapter{Large Vision Models}
 
 \section*{Patient focus}
-When a radiologist looks at a scan, they use years of training to recognise patterns---the shape of a tumour, the texture of inflamed tissue, the darkness of air where it should not be. Large vision models are AI systems that learn to ``see'' in a similar way. They are trained on millions of images, learning to extract features and compare them. Some can also understand written text alongside images, linking what they see with what doctors write in reports. These models may help your radiologist work faster and catch things that might otherwise be missed, but they are still tools---not decision-makers.
+When a radiologist looks at a scan, they use years of training to recognize patterns---the shape of a tumor, the texture of inflamed tissue, the darkness of air where it should not be. Large vision models are AI systems that learn to ``see'' in a similar way. They are trained on millions of images, learning to extract features and compare them. Some can also understand written text alongside images, linking what they see with what doctors write in reports. These models may help your radiologist work faster and catch things that might otherwise be missed, but they are still tools---not decision-makers.
 
 \section*{Imaging focus}
 Large vision models (LVMs) encompass vision transformers, multimodal vision--language models, and CLIP-based architectures. Unlike traditional CNNs, transformers process images as sequences of patches and use self-attention to capture global relationships. Understanding the architecture, attention mechanisms, and failure modes of LVMs is essential for evaluating their role in diagnostic imaging.
@@ -49,7 +49,7 @@ where $d_k$ is the key dimension. Softmax normalisation produces a weighted sum 
 This mechanism allows the model to, for example, relate a pulmonary nodule to the surrounding lung parenchyma and the contralateral hilum simultaneously---something a shallow CNN cannot do without many layers.
 
 \section{CLIP for Medical Imaging}
-CLIP (Contrastive Language--Image Pre-training) is a multimodal model that learns to align images and text in a shared embedding space. During pre-training, CLIP is shown pairs of images and their corresponding text descriptions. It learns to maximise similarity for matched pairs and minimise it for unmatched pairs.
+CLIP (Contrastive Language--Image Pre-training) is a multimodal model that learns to align images and text in a shared embedding space. During pre-training, CLIP is shown pairs of images and their corresponding text descriptions. It learns to maximise similarity for matched pairs and minimize it for unmatched pairs.
 
 In medical imaging, CLIP-based models can:
 \begin{itemize}
@@ -60,7 +60,7 @@ In medical imaging, CLIP-based models can:
 \end{itemize}
 
 \begin{pearlbox}[Zero-shot classification]
-A CLIP model can distinguish normal from abnormal chest X-rays by comparing image embeddings to text embeddings of ``normal chest X-ray'' and ``chest X-ray showing pneumonia''---without ever being explicitly trained on labelled X-rays. This is powerful for rapid prototyping but requires careful validation.
+A CLIP model can distinguish normal from abnormal chest X-rays by comparing image embeddings to text embeddings of ``normal chest X-ray'' and ``chest X-ray showing pneumonia''---without ever being explicitly trained on labeled X-rays. This is powerful for rapid prototyping but requires careful validation.
 \end{pearlbox}
 
 \section{Multimodal Models: Text + Image}
@@ -78,7 +78,7 @@ LVMs process medical images through several stages:
 \begin{table}[h]
 \centering
 \caption{LVM image processing pipeline}
-\begin{tabular}{|l|l|}
+\begin{tabular}{|p{0.32\textwidth}|p{0.56\textwidth}|}
 \hline
 \textbf{Stage} & \textbf{Description} \\
 \hline

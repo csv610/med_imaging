@@ -4,37 +4,42 @@
 
 Image formation is the physical and mathematical process of converting raw energy signals—whether X-ray photons, acoustic echoes, or radiofrequency waves—into digital pixels (2D) and voxels (3D) that clinicians can interpret. This chapter details the image formation mechanisms of radiography, CT, ultrasound, and MRI.
 
----
 
 \section*{1. Projection Radiography (X-Ray) Image Formation}
 Planar X-ray image formation relies on differential attenuation of X-ray photons as they pass through the patient, creating a shadowgram.
 
 \subsection*{Geometric Principles}
-\textbullet \textbf{Focal Spot Size}: X-rays emerge from a focal spot on the anode. A smaller focal spot reduces geometric blurring (penumbra) and increases spatial resolution, but increases heat concentration.
-\textbullet \textbf{Scatter Reduction (Grids)}: Scatter photons (Compton scattering) degrade image contrast. An anti-scatter grid (thin lead strips) is placed between the patient and the detector, allowing primary perpendicular photons to pass while blocking angled, scattered photons.
+\begin{itemize}
+    \item \textbf{Focal Spot Size}: X-rays emerge from a focal spot on the anode. A smaller focal spot reduces geometric blurring (penumbra) and increases spatial resolution, but increases heat concentration.
+    \item \textbf{Scatter Reduction (Grids)}: Scatter photons (Compton scattering) degrade image contrast. An anti-scatter grid (thin lead strips) is placed between the patient and the detector, allowing primary perpendicular photons to pass while blocking angled, scattered photons.
+\end{itemize}
 
 \subsection*{Digital Detectors}
-\textbullet \textbf{Computed Radiography (CR)}: Uses a photostimulable phosphor (PSP) plate that traps electrons in a meta-stable state when exposed to X-rays. The plate is scanned by a red laser in a reader, releasing the stored energy as blue light (photostimulated luminescence), which is converted into a digital signal.
-\textbullet \textbf{Digital Radiography (DR)}: Uses flat-panel detectors that provide immediate image readout:
+\begin{itemize}
+    \item \textbf{Computed Radiography (CR)}: Uses a photostimulable phosphor (PSP) plate that traps electrons in a meta-stable state when exposed to X-rays. The plate is scanned by a red laser in a reader, releasing the stored energy as blue light (photostimulated luminescence), which is converted into a digital signal.
+    \item \textbf{Digital Radiography (DR)}: Uses flat-panel detectors that provide immediate image readout:
+\end{itemize}
   \begin{itemize}
       \item \textbf{Indirect Conversion}: X-rays strike a scintillator (e.g., cesium iodide) that converts X-rays to visible light. A photodiode array (amorphous silicon) then converts light into electrical charge.
       \item \textbf{Direct Conversion}: X-rays strike a photoconductor (amorphous selenium) that directly converts photons into electrical charge, avoiding light diffusion and providing superior spatial resolution.
   \end{itemize}
 
----
 
 \section*{2. Computed Tomography (CT) Reconstruction}
 CT scanners acquire thousands of projection profiles (shadowgrams) at multiple angles around the patient.
 
 \subsection*{The Radon Transform and Sinograms}
-\textbullet \textbf{Sinogram}: The raw data space of a CT scan. The mathematical projection of tissue attenuation values at different angles is called the \textbf{Radon Transform}. Fusing these profiles creates a sinogram.
-\textbullet \textbf{Reconstruction}: Reconstructing the sinogram back into a cross-sectional axial image requires mathematical algorithms.
+\begin{itemize}
+    \item \textbf{Sinogram}: The raw data space of a CT scan. The mathematical projection of tissue attenuation values at different angles is called the \textbf{Radon Transform}. Fusing these profiles creates a sinogram.
+    \item \textbf{Reconstruction}: Reconstructing the sinogram back into a cross-sectional axial image requires mathematical algorithms.
+\end{itemize}
 
 \subsection*{Reconstruction Algorithms}
-\textbullet \textbf{Filtered Backprojection (FBP)}: The classical algorithm. Attenuation values are smeared back across the image matrix. A mathematical filter is applied to remove blurring. While FBP is fast, it generates significant image noise at low radiation doses.
-\textbullet \textbf{Iterative Reconstruction (IR)}: A family of methods that repeatedly compares measured projection data with predicted data from the current image estimate. These methods can reduce noise and may support dose optimization, but the achievable dose change depends on the scanner, reconstruction method, anatomy, protocol, and diagnostic task. There is no universal dose-reduction percentage, and image texture or spatial resolution may change.
+\begin{itemize}
+    \item \textbf{Filtered Backprojection (FBP)}: The classical algorithm. Attenuation values are smeared back across the image matrix. A mathematical filter is applied to remove blurring. While FBP is fast, it generates significant image noise at low radiation doses.
+    \item \textbf{Iterative Reconstruction (IR)}: A family of methods that repeatedly compares measured projection data with predicted data from the current image estimate. These methods can reduce noise and may support dose optimization, but the achievable dose change depends on the scanner, reconstruction method, anatomy, protocol, and diagnostic task. There is no universal dose-reduction percentage, and image texture or spatial resolution may change.
+\end{itemize}
 
----
 
 \section*{3. Ultrasound Image Formation}
 Ultrasound images are built slice-by-slice by transmitting sound pulses and listening for echoes.
@@ -47,7 +52,6 @@ where $c$ is the velocity of sound in tissue (1540 m/s).
 \subsection*{Time-Gain Compensation (TGC)}
 As sound waves travel deeper, they undergo attenuation (loss of energy due to absorption and scattering). Without compensation, deeper structures would appear dark. \textbf{Time-Gain Compensation (TGC)} amplifies returning signals selectively based on their arrival time, ensuring uniform brightness across the depth of the image.
 
----
 
 \section*{4. MRI Spatial Encoding: K-Space to Image}
 MRI reconstruction is purely mathematical and relies on modifying the magnetic field to tag proton locations with specific frequencies and phases.
@@ -59,7 +63,9 @@ Three orthogonal magnetic gradients ($G_x, G_y, G_z$) are superimposed on $B_0$:
 3. \textbf{Frequency (Readout) Encoding Gradient ($G_x$)}: Applied along the $x$-axis during signal readout, causing protons to precess at different \textbf{frequencies} depending on their position.
 
 \subsection*{K-Space and the Fourier Transform}
-\textbullet \textbf{K-Space}: The raw data matrix where MRI signals are stored during acquisition. Each point in K-space represents a spatial frequency, not a physical pixel.
-\textbullet \textbf{Reconstruction}: Once K-space is fully filled, a mathematical operation called the \textbf{2D Inverse Fast Fourier Transform (2D-IFFT)} is applied to convert the spatial frequencies of K-space into the final anatomical grayscale image.
+\begin{itemize}
+    \item \textbf{K-Space}: The raw data matrix where MRI signals are stored during acquisition. Each point in K-space represents a spatial frequency, not a physical pixel.
+    \item \textbf{Reconstruction}: Once K-space is fully filled, a mathematical operation called the \textbf{2D Inverse Fast Fourier Transform (2D-IFFT)} is applied to convert the spatial frequencies of K-space into the final anatomical grayscale image.
+\end{itemize}
 
 \clearpage

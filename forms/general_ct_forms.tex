@@ -1,0 +1,350 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,left=14mm,right=14mm,top=18mm,bottom=15mm,headheight=19pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[scaled=0.94]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{hyperref}
+
+% Clinical Color Palette
+\definecolor{Navy}{HTML}{16324F}
+\definecolor{Teal}{HTML}{0E7490}
+\definecolor{SlateBg}{HTML}{F3F6FA}
+\definecolor{WarnBg}{HTML}{FFFBEB}
+\definecolor{WarnBorder}{HTML}{D97706}
+\definecolor{FieldBg}{HTML}{F8FAFC}
+\definecolor{BorderGray}{HTML}{B6C2CF}
+\definecolor{Muted}{HTML}{475569}
+\definecolor{RuleGray}{HTML}{CBD5E1}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=Teal,
+  linkcolor=Navy,
+  pdftitle={General CT Scan Imaging Forms — Fillable Clinical Workbook},
+  pdfauthor={Medical Imaging Workbook}
+}
+
+% Header & Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\fontsize{8}{10}\selectfont\bfseries\color{Navy} GENERAL CT SCAN IMAGING FORMS}
+\fancyhead[R]{\fontsize{8}{10}\selectfont\color{Muted} Computed Tomography Clinical Workflow}
+\fancyfoot[L]{\fontsize{7.5}{9}\selectfont\color{Muted} De-identified clinical \& educational use}
+\fancyfoot[R]{\fontsize{7.5}{9}\selectfont\color{Muted} Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{RuleGray}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{RuleGray}\leaders\hrule height \footrulewidth\hfill}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+
+% Interactive Form Field Helpers
+\newcommand{\FormLabel}[1]{{\fontsize{7.8}{9.5}\selectfont\bfseries\color{Navy}#1}}
+
+\newcommand{\FText}[3][15pt]{%
+  \TextField[name=#2, width=#3, height=#1, bordercolor=BorderGray, backgroundcolor=FieldBg, charsize=8.5pt, borderwidth=0.6pt]{}%
+}
+
+\newcommand{\FMText}[3][30pt]{%
+  \TextField[name=#2, width=#3, height=#1, multiline=true, bordercolor=BorderGray, backgroundcolor=FieldBg, charsize=8.5pt, borderwidth=0.6pt]{}%
+}
+
+\newcommand{\FCheck}[2]{%
+  \CheckBox[name=#1, width=9pt, height=9pt, bordercolor=Navy, backgroundcolor=FieldBg, borderwidth=0.7pt]{}~{\fontsize{8}{10}\selectfont #2}%
+}
+
+\newcommand{\FieldRow}[2]{%
+  \FormLabel{#1}\par\vspace{1pt}%
+  \FText[15.5pt]{#2}{\linewidth}\par\vspace{3.5pt}%
+}
+
+\newcommand{\MFieldRow}[3][28pt]{%
+  \FormLabel{#2}\par\vspace{1pt}%
+  \FMText[#1]{#3}{\linewidth}\par\vspace{3.5pt}%
+}
+
+\newcommand{\PageBanner}[3]{%
+  \noindent\begin{tcolorbox}[
+    enhanced,
+    colback=Navy,
+    colframe=Navy,
+    arc=2pt,
+    boxrule=0pt,
+    left=7pt,right=7pt,top=4.5pt,bottom=4.5pt,
+    after skip=4pt
+  ]
+    {\fontsize{11.5}{14}\selectfont\bfseries\color{white}#1}
+    \hfill
+    \tcbox[on line, arc=2pt, colback=Teal, colframe=Teal, boxrule=0pt, left=5pt, right=5pt, top=1.5pt, bottom=1.5pt]{%
+      \fontsize{7.5}{9}\selectfont\bfseries\color{white}#2%
+    }
+    \quad
+    {\fontsize{8.5}{10}\selectfont\color{white!85!Navy} #3}
+  \end{tcolorbox}%
+}
+
+\newtcolorbox{GuidanceBox}[1][]{
+  enhanced,
+  colback=SlateBg,
+  colframe=RuleGray,
+  arc=1.5pt,
+  boxrule=0.5pt,
+  left=6pt,right=6pt,top=4pt,bottom=4pt,
+  after skip=4pt,
+  #1
+}
+
+\newcommand{\RefBar}[1]{%
+  \vfill
+  \noindent\begin{tcolorbox}[
+    enhanced,
+    colback=SlateBg,
+    colframe=RuleGray,
+    arc=1.5pt,
+    boxrule=0.4pt,
+    left=6pt,right=6pt,top=3pt,bottom=3pt,
+    after skip=0pt
+  ]
+    {\fontsize{7.5}{9.5}\selectfont\bfseries\color{Muted} References:\quad #1}
+  \end{tcolorbox}%
+}
+
+\begin{document}
+\begin{Form}
+
+% ============================================================================
+% PAGE 1: GENERAL CT REFERRAL & PRE-SCAN JUSTIFICATION
+% ============================================================================
+\PageBanner{General CT Scan (Computed Tomography)}{1. BEFORE THE SCAN}{Form 1 of 4}
+
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What to check first:} Confirm anatomical region, clinical question, prior imaging, and whether IV/oral contrast is needed.\par\vspace{1.5pt}
+\textbf{\color{Navy}When to proceed or defer:} Use CT when indicated by clinical rules or urgent findings and when results will change care. If a validated low-risk rule or prior test answers the question, document deferral.\par\vspace{1.5pt}
+\textbf{\color{Navy}Contrast \& radiation safety:} Review kidney function (eGFR/creatinine) when indicated, prior iodinated contrast reactions, pregnancy status, and pediatric/low-dose size-adjusted protocols.}
+\end{GuidanceBox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{2.4cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Age / DOB} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{ct_p1_pid}{\linewidth} & \FText[15pt]{ct_p1_dob}{\linewidth} & \FText[15pt]{ct_p1_date}{\linewidth} & \FText[15pt]{ct_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.6cm}@{}}
+\FormLabel{Body region / CT protocol requested} & \FormLabel{Latest eGFR / Creatinine \& date} \\
+\FText[15pt]{ct_p1_region}{\linewidth} & \FText[15pt]{ct_p1_egfr}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Contrast:}\quad
+\FCheck{ct_p1_cnc}{Noncontrast}\quad \FCheck{ct_p1_civ}{IV contrast}\quad \FCheck{ct_p1_cor}{Oral/enteric}\quad \FCheck{ct_p1_ccta}{CTA / Multiphasic}\qquad
+\FormLabel{Technique:}\quad
+\FCheck{ct_p1_tstd}{Standard}\quad \FCheck{ct_p1_tlow}{Low-dose}\quad \FCheck{ct_p1_tped}{Pediatric}\par\vspace{2.5pt}
+\FormLabel{Prior contrast reaction:}\quad
+\FCheck{ct_p1_rno}{None}\quad \FCheck{ct_p1_rmild}{Mild}\quad \FCheck{ct_p1_rsev}{Mod/Severe}\qquad
+\FormLabel{Pregnancy:}\quad
+\FCheck{ct_p1_pna}{N/A}\quad \FCheck{ct_p1_pneg}{Excluded}\quad \FCheck{ct_p1_ppos}{Pregnant (justified)}\quad \FCheck{ct_p1_punc}{Uncertain}
+\end{tcolorbox}
+
+\FieldRow{Clinical question to be answered}{ct_p1_cquest}
+
+\MFieldRow[24pt]{History received (exact account, source \& relationship, recipient, date \& time)}{ct_p1_hist}
+
+\MFieldRow[24pt]{Clinician assessment and prior tests / imaging (with dates and results)}{ct_p1_assess}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15pt]{ct_p1_guide}{\linewidth} & \FText[15pt]{ct_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+
+\FieldRow{Patient-specific reason for an exception (if applicable)}{ct_p1_excep}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Decision:}\quad
+\FCheck{ct_p1_ord}{Order}\quad \FCheck{ct_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{ct_p1_urout}{Routine}\quad \FCheck{ct_p1_uurg}{Urgent}\quad \FCheck{ct_p1_ustat}{Stat / Emergent}\par\vspace{2.5pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[14.5pt]{ct_p1_change}{\linewidth}
+\end{tcolorbox}
+
+\MFieldRow[22pt]{Safety decision and plain-language explanation for the patient}{ct_p1_safety}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=2pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{ct_p1_bclin}{Supported clinical use}\quad
+\FCheck{ct_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{ct_p1_bres}{Research}\quad
+\FCheck{ct_p1_bclar}{Awaiting clarification}\par\vspace{2.5pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[14.5pt]{ct_p1_resref}{\linewidth}
+\end{tcolorbox}
+
+\RefBar{\href{https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria}{ACR Appropriateness Criteria} \quad|\quad \href{https://www.acr.org/clinical-resources/clinical-tools-and-reference/contrast-manual}{ACR Contrast Manual} \quad|\quad \href{https://pubmed.ncbi.nlm.nih.gov/28937575/}{Pregnancy \& lactation}}
+
+\newpage
+
+% ============================================================================
+% PAGE 2: GENERAL CT SCAN-SPECIFIC REPORT
+% ============================================================================
+\PageBanner{General CT Scan (Computed Tomography)}{2. SCAN-SPECIFIC REPORT}{Form 2 of 4}
+
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont\textbf{\color{Navy}What this report should record:} Record exact CT protocol, contrast agent/phases, coverage, dose metric if tracked, image quality/artefacts, pertinent positive and negative findings with measurements (mm/HU), incidental findings, and a concise impression answering the clinical question.}
+\end{GuidanceBox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{2.8cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Exam date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{ct_p2_pid}{\linewidth} & \FText[15pt]{ct_p2_date}{\linewidth} & \FText[15pt]{ct_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{CT protocol, phases \& contrast (agent, volume, route)} & \FormLabel{Coverage, side / site \& prior comparisons} \\
+\FText[15.5pt]{ct_p2_exam}{\linewidth} & \FText[15.5pt]{ct_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\FieldRow{Clinical indication / question}{ct_p2_ind}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Technical adequacy:}\quad
+\FCheck{ct_p2_tadeq}{Adequate}\quad
+\FCheck{ct_p2_tsub}{Suboptimal}\quad
+\FCheck{ct_p2_trep}{Repeat / additional phase needed}\qquad
+\FormLabel{CTDIvol / DLP (optional):}\ \FText[13.5pt]{ct_p2_dose}{3.4cm}\par\vspace{2.5pt}
+\FormLabel{Artefacts (motion, beam hardening, contrast timing) or coverage limitations}\par\vspace{1pt}
+\FText[15pt]{ct_p2_qual}{\linewidth}
+\end{tcolorbox}
+
+\MFieldRow[82pt]{Findings and relevant measurements (organs, vessels, lymph nodes, bones, soft tissues; size in mm, attenuation in HU)}{ct_p2_find}
+
+\MFieldRow[50pt]{Impression (direct answer to the clinical question and key incidental findings)}{ct_p2_imp}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Question status:}\qquad
+\FCheck{ct_p2_qans}{Answered}\qquad
+\FCheck{ct_p2_qpart}{Partly answered}\qquad
+\FCheck{ct_p2_qinc}{Inconclusive}\par\vspace{2.5pt}
+\FormLabel{Recommended next step:}\quad
+\FCheck{ct_p2_nnone}{None}\quad
+\FCheck{ct_p2_nct}{Follow-up CT}\quad
+\FCheck{ct_p2_nmri}{MRI}\quad
+\FCheck{ct_p2_nus}{Ultrasound}\quad
+\FCheck{ct_p2_npet}{PET/CT}\quad
+\FCheck{ct_p2_nbx}{Biopsy / Clinical corr.}
+\end{tcolorbox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{2.8cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{ct_p2_fu}{\linewidth} & \FText[15.5pt]{ct_p2_resp}{\linewidth} & \FText[15.5pt]{ct_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Date \& time} & \FormLabel{Method} \\
+\FText[15.5pt]{ct_p2_uwho}{\linewidth} & \FText[15.5pt]{ct_p2_utime}{\linewidth} & \FText[15.5pt]{ct_p2_umeth}{\linewidth} \\
+\end{tabularx}
+
+\RefBar{\href{https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria}{ACR Appropriateness Criteria} \quad|\quad \href{https://www.rsna.org/practice-tools/data-tools-and-standards/radreport-reporting-templates}{RSNA RadReport Templates}}
+
+\newpage
+
+% ============================================================================
+% PAGE 3: WHAT THE IMAGE SHOWS AND MEANS
+% ============================================================================
+\PageBanner{General CT Scan (Computed Tomography)}{3. WHAT THE IMAGE SHOWS \& MEANS}{Form 3 of 4}
+
+\renewcommand{\arraystretch}{1.2}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{3.0cm} >{\color{Navy}}p{5.4cm} X@{}}
+\toprule
+\textbf{Context} & \textbf{Key CT Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Head / Trauma & Hyperdense collection (50--80 HU); midline shift & Acute blood (extra-axial/parenchymal); mass effect \\
+Chest / CTA & Intraluminal filling defect; focal consolidation & Pulmonary embolism/thrombus; infection/inflammation \\
+Abdomen / Pelvis & Fat stranding, wall thickening, free air & Acute inflammation, obstruction, or perforation \\
+Lesion (HU) & Attenuation ($<0$ fat; $\sim$0--20 fluid; $>$100 calcium) & Helps narrow tissue composition and enhancement \\
+Oncology / Staging & Enlarged nodes, organ lesion, interval change & Supports staging, progression, or treatment response \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What CT leaves unanswered:} A normal noncontrast CT does not exclude concussion, early ischaemic stroke, subtle marrow/ligament injury, or isoattenuating solid-organ lesions. Motion, metallic streak, or suboptimal contrast bolus timing can obscure findings.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Hyperdense collection outside the brain. Interpretation: may indicate acute extra-axial blood. If absent, check the limitations above before closing the clinical question.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Label an illustrative axial/coronal/sagittal slice with window setting (e.g., brain, lung, soft-tissue, bone) and mark key measurements or midline shift.}
+\end{GuidanceBox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Primary finding} & \FormLabel{Location / Side} & \FormLabel{Measurement} & \FormLabel{Unit (mm / HU)} \\
+\FText[15.5pt]{ct_p3_find}{\linewidth} & \FText[15.5pt]{ct_p3_loc}{\linewidth} & \FText[15.5pt]{ct_p3_meas}{\linewidth} & \FText[15.5pt]{ct_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Secondary finding (if any)} & \FormLabel{Location / Side} & \FormLabel{Measurement} & \FormLabel{Unit (mm / HU)} \\
+\FText[15.5pt]{ct_p3_find2}{\linewidth} & \FText[15.5pt]{ct_p3_loc2}{\linewidth} & \FText[15.5pt]{ct_p3_meas2}{\linewidth} & \FText[15.5pt]{ct_p3_unit2}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{ct_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{ct_p3_hless}{Makes it less likely}\qquad
+\FCheck{ct_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+
+\MFieldRow[36pt]{Plain-language explanation for patient / care team}{ct_p3_plain}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=2pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{ct_p3_arev}{\linewidth} & \FText[15pt]{ct_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{2.5pt}
+\MFieldRow[24pt]{Supporting evidence}{ct_p3_aevid}
+\MFieldRow[24pt]{Response or resolution}{ct_p3_ares}
+\end{tcolorbox}
+
+\RefBar{\href{https://www.radiologyinfo.org/en/info/bodyct}{RadiologyInfo: Body CT} \quad|\quad \href{https://www.radiologyinfo.org/en/info/headct}{RadiologyInfo: Head CT}}
+
+\newpage
+
+% ============================================================================
+% PAGE 4: FIND SIMILAR CASES AND CHECK THE EVIDENCE
+% ============================================================================
+\PageBanner{General CT Scan (Computed Tomography)}{4. SIMILAR CASES \& EVIDENCE}{Form 4 of 4}
+
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms only. Keep patient names, identifiers, reports, and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information (example templates):}\par
+\texttt{<clinical presentation> <anatomic region> CT appropriateness guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings (example templates):}\par
+\texttt{<contrast/noncontrast> <region> CT <key finding> <measurement/pattern> teaching case}}
+\end{GuidanceBox}
+
+\FieldRow{Actual search terms used}{ct_p4_terms}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{ct_p4_src}{\linewidth} & \FText[15.5pt]{ct_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+
+\MFieldRow[62pt]{What matches and what differs}{ct_p4_match}
+
+\MFieldRow[62pt]{How the diagnosis was established (or whether confirmation was unclear)}{ct_p4_diag}
+
+\MFieldRow[62pt]{What the source adds and what remains uncertain}{ct_p4_adds}
+
+\RefBar{\href{https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria}{ACR Appropriateness Criteria} \quad|\quad \href{https://radiopaedia.org/}{Radiopaedia (CT Teaching Cases)}}
+
+\end{Form}
+\end{document}

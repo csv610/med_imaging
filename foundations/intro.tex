@@ -1,47 +1,65 @@
 \chapter{Introduction to Medical Imaging}
-
 \label{ch:intro}
 
-Medical imaging is a cornerstone of modern clinical diagnosis, oncology staging, surgical planning, and therapeutic monitoring. By translating physical energy interactions with human tissues into spatial representations, medical imaging allows clinicians to visualize internal anatomy, physiological processes, and cellular metabolism non-invasively.
+Medical imaging is a cornerstone of modern clinical diagnosis, oncology staging, surgical planning, and therapeutic monitoring. By translating physical energy interactions with human tissues into spatial representations, medical imaging allows clinicians to visualize internal anatomy, physiological processes, and cellular metabolism non-invasively. Yet no single modality answers every clinical question: choosing the right test requires understanding what each modality measures, what it misses, and how its findings integrate with clinical assessment.
 
----
-
-\section*{1. Classification of Medical Imaging Modalities}
-Diagnostic imaging modalities can be classified using three primary criteria:
+\section{Classification of Medical Imaging Modalities}
+Diagnostic imaging modalities can be organized by their physical energy source, radiation profile, and primary clinical objective.
 
 \subsection*{By Physical Energy Source}
 \begin{itemize}
-\item \textbf{Electromagnetic Radiation (X-rays)}: High-energy photons are projected through the body. Modalities include planar X-ray radiography, fluoroscopy, mammography, and computed tomography (CT).
-\item \textbf{Mechanical Sound Waves}: High-frequency sound waves propagate through soft tissue, reflecting at acoustic boundaries. Modalities include grayscale ultrasound, Doppler flow analysis, and echocardiography.
-\item \textbf{Magnetic Fields and Radiofrequency (RF) Waves}: Protons in tissue align with a magnetic field and are excited by RF pulses. Modalities include structural MRI, functional MRI (fMRI), and diffusion-weighted MRI.
-\item \textbf{Radioactive Decay (Radiopharmaceuticals)}: Unstable isotopes bound to metabolic ligands are injected and detected. Modalities include SPECT and positron emission tomography (PET).
+\item \textbf{Electromagnetic Radiation (X-rays):} High-energy photons are projected through the body and attenuated differentially by tissue density and atomic number. Modalities include planar radiography, fluoroscopy, mammography, and computed tomography (CT).
+\item \textbf{Mechanical Sound Waves:} High-frequency acoustic waves propagate through soft tissue and reflect at interfaces of differing acoustic impedance. Modalities include grayscale ultrasound, Doppler flow analysis, and echocardiography.
+\item \textbf{Magnetic Fields and Radiofrequency (RF) Waves:} Hydrogen nuclei align with a strong static magnetic field and are excited by RF pulses. Modalities include structural magnetic resonance imaging (MRI), functional MRI (fMRI), and diffusion-weighted MRI.
+\item \textbf{Radioactive Decay (Radiopharmaceuticals):} Unstable isotopes bound to physiological or metabolic ligands are administered and detected externally. Modalities include single-photon emission computed tomography (SPECT) and positron emission tomography (PET).
 \end{itemize}
 
 \subsection*{By Ionization Hazard}
 \begin{itemize}
-\item \textbf{Ionizing Modalities}: Utilize radiation of sufficient energy to liberate electrons from atoms, posing a biological risk of DNA damage. Includes X-ray, fluoroscopy, CT, SPECT, and PET.
-\item \textbf{Non-Ionizing Modalities}: Do not utilize ionizing radiation. Includes ultrasound and MRI. Modality choice should be individualized, especially during pregnancy and in children.
+\item \textbf{Ionizing Modalities:} Use radiation of sufficient energy to ionize atoms, carrying a small stochastic risk of DNA damage. Includes radiography, fluoroscopy, mammography, CT, SPECT, and PET.
+\item \textbf{Non-Ionizing Modalities:} Do not use ionizing radiation. Includes ultrasound and MRI. Modality choice is individualized to the clinical question, especially during pregnancy and in pediatric patients.
 \end{itemize}
 
-\subsection*{By Clinical Objective: Structural vs. Functional}
+\subsection*{By Clinical Objective: Structural vs.\ Functional}
 \begin{itemize}
-\item \textbf{Structural Imaging}: Focuses on detailed anatomical localization, boundaries, and physical densities (e.g., bones on CT, soft tissue borders on MRI, gallstones on ultrasound).
-\item \textbf{Functional / Molecular Imaging}: Focuses on physiological activity, blood perfusion, receptor binding, and cellular metabolism (e.g., glucose consumption on FDG-PET, brain perfusion on fMRI, or ventilation-perfusion mismatch on V/Q scan).
+\item \textbf{Structural Imaging:} Emphasizes anatomical detail, spatial boundaries, and physical tissue properties (e.g., fractures on radiography, acute hemorrhage on CT, or soft-tissue planes on MRI).
+\item \textbf{Functional and Molecular Imaging:} Measures physiological activity, perfusion, or cellular metabolism (e.g., glucose metabolism on $^{18}\text{F}$-fluorodeoxyglucose positron emission tomography [FDG-PET], blood oxygenation on fMRI, or regional ventilation--perfusion on a V/Q scan).
 \end{itemize}
 
----
+\section{Trade-Offs Across Modalities}
+Every modality balances spatial resolution, temporal resolution, soft-tissue contrast, portability, cost, and safety (Table~\ref{tab:intro_tradeoffs}).
 
-\section*{2. The Clinical Imaging Workflow}
-The imaging pathway is a multi-step clinical process requiring coordination between referring physicians, technologists, medical physicists, and radiologists:
+\begin{table}[ht]
+\centering
+\caption{Principal trade-offs across diagnostic imaging modalities.}
+\label{tab:intro_tradeoffs}
+\begin{tabular}{@{}p{0.18\textwidth}p{0.20\textwidth}p{0.24\textwidth}p{0.30\textwidth}@{}}
+\toprule
+\textbf{Modality} & \textbf{Spatial / Temporal} & \textbf{Contrast Mechanism} & \textbf{Primary Practical Trade-Off} \\
+\midrule
+Radiography & High spatial / snapshot & X-ray attenuation & 2D projectional overlap; very low dose and portable \\
+Ultrasound & Moderate--high / real-time & Acoustic impedance & No radiation, bedside; operator- and window-dependent \\
+CT & High isotropic / fast & X-ray attenuation (HU) & Rapid whole-body coverage; ionizing radiation \\
+MRI & High / slower & Proton relaxation ($T_1$, $T_2$) & Superior soft-tissue contrast; longer scans, implant screening \\
+SPECT / PET & Lower spatial / dynamic & Radiotracer distribution & Sensitive molecular/metabolic signal; ionizing, needs anatomical fusion \\
+\bottomrule
+\end{tabular}
+\end{table}
 
+\section{The Clinical Imaging Workflow}
+The imaging pathway is a coordinated clinical process involving referring clinicians, radiographers/technologists, medical physicists, and radiologists:
 \begin{enumerate}
-    \item \textbf{Clinical Indication \& Question}: The referring physician identifies a clinical symptom or diagnostic question (e.g., ``Sudden onset left-sided weakness; rule out stroke'').
-    \item \textbf{Modality Selection \& Appropriateness}: Selecting the optimal test. Guidelines (such as the ACR Appropriateness Criteria) help balance diagnostic yield against radiation dose, cost, contrast safety, and speed.
-    \item \textbf{Patient Preparation \& Screening}: Screening for contraindications (e.g., checking renal function for contrast safety, or screening for metallic implants before MRI).
-    \item \textbf{Image Acquisition}: The radiographer/technologist positions the patient and operates the scanner using optimized protocols.
-    \item \textbf{Reconstruction \& Post-Processing}: Fusing datasets, generating reformations (axial, coronal, sagittal), or correcting artifacts.
-    \item \textbf{Interpretation}: The radiologist systematically reviews the images, correlates findings with clinical history, and generates a structured report.
-    \item \textbf{Clinical Communication}: Communicating findings to the clinical team, including immediate direct verbal reporting of critical or life-threatening results.
+    \item \textbf{Clinical Indication and Question:} The referring clinician defines a specific question (e.g., ``acute focal neurological deficit; exclude intracranial hemorrhage'').
+    \item \textbf{Modality Selection and Appropriateness:} Evidence-based referral guidance, such as the American College of Radiology (ACR) \textit{Appropriateness Criteria}, helps match the modality to the clinical question while balancing diagnostic yield, radiation dose, and contrast risk.
+    \item \textbf{Patient Preparation and Screening:} Screening for contraindications, including renal function and prior contrast reactions, pregnancy status, and ferromagnetic implants prior to MRI.
+    \item \textbf{Image Acquisition:} The technologist positions the patient and executes an optimized, protocol-driven acquisition.
+    \item \textbf{Reconstruction and Post-Processing:} Raw data are reconstructed into multiplanar or volumetric datasets and reviewed for artifacts.
+    \item \textbf{Interpretation and Reporting:} The radiologist synthesizes imaging findings with clinical context into a structured report.
+    \item \textbf{Clinical Communication:} Actionable and critical findings are communicated promptly through institutional escalation pathways.
 \end{enumerate}
+
+\begin{pearlbox}[Matching the test to the question]
+The best imaging test is not always the most expensive or highest-resolution scan. A bedside chest radiograph or point-of-care ultrasound often answers an urgent question faster and more safely than cross-sectional imaging, whereas MRI or PET/CT is reserved for questions requiring tissue characterization or whole-body metabolic staging.
+\end{pearlbox}
 
 \clearpage

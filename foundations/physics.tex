@@ -4,68 +4,82 @@
 
 Medical imaging modalities rely on the interaction of different forms of energy (electromagnetic radiation, acoustic waves, and nuclear magnetic resonance) with human tissue. This chapter details the physical principles underlying the major imaging modalities: X-ray/CT, Ultrasound, MRI, and Nuclear Medicine.
 
----
 
 \section*{1. X-Ray and CT Physics: Ionizing Electromagnetic Radiation}
 X-rays are high-energy photons on the electromagnetic spectrum, exhibiting wave-particle duality.
 
 \subsection*{X-Ray Production}
 X-rays are produced inside an evacuated tube containing a tungsten cathode (filament) and a rotating tungsten anode:
-1. \textbf{Thermionic Emission}: Current passes through the cathode filament, heating it and releasing a cloud of electrons.
-2. \textbf{Acceleration}: A high voltage (typically 50--140 kVp) is applied between the cathode and anode, accelerating electrons toward the anode.
-3. \textbf{Collision \& Annihilation}: The high-speed electrons strike the anode, converting their kinetic energy into heat (99\%) and X-ray photons (1\%). Two types of X-rays are produced:
-   \begin{itemize}
-       \item \textbf{Bremsstrahlung (Braking Radiation)}: Rapid deceleration of electrons by the positive charge of the anode nuclei produces a continuous spectrum of X-ray energies.
-       \item \textbf{Characteristic X-rays}: Decelerating electrons knock out inner-shell (K-shell) electrons from anode atoms. Outer-shell electrons fall to fill the vacancy, emitting photons with discrete, characteristic energy levels.
-   \end{itemize}
+\begin{enumerate}
+    \item \textbf{Thermionic Emission:} Current passes through the cathode filament, heating it and releasing a cloud of electrons.
+    \item \textbf{Acceleration:} A high voltage (typically 50--140 peak kilovoltage, kVp) is applied between the cathode and anode, accelerating electrons toward the anode.
+    \item \textbf{Target Interaction (Bremsstrahlung and Characteristic Radiation):} The high-speed electrons strike the anode, converting most of their kinetic energy into heat ($\approx 99\%$) and a small fraction into X-ray photons ($\approx 1\%$). Two mechanisms produce X-rays:
+    \begin{itemize}
+        \item \textbf{Bremsstrahlung (Braking Radiation):} Rapid deceleration of incident electrons deflected by the positive electric field of anode nuclei produces a continuous spectrum of X-ray energies.
+        \item \textbf{Characteristic X-rays:} Incident high-speed electrons collide with and eject inner-shell (K-shell) electrons from anode atoms. Outer-shell electrons drop into the vacancy, emitting photons with discrete, element-specific energies.
+    \end{itemize}
+\end{enumerate}
 
 \subsection*{X-Ray Interaction with Matter}
 As X-ray photons pass through tissue, they are attenuated (absorbed or scattered) via two primary diagnostic interactions:
-\textbullet \textbf{Photoelectric Effect}: An incoming photon is completely absorbed by an inner-shell electron of a tissue atom, ejecting the electron. This interaction depends strongly on the atomic number of the tissue ($Z^3$). Bone (high calcium, $Z=20$) absorbs much more than soft tissue ($Z \approx 7$), creating contrast.
-\textbullet \textbf{Compton Scattering}: An incoming photon collides with an outer-shell tissue electron, ejecting the electron and scattering the photon in a new direction with lower energy. Compton scattering is the primary source of scatter radiation, which degrades image quality and increases occupational radiation dose.
+\begin{itemize}
+    \item \textbf{Photoelectric Effect}: An incoming photon is completely absorbed by an inner-shell electron of a tissue atom, ejecting the electron. This interaction depends strongly on the atomic number of the tissue ($Z^3$). Bone (high calcium, $Z=20$) absorbs much more than soft tissue ($Z \approx 7$), creating contrast.
+    \item \textbf{Compton Scattering}: An incoming photon collides with an outer-shell tissue electron, ejecting the electron and scattering the photon in a new direction with lower energy. Compton scattering is the primary source of scatter radiation, which degrades image quality and increases occupational radiation dose.
+\end{itemize}
 
----
 
 \section*{2. Ultrasound Physics: Acoustic Wave Propagation}
 Ultrasound uses mechanical longitudinal sound waves (frequencies between 2 and 18 MHz) that propagate through physical media.
 
 \subsection*{Generation and Detection: The Piezoelectric Effect}
-\textbullet \textbf{Transducer Crystals}: Made of piezoelectric materials (like lead zirconate titanate or PZT).
-\textbullet \textbf{Piezoelectric Effect}: When an electrical voltage is applied to the crystal, it vibrates and produces sound waves (mechanical energy). Conversely, when returning sound waves strike the crystal, it deforms and generates an electrical signal that is processed into an image.
+\begin{itemize}
+    \item \textbf{Transducer Crystals}: Made of piezoelectric materials (like lead zirconate titanate or PZT).
+    \item \textbf{Piezoelectric Effect}: When an electrical voltage is applied to the crystal, it vibrates and produces sound waves (mechanical energy). Conversely, when returning sound waves strike the crystal, it deforms and generates an electrical signal that is processed into an image.
+\end{itemize}
 
 \subsection*{Propagation and Acoustic Impedance}
-Sound waves travel through soft tissue at a constant average velocity of \textbf{1540 m/s}. Contrast is formed at boundaries between tissues of different \textbf{Acoustic Impedance ($Z$)}:
-$$Z = \rho \cdot c$$
+Ultrasound systems assume an average acoustic speed of \textbf{1,540 m/s} in soft tissue to convert echo arrival time into depth (though actual speeds vary slightly by tissue). Contrast is formed at boundaries between tissues of different \textbf{Acoustic Impedance ($Z$)}:
+\[
+Z = \rho \cdot c
+\]
 where $\rho$ is tissue density and $c$ is sound velocity.
-\textbullet \textbf{Reflection}: When sound hits a boundary between two tissues of different $Z$, a portion of the wave is reflected back to the probe. The amount of reflection is proportional to the difference in impedance ($\Delta Z$).
-\textbullet \textbf{Acoustic Mismatch}: The interface between soft tissue and air or bone has an extremely large $\Delta Z$. This causes nearly 100\% reflection, preventing sound propagation and explaining why ultrasound cannot image through air (requiring gel) or bone.
+\begin{itemize}
+    \item \textbf{Reflection}: When sound hits a boundary between two tissues of different $Z$, a portion of the wave is reflected back to the probe. The amount of reflection is proportional to the difference in impedance ($\Delta Z$).
+    \item \textbf{Acoustic Mismatch}: The interface between soft tissue and air or bone has an extremely large $\Delta Z$. This causes nearly 100\% reflection, preventing sound propagation and explaining why ultrasound cannot image through air (requiring gel) or bone.
+\end{itemize}
 
----
 
 \section*{3. MRI Physics: Nuclear Magnetic Resonance}
 MRI relies on the magnetic properties of hydrogen nuclei (single protons), which are highly abundant in water and fat.
 
 \subsection*{Spin and Precession}
 Hydrogen nuclei possess an intrinsic quantum property called \textbf{spin}, giving them a magnetic dipole moment.
-1. \textbf{Alignment}: When placed in a strong external magnetic field ($B_0$), the random proton spins align either parallel (low energy) or anti-parallel (high energy) to $B_0$. This creates a net longitudinal magnetization vector ($M_0$).
-2. \textbf{Precession}: Protons do not stand still; they precess (wobble like a toy top) around the axis of $B_0$ at the \textbf{Larmor Frequency ($\omega_0$)}:
-   $$\omega_0 = \gamma \cdot B_0$$
-   where $\gamma$ is the gyromagnetic ratio (42.58 MHz/Tesla for hydrogen).
+\begin{enumerate}
+    \item \textbf{Alignment:} When placed in a strong external magnetic field ($B_0$), proton spins align preferentially with or against $B_0$, creating a net longitudinal magnetization vector ($M_0$).
+    \item \textbf{Precession:} Protons precess around the axis of $B_0$ at the \textbf{Larmor Frequency ($f_0$)}:
+    \[
+    f_0 = \bar{\gamma} \cdot B_0
+    \]
+    where $\bar{\gamma} = \gamma/(2\pi) \approx 42.58\text{ MHz/Tesla}$ for hydrogen (or $\omega_0 = \gamma B_0$ in rad/s).
+\end{enumerate}
 
 \subsection*{Excitation and Relaxation}
-\textbullet \textbf{Excitation}: An RF (radiofrequency) pulse is applied at the Larmor frequency. Protons absorb this energy (resonance), tilting the net magnetization vector into the transverse plane ($xy$-plane).
-\textbullet \textbf{Relaxation}: When the RF pulse is turned off, protons return to equilibrium, emitting the absorbed RF energy:
-  \textbullet \textbf{T1 Relaxation (Spin-Lattice)}: Recovery of longitudinal magnetization ($M_z$) as protons transfer energy to the surrounding lattice.
-  \textbullet \textbf{T2 Relaxation (Spin-Spin)}: Decay of transverse magnetization ($M_{xy}$) due to loss of phase coherence (dephasing) among precessing protons.
+\begin{itemize}
+    \item \textbf{Excitation}: An RF (radiofrequency) pulse is applied at the Larmor frequency. Protons absorb this energy (resonance), tilting the net magnetization vector into the transverse plane ($xy$-plane).
+    \item \textbf{Relaxation}: When the RF pulse is turned off, protons return to equilibrium, emitting the absorbed RF energy:
+    \item \textbf{T1 Relaxation (Spin-Lattice)}: Recovery of longitudinal magnetization ($M_z$) as protons transfer energy to the surrounding lattice.
+    \item \textbf{T2 Relaxation (Spin-Spin)}: Decay of transverse magnetization ($M_{xy}$) due to loss of phase coherence (dephasing) among precessing protons.
+\end{itemize}
 
----
 
 \section*{4. Nuclear Medicine Physics: Radioactive Decay}
 Nuclear medicine utilizes unstable atomic nuclei (radionuclides) that undergo spontaneous decay to achieve stability.
 
 \subsection*{Decay Modalities}
-\textbullet \textbf{Gamma Decay}: An excited nucleus releases energy as high-energy electromagnetic radiation (gamma photons). Used in SPECT (e.g., Technetium-99m, which has a 6-hour half-life and emits 140 keV photons).
-\textbullet \textbf{Positron Emission ($\beta^+$ decay)}: A proton inside the nucleus decays into a neutron, a positron ($\beta^+$), and a neutrino. Used in PET (e.g., Fluorine-18).
-\textbullet \textbf{Annihilation}: The emitted positron travels 1--2 mm in tissue before colliding with a tissue electron. The mass of both particles is converted into two \textbf{511 keV gamma photons} emitted $180^\circ$ apart. Coincidence detection of these photon pairs allows PET reconstruction.
+\begin{itemize}
+    \item \textbf{Gamma Decay}: An excited nucleus releases energy as high-energy electromagnetic radiation (gamma photons). Used in single-photon emission computed tomography (SPECT; e.g., technetium-99m, which has a 6-hour half-life and emits 140 keV photons).
+    \item \textbf{Positron Emission ($\beta^+$ decay)}: A proton inside the nucleus decays into a neutron, a positron ($\beta^+$), and a neutrino. Used in positron emission tomography (PET; e.g., fluorine-18).
+    \item \textbf{Annihilation}: The emitted positron travels 1--2 mm in tissue before colliding with a tissue electron. The mass of both particles is converted into two \textbf{511 keV gamma photons} emitted $180^\circ$ apart. Coincidence detection of these photon pairs allows PET reconstruction.
+\end{itemize}
 
 \clearpage

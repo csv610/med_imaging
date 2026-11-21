@@ -1,55 +1,51 @@
 \chapter{Deep Learning}
-
 \label{ch:deep_learning}
 
-Deep Learning (DL), a subfield of machine learning, relies on artificial neural networks with multiple layers (deep architectures) to automatically extract representations from raw data. Unlike traditional machine learning, which requires manual feature engineering (handcrafted radiomics), deep learning models perform \textbf{representation learning}, detecting features directly from raw image pixels.
+Deep learning (DL), a subfield of machine learning, uses multi-layered artificial neural networks to learn hierarchical representations directly from raw data. Whereas classical machine learning in radiology relies on handcrafted features (such as texture or shape metrics in radiomics), deep learning performs end-to-end \textbf{representation learning} directly from pixels or voxels.
 
----
-
-\section*{1. Convolutional Neural Networks (CNNs)}
-Convolutional Neural Networks (CNNs) are the core architecture used in medical computer vision due to their ability to preserve spatial relationships between pixels. A standard CNN consists of three main layer types:
-
-\subsection*{Convolutional Layers}
-Apply a set of learnable filters (kernels) to the input image. As the filter slides across the image, it performs element-wise multiplication and summation, producing \textbf{feature maps}.
-\textbullet *Early layers* detect low-level features (edges, corners, lines).
-\textbullet *Deeper layers* combine these to detect high-level features (e.g., the shape of a lung nodule, dural contours).
-
-\subsection*{Pooling Layers (Downsampling)}
-Reduce the spatial dimensions of the feature maps (e.g., via Max Pooling, which extracts the maximum value in a window). This reduces computational complexity and makes the network invariant to small translations of the input features.
-
-\subsection*{Fully Connected Layers}
-Flatten the final feature maps into a vector and pass them through dense layers to output the final prediction (e.g., class probabilities for malignant vs. benign).
-
----
-
-\section*{2. Key Architectures in Radiology}
-Two primary neural network architectures dominate medical imaging:
-
-\subsection*{ResNet (Residual Networks)}
-Introduced \textbf{skip connections} (shortcut connections that bypass one or more layers). Skip connections allow gradients to flow directly through the network during backpropagation, resolving the vanishing gradient problem and allowing networks to be hundreds of layers deep.
-
-\subsection*{U-Net (Encoder-Decoder Architecture)}
-The gold standard for medical image segmentation (e.g., segmenting brain tumors, cardiac ventricles, or organs at risk for radiation oncology).
-\textbullet \textbf{Contracting Path (Encoder)}: A standard CNN that captures context and reduces spatial dimensions.
-\textbullet \textbf{Expanding Path (Decoder)}: Upsamples the feature maps back to the original image resolution.
-\textbullet \textbf{Skip Connections}: Connect encoder layers directly to corresponding decoder layers, preserving high-resolution spatial localization details that are otherwise lost during downsampling.
-
----
-
-\section*{3. Training Deep Learning Models}
-Training models requires optimizing weights using mathematical feedback loops:
-
+\section{Convolutional Neural Networks (CNNs)}
+Convolutional neural networks (CNNs) remain foundational in medical computer vision because they exploit local spatial structure and translation equivariance. A standard CNN combines three core building blocks:
 \begin{itemize}
-    \item \textbf{Loss Functions}: Quantify the difference between the model's prediction and the ground truth.
-    \item \textbf{Dice Loss}: Used for segmentation tasks, measuring the overlap between the predicted segment and the manual annotation.
-    \item \textbf{Backpropagation and Optimization}: Gradients of the loss function are calculated, and weights are adjusted using optimization algorithms (e.g., Adam, Stochastic Gradient Descent).
-    \item \textbf{Transfer Learning}: Medical datasets are often small. To overcome data scarcity, models are pre-trained on large non-medical datasets (like ImageNet) or larger public medical datasets, and then fine-tuned on the target clinical task.
+    \item \textbf{Convolutional Layers:} Slide learnable filters (kernels) across an image or volume to compute \textbf{feature maps}. \textit{Early layers} respond to low-level primitives (edges, gradients, corners), whereas \textit{deeper layers} combine them into semantic patterns (e.g., pulmonary nodule margins, cortical sulci, or trabecular disruption).
+    \item \textbf{Pooling and Normalization Layers:} Downsample spatial dimensions (e.g., max pooling or strided convolutions) and stabilize activations, expanding the receptive field while reducing parameter count.
+    \item \textbf{Classification / Prediction Heads:} Aggregate high-level feature maps (often via global average pooling and fully connected layers) to output class probabilities, bounding boxes, or voxel-wise masks.
 \end{itemize}
 
----
+\section{Key Architectures in Radiology}
+Modern imaging pipelines rely on several specialized architectures tailored to classification, segmentation, and global context modeling (Table~\ref{tab:dl_architectures}).
 
-\section*{4. Explainability and Saliency Maps}
-A major barrier to clinical adoption of deep learning is the "black box" nature of neural networks. To build trust, clinicians must verify *where* the model is looking to make its prediction.
-\textbullet \textbf{Grad-CAM (Gradient-weighted Class Activation Mapping)}: Uses the gradients of target classes flowing into the final convolutional layer to produce a coarse heat map (saliency map) highlighting the key regions in the image that influenced the classification (e.g. highlighting the consolidation patch in a pneumonia diagnosis).
+\begin{itemize}
+    \item \textbf{ResNet (Residual Networks):} Introduce identity \textbf{skip connections} that bypass one or more layers, allowing gradients to flow smoothly during backpropagation and enabling very deep networks without degradation.
+    \item \textbf{U-Net (Encoder--Decoder):} The workhorse architecture for medical image segmentation (e.g., brain tumors, cardiac chambers, or organs at risk in radiotherapy). A contracting encoder extracts multi-scale context, an expanding decoder restores full spatial resolution, and encoder--decoder skip connections preserve fine boundary localization.
+    \item \textbf{Vision Transformers (ViTs) and Hybrids:} Divide images into patches and apply \textbf{self-attention} to model long-range spatial relationships across the entire slice or 3D volume, increasingly combined with convolutional stems in radiology foundation models.
+\end{itemize}
+
+\begin{table}[ht]
+\centering
+\caption{Common deep learning tasks and representative architectures in medical imaging.}
+\label{tab:dl_architectures}
+\begin{tabular}{@{}p{0.22\textwidth}p{0.28\textwidth}p{0.42\textwidth}@{}}
+\toprule
+\textbf{Task} & \textbf{Representative Models} & \textbf{Clinical Example} \\
+\midrule
+Classification / Triage & ResNet, DenseNet, ViT & Intracranial hemorrhage or pneumothorax detection \\
+Object Detection & RetinaNet, Faster R-CNN, YOLO & Pulmonary nodule or fracture localization \\
+Semantic Segmentation & U-Net, nnU-Net, Swin-UNETR & Tumor volumetry, organ-at-risk delineation \\
+Image Reconstruction & Unrolled variational networks & Accelerated MRI and low-dose CT denoising \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Training, Loss Functions, and Validation}
+Deep learning models optimize network weights $\theta$ by minimizing a task-specific loss function via stochastic gradient descent or adaptive optimizers (e.g., AdamW):
+\begin{itemize}
+    \item \textbf{Cross-Entropy Loss:} Standard objective for classification, penalizing confident misclassifications.
+    \item \textbf{Dice Loss:} Directly optimizes spatial overlap ($2|P \cap G| / (|P| + |G|)$) between predicted mask $P$ and ground-truth mask $G$, making it well suited to imbalanced segmentation targets.
+    \item \textbf{Data Splitting and Leakage Prevention:} Datasets must be split at the \emph{patient level} (not slice level) into training, validation, and held-out external test sets to prevent optimistic bias.
+    \item \textbf{Data Augmentation and Transfer Learning:} Geometric and intensity augmentations (rotations, flips, contrast jitter) and pre-training on large-scale datasets improve generalization when labeled medical data are limited.
+\end{itemize}
+
+\section{Explainability and Clinical Limitations}
+A central barrier to clinical trust is the ``black box'' nature of deep networks. Post-hoc saliency methods such as \textbf{Grad-CAM} (Gradient-weighted Class Activation Mapping) visualize image regions that most influenced a classification. However, saliency maps show \emph{where} a model attended rather than \emph{why} it decided, and can highlight spurious shortcuts (e.g., portable-scanner markers or chest tubes) rather than true pathology. Rigorous external validation and human-in-the-loop oversight remain essential.
 
 \clearpage

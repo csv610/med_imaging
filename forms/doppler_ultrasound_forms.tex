@@ -1,0 +1,347 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,left=14mm,right=14mm,top=18mm,bottom=15mm,headheight=19pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[scaled=0.94]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usepackage{hyperref}
+
+% Clinical Color Palette
+\definecolor{Navy}{HTML}{16324F}
+\definecolor{Teal}{HTML}{0E7490}
+\definecolor{SlateBg}{HTML}{F3F6FA}
+\definecolor{WarnBg}{HTML}{FFFBEB}
+\definecolor{WarnBorder}{HTML}{D97706}
+\definecolor{FieldBg}{HTML}{F8FAFC}
+\definecolor{BorderGray}{HTML}{B6C2CF}
+\definecolor{Muted}{HTML}{475569}
+\definecolor{RuleGray}{HTML}{CBD5E1}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=Teal,
+  linkcolor=Navy,
+  pdftitle={Doppler Ultrasound Imaging Forms — Fillable Clinical Workbook},
+  pdfauthor={Medical Imaging Workbook}
+}
+
+% Header & Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\fontsize{8}{10}\selectfont\bfseries\color{Navy} DOPPLER ULTRASOUND IMAGING FORMS}
+\fancyhead[R]{\fontsize{8}{10}\selectfont\color{Muted} Vascular \& Hemodynamic Sonography Workflow}
+\fancyfoot[L]{\fontsize{7.5}{9}\selectfont\color{Muted} De-identified clinical \& educational use}
+\fancyfoot[R]{\fontsize{7.5}{9}\selectfont\color{Muted} Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{RuleGray}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{RuleGray}\leaders\hrule height \footrulewidth\hfill}}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+
+% Interactive Form Field Helpers
+\newcommand{\FormLabel}[1]{{\fontsize{7.8}{9.5}\selectfont\bfseries\color{Navy}#1}}
+
+\newcommand{\FText}[3][15pt]{%
+  \TextField[name=#2, width=#3, height=#1, bordercolor=BorderGray, backgroundcolor=FieldBg, charsize=8.5pt, borderwidth=0.6pt]{}%
+}
+
+\newcommand{\FMText}[3][30pt]{%
+  \TextField[name=#2, width=#3, height=#1, multiline=true, bordercolor=BorderGray, backgroundcolor=FieldBg, charsize=8.5pt, borderwidth=0.6pt]{}%
+}
+
+\newcommand{\FCheck}[2]{%
+  \CheckBox[name=#1, width=9pt, height=9pt, bordercolor=Navy, backgroundcolor=FieldBg, borderwidth=0.7pt]{}~{\fontsize{8}{10}\selectfont #2}%
+}
+
+\newcommand{\FieldRow}[2]{%
+  \FormLabel{#1}\par\vspace{1pt}%
+  \FText[15.5pt]{#2}{\linewidth}\par\vspace{3.5pt}%
+}
+
+\newcommand{\MFieldRow}[3][28pt]{%
+  \FormLabel{#2}\par\vspace{1pt}%
+  \FMText[#1]{#3}{\linewidth}\par\vspace{3.5pt}%
+}
+
+\newcommand{\PageBanner}[3]{%
+  \noindent\begin{tcolorbox}[
+    enhanced,
+    colback=Navy,
+    colframe=Navy,
+    arc=2pt,
+    boxrule=0pt,
+    left=7pt,right=7pt,top=4.5pt,bottom=4.5pt,
+    after skip=4pt
+  ]
+    {\fontsize{11.5}{14}\selectfont\bfseries\color{white}#1}
+    \hfill
+    \tcbox[on line, arc=2pt, colback=Teal, colframe=Teal, boxrule=0pt, left=5pt, right=5pt, top=1.5pt, bottom=1.5pt]{%
+      \fontsize{7.5}{9}\selectfont\bfseries\color{white}#2%
+    }
+    \quad
+    {\fontsize{8.5}{10}\selectfont\color{white!85!Navy} #3}
+  \end{tcolorbox}%
+}
+
+\newtcolorbox{GuidanceBox}[1][]{
+  enhanced,
+  colback=SlateBg,
+  colframe=RuleGray,
+  arc=1.5pt,
+  boxrule=0.5pt,
+  left=6pt,right=6pt,top=4pt,bottom=4pt,
+  after skip=4pt,
+  #1
+}
+
+\newcommand{\RefBar}[1]{%
+  \vfill
+  \noindent\begin{tcolorbox}[
+    enhanced,
+    colback=SlateBg,
+    colframe=RuleGray,
+    arc=1.5pt,
+    boxrule=0.4pt,
+    left=6pt,right=6pt,top=3pt,bottom=3pt,
+    after skip=0pt
+  ]
+    {\fontsize{7.5}{9.5}\selectfont\bfseries\color{Muted} References:\quad #1}
+  \end{tcolorbox}%
+}
+
+\begin{document}
+\begin{Form}
+
+% ============================================================================
+% PAGE 1: DOPPLER ULTRASOUND REFERRAL & PRE-SCAN ASSESSMENT
+% ============================================================================
+\PageBanner{Doppler Ultrasound (Vascular \& Hemodynamic)}{1. BEFORE THE SCAN}{Form 1 of 4}
+
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What to check first:} Confirm vascular territory (venous, arterial, or organ perfusion), side, pretest probability (e.g., Wells score/D-dimer for DVT, ABI for PAD), and prior vascular imaging.\par\vspace{1.5pt}
+\textbf{\color{Navy}When to proceed or defer:} Proceed when Doppler findings will change management. In low-probability DVT with negative D-dimer, deferral is usually appropriate.\par\vspace{1.5pt}
+\textbf{\color{Navy}Adaptations:} Adapt positioning for frailty, pain, casts, or wounds; note anticoagulation, arrhythmias, or grafts that affect flow interpretation.}
+\end{GuidanceBox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{2.4cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Age / DOB} & \FormLabel{Date} & \FormLabel{Ordering clinician} \\
+\FText[15pt]{dp_p1_pid}{\linewidth} & \FText[15pt]{dp_p1_dob}{\linewidth} & \FText[15pt]{dp_p1_date}{\linewidth} & \FText[15pt]{dp_p1_clin}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{5.2cm}@{}}
+\FormLabel{Vascular territory / Doppler exam requested} & \FormLabel{Pretest score / D-dimer / ABI (if applicable)} \\
+\FText[15pt]{dp_p1_region}{\linewidth} & \FText[15pt]{dp_p1_score}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Study type:}\quad
+\FCheck{dp_p1_tven}{Venous (DVT/reflux)}\quad \FCheck{dp_p1_tart}{Arterial duplex}\quad \FCheck{dp_p1_tcar}{Carotid/Vertebral}\quad \FCheck{dp_p1_tren}{Renal/Visceral}\quad \FCheck{dp_p1_tgraft}{Graft/Fistula/Organ}\par\vspace{2.5pt}
+\FormLabel{Modes:}\quad
+\FCheck{dp_p1_mcol}{Color}\quad \FCheck{dp_p1_mpw}{Spectral (PW)}\quad \FCheck{dp_p1_mpow}{Power}\quad \FCheck{dp_p1_mcomp}{Compression/Augm.}\qquad
+\FormLabel{Side:}\quad
+\FCheck{dp_p1_sL}{Left}\quad \FCheck{dp_p1_sR}{Right}\quad \FCheck{dp_p1_sB}{Bilateral}\quad \FCheck{dp_p1_sNA}{Organ/NA}
+\end{tcolorbox}
+
+\FieldRow{Clinical question to be answered}{dp_p1_cquest}
+
+\MFieldRow[24pt]{History received (exact account, source \& relationship, recipient, date \& time)}{dp_p1_hist}
+
+\MFieldRow[24pt]{Clinician assessment and prior vascular tests / labs (with dates and results)}{dp_p1_assess}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Guideline and exact scenario matched} & \FormLabel{Finding supporting ordering or deferral} \\
+\FText[15pt]{dp_p1_guide}{\linewidth} & \FText[15pt]{dp_p1_find}{\linewidth} \\
+\end{tabularx}\par\vspace{3pt}
+
+\FieldRow{Patient-specific reason for an exception or positioning adaptation (if applicable)}{dp_p1_excep}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Decision:}\quad
+\FCheck{dp_p1_ord}{Order}\quad \FCheck{dp_p1_def}{Defer}\qquad
+\FormLabel{Urgency:}\quad
+\FCheck{dp_p1_urout}{Routine}\quad \FCheck{dp_p1_uurg}{Urgent}\quad \FCheck{dp_p1_ustat}{Stat / Emergent}\par\vspace{2.5pt}
+\FormLabel{What the result would change}\par\vspace{1pt}
+\FText[14.5pt]{dp_p1_change}{\linewidth}
+\end{tcolorbox}
+
+\MFieldRow[22pt]{Safety / positioning decision and plain-language explanation for the patient}{dp_p1_safety}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=2pt]
+\FormLabel{Basis for request:}\quad
+\FCheck{dp_p1_bclin}{Supported clinical use}\quad
+\FCheck{dp_p1_bunc}{Uncertain clinical benefit}\quad
+\FCheck{dp_p1_bres}{Research}\quad
+\FCheck{dp_p1_bclar}{Awaiting clarification}\par\vspace{2.5pt}
+\FormLabel{If research, study reference \& applicable approvals (or clarification note)}\par\vspace{1pt}
+\FText[14.5pt]{dp_p1_resref}{\linewidth}
+\end{tcolorbox}
+
+\RefBar{\href{https://www.nice.org.uk/guidance/ng158/chapter/Recommendations}{NICE NG158 (Venous Thromboembolism)} \quad|\quad \href{https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria}{ACR Appropriateness Criteria} \quad|\quad \href{https://www.radiologyinfo.org/en/info/us-vascular}{RadiologyInfo: Vascular US}}
+
+\newpage
+
+% ============================================================================
+% PAGE 2: DOPPLER ULTRASOUND SCAN-SPECIFIC REPORT
+% ============================================================================
+\PageBanner{Doppler Ultrasound (Vascular \& Hemodynamic)}{2. SCAN-SPECIFIC REPORT}{Form 2 of 4}
+
+\begin{GuidanceBox}
+{\fontsize{8.2}{10.2}\selectfont\textbf{\color{Navy}What this report should record:} State side, vessels/segments interrogated, protocol (e.g., proximal vs. whole-leg DVT), compressibility, color fill, spectral waveform morphology, Doppler angle ($\le 60^\circ$), PSV/EDV/RI or velocity ratios, and technical limitations.}
+\end{GuidanceBox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{2.8cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Patient ID} & \FormLabel{Exam date} & \FormLabel{Reporting clinician} \\
+\FText[15pt]{dp_p2_pid}{\linewidth} & \FText[15pt]{dp_p2_date}{\linewidth} & \FText[15pt]{dp_p2_rep}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}X@{}}
+\FormLabel{Vessels / segments interrogated \& protocol} & \FormLabel{Side, Doppler angle ($\le 60^\circ$) \& comparisons} \\
+\FText[15.5pt]{dp_p2_exam}{\linewidth} & \FText[15.5pt]{dp_p2_comp}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\FieldRow{Clinical indication / question}{dp_p2_ind}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Technical adequacy:}\quad
+\FCheck{dp_p2_tadeq}{Adequate}\quad
+\FCheck{dp_p2_tsub}{Limited window / angle}\quad
+\FCheck{dp_p2_trep}{Incomplete / Repeat needed}\par\vspace{2.5pt}
+\FormLabel{Limitations (oedema, arterial calcification/shadowing, bowel gas, dressings, arrhythmia, non-visualised segments)}\par\vspace{1pt}
+\FText[15pt]{dp_p2_qual}{\linewidth}
+\end{tcolorbox}
+
+\MFieldRow[82pt]{Findings \& hemodynamic measurements (compressibility, intraluminal thrombus, color fill, waveform phasicity, PSV, EDV, RI, ratios)}{dp_p2_find}
+
+\MFieldRow[50pt]{Impression (direct answer to the clinical question)}{dp_p2_imp}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Question status:}\qquad
+\FCheck{dp_p2_qans}{Answered}\qquad
+\FCheck{dp_p2_qpart}{Partly answered}\qquad
+\FCheck{dp_p2_qinc}{Inconclusive}\par\vspace{2.5pt}
+\FormLabel{Recommended next step:}\quad
+\FCheck{dp_p2_nnone}{None}\quad
+\FCheck{dp_p2_nrep}{Repeat Doppler}\quad
+\FCheck{dp_p2_ncta}{CTA}\quad
+\FCheck{dp_p2_nmra}{MRA}\quad
+\FCheck{dp_p2_nang}{Angiography}\quad
+\FCheck{dp_p2_nvasc}{Vascular / Clinical corr.}
+\end{tcolorbox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.8cm}@{\hspace{6pt}}p{2.8cm}@{}}
+\FormLabel{Follow-up action} & \FormLabel{Responsible clinician or team} & \FormLabel{Due date} \\
+\FText[15.5pt]{dp_p2_fu}{\linewidth} & \FText[15.5pt]{dp_p2_resp}{\linewidth} & \FText[15.5pt]{dp_p2_due}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{4.2cm}@{}}
+\FormLabel{Urgent communication: recipient} & \FormLabel{Date \& time} & \FormLabel{Method} \\
+\FText[15.5pt]{dp_p2_uwho}{\linewidth} & \FText[15.5pt]{dp_p2_utime}{\linewidth} & \FText[15.5pt]{dp_p2_umeth}{\linewidth} \\
+\end{tabularx}
+
+\RefBar{\href{https://www.nice.org.uk/guidance/ng158/chapter/Recommendations}{NICE NG158 (Venous Thromboembolism)} \quad|\quad \href{https://www.rsna.org/practice-tools/data-tools-and-standards/radreport-reporting-templates}{RSNA RadReport Templates}}
+
+\newpage
+
+% ============================================================================
+% PAGE 3: WHAT THE IMAGE SHOWS AND MEANS
+% ============================================================================
+\PageBanner{Doppler Ultrasound (Vascular \& Hemodynamic)}{3. WHAT THE IMAGE SHOWS \& MEANS}{Form 3 of 4}
+
+\renewcommand{\arraystretch}{1.2}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\bfseries\color{Navy}}p{3.0cm} >{\color{Navy}}p{5.4cm} X@{}}
+\toprule
+\textbf{Context} & \textbf{Key Doppler Finding} & \textbf{Typical Meaning / Interpretation} \\
+\midrule
+Venous (DVT) & Noncompressible vein; absent color/phasicity & Supports deep vein thrombosis or proximal block \\
+Arterial Stenosis & Focal PSV jump, aliasing, elevated PSV ratio & Supports haemodynamically significant stenosis \\
+Distal Waveform & Tardus-parvus (blunted upstroke, slow rise) & Suggests upstream stenosis or occlusion \\
+Organ / Torsion & High RI, reversed/absent diastolic or no flow & High vascular resistance, rejection, or torsion \\
+Venous Reflux & Retrograde flow ($>0.5$ s superf.; $>1.0$ s deep) & Supports venous valvular insufficiency \\
+\bottomrule
+\end{tabularx}\par\vspace{4pt}
+
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.1}\selectfont
+\textbf{\color{Navy}What Doppler leaves unanswered:} Angle errors ($>60^\circ$), heavy arterial calcification (shadowing), vessel depth, low-flow states, or arrhythmias can distort velocities. A negative proximal DVT scan may require repeat imaging under the pathway; CTA/MRA may be needed for intervention planning.\par\vspace{2pt}
+\textbf{\color{Navy}Worked interpretation example:} Finding: Vein fails to compress with absent color fill. Interpretation: supports thrombosis. If absent, verify coverage and pretest probability.\par\vspace{2pt}
+\textbf{\color{Navy}Illustration guide (4:3 plate):} Pair B-mode/color view with the spectral Doppler trace; label vessel, sample gate, angle ($\le 60^\circ$), PSV, and EDV.}
+\end{GuidanceBox}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Primary finding} & \FormLabel{Vessel / Segment} & \FormLabel{Measurement} & \FormLabel{Unit (cm/s, RI, s)} \\
+\FText[15.5pt]{dp_p3_find}{\linewidth} & \FText[15.5pt]{dp_p3_loc}{\linewidth} & \FText[15.5pt]{dp_p3_meas}{\linewidth} & \FText[15.5pt]{dp_p3_unit}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{4.0cm}@{\hspace{6pt}}p{2.6cm}@{\hspace{6pt}}p{2.0cm}@{}}
+\FormLabel{Secondary finding (if any)} & \FormLabel{Vessel / Segment} & \FormLabel{Measurement} & \FormLabel{Unit (cm/s, RI, s)} \\
+\FText[15.5pt]{dp_p3_find2}{\linewidth} & \FText[15.5pt]{dp_p3_loc2}{\linewidth} & \FText[15.5pt]{dp_p3_meas2}{\linewidth} & \FText[15.5pt]{dp_p3_unit2}{\linewidth} \\
+\end{tabularx}\par\vspace{3.5pt}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=3.5pt,bottom=3.5pt,after skip=3.5pt]
+\FormLabel{Hypothesis impact:}\quad
+\FCheck{dp_p3_hsup}{Supports hypothesis}\qquad
+\FCheck{dp_p3_hless}{Makes it less likely}\qquad
+\FCheck{dp_p3_hunres}{Leaves it unresolved}
+\end{tcolorbox}
+
+\MFieldRow[36pt]{Plain-language explanation for patient / care team}{dp_p3_plain}
+
+\noindent\begin{tcolorbox}[enhanced,colback=SlateBg,colframe=RuleGray,arc=1.5pt,boxrule=0.5pt,left=6pt,right=6pt,top=4pt,bottom=4pt,after skip=2pt]
+\FormLabel{Audit Challenge}\par\vspace{2pt}
+\noindent\begin{tabularx}{\linewidth}{@{}p{5.5cm}@{\hspace{6pt}}X@{}}
+\FormLabel{Reviewer \& date} & \FormLabel{Finding disputed} \\
+\FText[15pt]{dp_p3_arev}{\linewidth} & \FText[15pt]{dp_p3_adisp}{\linewidth} \\
+\end{tabularx}\par\vspace{2.5pt}
+\MFieldRow[24pt]{Supporting evidence}{dp_p3_aevid}
+\MFieldRow[24pt]{Response or resolution}{dp_p3_ares}
+\end{tcolorbox}
+
+\RefBar{\href{https://www.radiologyinfo.org/en/info/us-vascular}{RadiologyInfo: Vascular Ultrasound} \quad|\quad \href{https://www.nice.org.uk/guidance/ng158/chapter/Recommendations}{NICE NG158}}
+
+\newpage
+
+% ============================================================================
+% PAGE 4: FIND SIMILAR CASES AND CHECK THE EVIDENCE
+% ============================================================================
+\PageBanner{Doppler Ultrasound (Vascular \& Hemodynamic)}{4. SIMILAR CASES \& EVIDENCE}{Form 4 of 4}
+
+\begin{GuidanceBox}[colback=WarnBg,colframe=WarnBorder!50!white,borderline west={3pt}{0pt}{WarnBorder}]
+{\fontsize{8.1}{10.1}\selectfont\textbf{\color{Navy}Optional review aid:} Use de-identified clinical terms only. Keep patient names, identifiers, reports, and patient images out of public searches. Record examples for review without delaying care.}
+\end{GuidanceBox}
+
+\begin{GuidanceBox}
+{\fontsize{8.1}{10.2}\selectfont
+\textbf{\color{Navy}1. Check the decision using only pre-scan information (example templates):}\par
+\texttt{<clinical presentation> <vascular territory> Doppler ultrasound guideline}\par\vspace{3pt}
+\textbf{\color{Navy}2. Find a teaching case using the imaging findings (example templates):}\par
+\texttt{<vessel> Doppler ultrasound <waveform / velocity / compressibility> teaching case}}
+\end{GuidanceBox}
+
+\FieldRow{Actual search terms used}{dp_p4_terms}
+
+\noindent\begin{tabularx}{\linewidth}{@{}X@{\hspace{6pt}}p{3.4cm}@{}}
+\FormLabel{Source link / citation} & \FormLabel{Access date} \\
+\FText[15.5pt]{dp_p4_src}{\linewidth} & \FText[15.5pt]{dp_p4_date}{\linewidth} \\
+\end{tabularx}\par\vspace{5pt}
+
+\MFieldRow[62pt]{What matches and what differs}{dp_p4_match}
+
+\MFieldRow[62pt]{How the diagnosis was established (or whether confirmation was unclear)}{dp_p4_diag}
+
+\MFieldRow[62pt]{What the source adds and what remains uncertain}{dp_p4_adds}
+
+\RefBar{\href{https://www.acr.org/Clinical-Resources/ACR-Appropriateness-Criteria}{ACR Appropriateness Criteria} \quad|\quad \href{https://radiopaedia.org/}{Radiopaedia (Doppler Teaching Cases)}}
+
+\end{Form}
+\end{document}
